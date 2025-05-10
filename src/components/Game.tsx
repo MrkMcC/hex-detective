@@ -32,6 +32,17 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   const getSuspect = () => PersonService.FindPersonById(people, suspectId);
 
+  const accuse = (personId: string) => {
+    setAccusedPersonId(personId);
+    if (status === GameStatus.InProgress) {
+      if (personId === suspectId) {
+        const roundsWon = gameData.roundsWon + 1;
+        setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
+        startNewRound(roundsWon);
+      } else onChangeStatus(GameStatus.GameOver);
+    }
+  };
+
   //#region Event Handling
   const handleSelect = (personId: string) => {
     switch (currentSelectionMode) {
@@ -91,21 +102,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const tryAutoAccuseLastPerson = () => {
     if (!accusedPersonId) {
       const onlySuspect = GameService.GetOnlyRemainingSuspect(people);
-      if (onlySuspect) setAccusedPersonId(onlySuspect.id);
+      if (onlySuspect) accuse(onlySuspect.id);
     }
   };
   tryAutoAccuseLastPerson();
-
-  const accuse = (personId: string) => {
-    setAccusedPersonId(personId);
-    if (status === GameStatus.InProgress) {
-      if (personId === suspectId) {
-        const roundsWon = gameData.roundsWon + 1;
-        setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
-        startNewRound(roundsWon);
-      } else onChangeStatus(GameStatus.GameOver);
-    }
-  };
   //#endregion
 
   //#region Component Construction

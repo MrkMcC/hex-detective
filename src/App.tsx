@@ -7,7 +7,6 @@ import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
 //TODO 1.0
-//- Game Over Screen shows Score
 //- Bug: Auto-accuse does not work
 
 //TODO Post Release

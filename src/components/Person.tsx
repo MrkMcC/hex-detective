@@ -41,8 +41,10 @@ const Person = ({
         onClick={handleSelect}
       >
         <div className="icon-overlay">
-          {person.ruledOut && <FaCheck className="icon" />}
-          {isRevealedSuspect && <BsIncognito className="icon" />}
+          {person.ruledOut && <FaCheck className="icon ruled-out" />}
+          {isRevealedSuspect && (
+            <BsIncognito className="icon revealed-suspect" />
+          )}
         </div>
         <div className={`body`}>
           <Hat person={person} />
