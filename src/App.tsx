@@ -11,7 +11,6 @@ import GameSettingsT from "./types/GameSettingsT";
 //- Rework accused/ruled out indication
 //- Quit game confirm dialog
 //- polish or remove ui placeholders
-//- git branch
 
 //TODO Post Release
 //- FavIcon
