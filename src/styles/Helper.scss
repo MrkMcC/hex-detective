@@ -30,6 +30,12 @@ button {
   }
 }
 
+h2 {
+  > .icon {
+    vertical-align: sub;
+  }
+}
+
 .white {
   color: colours.$c-white;
 }

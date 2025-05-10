@@ -1,13 +1,15 @@
+import { ReactNode } from "react";
+
 interface Props {
-  label?: string;
   code: string;
   reveal?: boolean;
+  children?: ReactNode;
 }
 
-const ColourText = ({ label, code, reveal }: Props) => {
+const ColourText = ({ code, reveal, children }: Props) => {
   return (
     <span className="colour-text">
-      {label && <span>{label} </span>}
+      {children && <span>{children} </span>}
       <span className="hex" style={{ color: reveal ? code : undefined }}>
         {code}
       </span>

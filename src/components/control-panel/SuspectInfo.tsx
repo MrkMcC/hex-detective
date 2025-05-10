@@ -1,3 +1,6 @@
+import { FaRedhat } from "react-icons/fa";
+import { FaShirt } from "react-icons/fa6";
+import { PiPantsFill } from "react-icons/pi";
 import PersonT from "../../types/PersonT";
 import ColourText from "../ColourText";
 
@@ -12,44 +15,38 @@ const SuspectInfo = ({ suspect, revealColours, compact }: Props) => {
     <div className={`suspect-info ${compact ? "compact" : "extended"}`}>
       {compact ? (
         <p>
-          <ColourText
-            label="HAT"
-            code={suspect.colours.hat}
-            reveal={revealColours}
-          />
-          <ColourText
-            label="SHIRT"
-            code={suspect.colours.shirt}
-            reveal={revealColours}
-          />
-          <ColourText
-            label="PANTS"
-            code={suspect.colours.pants}
-            reveal={revealColours}
-          />
+          <ColourText code={suspect.colours.hat} reveal={revealColours}>
+            <FaRedhat className="icon" />
+          </ColourText>
+          <ColourText code={suspect.colours.shirt} reveal={revealColours}>
+            <FaShirt className="icon" />
+          </ColourText>
+          <ColourText code={suspect.colours.pants} reveal={revealColours}>
+            <PiPantsFill className="icon" />
+          </ColourText>
         </p>
       ) : (
         <>
           <p>
-            <ColourText
-              label="Their hat is"
-              code={suspect.colours.hat}
-              reveal={revealColours}
-            />
+            <FaRedhat className="icon" />
+            <ColourText code={suspect.colours.hat} reveal={revealColours}>
+              Their hat is
+            </ColourText>
+            <FaRedhat className="icon" />
           </p>
           <p>
-            <ColourText
-              label="Their shirt is"
-              code={suspect.colours.shirt}
-              reveal={revealColours}
-            />
+            <FaShirt className="icon" />
+            <ColourText code={suspect.colours.shirt} reveal={revealColours}>
+              Their shirt is
+            </ColourText>
+            <FaShirt className="icon" />
           </p>
           <p>
-            <ColourText
-              label="Their pants are"
-              code={suspect.colours.pants}
-              reveal={revealColours}
-            />
+            <PiPantsFill className="icon" />
+            <ColourText code={suspect.colours.pants} reveal={revealColours}>
+              Their pants are
+            </ColourText>
+            <PiPantsFill className="icon" />
           </p>
         </>
       )}

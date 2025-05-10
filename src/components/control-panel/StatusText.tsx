@@ -1,3 +1,4 @@
+import { BsIncognito } from "react-icons/bs";
 import GameStatus from "../../enum/GameStatus";
 
 interface Props {
@@ -10,11 +11,17 @@ const StatusText = ({ state }: Props) => {
       case GameStatus.InProgress:
         return "Find the suspect";
       case GameStatus.GameOver:
-        return "You lost";
+        return "Game over";
     }
   };
 
-  return <h2 className="status">{getStatusMessage()}</h2>;
+  return (
+    <h2 className="status">
+      <BsIncognito className="icon" />
+      {getStatusMessage()}
+      <BsIncognito className="icon" />
+    </h2>
+  );
 };
 
 export default StatusText;

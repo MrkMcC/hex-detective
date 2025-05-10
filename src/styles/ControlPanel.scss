@@ -47,6 +47,15 @@
     }
     .info {
       width: 50%;
+      .suspect-info {
+        p {
+          text-align: center;
+        }
+      }
+      .icon {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
     }
   }
 
