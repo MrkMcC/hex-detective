@@ -6,7 +6,7 @@ import PersonT from "../../types/PersonT";
 import Collapsor from "./Collapsor";
 import SelectionModeControl from "./SelectionModeControl";
 import StatusText from "./StatusText";
-import SuspectInfo from "./WitchInfo";
+import SuspectInfo from "./SuspectInfo";
 
 interface Props {
   suspect?: PersonT;
