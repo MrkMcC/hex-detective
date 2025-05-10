@@ -17,7 +17,7 @@ const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
       <div className="button-group large">
         <button
           role="button"
-          className={`rule-out ${
+          className={`rule-out large ${
             currentMode === SuspectSelectionMode.RuleOut ? "active" : "inactive"
           }`}
           disabled={currentMode === SuspectSelectionMode.RuleOut}
@@ -27,7 +27,7 @@ const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
         </button>
         <button
           role="button"
-          className={`accuse ${
+          className={`accuse large ${
             currentMode === SuspectSelectionMode.Accuse ? "active" : "inactive"
           }`}
           disabled={currentMode === SuspectSelectionMode.Accuse}

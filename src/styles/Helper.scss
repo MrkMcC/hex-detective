@@ -1,15 +1,35 @@
 @use "theme";
+@use "vars/colours";
 
 $large-border-radius: 10px;
 
 button {
+  color: colours.$c-white;
+  padding: 0.5em;
+  border: 0.1em solid colours.$c-white;
+  border-radius: $large-border-radius;
+
+  &[disabled] {
+    background-color: colours.$bg-dark;
+    color: colours.$bg-black;
+    border-color: colours.$c-grey;
+  }
   &:not([disabled]) {
     cursor: pointer;
+    background-color: colours.$bg-black;
+    &:hover {
+      background-color: colours.$bg-bright;
+      color: colours.$bg-black;
+      border-color: colours.$c-black;
+    }
+  }
+  &.large {
+    font-size: x-large;
   }
 }
 
 .white {
-  color: white;
+  color: colours.$c-white;
 }
 
 .hex {
@@ -21,15 +41,13 @@ button {
 
   &.large {
     button {
-      padding: 0.5em;
-      font-size: x-large;
       &:first-child {
-        border-top-left-radius: $large-border-radius;
-        border-bottom-left-radius: $large-border-radius;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
       }
       &:last-child {
-        border-top-right-radius: $large-border-radius;
-        border-bottom-right-radius: $large-border-radius;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
   }

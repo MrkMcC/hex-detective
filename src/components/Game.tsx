@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaCaretLeft } from "react-icons/fa";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import GameSettingsT from "../types/GameSettingsT";
 import GameStatus from "./../enum/GameStatus";
@@ -111,8 +112,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
       </div>
       <div className="control-panel-container">
         <p>Suspects found: {gameData.roundsWon}</p>
-        <p>Game Status: {status}</p>
-        <button onClick={handleQuit}>Back to Menu</button>
+        <button className="btn-main-menu" onClick={handleQuit}>
+          <FaCaretLeft className="icon" />
+          Back to Menu
+        </button>
         <ControlPanel
           gameStatus={status}
           currentSelectionMode={currentSelectionMode}

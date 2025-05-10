@@ -11,7 +11,6 @@ import GameSettingsT from "./types/GameSettingsT";
 //- polish or remove ui placeholders
 
 //TODO Post Release
-//- FavIcon
 //- Add "How to read hex colour codes" to how-to-play
 //- Difficulty Options
 //-- show colour triangle option

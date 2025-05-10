@@ -85,9 +85,6 @@
     }
     .button-group {
       button {
-        border: 0.1em solid white;
-        color: white;
-
         &.rule-out {
           background-color: colours.$bg-green;
         }
@@ -144,5 +141,13 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.btn-main-menu {
+  font-size: large;
+  .icon {
+    vertical-align: bottom;
+    font-size: larger;
   }
 }

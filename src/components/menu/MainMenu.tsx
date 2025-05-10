@@ -21,7 +21,9 @@ const MainMenu = ({ settings, onChangeSettings, onStartGame }: Props) => {
           onChangeSettings={onChangeSettings}
         />
         <div className="new-game-container">
-          <button onClick={onStartGame}>New Game</button>
+          <button className="large" onClick={onStartGame}>
+            New Game
+          </button>
         </div>
       </div>
       <div className="column column-right">
