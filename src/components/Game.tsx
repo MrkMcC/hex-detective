@@ -56,7 +56,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   //#region Game State
   const startNewRound = () => {
-    const newPeople = PersonService.GeneratePeople(settings.crowdSize);
+    const newPeople = PersonService.GeneratePeople(settings.crowdSizeInitial);
     const suspect = ArrayHelper.RandomElement(newPeople);
     setAccusedPersonId(null);
     setPeople(newPeople);

@@ -38,3 +38,22 @@ button {
 .ui-panel {
   border: theme.$border_ui-l;
 }
+
+div.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  input {
+    margin-left: 1em;
+  }
+}
+
+input.cool {
+  color: white;
+  background-color: black;
+  border: 0.1em solid white;
+  border-radius: 7px;
+  height: 1em;
+  width: 3em;
+}

@@ -6,15 +6,13 @@ import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
 //TODO 1.0
-//- Rebrand to "suspect"
-//- Instructions on how to play & how to read hex
 //- Rework accused/ruled out indication
 //- Quit game confirm dialog
 //- polish or remove ui placeholders
 
 //TODO Post Release
 //- FavIcon
-//- Add "How to read hex colour codes to how-to-play"
+//- Add "How to read hex colour codes" to how-to-play
 //- Difficulty Options
 //-- show colour triangle option
 //-- show int values (0-255) option
@@ -30,7 +28,10 @@ import GameSettingsT from "./types/GameSettingsT";
 
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
-  const [settings, setSettings] = useState<GameSettingsT>({ crowdSize: 4 });
+  const [settings, setSettings] = useState<GameSettingsT>({
+    crowdSizeInitial: 5,
+    crowdSizeIncrement: 5,
+  });
 
   const handleStartGame = () => {
     setStatus(GameStatus.InProgress);
@@ -46,7 +47,7 @@ function App() {
         />
       ) : (
         <Game
-          key={objectHash(settings.crowdSize)}
+          key={objectHash(settings.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
           settings={settings}

@@ -1,5 +1,6 @@
 type GameSettingsT = {
-  crowdSize: number;
+  crowdSizeInitial: number;
+  crowdSizeIncrement: number;
 };
 
 export default GameSettingsT;
