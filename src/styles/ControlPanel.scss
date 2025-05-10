@@ -14,6 +14,7 @@
   padding: dimensions.$padding-control-panel;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: colours.$bg-black;
 
   &.collapsed {
@@ -44,6 +45,8 @@
   &.expanded {
     .selection-mode {
       width: 50%;
+      height: 100%;
+      margin: auto;
     }
     .info {
       width: 50%;
@@ -156,6 +159,7 @@
 }
 
 .btn-main-menu {
+  margin-top: 1em;
   font-size: large;
   .icon {
     font-size: larger;

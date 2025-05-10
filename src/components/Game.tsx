@@ -132,12 +132,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="people">{personElements}</div>
       </div>
       <div className="bottom-bar">
-        <p>You've found {gameData.roundsWon} suspects.</p>
         <button className="btn-main-menu" onClick={handleQuit}>
           <FaCaretLeft className="icon" />
           Back to Menu
         </button>
         <ControlPanel
+          gameData={gameData}
           gameStatus={status}
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}

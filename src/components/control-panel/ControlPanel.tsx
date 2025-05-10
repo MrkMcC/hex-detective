@@ -2,14 +2,17 @@ import { useState } from "react";
 import { MdRefresh } from "react-icons/md";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
+import GameDataT from "../../types/GameDataT";
 import PersonT from "../../types/PersonT";
 import Collapsor from "./Collapsor";
+import HighScore from "./HighScore";
 import SelectionModeControl from "./SelectionModeControl";
 import StatusText from "./StatusText";
 import SuspectInfo from "./SuspectInfo";
 
 interface Props {
   suspect?: PersonT;
+  gameData: GameDataT;
   gameStatus: GameStatus;
   currentSelectionMode: SuspectSelectionMode;
   onSelectSelectionMode: (mode: SuspectSelectionMode) => void;
@@ -18,6 +21,7 @@ interface Props {
 
 const ControlPanel = ({
   suspect,
+  gameData,
   gameStatus,
   currentSelectionMode,
   onSelectSelectionMode,
@@ -53,11 +57,16 @@ const ControlPanel = ({
             />
           )}
         </div>
-        <SelectionModeControl
-          currentMode={currentSelectionMode}
-          onSelect={onSelectSelectionMode}
-          compact={isCollapsed}
-        />
+        {gameStatus === GameStatus.InProgress && (
+          <SelectionModeControl
+            currentMode={currentSelectionMode}
+            onSelect={onSelectSelectionMode}
+            compact={isCollapsed}
+          />
+        )}
+        {gameStatus === GameStatus.GameOver && (
+          <HighScore gameData={gameData} />
+        )}
         <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
       </div>
     </div>
