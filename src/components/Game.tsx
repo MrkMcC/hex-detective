@@ -4,7 +4,6 @@ import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import GameSettingsT from "../types/GameSettingsT";
 import GameStatus from "./../enum/GameStatus";
 import ArrayHelper from "./../helper/ArrayHelper";
-import GameService from "./../services/GameService";
 import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import PersonT from "./../types/PersonT";
@@ -98,14 +97,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
     }
   };
   tryStartNextRound();
-
-  const tryAutoAccuseLastPerson = () => {
-    if (!accusedPersonId) {
-      const onlySuspect = GameService.GetOnlyRemainingSuspect(people);
-      if (onlySuspect) accuse(onlySuspect.id);
-    }
-  };
-  tryAutoAccuseLastPerson();
   //#endregion
 
   //#region Component Construction

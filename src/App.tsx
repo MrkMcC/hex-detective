@@ -6,10 +6,7 @@ import DifficultyTemplate from "./enum/DifficultyTemplate";
 import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
-//TODO 1.0
-//- Bug: Auto-accuse does not work
-
-//TODO Post Release
+//TODO
 //- Add "How to read hex colour codes" to how-to-play
 //- Difficulty Options
 //-- show colour triangle option
