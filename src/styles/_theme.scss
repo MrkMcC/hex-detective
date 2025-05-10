@@ -7,4 +7,7 @@ $z_body-shirt: 60;
 $z_body-pants: 50;
 $z_control-panel: 900;
 
-$border_ui-l: 5px gray dotted;
+$border_width_l: 5px;
+$border_ui-l: $border_width_l gray dotted;
+
+$border-radius_btn_l: 0.5em;

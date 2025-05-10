@@ -1,13 +1,11 @@
 @use "theme";
 @use "vars/colours";
 
-$large-border-radius: 10px;
-
 button {
   color: colours.$c-white;
   padding: 0.5em;
   border: 0.1em solid colours.$c-white;
-  border-radius: $large-border-radius;
+  border-radius: theme.$border-radius_btn_l;
 
   &[disabled] {
     background-color: colours.$bg-dark;
@@ -25,6 +23,10 @@ button {
   }
   &.large {
     font-size: x-large;
+  }
+
+  > .icon {
+    vertical-align: text-bottom;
   }
 }
 

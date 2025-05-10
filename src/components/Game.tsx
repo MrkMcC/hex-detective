@@ -17,10 +17,12 @@ interface Props {
   settings: GameSettingsT;
 }
 
+const initialGameData: GameDataT = {
+  roundsWon: 0,
+};
+
 function Game({ status, onChangeStatus, settings }: Props) {
-  const [gameData, setGameData] = useState<GameDataT>({
-    roundsWon: 0,
-  });
+  const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
   const [people, setPeople] = useState<PersonT[]>([]);
   const [suspectId, setSuspectId] = useState<string>();
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
@@ -59,26 +61,32 @@ function Game({ status, onChangeStatus, settings }: Props) {
     )
       onChangeStatus(GameStatus.Setup);
   };
+
+  const handleReset = () => {
+    setGameData({ ...initialGameData });
+    startNewRound();
+  };
   //#endregion
 
   //#region Game State
-  const startNewRound = () => {
+  const startNewRound = (incrementMultiplier: number = 0) => {
     const newPeople = PersonService.GeneratePeople(
       settings.crowdSizeInitial +
-        settings.crowdSizeIncrement * gameData.roundsWon
+        settings.crowdSizeIncrement * incrementMultiplier
     );
     const suspect = ArrayHelper.RandomElement(newPeople);
     setAccusedPersonId(null);
     setPeople(newPeople);
     setSuspectId(suspect.id);
+    if (status !== GameStatus.InProgress) onChangeStatus(GameStatus.InProgress);
   };
 
-  const tryInitialiseGame = () => {
+  const tryStartNextRound = () => {
     if (people.length === 0) {
       startNewRound();
     }
   };
-  tryInitialiseGame();
+  tryStartNextRound();
 
   const tryAutoAccuseLastPerson = () => {
     if (!accusedPersonId) {
@@ -92,8 +100,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
     setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
       if (personId === suspectId) {
-        setGameData((prev) => ({ ...prev, roundsWon: prev.roundsWon + 1 }));
-        startNewRound();
+        const roundsWon = gameData.roundsWon + 1;
+        setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
+        startNewRound(roundsWon);
       } else onChangeStatus(GameStatus.GameOver);
     }
   };
@@ -116,7 +125,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       <div className="people-container">
         <div className="people">{personElements}</div>
       </div>
-      <div className="control-panel-container">
+      <div className="bottom-bar">
         <p>Suspects found: {gameData.roundsWon}</p>
         <button className="btn-main-menu" onClick={handleQuit}>
           <FaCaretLeft className="icon" />
@@ -127,6 +136,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}
           suspect={getSuspect()}
+          onReset={handleReset}
         />
       </div>
     </div>

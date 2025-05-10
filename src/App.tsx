@@ -7,7 +7,6 @@ import GameSettingsT from "./types/GameSettingsT";
 
 //TODO 1.0
 //- Rework accused/ruled out indication
-//- Quit game confirm dialog
 //- polish or remove ui placeholders
 
 //TODO Post Release

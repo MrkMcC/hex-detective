@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdRefresh } from "react-icons/md";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import PersonT from "../../types/PersonT";
@@ -12,13 +13,15 @@ interface Props {
   gameStatus: GameStatus;
   currentSelectionMode: SuspectSelectionMode;
   onSelectSelectionMode: (mode: SuspectSelectionMode) => void;
+  onReset: () => void;
 }
 
 const ControlPanel = ({
   suspect,
-  gameStatus: gameState,
+  gameStatus,
   currentSelectionMode,
   onSelectSelectionMode,
+  onReset,
 }: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -27,27 +30,36 @@ const ControlPanel = ({
   };
 
   return (
-    <div
-      className={`control-panel ui-panel ${
-        isCollapsed ? "collapsed" : "expanded"
-      }`}
-    >
-      <div className="info">
-        {!isCollapsed && <StatusText state={gameState} />}
-        {suspect && (
-          <SuspectInfo
-            suspect={suspect}
-            revealColours={gameState !== GameStatus.InProgress}
-            compact={isCollapsed}
-          />
+    <div className="control-panel-container">
+      <div className="btn-restart-container">
+        {gameStatus === GameStatus.GameOver && (
+          <button className="btn-restart large" onClick={onReset}>
+            <MdRefresh className="icon" /> Play again
+          </button>
         )}
       </div>
-      <SelectionModeControl
-        currentMode={currentSelectionMode}
-        onSelect={onSelectSelectionMode}
-        compact={isCollapsed}
-      />
-      <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
+      <div
+        className={`control-panel ui-panel ${
+          isCollapsed ? "collapsed" : "expanded"
+        }`}
+      >
+        <div className="info">
+          {!isCollapsed && <StatusText state={gameStatus} />}
+          {suspect && (
+            <SuspectInfo
+              suspect={suspect}
+              revealColours={gameStatus !== GameStatus.InProgress}
+              compact={isCollapsed}
+            />
+          )}
+        </div>
+        <SelectionModeControl
+          currentMode={currentSelectionMode}
+          onSelect={onSelectSelectionMode}
+          compact={isCollapsed}
+        />
+        <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
+      </div>
     </div>
   );
 };

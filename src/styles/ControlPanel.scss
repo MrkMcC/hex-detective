@@ -11,6 +11,7 @@
   justify-content: center;
   background-color: colours.$bg-black;
   z-index: theme.$z_control-panel;
+  position: relative;
 
   &.collapsed {
     padding: 0.5em;
@@ -147,7 +148,20 @@
 .btn-main-menu {
   font-size: large;
   .icon {
-    vertical-align: bottom;
     font-size: larger;
+  }
+}
+
+.btn-restart-container {
+  display: flex;
+  justify-content: center;
+  .btn-restart {
+    font-size: xx-large;
+    border: theme.$border_ui-l;
+    border-style: dotted;
+    padding: 0.75em;
+    border-radius: 0;
+    border-top-left-radius: theme.$border-radius_btn_l;
+    border-top-right-radius: theme.$border-radius_btn_l;
   }
 }
