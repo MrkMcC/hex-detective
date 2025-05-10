@@ -19,6 +19,7 @@ import GameSettingsT from "./types/GameSettingsT";
 //-- show percentages option
 //- Main menu difficulty options
 //- Polish how-to-play, add pictures (or the corresponding elements directly)
+//- Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)
 //- Random "wanted for _" text for each suspect
 //- accuse hover zitter-animation (&Schweissperle?)
 //- option: disable animations (&center pupils with css)
