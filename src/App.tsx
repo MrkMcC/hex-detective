@@ -2,13 +2,13 @@ import objectHash from "object-hash";
 import { useState } from "react";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
+import DifficultyTemplate from "./enum/DifficultyTemplate";
 import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
 //TODO 1.0
-//- Rework accused/ruled out indication
+//- Game Over Screen shows Score
 //- Bug: Auto-accuse does not work
-//- polish or remove ui placeholders
 
 //TODO Post Release
 //- Add "How to read hex colour codes" to how-to-play
@@ -16,7 +16,9 @@ import GameSettingsT from "./types/GameSettingsT";
 //-- show colour triangle option
 //-- show int values (0-255) option
 //-- show percentages option
-//- Main menu difficulty options
+//- Highscore in cookie
+//- Responsive Design Overhaul
+//- Prevent invalid values for custom difficulty variables (disable new game button maybe)
 //- Polish how-to-play, add pictures (or the corresponding elements directly)
 //- Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)
 //- Random "wanted for _" text for each suspect
@@ -29,6 +31,7 @@ import GameSettingsT from "./types/GameSettingsT";
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
   const [settings, setSettings] = useState<GameSettingsT>({
+    template: DifficultyTemplate.Custom,
     crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
   });

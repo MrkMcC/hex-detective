@@ -1,6 +1,7 @@
 import GameSettingsT from "../../types/GameSettingsT";
 import DifficultySettings from "./DifficultySettings";
 import HowToPlay from "./HowToPlay";
+import Title from "./Title";
 
 interface Props {
   settings: GameSettingsT;
@@ -15,7 +16,7 @@ const MainMenu = ({ settings, onChangeSettings, onStartGame }: Props) => {
         <HowToPlay />
       </div>
       <div className="column column-center">
-        <h1>#HexaDetective</h1>
+        <Title />
         <DifficultySettings
           settings={settings}
           onChangeSettings={onChangeSettings}

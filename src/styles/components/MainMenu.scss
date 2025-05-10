@@ -1,7 +1,6 @@
 @use "../theme";
 
 $panel_how-to-play_w: 90%;
-$panel_how-to-play_h: 16em;
 $panel_difficulty-settings_w: 90%;
 $panel_difficulty-settings_mh: 10vw;
 
@@ -22,31 +21,38 @@ $panel_difficulty-settings_mh: 10vw;
     align-items: center;
   }
 
+  .title {
+    font-size: 5em;
+  }
+
   .how-to-play {
     width: $panel_how-to-play_w;
-    height: $panel_how-to-play_h;
     display: flex;
     flex-direction: column;
+    padding: 1em;
 
     .header {
       text-align: center;
     }
 
     .general-instructions {
-      margin-left: 4em;
+      font-size: large;
     }
   }
 
   .difficulty-settings {
     width: $panel_difficulty-settings_w;
     min-height: $panel_difficulty-settings_mh;
-    margin-top: 20%;
     display: flex;
     justify-content: center;
-    align-items: center;
 
-    .custom-difficulty * {
-      font-size: x-large;
+    .custom-difficulty .settings {
+      * {
+        font-size: x-large;
+      }
+      .setting:not(:first-child) {
+        margin-top: 1em;
+      }
     }
   }
 
