@@ -1,4 +1,4 @@
-import { BsHandThumbsUpFill } from "react-icons/bs";
+import { FaCheck } from "react-icons/fa";
 import PersonT from "../types/PersonT";
 import Hat from "./body/Hat";
 import Head from "./body/Head";
@@ -13,8 +13,6 @@ interface Props {
 }
 
 const Person = ({ person, disabled, isAccused, onSelect }: Props) => {
-  const selectable = !disabled && !person.ruledOut;
-
   const handleSelect = () => {
     if (!disabled) {
       onSelect(person.id);
@@ -29,14 +27,15 @@ const Person = ({ person, disabled, isAccused, onSelect }: Props) => {
       id={`person_${person.id}`}
     >
       <div
-        className={`person ${selectable ? "enabled" : "disabled"} ${
+        className={`person ${disabled ? "disabled" : "enabled"} ${
           isAccused ? "selected" : "unselected"
         }`}
+        onClick={handleSelect}
       >
         <div className="icon-overlay">
-          <BsHandThumbsUpFill className="ruled-out" />
+          <FaCheck className="icon" />
         </div>
-        <div className={`body`} onClick={handleSelect}>
+        <div className={`body`}>
           <Hat person={person} />
           <Head person={person} />
           <Shirt person={person} />

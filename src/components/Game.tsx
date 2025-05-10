@@ -113,7 +113,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
     <Person
       key={p.id}
       person={p}
-      disabled={accusedPersonId !== null}
+      disabled={
+        accusedPersonId !== null ||
+        (p.ruledOut && currentSelectionMode !== SuspectSelectionMode.RuleOut)
+      }
       isAccused={accusedPersonId === p.id}
       onSelect={handleSelect}
     />
@@ -126,7 +129,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="people">{personElements}</div>
       </div>
       <div className="bottom-bar">
-        <p>Suspects found: {gameData.roundsWon}</p>
+        <p>You've found {gameData.roundsWon} suspects.</p>
         <button className="btn-main-menu" onClick={handleQuit}>
           <FaCaretLeft className="icon" />
           Back to Menu

@@ -7,6 +7,7 @@ import GameSettingsT from "./types/GameSettingsT";
 
 //TODO 1.0
 //- Rework accused/ruled out indication
+//- Bug: Auto-accuse does not work
 //- polish or remove ui placeholders
 
 //TODO Post Release

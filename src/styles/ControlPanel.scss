@@ -2,23 +2,24 @@
 @use "vars/colours";
 @use "vars/dimensions";
 
+.control-panel-container {
+  z-index: theme.$z_control-panel;
+}
+
 .control-panel {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: white;
+
+  position: relative;
   padding: dimensions.$padding-control-panel;
   display: flex;
   justify-content: center;
   background-color: colours.$bg-black;
-  z-index: theme.$z_control-panel;
-  position: relative;
 
   &.collapsed {
     padding: 0.5em;
     padding: 0;
     height: 4em;
-    display: flex;
-    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
