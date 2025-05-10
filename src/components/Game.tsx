@@ -51,7 +51,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const handleQuit = () => {
-    onChangeStatus(GameStatus.Setup);
+    if (
+      status !== GameStatus.InProgress ||
+      confirm(
+        "You are about to quit the game. Your current progress will be lost."
+      )
+    )
+      onChangeStatus(GameStatus.Setup);
   };
   //#endregion
 
