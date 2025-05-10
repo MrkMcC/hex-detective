@@ -81,7 +81,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const accuse = (personId: string) => {
     setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
-      if (accusedPersonId === suspectId) {
+      if (personId === suspectId) {
         setGameData((prev) => ({ ...prev, roundsWon: prev.roundsWon + 1 }));
         startNewRound();
       } else onChangeStatus(GameStatus.GameOver);
