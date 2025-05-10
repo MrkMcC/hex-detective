@@ -1,8 +1,8 @@
-import WitchSelectionMode from "../../enum/WitchSelectionMode";
+import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 
 interface Props {
-  currentMode: WitchSelectionMode;
-  onSelect: (mode: WitchSelectionMode) => void;
+  currentMode: SuspectSelectionMode;
+  onSelect: (mode: SuspectSelectionMode) => void;
   compact: boolean;
 }
 
@@ -18,20 +18,20 @@ const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
         <button
           role="button"
           className={`rule-out ${
-            currentMode === WitchSelectionMode.RuleOut ? "active" : "inactive"
+            currentMode === SuspectSelectionMode.RuleOut ? "active" : "inactive"
           }`}
-          disabled={currentMode === WitchSelectionMode.RuleOut}
-          onClick={() => onSelect(WitchSelectionMode.RuleOut)}
+          disabled={currentMode === SuspectSelectionMode.RuleOut}
+          onClick={() => onSelect(SuspectSelectionMode.RuleOut)}
         >
           Rule out
         </button>
         <button
           role="button"
           className={`accuse ${
-            currentMode === WitchSelectionMode.Accuse ? "active" : "inactive"
+            currentMode === SuspectSelectionMode.Accuse ? "active" : "inactive"
           }`}
-          disabled={currentMode === WitchSelectionMode.Accuse}
-          onClick={() => onSelect(WitchSelectionMode.Accuse)}
+          disabled={currentMode === SuspectSelectionMode.Accuse}
+          onClick={() => onSelect(SuspectSelectionMode.Accuse)}
         >
           ACCUSE
         </button>
@@ -41,7 +41,7 @@ const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
           <p className="rule-out">
             Click on people who DO NOT fit the description to rule them out
           </p>
-          <p className="accuse">Found the witch? Click on them!</p>
+          <p className="accuse">Found the suspect? Click on them!</p>
         </div>
       )}
     </div>

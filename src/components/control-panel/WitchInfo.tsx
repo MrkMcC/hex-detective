@@ -2,29 +2,29 @@ import PersonT from "../../types/PersonT";
 import ColourText from "../ColourText";
 
 interface Props {
-  witch: PersonT;
+  suspect: PersonT;
   revealColours: boolean;
   compact: boolean;
 }
 
-const WitchInfo = ({ witch, revealColours, compact }: Props) => {
+const SuspectInfo = ({ suspect, revealColours, compact }: Props) => {
   return (
-    <div className={`witch-info ${compact ? "compact" : "extended"}`}>
+    <div className={`suspect-info ${compact ? "compact" : "extended"}`}>
       {compact ? (
         <p>
           <ColourText
             label="HAT"
-            code={witch.colours.hat}
+            code={suspect.colours.hat}
             reveal={revealColours}
           />
           <ColourText
             label="SHIRT"
-            code={witch.colours.shirt}
+            code={suspect.colours.shirt}
             reveal={revealColours}
           />
           <ColourText
             label="PANTS"
-            code={witch.colours.pants}
+            code={suspect.colours.pants}
             reveal={revealColours}
           />
         </p>
@@ -33,21 +33,21 @@ const WitchInfo = ({ witch, revealColours, compact }: Props) => {
           <p>
             <ColourText
               label="Their hat is"
-              code={witch.colours.hat}
+              code={suspect.colours.hat}
               reveal={revealColours}
             />
           </p>
           <p>
             <ColourText
               label="Their shirt is"
-              code={witch.colours.shirt}
+              code={suspect.colours.shirt}
               reveal={revealColours}
             />
           </p>
           <p>
             <ColourText
               label="Their pants are"
-              code={witch.colours.pants}
+              code={suspect.colours.pants}
               reveal={revealColours}
             />
           </p>
@@ -57,4 +57,4 @@ const WitchInfo = ({ witch, revealColours, compact }: Props) => {
   );
 };
 
-export default WitchInfo;
+export default SuspectInfo;

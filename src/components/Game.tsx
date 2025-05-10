@@ -1,14 +1,14 @@
 import { useState } from "react";
+import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import GameSettingsT from "../types/GameSettingsT";
 import GameStatus from "./../enum/GameStatus";
-import WitchSelectionMode from "./../enum/WitchSelectionMode";
 import ArrayHelper from "./../helper/ArrayHelper";
 import GameService from "./../services/GameService";
 import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import PersonT from "./../types/PersonT";
 import Person from "./Person";
-import WitchControlPanel from "./control-panel/WitchControlPanel";
+import ControlPanel from "./control-panel/ControlPanel";
 
 interface Props {
   status: GameStatus;
@@ -21,32 +21,31 @@ function Game({ status, onChangeStatus, settings }: Props) {
     roundsWon: 0,
   });
   const [people, setPeople] = useState<PersonT[]>([]);
-  const [witchId, setWitchId] = useState<string>();
+  const [suspectId, setSuspectId] = useState<string>();
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
-    WitchSelectionMode.Accuse
+    SuspectSelectionMode.Accuse
   );
   const [accusedPersonId, setAccusedPersonId] = useState<string | null>(null);
 
-  const getWitch = () => PersonService.FindPersonById(people, witchId);
+  const getSuspect = () => PersonService.FindPersonById(people, suspectId);
 
   //#region Event Handling
   const handleSelect = (personId: string) => {
     switch (currentSelectionMode) {
-      case WitchSelectionMode.RuleOut:
+      case SuspectSelectionMode.RuleOut:
         setPeople((prevPeople) =>
           prevPeople.map((p) =>
             p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
           )
         );
         break;
-      case WitchSelectionMode.Accuse:
+      case SuspectSelectionMode.Accuse:
         accuse(personId);
-        // setAccusedPersonId(personId);
         break;
     }
   };
 
-  const handleSelectSelectionMode = (mode: WitchSelectionMode) => {
+  const handleSelectSelectionMode = (mode: SuspectSelectionMode) => {
     setCurrentSelectionMode(mode);
   };
 
@@ -58,10 +57,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#region Game State
   const startNewRound = () => {
     const newPeople = PersonService.GeneratePeople(settings.crowdSize);
-    const witch = ArrayHelper.RandomElement(newPeople);
+    const suspect = ArrayHelper.RandomElement(newPeople);
     setAccusedPersonId(null);
     setPeople(newPeople);
-    setWitchId(witch.id);
+    setSuspectId(suspect.id);
   };
 
   const tryInitialiseGame = () => {
@@ -82,7 +81,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const accuse = (personId: string) => {
     setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
-      if (accusedPersonId === witchId) {
+      if (accusedPersonId === suspectId) {
         setGameData((prev) => ({ ...prev, roundsWon: prev.roundsWon + 1 }));
         startNewRound();
       } else onChangeStatus(GameStatus.GameOver);
@@ -108,14 +107,14 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="people">{personElements}</div>
       </div>
       <div className="control-panel-container">
-        <p>Witches found: {gameData.roundsWon}</p>
+        <p>Suspects found: {gameData.roundsWon}</p>
         <p>Game Status: {status}</p>
         <button onClick={handleQuit}>Back to Menu</button>
-        <WitchControlPanel
+        <ControlPanel
           gameStatus={status}
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}
-          witch={getWitch()}
+          suspect={getSuspect()}
         />
       </div>
     </div>

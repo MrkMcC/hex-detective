@@ -7,12 +7,10 @@ interface Props {
 const StatusText = ({ state }: Props) => {
   const getStatusMessage = () => {
     switch (state) {
-      case GameStatus.Won:
-        return "You found the witch";
+      case GameStatus.InProgress:
+        return "Find the suspect";
       case GameStatus.GameOver:
         return "You lost";
-      case GameStatus.InProgress:
-        return "Find the witch";
     }
   };
 
