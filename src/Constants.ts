@@ -1,0 +1,9 @@
+const Constants = {
+  VARIATION_AMOUNT_HAT: 9,
+  VARIATION_AMOUNT_EYES: 3,
+  VARIATION_AMOUNT_MOUTH: 10,
+  VARIATION_AMOUNT_SHIRT: 5,
+  VARIATION_AMOUNT_PANTS: 4,
+};
+
+export default Constants;

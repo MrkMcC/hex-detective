@@ -1,0 +1,20 @@
+@use "../theme";
+
+.head-container {
+  position: relative;
+  width: 100%;
+  height: 25%;
+
+  .head {
+    z-index: theme.$z_body-head;
+    position: absolute;
+    transform: translate(-50%);
+    background-color: red;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    clip-path: circle();
+    display: flex;
+    align-items: stretch;
+  }
+}

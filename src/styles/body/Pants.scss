@@ -1,0 +1,105 @@
+@use "../theme";
+
+.pants-container {
+  position: relative;
+  width: 100%;
+  height: 25%;
+
+  .pants {
+    z-index: theme.$z_body-pants;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+    .legs {
+      width: 100%;
+      height: 100%;
+    }
+
+    .butt,
+    .legs,
+    .leg {
+      position: absolute;
+    }
+
+    &.v-1 {
+      .butt {
+        width: 45%;
+        height: 30%;
+        left: 28%;
+      }
+
+      .legs {
+        top: 30%;
+
+        .leg {
+          width: 15%;
+          height: 70%;
+
+          &.left {
+            left: 30%;
+          }
+
+          &.right {
+            left: 55%;
+          }
+        }
+      }
+    }
+    &.v-2 {
+      .butt {
+        width: 100%;
+        height: 120%;
+        top: -20%;
+        clip-path: polygon(50% -100%, 75% 100%, 25% 100%);
+      }
+    }
+    &.v-3 {
+      .butt {
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(35% 0%, 65% 0%, 75% 50%, 25% 50%);
+      }
+      .legs {
+        top: 20%;
+        .leg {
+          height: 80%;
+          width: 5%;
+
+          &.left {
+            left: 35%;
+          }
+
+          &.right {
+            left: 60%;
+          }
+        }
+      }
+    }
+    &.v-4 {
+      .butt {
+        width: 70%;
+        height: 40%;
+        left: 15%;
+        clip-path: circle(35%);
+      }
+      .legs {
+        .leg {
+          height: 100%;
+          width: 40%;
+          clip-path: polygon(50% 0%, 75% 100%, 25% 100%);
+
+          &.left {
+            margin-left: 20%;
+          }
+
+          &.right {
+            margin-left: 40%;
+          }
+        }
+      }
+    }
+  }
+}

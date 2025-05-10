@@ -1,0 +1,45 @@
+@use "../theme";
+
+$panel_how-to-play_w: 90%;
+$panel_how-to-play_h: 50vh;
+$panel_difficulty-settings_w: 90%;
+$panel_difficulty-settings_mh: 10vw;
+
+.main-menu {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  > .column {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .how-to-play {
+    width: $panel_how-to-play_w;
+    height: $panel_how-to-play_h;
+    margin-top: 20%;
+
+    .header {
+    }
+  }
+
+  .difficulty-settings {
+    width: $panel_difficulty-settings_w;
+    min-height: $panel_difficulty-settings_mh;
+    margin-top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .custom-difficulty {
+      border: theme.$border_ui-l;
+    }
+  }
+}

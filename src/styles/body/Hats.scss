@@ -1,0 +1,138 @@
+@use "../theme";
+
+.hat-container {
+  position: relative;
+  width: 100%;
+  height: 25%;
+
+  .hat {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: theme.$z_body-hat;
+
+    .crown {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    .brim {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    &.v-1 {
+      .crown {
+        width: 40%;
+        height: 35%;
+        top: 50%;
+      }
+      .brim {
+        width: 60%;
+        height: 20%;
+        top: 90%;
+      }
+    }
+    &.v-2 {
+      .crown {
+        width: 35%;
+        height: 50%;
+        top: 40%;
+        clip-path: polygon(50% 50%, 100% 100%, 0% 100%);
+      }
+      .brim {
+        height: 25%;
+        top: 90%;
+        clip-path: polygon(50% -50%, 100% 100%, 0% 100%);
+      }
+    }
+    &.v-3 {
+      .crown {
+        width: 40%;
+        height: 40%;
+        top: 60%;
+        clip-path: circle();
+      }
+      .brim {
+        height: 40%;
+        width: 100%;
+        top: 90%;
+        clip-path: circle(40%);
+      }
+    }
+    &.v-4 {
+      .crown {
+        width: 30%;
+        height: 120%;
+        top: 0%;
+        clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      }
+      .brim {
+        display: none;
+      }
+    }
+    &.v-5 {
+      .crown {
+        width: 75%;
+        height: 70%;
+        top: 50%;
+        clip-path: polygon(50% 50%, 100% 100%, 0% 100%);
+      }
+      .brim {
+        display: none;
+      }
+    }
+    &.v-6 {
+      .crown {
+        width: 40%;
+        height: 30%;
+        top: 80%;
+      }
+      .brim {
+        width: 60%;
+        height: 10%;
+        top: 110%;
+      }
+    }
+    &.v-7 {
+      .crown {
+        width: 40%;
+        height: 30%;
+        top: 88%;
+      }
+      .brim {
+        width: 70%;
+        height: 10%;
+        top: 78%;
+      }
+    }
+    &.v-8 {
+      .crown {
+        width: 50%;
+        height: 50%;
+        top: 70%;
+        clip-path: polygon(50% -100%, 90% 100%, 10% 100%);
+      }
+      .brim {
+        width: 30%;
+        height: 70%;
+        margin-top: 50%;
+        clip-path: polygon(50% 110%, 90% 0%, 10% 0%);
+      }
+    }
+    &.v-9 {
+      .crown {
+        width: 22%;
+        height: 4%;
+        top: 60%;
+      }
+      .brim {
+        width: 20%;
+        height: 40%;
+        top: 65%;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use "theme";
+@use "vars/colours";
+@use "vars/dimensions";
+
+.person-container {
+  width: dimensions.$person-a-l-w;
+  height: dimensions.$person-a-l-h;
+  position: relative;
+  margin: dimensions.$margin-person;
+
+  &:hover,
+  :hover {
+    * {
+      visibility: visible;
+    }
+  }
+
+  .person {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &.selected {
+      background-color: red;
+    }
+
+    &:not(.disabled) {
+      cursor: pointer;
+      &:hover {
+        background-color: colours.$bg-bright;
+      }
+    }
+  }
+
+  &.ruled-out {
+    background-color: colours.$bg-black;
+
+    .icon-overlay {
+      font-size: xx-large;
+      display: block;
+      padding: 15px;
+      background-color: #ffffff;
+      border: 2px solid black;
+      border-radius: 300px;
+      color: green;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .icon-overlay {
+    display: none;
+  }
+}
+
+.body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

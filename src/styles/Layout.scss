@@ -1,0 +1,76 @@
+@use "theme";
+@use "vars/breakpoints";
+@use "vars/colours";
+@use "vars/dimensions";
+
+.game-session {
+  display: flex;
+  flex-wrap: wrap;
+
+  .people-container {
+    width: 100%;
+    height: 80vh;
+    border: 2px gray dashed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: colours.$bg-black;
+
+    .people {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+  }
+
+  .control-panel-container {
+    .control-panel {
+      position: fixed;
+      height: 20vh;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, -100%);
+    }
+  }
+}
+
+@media (max-width: breakpoints.$breakpoint-large) {
+  .control-panel {
+    width: dimensions.$control-panel_w-m;
+  }
+  .person-container {
+    width: dimensions.$person-a-l-w;
+    height: dimensions.$person-a-l-h;
+  }
+}
+@media (min-width: breakpoints.$breakpoint-large) {
+  .control-panel {
+    width: dimensions.$control-panel_w-l;
+    height: 25vh;
+  }
+  .person-container {
+    width: dimensions.$person-r-l-w;
+    height: dimensions.$person-r-l-h;
+  }
+}
+@media (min-width: breakpoints.$breakpoint-x-large) {
+  .control-panel {
+    width: dimensions.$control-panel_w-xl;
+  }
+  .person-container {
+    width: dimensions.$person-r-xl-w;
+    height: dimensions.$person-r-xl-h;
+  }
+}
+@media (min-width: breakpoints.$breakpoint-xx-large) {
+  .control-panel {
+    width: dimensions.$control-panel_w-xxl;
+  }
+  .person-container {
+    width: dimensions.$person-r-xxl-w;
+    height: dimensions.$person-r-xxl-h;
+  }
+}

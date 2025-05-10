@@ -1,0 +1,40 @@
+@use "theme";
+
+$large-border-radius: 10px;
+
+button {
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+.white {
+  color: white;
+}
+
+.hex {
+  text-transform: uppercase;
+}
+
+.button-group {
+  display: inline-flex;
+
+  &.large {
+    button {
+      padding: 0.5em;
+      font-size: x-large;
+      &:first-child {
+        border-top-left-radius: $large-border-radius;
+        border-bottom-left-radius: $large-border-radius;
+      }
+      &:last-child {
+        border-top-right-radius: $large-border-radius;
+        border-bottom-right-radius: $large-border-radius;
+      }
+    }
+  }
+}
+
+.ui-panel {
+  border: theme.$border_ui-l;
+}
