@@ -3,9 +3,9 @@
 @use "vars/dimensions";
 
 .person-container {
+  position: relative;
   width: dimensions.$person-a-l-w;
   height: dimensions.$person-a-l-h;
-  position: relative;
   margin: dimensions.$margin-person;
 
   &:hover,
@@ -19,8 +19,22 @@
     position: relative;
     width: 100%;
     height: 100%;
-    &.selected {
-      background-color: red;
+    &.revealed-suspect .icon-overlay {
+      display: flex;
+      border: 0.1em solid green;
+      align-items: center;
+      .icon {
+        font-size: 2.5em;
+        color: white;
+        border-color: white;
+        opacity: 0.5;
+      }
+    }
+    &.accused .icon-overlay {
+      display: unset;
+      border: 0.1em solid red;
+
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='red' stroke-width='3'/><path d='M0 0 L100 100 ' stroke='red' stroke-width='3'/></svg>");
     }
 
     &:not(.disabled) {
@@ -36,33 +50,34 @@
 
     .icon-overlay {
       background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='black' stroke-width='5'/><path d='M0 0 L100 100 ' stroke='black' stroke-width='5'/></svg>");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 100% 100%, auto;
+
       background-color: grey;
       opacity: 0.5;
-      position: absolute;
-      height: 99%;
-      width: 99%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: theme.$z_body_overlay;
-      font-size: x-large;
       display: flex;
-      justify-content: center;
 
       .icon {
         margin-top: 0.25em;
-        padding: 0.1em;
-        border: 1px solid white;
-        border-radius: 20px;
       }
     }
   }
 
   .icon-overlay {
     display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    height: 99%;
+    width: 99%;
+    font-size: x-large;
+    z-index: theme.$z_body_overlay;
+
+    .icon {
+      padding: 0.1em;
+      border: 0.1em solid white;
+      border-radius: 1em;
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+import { BsIncognito } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa";
 import PersonT from "../types/PersonT";
 import Hat from "./body/Hat";
@@ -9,10 +10,17 @@ interface Props {
   person: PersonT;
   disabled: boolean;
   isAccused: boolean;
+  isRevealedSuspect: boolean;
   onSelect: (personId: string) => void;
 }
 
-const Person = ({ person, disabled, isAccused, onSelect }: Props) => {
+const Person = ({
+  person,
+  disabled,
+  isAccused,
+  isRevealedSuspect,
+  onSelect,
+}: Props) => {
   const handleSelect = () => {
     if (!disabled) {
       onSelect(person.id);
@@ -28,12 +36,13 @@ const Person = ({ person, disabled, isAccused, onSelect }: Props) => {
     >
       <div
         className={`person ${disabled ? "disabled" : "enabled"} ${
-          isAccused ? "selected" : "unselected"
-        }`}
+          isAccused ? "accused" : "unaccused"
+        } ${isRevealedSuspect ? "revealed-suspect" : ""}`}
         onClick={handleSelect}
       >
         <div className="icon-overlay">
-          <FaCheck className="icon" />
+          {person.ruledOut && <FaCheck className="icon" />}
+          {isRevealedSuspect && <BsIncognito className="icon" />}
         </div>
         <div className={`body`}>
           <Hat person={person} />

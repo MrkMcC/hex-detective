@@ -118,6 +118,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
         (p.ruledOut && currentSelectionMode !== SuspectSelectionMode.RuleOut)
       }
       isAccused={accusedPersonId === p.id}
+      isRevealedSuspect={
+        status === GameStatus.GameOver && p.id === getSuspect()!.id
+      }
       onSelect={handleSelect}
     />
   ));
