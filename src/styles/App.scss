@@ -1,8 +1,8 @@
-@use "theme";
-@use "vars/colours";
+@use "_theme";
+@use "vars/Colours";
 
 :root,
 body {
-  background-color: colours.$bg-dark;
+  background-color: Colours.$bg-dark;
   color: white;
 }

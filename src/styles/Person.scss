@@ -1,12 +1,12 @@
-@use "theme";
-@use "vars/colours";
-@use "vars/dimensions";
+@use "_theme";
+@use "vars/Colours";
+@use "vars/Dimensions";
 
 .person-container {
   position: relative;
-  width: dimensions.$person-a-l-w;
-  height: dimensions.$person-a-l-h;
-  margin: dimensions.$margin-person;
+  width: Dimensions.$person-a-l-w;
+  height: Dimensions.$person-a-l-h;
+  margin: Dimensions.$margin-person;
 
   &:hover,
   :hover {
@@ -41,7 +41,7 @@
     &:not(.disabled) {
       cursor: pointer;
       &:hover {
-        background-color: colours.$bg-white;
+        background-color: Colours.$bg-white;
       }
     }
   }

@@ -1,14 +1,14 @@
-@use "app";
-@use "person";
-@use "layout";
-@use "controlpanel";
-@use "helper";
+@use "App";
+@use "Person";
+@use "Layout";
+@use "ControlPanel";
+@use "Helper";
 
-@use "body/eyes";
-@use "body/hats";
-@use "body/heads";
-@use "body/mouths";
-@use "body/pants";
-@use "body/shirts";
+@use "body/Eyes";
+@use "body/Hats";
+@use "body/Heads";
+@use "body/Mouths";
+@use "body/Pants";
+@use "body/Shirts";
 
-@use "components/mainmenu";
+@use "components/MainMenu";

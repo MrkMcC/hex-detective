@@ -1,24 +1,24 @@
-@use "theme";
-@use "vars/colours";
+@use "_theme";
+@use "vars/Colours";
 
 button {
-  color: colours.$c-white;
+  color: Colours.$c-white;
   padding: 0.5em;
-  border: 0.1em solid colours.$c-white;
+  border: 0.1em solid Colours.$c-white;
   border-radius: theme.$border-radius_btn_l;
 
   &[disabled] {
-    background-color: colours.$bg-dark;
-    color: colours.$bg-black;
-    border-color: colours.$c-grey;
+    background-color: Colours.$bg-dark;
+    color: Colours.$bg-black;
+    border-color: Colours.$c-grey;
   }
   &:not([disabled]) {
     cursor: pointer;
-    background-color: colours.$bg-black;
+    background-color: Colours.$bg-black;
     &:hover {
-      background-color: colours.$bg-bright;
-      color: colours.$bg-black;
-      border-color: colours.$c-black;
+      background-color: Colours.$bg-bright;
+      color: Colours.$bg-black;
+      border-color: Colours.$c-black;
     }
   }
   &.large {
@@ -37,7 +37,7 @@ h2 {
 }
 
 .white {
-  color: colours.$c-white;
+  color: Colours.$c-white;
 }
 
 .hex {

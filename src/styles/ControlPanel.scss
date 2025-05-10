@@ -1,6 +1,6 @@
-@use "theme";
-@use "vars/colours";
-@use "vars/dimensions";
+@use "_theme";
+@use "vars/Colours";
+@use "vars/Dimensions";
 
 .control-panel-container {
   z-index: theme.$z_control-panel;
@@ -11,11 +11,11 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
   position: relative;
-  padding: dimensions.$padding-control-panel;
+  padding: Dimensions.$padding-control-panel;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: colours.$bg-black;
+  background-color: Colours.$bg-black;
 
   &.collapsed {
     padding: 0.5em;
@@ -100,10 +100,10 @@
     .button-group {
       button {
         &.rule-out {
-          background-color: colours.$bg-green;
+          background-color: Colours.$bg-green;
         }
         &.accuse {
-          background-color: colours.$bg-red;
+          background-color: Colours.$bg-red;
         }
         &.inactive {
           color: black;

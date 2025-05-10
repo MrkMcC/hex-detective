@@ -1,7 +1,7 @@
-@use "theme";
-@use "vars/breakpoints";
-@use "vars/colours";
-@use "vars/dimensions";
+@use "_theme";
+@use "vars/Breakpoints";
+@use "vars/Colours";
+@use "vars/Dimensions";
 
 .game-session {
   display: flex;
@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
-    background-color: colours.$bg-black;
+    background-color: Colours.$bg-black;
 
     .people {
       display: flex;
@@ -37,40 +37,40 @@
   }
 }
 
-@media (max-width: breakpoints.$breakpoint-large) {
+@media (max-width: Breakpoints.$breakpoint-large) {
   .control-panel {
-    width: dimensions.$control-panel_w-m;
+    width: Dimensions.$control-panel_w-m;
   }
   .person-container {
-    width: dimensions.$person-a-l-w;
-    height: dimensions.$person-a-l-h;
+    width: Dimensions.$person-a-l-w;
+    height: Dimensions.$person-a-l-h;
   }
 }
-@media (min-width: breakpoints.$breakpoint-large) {
+@media (min-width: Breakpoints.$breakpoint-large) {
   .control-panel {
-    width: dimensions.$control-panel_w-l;
+    width: Dimensions.$control-panel_w-l;
     height: 25vh;
   }
   .person-container {
-    width: dimensions.$person-r-l-w;
-    height: dimensions.$person-r-l-h;
+    width: Dimensions.$person-r-l-w;
+    height: Dimensions.$person-r-l-h;
   }
 }
-@media (min-width: breakpoints.$breakpoint-x-large) {
+@media (min-width: Breakpoints.$breakpoint-x-large) {
   .control-panel {
-    width: dimensions.$control-panel_w-xl;
+    width: Dimensions.$control-panel_w-xl;
   }
   .person-container {
-    width: dimensions.$person-r-xl-w;
-    height: dimensions.$person-r-xl-h;
+    width: Dimensions.$person-r-xl-w;
+    height: Dimensions.$person-r-xl-h;
   }
 }
-@media (min-width: breakpoints.$breakpoint-xx-large) {
+@media (min-width: Breakpoints.$breakpoint-xx-large) {
   .control-panel {
-    width: dimensions.$control-panel_w-xxl;
+    width: Dimensions.$control-panel_w-xxl;
   }
   .person-container {
-    width: dimensions.$person-r-xxl-w;
-    height: dimensions.$person-r-xxl-h;
+    width: Dimensions.$person-r-xxl-w;
+    height: Dimensions.$person-r-xxl-h;
   }
 }
