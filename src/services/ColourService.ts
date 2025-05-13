@@ -13,14 +13,6 @@ const randomIntColorValue = () => {
   return Math.floor(Math.random() * 256);
 };
 
-const randomHexColorValue = () => {
-  return intToHex(randomIntColorValue());
-};
-
-// const randomColor = () => {
-//   const result = `#${randomHexColorValue()}${randomHexColorValue()}${randomHexColorValue()}`;
-//   return result;
-// };
 const randomColour = () => {
   return new Colour(
     randomIntColorValue(),
@@ -38,19 +30,9 @@ const randomBorderColourStyle = (): CSSProperties => {
   };
 };
 
-const colourFromHex = (hexColour: string): Colour => {
-  if (hexColour.startsWith("#")) hexColour = hexColour.split("#")[1];
-  return new Colour(
-    Number(`0x${hexColour.slice(0, 2)}`),
-    Number(`0x${hexColour.slice(2, 4)}`),
-    Number(`0x${hexColour.slice(4, 6)}`)
-  );
-};
-
 const ColourService = {
   RandomColour: randomColour,
   RandomBorderColourStyle: randomBorderColourStyle,
-  ColourFromHex: colourFromHex,
   IntToHex: intToHex,
 };
 
