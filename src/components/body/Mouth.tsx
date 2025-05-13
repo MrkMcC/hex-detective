@@ -7,7 +7,7 @@ interface Props {
 const Mouth = ({ person }: Props) => {
   return (
     <div className="mouth-container">
-      <div className={`mouth v-${person.variations.mouth}`}>
+      <div className={`mouth v-${person.variations.mouth.toString()}`}>
         <div className="parts">
           <div className="part-1"></div>
           <div className="part-2"></div>

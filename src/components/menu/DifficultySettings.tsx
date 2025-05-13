@@ -11,12 +11,7 @@ const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
   return (
     <div
       className="difficulty-settings ui-panel"
-      style={{
-        borderTopColor: ColourService.RandomColour(),
-        borderRightColor: ColourService.RandomColour(),
-        borderBottomColor: ColourService.RandomColour(),
-        borderLeftColor: ColourService.RandomColour(),
-      }}
+      style={ColourService.RandomBorderColourStyle()}
     >
       <div className="custom-difficulty">
         <h1>Difficulty Settings</h1>

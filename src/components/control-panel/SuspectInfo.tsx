@@ -15,13 +15,13 @@ const SuspectInfo = ({ suspect, revealColours, compact }: Props) => {
     <div className={`suspect-info ${compact ? "compact" : "extended"}`}>
       {compact ? (
         <p>
-          <ColourText code={suspect.colours.hat} reveal={revealColours}>
+          <ColourText colour={suspect.colours.hat} reveal={revealColours}>
             <FaRedhat className="icon" />
           </ColourText>
-          <ColourText code={suspect.colours.shirt} reveal={revealColours}>
+          <ColourText colour={suspect.colours.shirt} reveal={revealColours}>
             <FaShirt className="icon" />
           </ColourText>
-          <ColourText code={suspect.colours.pants} reveal={revealColours}>
+          <ColourText colour={suspect.colours.pants} reveal={revealColours}>
             <PiPantsFill className="icon" />
           </ColourText>
         </p>
@@ -29,21 +29,21 @@ const SuspectInfo = ({ suspect, revealColours, compact }: Props) => {
         <>
           <p>
             <FaRedhat className="icon" />
-            <ColourText code={suspect.colours.hat} reveal={revealColours}>
+            <ColourText colour={suspect.colours.hat} reveal={revealColours}>
               Their hat is
             </ColourText>
             <FaRedhat className="icon" />
           </p>
           <p>
             <FaShirt className="icon" />
-            <ColourText code={suspect.colours.shirt} reveal={revealColours}>
+            <ColourText colour={suspect.colours.shirt} reveal={revealColours}>
               Their shirt is
             </ColourText>
             <FaShirt className="icon" />
           </p>
           <p>
             <PiPantsFill className="icon" />
-            <ColourText code={suspect.colours.pants} reveal={revealColours}>
+            <ColourText colour={suspect.colours.pants} reveal={revealColours}>
               Their pants are
             </ColourText>
             <PiPantsFill className="icon" />

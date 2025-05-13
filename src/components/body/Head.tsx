@@ -9,7 +9,10 @@ interface Props {
 const Head = ({ person }: Props) => {
   return (
     <div className="head-container">
-      <div className="head" style={{ backgroundColor: person.colours.head }}>
+      <div
+        className="head"
+        style={{ backgroundColor: person.colours.head.toString() }}
+      >
         <Eyes person={person} />
         <Mouth person={person} />
       </div>

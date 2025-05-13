@@ -9,7 +9,7 @@ const Shirt = ({ person }: Props) => {
     <div className="shirt-container">
       <div
         className={`shirt v-${person.variations.shirt}`}
-        style={{ backgroundColor: person.colours.shirt }}
+        style={{ backgroundColor: person.colours.shirt.toString() }}
       ></div>
     </div>
   );

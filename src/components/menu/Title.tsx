@@ -8,7 +8,7 @@ const Title = ({}: Props) => {
     <span
       key={i}
       style={{
-        color: ColourService.RandomColour(),
+        color: ColourService.RandomColour().hex.toString(),
       }}
     >
       {c}

@@ -10,11 +10,11 @@ const Hat = ({ person }: Props) => {
       <div className={`hat v-${person.variations.hat}`}>
         <div
           className="crown"
-          style={{ backgroundColor: person.colours.hat }}
+          style={{ backgroundColor: person.colours.hat.toString() }}
         ></div>
         <div
           className="brim"
-          style={{ backgroundColor: person.colours.hat }}
+          style={{ backgroundColor: person.colours.hat.toString() }}
         ></div>
       </div>
     </div>

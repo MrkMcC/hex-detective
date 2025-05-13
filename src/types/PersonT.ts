@@ -1,8 +1,10 @@
+import Colour from "../classes/Colour";
+
 type PersonColoursT = {
-  hat: string;
-  head: string;
-  shirt: string;
-  pants: string;
+  hat: Colour;
+  head: Colour;
+  shirt: Colour;
+  pants: Colour;
 };
 
 type PersonVariationsT = {
