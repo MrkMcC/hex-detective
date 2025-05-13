@@ -30,10 +30,19 @@ const randomBorderColourStyle = (): CSSProperties => {
   };
 };
 
+const colourFromHex = (code: string) => {
+  return new Colour(
+    Number(`0x${code.slice(0, 2)}`),
+    Number(`0x${code.slice(2, 4)}`),
+    Number(`0x${code.slice(4, 6)}`)
+  );
+};
+
 const ColourService = {
   RandomColour: randomColour,
   RandomBorderColourStyle: randomBorderColourStyle,
   IntToHex: intToHex,
+  ColourFromHex: colourFromHex,
 };
 
 export default ColourService;

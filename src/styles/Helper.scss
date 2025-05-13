@@ -40,6 +40,14 @@ h2 {
   color: Colours.$c-white;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.font-mono {
+  font-family: monospace;
+}
+
 .hex {
   text-transform: uppercase;
 }
@@ -86,4 +94,20 @@ input.cool {
 
 .updog {
   text-transform: uppercase;
+}
+
+.text-contrast {
+  font-family: fantasy;
+  color: white;
+  -webkit-text-stroke: 0.06em black;
+}
+
+.flex-row {
+  display: flex;
+  &.space-around {
+    justify-content: space-around;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
 }
