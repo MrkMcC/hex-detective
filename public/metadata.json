@@ -2,6 +2,7 @@
   "currentVersion": "1.0",
   "name": "#HexDetective",
   "description": "Learn and practice to read hex colour codes",
+  "githubRepo": "https://github.com/MrkMcC/hex-detective",
   "changelog": [
      {
       "version": "1.0",
