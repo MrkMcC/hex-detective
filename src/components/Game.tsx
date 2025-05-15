@@ -33,17 +33,23 @@ function Game({ status, onChangeStatus, settings }: Props) {
     SuspectSelectionMode.Accuse
   );
   const [accusedPersonId, setAccusedPersonId] = useState<string | null>(null);
-  const [tutorialState, setTutorialState] = useState<TutorialState | null>(
-    //   {
-    //   stage: 1,
-    //   round: 1,
-    // }
-    null
-  );
+  const [tutorialState, setTutorialState] = useState<TutorialState | null>({
+    stage: 1,
+    round: 1,
+  });
+  // const [tutorialState, setTutorialState] = useState<TutorialState | null>(
+  //   null
+  // );
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
 
   const getSuspect = () => PersonService.FindPersonById(people, suspectId);
+
+  const initialiseRoundState = () => {
+    setAccusedPersonId(null);
+    onChangeStatus(GameStatus.InProgress);
+    setPeople([]);
+  };
 
   const score = () => {
     const roundsWon = gameData.roundsWon + 1;
@@ -55,7 +61,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
         round: roundsWon + 1,
       }));
 
-    startNewRound(roundsWon);
+    initialiseRoundState();
   };
 
   const accuse = (personId: string) => {
@@ -100,9 +106,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const handleReset = () => {
     if (tutorialState) setTutorialState((prev) => ({ ...prev!, round: 1 }));
     setGameData({ ...initialGameData });
-    setAccusedPersonId(null);
-    onChangeStatus(GameStatus.InProgress);
-    setPeople([]);
+    initialiseRoundState();
   };
   //#endregion
 
@@ -117,8 +121,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
           ...prev,
           flavour: ColourFlavour.Name,
         }));
-        newSuspect = newPeople[state.round - 1];
+        newSuspect = newPeople[gameData.roundsWon];
         break;
+      default:
+        throw `Tutorial stage ${state.stage}.${state.round} is not implemented!`;
     }
 
     if (newSuspect === null) newSuspect = ArrayHelper.RandomElement(newPeople);
@@ -129,11 +135,11 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#endregion
 
   //#region Game State
-  const startNewRound = (incrementMultiplier: number = 0) => {
+  const startNewRound = () => {
     if (tutorialState === null) {
       const newPeople = PersonService.GeneratePeople(
         settings.crowdSizeInitial +
-          settings.crowdSizeIncrement * incrementMultiplier
+          settings.crowdSizeIncrement * gameData.roundsWon
       );
       const suspect = ArrayHelper.RandomElement(newPeople);
       setPeople(newPeople);
