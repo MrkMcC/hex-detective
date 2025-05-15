@@ -1,9 +1,9 @@
 enum ColourFlavour {
-  Int,
-  Hex,
-  Percentage,
-  Name,
-  Hidden,
+  Int = "int",
+  Hex = "hex",
+  Percentage = "percentage",
+  Name = "name",
+  Hidden = "hidden",
 }
 
 export default ColourFlavour;

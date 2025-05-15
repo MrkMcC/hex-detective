@@ -1,50 +1,50 @@
+import ColourFlavour from "../enum/ColourFlavour";
 import ColourService from "../services/ColourService";
+
+class Rgb<T> {
+  flavour: ColourFlavour;
+  red: T;
+  green: T;
+  blue: T;
+  toString = () => {
+    if (this.flavour == ColourFlavour.Hex)
+      return `#${this.red}${this.green}${this.blue}`;
+    else return `(${this.red} ${this.green} ${this.blue})`;
+  };
+
+  constructor(flavour: ColourFlavour, red: T, green: T, blue: T) {
+    this.flavour = flavour;
+    this.red = red;
+    this.green = green;
+    this.blue = blue;
+  }
+}
 
 class Colour {
   name?: string;
-
-  int: {
-    red: number;
-    green: number;
-    blue: number;
-  };
-
-  hex: {
-    red: string;
-    green: string;
-    blue: string;
-    toString: () => string;
-  };
-
-  percentage: {
-    red: string;
-    green: string;
-    blue: string;
-  };
-
+  int: Rgb<number>;
+  hex: Rgb<string>;
+  percentage: Rgb<string>;
   toString = () => this.hex.toString();
 
   constructor(red: number, green: number, blue: number, name?: string) {
     this.name = name;
 
-    this.int = {
-      red: red,
-      green: green,
-      blue: blue,
-    };
+    this.int = new Rgb<number>(ColourFlavour.Int, red, green, blue);
 
-    this.hex = {
-      red: ColourService.IntToHex(red),
-      green: ColourService.IntToHex(green),
-      blue: ColourService.IntToHex(blue),
-      toString: () => `#${this.hex.red}${this.hex.green}${this.hex.blue}`,
-    };
+    this.hex = new Rgb<string>(
+      ColourFlavour.Hex,
+      ColourService.IntToHex(red),
+      ColourService.IntToHex(green),
+      ColourService.IntToHex(blue)
+    );
 
-    this.percentage = {
-      red: `${Math.round((red / 255) * 100)}%`,
-      green: `${Math.round((green / 255) * 100)}%`,
-      blue: `${Math.round((blue / 255) * 100)}%`,
-    };
+    this.percentage = new Rgb<string>(
+      ColourFlavour.Percentage,
+      `${Math.round((red / 255) * 100)}%`,
+      `${Math.round((green / 255) * 100)}%`,
+      `${Math.round((blue / 255) * 100)}%`
+    );
   }
 }
 

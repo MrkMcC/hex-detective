@@ -3,6 +3,7 @@ import { MdRefresh } from "react-icons/md";
 import PersonData from "../../classes/PersonData";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
+import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import GameDataT from "../../types/GameDataT";
 import Collapsor from "./Collapsor";
 import HighScore from "./HighScore";
@@ -14,6 +15,7 @@ interface Props {
   suspect?: PersonData;
   gameData: GameDataT;
   gameStatus: GameStatus;
+  suspectInfoOptions: SuspectInfoOptionsT;
   currentSelectionMode: SuspectSelectionMode;
   onSelectSelectionMode: (mode: SuspectSelectionMode) => void;
   onReset: () => void;
@@ -23,6 +25,7 @@ const ControlPanel = ({
   suspect,
   gameData,
   gameStatus,
+  suspectInfoOptions,
   currentSelectionMode,
   onSelectSelectionMode,
   onReset,
@@ -53,8 +56,9 @@ const ControlPanel = ({
             <SuspectInfo
               suspect={suspect}
               options={{
-                revealColours: gameStatus !== GameStatus.InProgress,
                 compact: isCollapsed,
+                revealColours: gameStatus !== GameStatus.InProgress,
+                ...suspectInfoOptions,
               }}
             />
           )}

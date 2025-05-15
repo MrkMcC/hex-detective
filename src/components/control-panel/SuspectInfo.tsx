@@ -4,7 +4,7 @@ import { PiPantsFill } from "react-icons/pi";
 import PersonData from "../../classes/PersonData";
 import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
-import HexCode from "../HexCode";
+import SuspectInfoColour from "./SuspectInfoColour";
 
 interface Props {
   suspect: PersonData;
@@ -23,52 +23,61 @@ const SuspectInfo = ({ suspect, options }: Props) => {
     <div className={`suspect-info ${options.compact ? "compact" : "extended"}`}>
       {options.compact ? (
         <p>
-          <HexCode colour={suspect.colours.hat} reveal={options.revealColours}>
+          <SuspectInfoColour
+            flavour={options.flavour!}
+            colour={suspect.colours.hat}
+            reveal={options.revealColours}
+          >
             <FaRedhat className="icon" />
-          </HexCode>
-          <HexCode
+          </SuspectInfoColour>
+          <SuspectInfoColour
+            flavour={options.flavour!}
             colour={suspect.colours.shirt}
             reveal={options.revealColours}
           >
             <FaShirt className="icon" />
-          </HexCode>
-          <HexCode
+          </SuspectInfoColour>
+          <SuspectInfoColour
+            flavour={options.flavour!}
             colour={suspect.colours.pants}
             reveal={options.revealColours}
           >
             <PiPantsFill className="icon" />
-          </HexCode>
+          </SuspectInfoColour>
         </p>
       ) : (
         <>
           <p>
             <FaRedhat className="icon" />
-            <HexCode
+            <SuspectInfoColour
+              flavour={options.flavour!}
               colour={suspect.colours.hat}
               reveal={options.revealColours}
             >
               Their hat is
-            </HexCode>
+            </SuspectInfoColour>
             <FaRedhat className="icon" />
           </p>
           <p>
             <FaShirt className="icon" />
-            <HexCode
+            <SuspectInfoColour
+              flavour={options.flavour!}
               colour={suspect.colours.shirt}
               reveal={options.revealColours}
             >
               Their shirt is
-            </HexCode>
+            </SuspectInfoColour>
             <FaShirt className="icon" />
           </p>
           <p>
             <PiPantsFill className="icon" />
-            <HexCode
+            <SuspectInfoColour
+              flavour={options.flavour!}
               colour={suspect.colours.pants}
               reveal={options.revealColours}
             >
               Their pants are
-            </HexCode>
+            </SuspectInfoColour>
             <PiPantsFill className="icon" />
           </p>
         </>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
 import PersonData from "../classes/PersonData";
+import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import ModalService from "../services/ModalService";
 import GameSettingsT from "../types/GameSettingsT";
-import TutorialState from "../types/TutorialStage";
+import TutorialState from "../types/TutorialState";
+import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
 import GameStatus from "./../enum/GameStatus";
 import ArrayHelper from "./../helper/ArrayHelper";
 import PersonService from "./../services/PersonService";
@@ -38,16 +40,29 @@ function Game({ status, onChangeStatus, settings }: Props) {
     // }
     null
   );
+  const [suspectInfoOptions, setSuspectInfoOptions] =
+    useState<SuspectInfoOptionsT>({});
 
   const getSuspect = () => PersonService.FindPersonById(people, suspectId);
+
+  const score = () => {
+    const roundsWon = gameData.roundsWon + 1;
+    setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
+
+    if (tutorialState !== null)
+      setTutorialState((prev) => ({
+        stage: roundsWon >= 3 ? prev!.stage + 1 : prev!.stage,
+        round: roundsWon + 1,
+      }));
+
+    startNewRound(roundsWon);
+  };
 
   const accuse = (personId: string) => {
     setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
       if (personId === suspectId) {
-        const roundsWon = gameData.roundsWon + 1;
-        setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
-        startNewRound(roundsWon);
+        score();
       } else onChangeStatus(GameStatus.GameOver);
     }
   };
@@ -83,8 +98,11 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const handleReset = () => {
+    if (tutorialState) setTutorialState((prev) => ({ ...prev!, round: 1 }));
     setGameData({ ...initialGameData });
-    startNewRound();
+    setAccusedPersonId(null);
+    onChangeStatus(GameStatus.InProgress);
+    setPeople([]);
   };
   //#endregion
 
@@ -95,6 +113,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
     switch (state.stage) {
       case 1:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: ColourFlavour.Name,
+        }));
         newSuspect = newPeople[state.round - 1];
         break;
     }
@@ -168,6 +190,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <ControlPanel
           gameData={gameData}
           gameStatus={status}
+          suspectInfoOptions={suspectInfoOptions}
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}
           suspect={getSuspect()}

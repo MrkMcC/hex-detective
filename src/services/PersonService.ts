@@ -3,7 +3,7 @@ import {
   default as PersonData,
 } from "../classes/PersonData";
 import ColourPresets from "../helper/ColourPresets";
-import TutorialState from "../types/TutorialStage";
+import TutorialState from "../types/TutorialState";
 import ColourService from "./ColourService";
 
 const generatePerson = (): Person => {
