@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
 import PersonData from "../classes/PersonData";
 import ColourFlavour from "../enum/ColourFlavour";
@@ -14,6 +14,7 @@ import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
 import ControlPanel from "./control-panel/ControlPanel";
 import TutorialBasicsPage1 from "./modal/tutorial/basics/TutorialBasicsPage1";
+import TutorialBasicsPage2 from "./modal/tutorial/basics/TutorialBasicsPage2";
 
 interface Props {
   status: GameStatus;
@@ -52,15 +53,23 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const score = () => {
-    const roundsWon = gameData.roundsWon + 1;
+    let roundsWon = gameData.roundsWon + 1;
+
+    if (tutorialState !== null) {
+      if (roundsWon >= 3) {
+        setTutorialState((prev) => ({
+          stage: prev!.stage + 1,
+          round: 1,
+        }));
+        roundsWon = 0;
+      } else
+        setTutorialState((prev) => ({
+          ...prev!,
+          round: prev!.round + 1,
+        }));
+    }
+
     setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
-
-    if (tutorialState !== null)
-      setTutorialState((prev) => ({
-        stage: roundsWon >= 3 ? prev!.stage + 1 : prev!.stage,
-        round: roundsWon + 1,
-      }));
-
     initialiseRoundState();
   };
 
@@ -123,6 +132,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
         }));
         newSuspect = newPeople[gameData.roundsWon];
         break;
+      case 2:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: ColourFlavour.Name,
+        }));
+        break;
       default:
         throw `Tutorial stage ${state.stage}.${state.round} is not implemented!`;
     }
@@ -132,12 +147,26 @@ function Game({ status, onChangeStatus, settings }: Props) {
     setPeople(newPeople);
     setSuspectId(newSuspect.id);
   };
+  useEffect(() => {
+    if (tutorialState !== null && tutorialState.round === 1) {
+      switch (tutorialState.stage) {
+        case 1:
+          ModalService.ShowModal(<TutorialBasicsPage1 />);
+          break;
+        case 2:
+          ModalService.ShowModal(<TutorialBasicsPage2 />);
+          break;
+        default:
+          throw `No tutorial modal implemented for stage ${tutorialState.stage}`;
+      }
+    }
+  }, [tutorialState]);
   //#endregion
 
   //#region Game State
   const startNewRound = () => {
     if (tutorialState === null) {
-      const newPeople = PersonService.GeneratePeople(
+      const newPeople = PersonService.RandomPeople(
         settings.crowdSizeInitial +
           settings.crowdSizeIncrement * gameData.roundsWon
       );

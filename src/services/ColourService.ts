@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import Colour from "../classes/Colour";
+import ArrayHelper from "../helper/ArrayHelper";
 
 const intToHex = (colour: number) => {
   let result = colour.toString(16);
@@ -21,6 +22,30 @@ const randomColour = () => {
   );
 };
 
+const generateColour = (
+  first: number | (() => number),
+  second?: number | (() => number),
+  third?: number | (() => number),
+  randomiseOrder: boolean = true
+) => {
+  const getNumber = (numberSrc: number | (() => number)) =>
+    typeof numberSrc === "number" ? numberSrc : numberSrc();
+
+  const firstVal = getNumber(first);
+  const secondVal = second !== undefined ? getNumber(second) : getNumber(first);
+  const thirdVal =
+    third !== undefined
+      ? getNumber(third)
+      : second !== undefined
+      ? getNumber(second)
+      : getNumber(first);
+
+  const rgb = ArrayHelper.Shuffle([firstVal, secondVal, thirdVal]);
+
+  if (randomiseOrder) return new Colour(rgb[0], rgb[1], rgb[2]);
+  else return new Colour(firstVal, secondVal, thirdVal);
+};
+
 const randomBorderColourStyle = (): CSSProperties => {
   return {
     borderTopColor: ColourService.RandomColour().hex.toString(),
@@ -40,6 +65,7 @@ const colourFromHex = (code: string) => {
 
 const ColourService = {
   RandomColour: randomColour,
+  GenerateColour: generateColour,
   RandomBorderColourStyle: randomBorderColourStyle,
   IntToHex: intToHex,
   ColourFromHex: colourFromHex,

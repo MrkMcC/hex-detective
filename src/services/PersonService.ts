@@ -1,25 +1,34 @@
-import {
-  default as Person,
-  default as PersonData,
-} from "../classes/PersonData";
+import PersonData from "../classes/PersonData";
+import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
 import TutorialState from "../types/TutorialState";
 import ColourService from "./ColourService";
 
-const generatePerson = (): Person => {
-  return new Person(
+const randomPerson = (): PersonData => {
+  return new PersonData(
     ColourService.RandomColour(),
     ColourService.RandomColour(),
     ColourService.RandomColour()
   );
 };
 
-const generatePeople = (amount: number) => {
-  const ppl: Person[] = [];
+const randomPeople = (amount: number) => {
+  const ppl: PersonData[] = [];
   for (let index = 0; index < amount; index++) {
-    ppl.push(generatePerson());
+    ppl.push(randomPerson());
   }
   return ppl;
+};
+
+const generatePeople = (
+  constructionInstruction: () => PersonData,
+  amount: number
+) => {
+  const result: PersonData[] = [];
+  for (let index = 0; index < amount; index++) {
+    result.push(constructionInstruction());
+  }
+  return result;
 };
 
 const generateTutorialPeople = (state: TutorialState) => {
@@ -45,17 +54,33 @@ const generateTutorialPeople = (state: TutorialState) => {
           ColourPresets.Grey
         ),
       ];
+    case 2:
+      const baseColours = [
+        ColourPresets.Red,
+        ColourPresets.Green,
+        ColourPresets.Blue,
+      ];
+      return generatePeople(
+        () =>
+          new PersonData(
+            ArrayHelper.RandomElement(baseColours),
+            ArrayHelper.RandomElement(baseColours),
+            ArrayHelper.RandomElement(baseColours),
+            ColourPresets.Grey
+          ),
+        3
+      );
   }
 
   throw `Tutorial Stage '${state.stage}.${state.round}' is not implemented!`;
 };
 
-const findPersonById = (people: Person[], id?: string) => {
+const findPersonById = (people: PersonData[], id?: string) => {
   return people.find((p) => p.id === id);
 };
 
 const PersonService = {
-  GeneratePeople: generatePeople,
+  RandomPeople: randomPeople,
   GenerateTutorialPeople: generateTutorialPeople,
   FindPersonById: findPersonById,
 };
