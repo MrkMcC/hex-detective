@@ -33,7 +33,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   );
   const [accusedPersonId, setAccusedPersonId] = useState<string | null>(null);
   const [tutorialState, setTutorialState] = useState<TutorialState | null>({
-    stage: 1,
+    stage: 3,
     round: 1,
   });
   // const [tutorialState, setTutorialState] = useState<TutorialState | null>(
@@ -136,8 +136,14 @@ function Game({ status, onChangeStatus, settings }: Props) {
           flavour: ColourFlavour.Name,
         }));
         break;
+      case 3:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: ColourFlavour.Name,
+        }));
+        break;
       default:
-        throw `Tutorial stage ${state.stage}.${state.round} is not implemented!`;
+        throw `NOT IMPLEMENTED: setup tutorial stage ${state.stage}.${state.round}`;
     }
 
     if (newSuspect === null) newSuspect = ArrayHelper.RandomElement(newPeople);

@@ -1,4 +1,5 @@
 import TutorialBasicsPage1 from "../components/modal/tutorial/basics/TutorialBasicsPage1";
+import TutorialColoursPageOne from "../components/modal/tutorial/colour-mixing/TutorialColoursPageOne";
 import ModalOptionsT from "../types/components/ModalOptionsT";
 
 let listener: (options: ModalOptionsT) => void;
@@ -23,6 +24,12 @@ const showTutorial = (stage: number) => {
       showModal({
         heading: "Basics",
         pages: [{ title: "Ruling Out", body: TutorialBasicsPage1({}) }],
+      });
+      break;
+    case 3:
+      showModal({
+        heading: "Colours",
+        pages: [{ title: "Brightness", body: TutorialColoursPageOne({}) }],
       });
       break;
     default:

@@ -70,9 +70,73 @@ const generateTutorialPeople = (state: TutorialState) => {
           ),
         5 + 5 * state.round
       );
+    case 3:
+      if (state.round === 1)
+        return [
+          new PersonData(
+            ColourPresets.RedPerc100,
+            ColourPresets.RedPerc25,
+            ColourPresets.RedPerc25,
+            ColourPresets.RedPerc100
+          ),
+          new PersonData(
+            ColourPresets.RedPerc100,
+            ColourPresets.RedPerc50,
+            ColourPresets.RedPerc25,
+            ColourPresets.RedPerc100
+          ),
+          new PersonData(
+            ColourPresets.RedPerc100,
+            ColourPresets.RedPerc100,
+            ColourPresets.RedPerc25,
+            ColourPresets.RedPerc100
+          ),
+        ];
+      if (state.round === 2)
+        return [
+          new PersonData(
+            ColourPresets.GreenPerc100,
+            ColourPresets.GreenPerc25,
+            ColourPresets.GreenPerc25,
+            ColourPresets.GreenPerc100
+          ),
+          new PersonData(
+            ColourPresets.GreenPerc100,
+            ColourPresets.GreenPerc50,
+            ColourPresets.GreenPerc25,
+            ColourPresets.GreenPerc100
+          ),
+          new PersonData(
+            ColourPresets.GreenPerc100,
+            ColourPresets.GreenPerc100,
+            ColourPresets.GreenPerc25,
+            ColourPresets.GreenPerc100
+          ),
+        ];
+      if (state.round === 3)
+        return [
+          new PersonData(
+            ColourPresets.BluePerc100,
+            ColourPresets.BluePerc25,
+            ColourPresets.BluePerc25,
+            ColourPresets.BluePerc100
+          ),
+          new PersonData(
+            ColourPresets.BluePerc100,
+            ColourPresets.BluePerc50,
+            ColourPresets.BluePerc25,
+            ColourPresets.BluePerc100
+          ),
+          new PersonData(
+            ColourPresets.BluePerc100,
+            ColourPresets.BluePerc100,
+            ColourPresets.BluePerc25,
+            ColourPresets.BluePerc100
+          ),
+        ];
   }
 
-  throw `Tutorial Stage '${state.stage}.${state.round}' is not implemented!`;
+  throw `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`;
 };
 
 const findPersonById = (people: PersonData[], id?: string) => {

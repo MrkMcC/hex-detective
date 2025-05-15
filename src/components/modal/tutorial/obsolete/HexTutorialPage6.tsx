@@ -1,5 +1,5 @@
 import ColourService from "../../../../services/ColourService";
-import BaseIndicator from "../BaseIndicator";
+import BaseIndicator from "./BaseIndicator";
 
 interface Props {}
 
