@@ -1,4 +1,4 @@
-import ColourService from "../../../services/ColourService";
+import ColourService from "../../../../services/ColourService";
 
 interface Props {}
 

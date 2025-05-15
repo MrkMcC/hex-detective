@@ -68,7 +68,7 @@ const generateTutorialPeople = (state: TutorialState) => {
             ArrayHelper.RandomElement(baseColours),
             ColourPresets.Grey
           ),
-        3
+        5 + 5 * state.round
       );
   }
 

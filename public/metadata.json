@@ -4,7 +4,7 @@
   "description": "Learn and practice to read hex colour codes",
   "githubRepo": "https://github.com/MrkMcC/hex-detective",
   "changelog": [
-     {
+    {
       "version": "1.0",
       "features": [
         "Playable on Chrome desktop and mostly free of critical bugs"
@@ -15,9 +15,9 @@
   "roadmap": [
     {
       "version": "1.1",
-      "features": ["Tutorial"],
+      "features": ["Interactive Tutorial"],
       "bugs": ["Custom difficulty settings allow invalid input"]
-    },  
+    },
     {
       "version": "1.2",
       "features": ["Difficulty Presets"],
@@ -32,6 +32,6 @@
       "version": "maybe",
       "features": ["german localisation"],
       "bugs": []
-    },
+    }
   ]
 }

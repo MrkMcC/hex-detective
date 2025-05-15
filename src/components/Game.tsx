@@ -13,8 +13,6 @@ import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
 import ControlPanel from "./control-panel/ControlPanel";
-import TutorialBasicsPage1 from "./modal/tutorial/basics/TutorialBasicsPage1";
-import TutorialBasicsPage2 from "./modal/tutorial/basics/TutorialBasicsPage2";
 
 interface Props {
   status: GameStatus;
@@ -148,18 +146,8 @@ function Game({ status, onChangeStatus, settings }: Props) {
     setSuspectId(newSuspect.id);
   };
   useEffect(() => {
-    if (tutorialState !== null && tutorialState.round === 1) {
-      switch (tutorialState.stage) {
-        case 1:
-          ModalService.ShowModal(<TutorialBasicsPage1 />);
-          break;
-        case 2:
-          ModalService.ShowModal(<TutorialBasicsPage2 />);
-          break;
-        default:
-          throw `No tutorial modal implemented for stage ${tutorialState.stage}`;
-      }
-    }
+    if (tutorialState !== null && tutorialState.round === 1)
+      ModalService.ShowTutorial(tutorialState.stage);
   }, [tutorialState]);
   //#endregion
 
@@ -215,11 +203,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
           <button className="btn-main-menu" onClick={handleQuit}>
             <FaCaretLeft className="icon" />
             Back to Menu
-          </button>
-          <button
-            onClick={() => ModalService.ShowModal(<TutorialBasicsPage1 />)}
-          >
-            Open modal
           </button>
         </div>
         <ControlPanel

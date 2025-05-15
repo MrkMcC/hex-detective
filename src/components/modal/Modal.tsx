@@ -1,22 +1,23 @@
-import { JSX, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ColourService from "../../services/ColourService";
 import ModalService from "../../services/ModalService";
+import ModalOptionsT from "../../types/components/ModalOptionsT";
 
 interface Props {}
 
 const Modal = ({}: Props) => {
+  const [options, setOptions] = useState<ModalOptionsT | null>(null);
   const [pageIndex, setPageIndex] = useState(0);
-  const [pages, setPages] = useState<JSX.Element[]>([]);
 
   useEffect(() => ModalService.SetListener(initialiseNewModal));
 
-  const initialiseNewModal = (modalPages: JSX.Element[]) => {
-    setPages(modalPages);
+  const initialiseNewModal = (options: ModalOptionsT) => {
+    setOptions(options);
     setPageIndex(0);
   };
 
   const handleClose = () => {
-    setPages([]);
+    setOptions(null);
   };
 
   const handleNext = () => {
@@ -27,7 +28,7 @@ const Modal = ({}: Props) => {
     setPageIndex((prev) => prev - 1);
   };
 
-  return pages.length > 0 ? (
+  return options !== null ? (
     <>
       <div className="modal-overlay"></div>
       <div
@@ -39,11 +40,10 @@ const Modal = ({}: Props) => {
         </button>
         <div className="modal-header">
           <h1 className="margin-0">
-            How to Read Hex Colour Codes [{pageIndex + 1} / {pages.length}] -
-            Pagetitle
+            {options.heading} - {options.pages[pageIndex].title}
           </h1>
         </div>
-        <div className="modal-body">{pages[pageIndex]}</div>
+        <div className="modal-body">{options.pages[pageIndex].body}</div>
         <div className="modal-footer flex-row justify-between">
           <div>
             {pageIndex > 0 && (
@@ -52,7 +52,7 @@ const Modal = ({}: Props) => {
               </button>
             )}
           </div>
-          {pageIndex + 1 < pages.length ? (
+          {pageIndex + 1 < options.pages.length ? (
             <button className="large" onClick={handleNext}>
               Next
             </button>

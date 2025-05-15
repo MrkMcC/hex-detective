@@ -7,6 +7,10 @@ import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
 //TODO
+//-Ensure suspect has no duplicate non-suspect
+
+//consolidate these + other notes into roadmap
+
 //- Add "How to read hex colour codes" to how-to-play
 //- Difficulty Options
 //-- show colour triangle option

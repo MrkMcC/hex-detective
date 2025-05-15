@@ -1,7 +1,7 @@
-import Colour from "../../../classes/Colour";
-import ColourFlavour from "../../../enum/ColourFlavour";
-import ColourService from "../../../services/ColourService";
-import ColourMix from "../../colour/ColourMix";
+import Colour from "../../../../classes/Colour";
+import ColourFlavour from "../../../../enum/ColourFlavour";
+import ColourService from "../../../../services/ColourService";
+import ColourMix from "../../../colour/ColourMix";
 
 interface Props {}
 
