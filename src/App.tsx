@@ -2,7 +2,7 @@ import objectHash from "object-hash";
 import { useState } from "react";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
-import DifficultyTemplate from "./enum/DifficultyTemplate";
+import Modal from "./components/modal/Modal";
 import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
@@ -27,7 +27,6 @@ import GameSettingsT from "./types/GameSettingsT";
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
   const [settings, setSettings] = useState<GameSettingsT>({
-    template: DifficultyTemplate.Custom,
     crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
   });
@@ -38,6 +37,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <Modal />
       {status === GameStatus.Setup ? (
         <MainMenu
           settings={settings}

@@ -2,7 +2,9 @@ import ColourFlavour from "../../enum/ColourFlavour";
 
 type ColourMixOptionsT = {
   flavour?: ColourFlavour;
-  showRGB?: boolean;
+  showLetterR?: boolean;
+  showLetterG?: boolean;
+  showLetterB?: boolean;
 };
 
 export default ColourMixOptionsT;

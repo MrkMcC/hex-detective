@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import PersonT from "../../types/PersonT";
+import PersonData from "../../types/PersonData_deprecated";
 import Eye from "./Eye";
 
 interface Props {
-  person: PersonT;
+  person: PersonData;
 }
 
 const Eyes = ({ person }: Props) => {

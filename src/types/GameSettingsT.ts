@@ -1,8 +1,6 @@
-import DifficultyTemplate from "../enum/DifficultyTemplate";
-
 /**Settings that can be changed before the game, but not during it. */
+//difficulty templates are defined in the upcoming difficulty selection component, not here
 type GameSettingsT = {
-  template: DifficultyTemplate;
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
 };

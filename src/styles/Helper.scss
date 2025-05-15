@@ -44,8 +44,16 @@ h2 {
   text-align: center;
 }
 
+.margin-0 {
+  margin: 0;
+}
+
 .font-mono {
   font-family: monospace;
+}
+
+.font-sans-serif {
+  font-family: sans-serif;
 }
 
 .hex {
@@ -102,12 +110,38 @@ input.cool {
   -webkit-text-stroke: 0.06em black;
 }
 
-.flex-row {
+.flex-row,
+.flex-col {
   display: flex;
-  &.space-around {
+
+  &.flex-col {
+    flex-direction: column;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-space-around {
     justify-content: space-around;
   }
+  &.justify-between {
+    justify-content: space-between;
+  }
+
   &.wrap {
     flex-wrap: wrap;
+  }
+
+  &.gap-1.flex-row > *:not(:last-child) {
+    margin-right: 1em;
+  }
+  &.gap-1.flex-col > *:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  &.gap-2.flex-row > *:not(:last-child) {
+    margin-right: 2em;
+  }
+  &.gap-2.flex-col > *:not(:last-child) {
+    margin-bottom: 2em;
   }
 }

@@ -8,12 +8,14 @@ interface Props {
   options?: ColourMixOptionsT;
 }
 
-const ColourMix = ({
-  colour,
-  name = "",
-  options = { flavour: ColourFlavour.Hex, showRGB: false },
-}: Props) => {
-  options = { flavour: ColourFlavour.Hex, showRGB: false, ...options };
+const ColourMix = ({ colour, name = "", options }: Props) => {
+  options! = {
+    flavour: ColourFlavour.Hex,
+    showLetterR: false,
+    showLetterG: false,
+    showLetterB: false,
+    ...options,
+  };
 
   return (
     <div
@@ -22,29 +24,31 @@ const ColourMix = ({
         border: `1px solid ${colour.toString()}`,
       }}
     >
-      <div className="colour-text font-mono updog">
-        {options.flavour === ColourFlavour.Hex && (
-          <>
-            <span>{colour.hex.red}</span>
-            <span>{colour.hex.green}</span>
-            <span>{colour.hex.blue}</span>
-          </>
-        )}
-        {options.flavour === ColourFlavour.Int && (
-          <>
-            <span>{colour.int.red}</span>
-            <span>{colour.int.green}</span>
-            <span>{colour.int.blue}</span>
-          </>
-        )}
-        {options.flavour === ColourFlavour.Percentage && (
-          <>
-            <span>{colour.percentage.red}</span>
-            <span>{colour.percentage.green}</span>
-            <span>{colour.percentage.blue}</span>
-          </>
-        )}
-      </div>
+      {options.flavour !== ColourFlavour.Hidden && (
+        <div className="colour-text font-mono updog">
+          {options.flavour === ColourFlavour.Hex && (
+            <>
+              <span>{colour.hex.red}</span>
+              <span>{colour.hex.green}</span>
+              <span>{colour.hex.blue}</span>
+            </>
+          )}
+          {options.flavour === ColourFlavour.Int && (
+            <>
+              <span>{colour.int.red}</span>
+              <span>{colour.int.green}</span>
+              <span>{colour.int.blue}</span>
+            </>
+          )}
+          {options.flavour === ColourFlavour.Percentage && (
+            <>
+              <span>{colour.percentage.red}</span>
+              <span>{colour.percentage.green}</span>
+              <span>{colour.percentage.blue}</span>
+            </>
+          )}
+        </div>
+      )}
       <div className="bars-container text-center">
         <div className="bars">
           <div
@@ -55,7 +59,7 @@ const ColourMix = ({
             }}
           >
             <span className="colour-letter text-contrast">
-              {options.showRGB && "R"}
+              {options.showLetterR && "R"}
             </span>
           </div>
           <div
@@ -66,7 +70,7 @@ const ColourMix = ({
             }}
           >
             <span className="colour-letter text-contrast">
-              {options.showRGB && "G"}
+              {options.showLetterG && "G"}
             </span>
           </div>
           <div
@@ -77,7 +81,7 @@ const ColourMix = ({
             }}
           >
             <span className="colour-letter text-contrast">
-              {options.showRGB && "B"}
+              {options.showLetterB && "B"}
             </span>
           </div>
         </div>

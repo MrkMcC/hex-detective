@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
+import PersonData from "../classes/PersonData";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
+import ModalService from "../services/ModalService";
 import GameSettingsT from "../types/GameSettingsT";
+import TutorialState from "../types/TutorialStage";
 import GameStatus from "./../enum/GameStatus";
 import ArrayHelper from "./../helper/ArrayHelper";
 import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
-import PersonT from "./../types/PersonT";
 import Person from "./Person";
 import ControlPanel from "./control-panel/ControlPanel";
+import TutorialBasicsPage1 from "./modal/tutorial/basics/TutorialBasicsPage1";
 
 interface Props {
   status: GameStatus;
@@ -22,12 +25,19 @@ const initialGameData: GameDataT = {
 
 function Game({ status, onChangeStatus, settings }: Props) {
   const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
-  const [people, setPeople] = useState<PersonT[]>([]);
+  const [people, setPeople] = useState<PersonData[]>([]);
   const [suspectId, setSuspectId] = useState<string>();
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
     SuspectSelectionMode.Accuse
   );
   const [accusedPersonId, setAccusedPersonId] = useState<string | null>(null);
+  const [tutorialState, setTutorialState] = useState<TutorialState | null>(
+    //   {
+    //   stage: 1,
+    //   round: 1,
+    // }
+    null
+  );
 
   const getSuspect = () => PersonService.FindPersonById(people, suspectId);
 
@@ -78,16 +88,37 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
   //#endregion
 
+  //#region tutorial
+  const setupTutorialRound = (state: TutorialState) => {
+    const newPeople = PersonService.GenerateTutorialPeople(state);
+    let newSuspect: PersonData | null = null;
+
+    switch (state.stage) {
+      case 1:
+        newSuspect = newPeople[state.round - 1];
+        break;
+    }
+
+    if (newSuspect === null) newSuspect = ArrayHelper.RandomElement(newPeople);
+
+    setPeople(newPeople);
+    setSuspectId(newSuspect.id);
+  };
+  //#endregion
+
   //#region Game State
   const startNewRound = (incrementMultiplier: number = 0) => {
-    const newPeople = PersonService.GeneratePeople(
-      settings.crowdSizeInitial +
-        settings.crowdSizeIncrement * incrementMultiplier
-    );
-    const suspect = ArrayHelper.RandomElement(newPeople);
+    if (tutorialState === null) {
+      const newPeople = PersonService.GeneratePeople(
+        settings.crowdSizeInitial +
+          settings.crowdSizeIncrement * incrementMultiplier
+      );
+      const suspect = ArrayHelper.RandomElement(newPeople);
+      setPeople(newPeople);
+      setSuspectId(suspect.id);
+    } else setupTutorialRound(tutorialState);
+
     setAccusedPersonId(null);
-    setPeople(newPeople);
-    setSuspectId(suspect.id);
     if (status !== GameStatus.InProgress) onChangeStatus(GameStatus.InProgress);
   };
 
@@ -123,10 +154,17 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="people">{personElements}</div>
       </div>
       <div className="bottom-bar">
-        <button className="btn-main-menu" onClick={handleQuit}>
-          <FaCaretLeft className="icon" />
-          Back to Menu
-        </button>
+        <div className="flex-col">
+          <button className="btn-main-menu" onClick={handleQuit}>
+            <FaCaretLeft className="icon" />
+            Back to Menu
+          </button>
+          <button
+            onClick={() => ModalService.ShowModal(<TutorialBasicsPage1 />)}
+          >
+            Open modal
+          </button>
+        </div>
         <ControlPanel
           gameData={gameData}
           gameStatus={status}

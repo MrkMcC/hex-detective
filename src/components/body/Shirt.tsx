@@ -1,7 +1,7 @@
-import PersonT from "../../types/PersonT";
+import PersonData from "../../types/PersonData_deprecated";
 
 interface Props {
-  person: PersonT;
+  person: PersonData;
 }
 
 const Shirt = ({ person }: Props) => {

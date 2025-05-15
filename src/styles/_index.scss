@@ -3,6 +3,7 @@
 @use "Layout";
 @use "ControlPanel";
 @use "Helper";
+@use "Tutorial";
 
 @use "body/Eyes";
 @use "body/Hats";
@@ -11,5 +12,7 @@
 @use "body/Pants";
 @use "body/Shirts";
 
-@use "components/MainMenu";
+@use "components/BaseIndicator";
 @use "components/ColourMix";
+@use "components/MainMenu";
+@use "components/Modal";

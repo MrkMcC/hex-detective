@@ -1,13 +1,13 @@
 import { BsIncognito } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa";
-import PersonT from "../types/PersonT";
+import PersonData from "../classes/PersonData";
 import Hat from "./body/Hat";
 import Head from "./body/Head";
 import Pants from "./body/Pants";
 import Shirt from "./body/Shirt";
 
 interface Props {
-  person: PersonT;
+  person: PersonData;
   disabled: boolean;
   isAccused: boolean;
   isRevealedSuspect: boolean;

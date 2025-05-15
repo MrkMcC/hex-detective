@@ -1,9 +1,9 @@
-import PersonT from "../../types/PersonT";
+import PersonData from "../../types/PersonData_deprecated";
 import Eyes from "./Eyes";
 import Mouth from "./Mouth";
 
 interface Props {
-  person: PersonT;
+  person: PersonData;
 }
 
 const Head = ({ person }: Props) => {

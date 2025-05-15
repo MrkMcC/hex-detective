@@ -1,6 +1,8 @@
 import ColourService from "../services/ColourService";
 
 class Colour {
+  name?: string;
+
   int: {
     red: number;
     green: number;
@@ -22,7 +24,9 @@ class Colour {
 
   toString = () => this.hex.toString();
 
-  constructor(red: number, green: number, blue: number) {
+  constructor(red: number, green: number, blue: number, name?: string) {
+    this.name = name;
+
     this.int = {
       red: red,
       green: green,

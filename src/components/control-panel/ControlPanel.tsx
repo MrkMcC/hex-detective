@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { MdRefresh } from "react-icons/md";
+import PersonData from "../../classes/PersonData";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import GameDataT from "../../types/GameDataT";
-import PersonT from "../../types/PersonT";
 import Collapsor from "./Collapsor";
 import HighScore from "./HighScore";
 import SelectionModeControl from "./SelectionModeControl";
@@ -11,7 +11,7 @@ import StatusText from "./StatusText";
 import SuspectInfo from "./SuspectInfo";
 
 interface Props {
-  suspect?: PersonT;
+  suspect?: PersonData;
   gameData: GameDataT;
   gameStatus: GameStatus;
   currentSelectionMode: SuspectSelectionMode;
@@ -52,8 +52,10 @@ const ControlPanel = ({
           {suspect && (
             <SuspectInfo
               suspect={suspect}
-              revealColours={gameStatus !== GameStatus.InProgress}
-              compact={isCollapsed}
+              options={{
+                revealColours: gameStatus !== GameStatus.InProgress,
+                compact: isCollapsed,
+              }}
             />
           )}
         </div>

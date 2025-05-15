@@ -1,6 +1,5 @@
 import GameSettingsT from "../../types/GameSettingsT";
 import HowToPlay from "../help/HowToPlay";
-import HowToRead from "../help/HowToRead";
 import DifficultySettings from "./DifficultySettings";
 import Title from "./Title";
 
@@ -29,7 +28,6 @@ const MainMenu = ({ settings, onChangeSettings, onStartGame }: Props) => {
         </div>
       </div>
       <div className="column column-right">
-        <HowToRead />
         <div className="context-info"></div>
       </div>
     </div>

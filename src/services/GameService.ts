@@ -1,6 +1,6 @@
-import PersonT from "../types/PersonT";
+import PersonData from "../classes/PersonData";
 
-const getOnlyRemainingSuspect = (people: PersonT[]) => {
+const getOnlyRemainingSuspect = (people: PersonData[]) => {
   const suspects = people.filter((p) => !p.ruledOut);
   if (suspects.length === 1) {
     return suspects[0];
