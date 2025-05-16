@@ -4,6 +4,7 @@ import TutorialStage from "../enum/TutorialStage";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
 import TutorialState from "../types/TutorialState";
+import ColourService from "./ColourService";
 import LogService from "./LogService";
 import ModalService from "./ModalService";
 import PersonService from "./PersonService";
@@ -19,6 +20,7 @@ const showModal = (stage: TutorialStage) => {
 };
 
 const generateCrowd = (state: TutorialState): Crowd => {
+  let crowd: Crowd;
   let people: PersonData[];
 
   switch (state.stage) {
@@ -50,7 +52,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
         ColourPresets.Green,
         ColourPresets.Blue,
       ];
-      return PersonService.GeneratePeople(
+      return PersonService.GenerateCrowd(
         () =>
           new PersonData(
             ArrayHelper.RandomElement(baseColours),
@@ -146,8 +148,87 @@ const generateCrowd = (state: TutorialState): Crowd => {
           ColourPresets.Tutorial.BlueAndRed,
           ColourPresets.Grey
         ),
+        new PersonData(
+          ColourPresets.Red,
+          ColourPresets.Red,
+          ColourPresets.Red,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Green,
+          ColourPresets.Green,
+          ColourPresets.Green,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Blue,
+          ColourPresets.Blue,
+          ColourPresets.Blue,
+          ColourPresets.Grey
+        ),
       ];
       return new Crowd(ArrayHelper.Shuffle(people), people[state.round - 1].id);
+    case TutorialStage.Colours_Dominance:
+      people = [
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.SkyBlue,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.OceanGreen,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Purple,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.SpringGreen,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Crimson,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Orange,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Red,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Green,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Blue,
+          ColourService.GenerateColour(0, 128, 255),
+          ColourPresets.Grey
+        ),
+      ];
+      return new Crowd(
+        ArrayHelper.Shuffle(people),
+        ArrayHelper.RandomElement(people.slice(0, 6)).id
+      );
   }
 
   throw LogService.Error(

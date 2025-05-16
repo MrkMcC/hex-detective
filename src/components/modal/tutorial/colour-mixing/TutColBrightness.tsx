@@ -1,6 +1,6 @@
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import ColourMix from "../../../colour/ColourMix";
+import BarChart from "../../../colour/BarChart";
 
 interface Props {}
 
@@ -20,15 +20,15 @@ const TutColBrightness = ({}: Props) => {
       <p>100% is the brightest. 25% is pretty dark.</p>
       <div className="flex-col gap-1 wrap justify-space-around ">
         <div className="flex-row wrap justify-center ">
-          <ColourMix
+          <BarChart
             colour={ColourService.ColourFromHex("ff0000")}
             options={redShadesOptions}
           />
-          <ColourMix
+          <BarChart
             colour={ColourService.ColourFromHex("800000")}
             options={redShadesOptions}
           />
-          <ColourMix
+          <BarChart
             colour={ColourService.ColourFromHex("400000")}
             options={redShadesOptions}
           />

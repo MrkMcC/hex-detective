@@ -8,7 +8,7 @@ interface Props {
   options?: ColourMixOptionsT;
 }
 
-const ColourMix = ({ colour, name = "", options }: Props) => {
+const BarChart = ({ colour, name = "", options }: Props) => {
   options! = {
     flavour: ColourFlavour.Hex,
     showLetterR: false,
@@ -100,4 +100,4 @@ const ColourMix = ({ colour, name = "", options }: Props) => {
   );
 };
 
-export default ColourMix;
+export default BarChart;

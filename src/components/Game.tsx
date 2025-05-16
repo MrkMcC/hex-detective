@@ -116,7 +116,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Colours_Complementary,
+        stage: TutorialStage.Colours_Dominance,
         round: 1,
       });
       return;
@@ -132,6 +132,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Name,
+        }));
+        break;
+      case TutorialStage.Colours_Dominance:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: ColourFlavour.Percentage,
         }));
         break;
       default:

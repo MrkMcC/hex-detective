@@ -151,7 +151,9 @@ input.cool {
   &.wrap {
     flex-wrap: wrap;
   }
-
+  &.gap-mini.flex-row > *:not(:last-child) {
+    margin-right: 0.25em;
+  }
   &.gap-1.flex-row > *:not(:last-child) {
     margin-right: 1em;
   }

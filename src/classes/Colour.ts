@@ -6,11 +6,14 @@ class Rgb<T> {
   red: T;
   green: T;
   blue: T;
-  toString = () => {
+  toString() {
     if (this.flavour == ColourFlavour.Hex)
       return `#${this.red}${this.green}${this.blue}`;
     else return `(${this.red} ${this.green} ${this.blue})`;
-  };
+  }
+  toArray() {
+    return [this.red, this.green, this.blue];
+  }
 
   constructor(flavour: ColourFlavour, red: T, green: T, blue: T) {
     this.flavour = flavour;
@@ -25,14 +28,41 @@ class Colour {
   int: Rgb<number>;
   hex: Rgb<string>;
   percentage: Rgb<string>;
-  toString = () => this.hex.toString();
-  equals = (other: Colour) => {
+  toString(flavour = ColourFlavour.Hex) {
+    switch (flavour) {
+      case ColourFlavour.Hex:
+        return this.hex.toString();
+      case ColourFlavour.Int:
+        return this.int.toString();
+      case ColourFlavour.Percentage:
+        return this.percentage.toString();
+      case ColourFlavour.Name:
+        return this.name ?? "";
+      default:
+        return "";
+    }
+  }
+  toArray(flavour: ColourFlavour) {
+    switch (flavour) {
+      case ColourFlavour.Hex:
+        return this.hex.toArray();
+      case ColourFlavour.Int:
+        return this.int.toArray();
+      case ColourFlavour.Percentage:
+        return this.percentage.toArray();
+      case ColourFlavour.Name:
+        return [...(this.name ?? "")];
+      default:
+        return [];
+    }
+  }
+  equals(other: Colour) {
     return (
       this.int.red === other.int.red &&
       this.int.green === other.int.green &&
       this.int.blue === other.int.blue
     );
-  };
+  }
 
   constructor(red: number, green: number, blue: number, name?: string) {
     this.name = name;

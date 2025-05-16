@@ -28,10 +28,7 @@ const Eyes = ({ person }: Props) => {
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      console.log("called");
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (

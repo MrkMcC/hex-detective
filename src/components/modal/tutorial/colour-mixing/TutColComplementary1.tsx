@@ -1,7 +1,7 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import ColourMix from "../../../colour/ColourMix";
+import BarChart from "../../../colour/BarChart";
 import Blue from "../../../common/Blue";
 import ColouredText from "../../../common/ColouredText";
 import Green from "../../../common/Green";
@@ -47,7 +47,7 @@ const TutColComplementary1 = ({}: Props) => {
               Resulting Colour <FaArrowRightLong className="icon" />
             </p>
           </div>
-          <ColourMix colour={exampleColour} options={legendOptions} />
+          <BarChart colour={exampleColour} options={legendOptions} />
         </SimulationFrame>
       </div>
       <p>

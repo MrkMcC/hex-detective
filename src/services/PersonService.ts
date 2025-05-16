@@ -26,7 +26,7 @@ const generateNonDuplicate = (
   } else return newPerson;
 };
 
-const generatePeople = (
+const generateCrowd = (
   constructionInstruction: () => PersonData,
   amount: number
 ): Crowd => {
@@ -42,7 +42,7 @@ const generatePeople = (
 };
 
 const randomCrowd = (amount: number) => {
-  return generatePeople(randomPerson, amount);
+  return generateCrowd(randomPerson, amount);
 };
 
 const findPersonById = (people: PersonData[], id?: string) => {
@@ -51,7 +51,7 @@ const findPersonById = (people: PersonData[], id?: string) => {
 
 const PersonService = {
   RandomCrowd: randomCrowd,
-  GeneratePeople: generatePeople,
+  GenerateCrowd: generateCrowd,
   FindPersonById: findPersonById,
 };
 

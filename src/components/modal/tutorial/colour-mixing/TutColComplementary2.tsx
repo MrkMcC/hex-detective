@@ -1,6 +1,6 @@
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import ColourMix from "../../../colour/ColourMix";
+import BarChart from "../../../colour/BarChart";
 
 interface Props {}
 
@@ -38,17 +38,17 @@ const TutColComplementary2 = ({}: Props) => {
         You have to figure out yourself what that mix looks like. Some examples:
       </p>
       <div className="flex-row gap-1 wrap justify-center">
-        <ColourMix
+        <BarChart
           name="R + G = Yellow"
           colour={ColourService.ColourFromHex("ffff00")}
           options={yellowOptions}
         />
-        <ColourMix
+        <BarChart
           name="G + B = Cyan"
           colour={ColourService.ColourFromHex("00ffff")}
           options={cyanOptions}
         />
-        <ColourMix
+        <BarChart
           name="R + B = Magenta"
           colour={ColourService.ColourFromHex("ff00ff")}
           options={magentaOptions}
@@ -56,25 +56,25 @@ const TutColComplementary2 = ({}: Props) => {
       </div>
       <p>If R, G and B are all the same, we get a shade of grey:</p>
       <div className="flex-row gap-1 wrap justify-center ">
-        <ColourMix
+        <BarChart
           name="White"
           colour={ColourService.ColourFromHex("ffffff")}
           options={greyOptions}
         />
-        <ColourMix
+        <BarChart
           colour={ColourService.ColourFromHex("c0c0c0")}
           options={greyOptions}
         />
-        <ColourMix
+        <BarChart
           name="Grey"
           colour={ColourService.ColourFromHex("808080")}
           options={greyOptions}
         />
-        <ColourMix
+        <BarChart
           colour={ColourService.ColourFromHex("404040")}
           options={greyOptions}
         />
-        <ColourMix
+        <BarChart
           name="Black"
           colour={ColourService.ColourFromHex("000000")}
           options={greyOptions}

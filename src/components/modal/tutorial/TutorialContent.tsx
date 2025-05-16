@@ -7,7 +7,8 @@ import TutBasRuleOut from "./basics/TutBasRuleOut";
 import TutColBrightness from "./colour-mixing/TutColBrightness";
 import TutColComplementary1 from "./colour-mixing/TutColComplementary1";
 import TutColComplementary2 from "./colour-mixing/TutColComplementary2";
-import TutorialColoursPage3 from "./colour-mixing/TutorialColoursPage3";
+import TutColDominance1 from "./colour-mixing/TutColDominance1";
+import TutColDominance2 from "./colour-mixing/TutColDominance2";
 import TutorialColoursPage4 from "./colour-mixing/TutorialColoursPage4";
 import TutorialColoursPage5 from "./colour-mixing/TutorialColoursPage5";
 
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const LOG_SUBJECT = "TutorialPage";
-const HEADING_BASICS = "Basics";
+const HEADING_BASICS = "";
 const HEADING_COLOURS = "";
 
 const TutorialContent = ({ stage, onClose }: Props) => {
@@ -49,7 +50,13 @@ const TutorialContent = ({ stage, onClose }: Props) => {
       break;
     case TutorialStage.Colours_Dominance:
       heading = HEADING_COLOURS;
-      pages = [{ title: "", body: <TutorialColoursPage3 /> }];
+      pages = [
+        {
+          title: "Colour Imbalance (1/2)",
+          body: <TutColDominance1 />,
+        },
+        { title: "Colour Imbalance (2/2)", body: <TutColDominance2 /> },
+      ];
       break;
     case TutorialStage.Colours_Saturation:
       heading = HEADING_COLOURS;

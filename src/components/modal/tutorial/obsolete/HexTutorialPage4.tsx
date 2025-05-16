@@ -1,7 +1,7 @@
 import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import ColourMix from "../../../colour/ColourMix";
+import BarChart from "../../../colour/BarChart";
 
 interface Props {}
 
@@ -20,11 +20,11 @@ const HexTutorialPage4 = ({}: Props) => {
     >
       <p>Computers represent these RGB values on a scale from 0 to 255.</p>
       <div className="flex-row gap-1 wrap justify-center ">
-        <ColourMix
+        <BarChart
           colour={new Colour(0, 128, 255)}
           options={percentageOptions}
         />
-        <ColourMix colour={new Colour(0, 128, 255)} options={intOptions} />
+        <BarChart colour={new Colour(0, 128, 255)} options={intOptions} />
       </div>
       <p>This is where hex codes come in.</p>
     </div>
