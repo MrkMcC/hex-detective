@@ -6,28 +6,32 @@ import Modal from "./components/modal/Modal";
 import GameStatus from "./enum/GameStatus";
 import GameSettingsT from "./types/GameSettingsT";
 
-//TODO
-//-Ensure suspect has no duplicate non-suspect
+//#region development notes
+//Tutorial Update notes
+//-Add Hex code tutorial
+//-Improve tutorial modal to show tutorial progress
 
-//consolidate these + other notes into roadmap
+//Difficulty Update notes
+//-show colour triangle option
+//-show int values (0-255) option
+//-show percentages option
 
-//- hover-help such as pants: this includes skirts
-//- Add "How to read hex colour codes" to how-to-play
-//- Difficulty Options
-//-- show colour triangle option
-//-- show int values (0-255) option
-//-- show percentages option
-//- Highscore in cookie
-//- Responsive Design Overhaul
-//- Prevent invalid values for custom difficulty variables (disable new game button maybe)
-//- Polish how-to-play, add pictures (or the corresponding elements directly)
-//- Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)
-//- Random "wanted for _" text for each suspect
-//- accuse hover zitter-animation (&Schweissperle?)
-//- option: disable animations (&center pupils with css)
-//- Rework collapse to increase people-container height as well
-//- button to re-sort people by sussy status
+//UI Update notes
+//-Rework collapse to increase people-container height as well
+
+//#region maybe
+//Ultimate Immersion Update notes
+//-Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)
+//-Random "wanted for _" text for each suspect
+
+//Animation Update notes
+//-option: disable animations (&center pupils with css)
+//-People shiver and sweat on accuse hover
+
+//Other game modes
 //- Game mode "Tinder" - shows a person and colours and asks: Does this match?
+//#endregion
+//#endregion
 
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);

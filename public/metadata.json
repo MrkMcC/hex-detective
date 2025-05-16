@@ -20,22 +20,54 @@
   "roadmap": [
     {
       "version": "1.1",
+      "name": "The Tutorial Update",
       "features": ["Interactive Tutorial"],
       "bugs": ["Custom difficulty settings allow invalid input"]
     },
     {
       "version": "1.2",
-      "features": ["Difficulty Presets"],
+      "name": "The UI Update",
+      "features": [
+        "On wrong guess, show comparison of colour values",
+        "Ruled out people can be removed entirely (can be undone)",
+        "Help texts to explain details, e.g. the fact that skirts are pants ;)"
+      ],
+      "bugs": []
+    },
+    {
+      "version": "1.3",
+      "name": "The Difficulty Update",
+      "features": [
+        "Difficulty Presets",
+        "Multiple lives",
+        "Prettier confirmation dialog when returning to main menu"
+      ],
       "bugs": []
     },
     {
       "version": "TBD",
-      "features": ["Mobile support"],
+      "name": "The Cookie Update",
+      "features": ["Highscore", "Highscore is preserved between sessions"],
+      "bugs": []
+    },
+    {
+      "version": "TBD",
+      "name": "The Mobile Update",
+      "features": [
+        "Mobile support",
+        "Responsive Design Overhaul",
+        "Mobile: confirm choice to avoid missclick"
+      ],
       "bugs": []
     },
     {
       "version": "maybe",
-      "features": ["german localisation"],
+      "features": [
+        "German localisation",
+        "Each suspect gets a random name & crime",
+        "More animations for people",
+        "Other game modes"
+      ],
       "bugs": []
     }
   ]
