@@ -1,10 +1,10 @@
 import objectHash from "object-hash";
 import { useState } from "react";
+import GameSettings from "./classes/GameSettings";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
 import Modal from "./components/modal/Modal";
 import GameStatus from "./enum/GameStatus";
-import GameSettingsT from "./types/GameSettingsT";
 
 //#region development notes
 //Tutorial Update notes
@@ -35,19 +35,19 @@ import GameSettingsT from "./types/GameSettingsT";
 
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
-  const [settings, setSettings] = useState<GameSettingsT>({
-    tutorial: false,
-    crowdSizeInitial: 5,
-    crowdSizeIncrement: 5,
-  });
+  const [settings, setSettings] = useState<GameSettings>(new GameSettings());
 
   const handleStartGame = () => {
-    setSettings((prev) => ({ ...prev, tutorial: false }));
+    setSettings(
+      (prev) => new GameSettings({ ...prev.parameters, tutorial: false })
+    );
     setStatus(GameStatus.InProgress);
   };
 
   const handleStartTutorial = () => {
-    setSettings((prev) => ({ ...prev, tutorial: true }));
+    setSettings(
+      (prev) => new GameSettings({ ...prev.parameters, tutorial: true })
+    );
     setStatus(GameStatus.InProgress);
   };
 
@@ -63,7 +63,7 @@ function App() {
         />
       ) : (
         <Game
-          key={objectHash(settings.crowdSizeInitial)}
+          key={objectHash(settings.parameters.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
           settings={settings}

@@ -8,9 +8,10 @@ button {
   border-radius: theme.$border-radius_btn_l;
 
   &[disabled] {
-    background-color: Colours.$bg-dark;
-    color: Colours.$bg-black;
-    border-color: Colours.$c-grey;
+    cursor: not-allowed;
+    background-color: Colours.$bg_btn-disabled;
+    color: Colours.$c_btn-disabled;
+    border-color: Colours.$br_btn-disabled;
   }
   &:not([disabled]) {
     cursor: pointer;

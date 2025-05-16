@@ -1,11 +1,11 @@
-import GameSettingsT from "../../types/GameSettingsT";
+import GameSettings from "../../classes/GameSettings";
 import HowToPlay from "../help/HowToPlay";
 import DifficultySettings from "./DifficultySettings";
 import Title from "./Title";
 
 interface Props {
-  settings: GameSettingsT;
-  onChangeSettings: (settings: GameSettingsT) => void;
+  settings: GameSettings;
+  onChangeSettings: (settings: GameSettings) => void;
   onStartGame: () => void;
   onStartTutorial: () => void;
 }
@@ -28,7 +28,11 @@ const MainMenu = ({
           onChangeSettings={onChangeSettings}
         />
         <div className="new-game-container">
-          <button className="large" onClick={onStartGame}>
+          <button
+            className="large"
+            onClick={onStartGame}
+            disabled={!settings.valid()}
+          >
             New Game
           </button>
           <button className="large" onClick={onStartTutorial}>

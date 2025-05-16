@@ -1,10 +1,10 @@
 import { ChangeEvent } from "react";
+import GameSettings from "../../classes/GameSettings";
 import ColourService from "../../services/ColourService";
-import GameSettingsT from "../../types/GameSettingsT";
 
 interface Props {
-  settings: GameSettingsT;
-  onChangeSettings: (settings: GameSettingsT) => void;
+  settings: GameSettings;
+  onChangeSettings: (settings: GameSettings) => void;
 }
 
 const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
@@ -21,12 +21,14 @@ const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
             <input
               className="cool"
               type="number"
-              value={settings.crowdSizeInitial}
+              value={settings.parameters.crowdSizeInitial}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onChangeSettings({
-                  ...settings,
-                  crowdSizeInitial: Number(e.target.value),
-                })
+                onChangeSettings(
+                  new GameSettings({
+                    ...settings.parameters,
+                    crowdSizeInitial: Number(e.target.value),
+                  })
+                )
               }
             />
           </div>
@@ -35,12 +37,14 @@ const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
             <input
               className="cool"
               type="number"
-              value={settings.crowdSizeIncrement}
+              value={settings.parameters.crowdSizeIncrement}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onChangeSettings({
-                  ...settings,
-                  crowdSizeIncrement: Number(e.target.value),
-                })
+                onChangeSettings(
+                  new GameSettings({
+                    ...settings.parameters,
+                    crowdSizeIncrement: Number(e.target.value),
+                  })
+                )
               }
             />
           </div>

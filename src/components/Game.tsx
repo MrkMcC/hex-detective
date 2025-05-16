@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
 import Crowd from "../classes/Crowd";
+import GameSettings from "../classes/GameSettings";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialService from "../services/TutorialService";
-import GameSettingsT from "../types/GameSettingsT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
 import GameStatus from "./../enum/GameStatus";
@@ -16,7 +16,7 @@ import ControlPanel from "./control-panel/ControlPanel";
 interface Props {
   status: GameStatus;
   onChangeStatus: (status: GameStatus) => void;
-  settings: GameSettingsT;
+  settings: GameSettings;
 }
 
 const initialGameData: GameDataT = {
@@ -27,12 +27,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
 
   const [crowd, setCrowd] = useState<Crowd>();
-
-  //TODO Remove
-  // const [people, setPeople] = useState<PersonData[]>([]);
-  //TODO Remove
-  // const [suspectId, setSuspectId] = useState<string>();
-
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
     SuspectSelectionMode.Accuse
   );
@@ -42,9 +36,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
   );
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
-
-  //TODO Remove
-  // const getSuspect = () => PersonService.FindPersonById(people, suspectId);
 
   const initialiseRoundState = () => {
     setAccusedPersonId(null);
@@ -92,12 +83,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
             p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
           ),
         }));
-        //TODO Remove
-        // setPeople((prevPeople) =>
-        //   prevPeople.map((p) =>
-        //     p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
-        //   )
-        // );
         break;
       case SuspectSelectionMode.Accuse:
         accuse(personId);
@@ -158,9 +143,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
         throw `NOT IMPLEMENTED: setup tutorial stage ${tutorialState.stage}.${tutorialState.round}`;
     }
     setCrowd(newCrowd);
-    //TODO Remove
-    // setPeople(newCrowd.people);
-    // setSuspectId(newCrowd.suspectId);
   };
   useEffect(() => {
     if (tutorialState !== null && tutorialState.round === 1)
@@ -170,16 +152,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   //#region Game State
   const startNewRound = () => {
-    if (settings.tutorial) setupTutorialRound();
+    if (settings.parameters.tutorial) setupTutorialRound();
     else {
       const newCrowd = PersonService.RandomCrowd(
-        settings.crowdSizeInitial +
-          settings.crowdSizeIncrement * gameData.roundsWon
+        settings.parameters.crowdSizeInitial +
+          settings.parameters.crowdSizeIncrement * gameData.roundsWon
       );
       setCrowd(newCrowd);
-      //TODO Remove
-      // setPeople(newCrowd.people);
-      // setSuspectId(newCrowd.suspectId);
     }
 
     setAccusedPersonId(null);

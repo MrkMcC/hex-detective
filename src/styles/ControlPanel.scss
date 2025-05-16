@@ -99,15 +99,19 @@
     }
     .button-group {
       button {
+        border-color: Colours.$br_black;
         &.rule-out {
           background-color: Colours.$bg-green;
         }
         &.accuse {
           background-color: Colours.$bg-red;
         }
+        &.active {
+          cursor: unset;
+          color: Colours.$c-black;
+        }
         &.inactive {
-          color: black;
-          border-color: black;
+          color: Colours.$c-black;
           background-color: darkgray;
 
           &:hover {
