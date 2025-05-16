@@ -14,7 +14,10 @@
     {
       "version": "1.1",
       "features": ["Interactive Tutorial"],
-      "bugs": ["It was possible that multiple persons fit the description"]
+      "bugs": [
+        "It was possible for multiple persons to fit the description",
+        "Clicking 'New Game' after entering invalid difficulty settings caused a critical error"
+      ]
     }
   ],
   "roadmap": [
@@ -22,7 +25,7 @@
       "version": "1.1",
       "name": "The Tutorial Update",
       "features": ["Interactive Tutorial"],
-      "bugs": ["Custom difficulty settings allow invalid input"]
+      "bugs": []
     },
     {
       "version": "1.2",
