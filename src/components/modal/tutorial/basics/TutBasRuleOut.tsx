@@ -6,7 +6,7 @@ import TutorialTask from "../TutorialTask";
 
 interface Props {}
 
-const TutorialBasicsPage2 = ({}: Props) => {
+const TutBasRuleOut = ({}: Props) => {
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [selectionMode, setSelectionMode] = useState(
     SuspectSelectionMode.Accuse
@@ -36,4 +36,4 @@ const TutorialBasicsPage2 = ({}: Props) => {
   );
 };
 
-export default TutorialBasicsPage2;
+export default TutBasRuleOut;

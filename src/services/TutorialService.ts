@@ -8,44 +8,13 @@ import LogService from "./LogService";
 import ModalService from "./ModalService";
 import PersonService from "./PersonService";
 
-const HEADING_BASICS = "Basics";
-const HEADING_COLOURS = "Colours";
 const LOG_SUBJECT = "TutorialService";
 
 const modalContentType: "tutorial" = "tutorial";
 
 const showModal = (stage: TutorialStage) => {
-  const modalContent = { type: modalContentType, index: Number(stage) };
-  let heading = "";
-  let pageTitle = "";
-
-  switch (stage) {
-    case TutorialStage.Basics_Scoring:
-      heading = HEADING_BASICS;
-      pageTitle = "How to Score";
-      break;
-    case TutorialStage.Basics_SelectionMode:
-      heading = HEADING_BASICS;
-      pageTitle = "Ruling Out";
-      break;
-    case TutorialStage.Colours_Brightness:
-      heading = HEADING_COLOURS;
-      pageTitle = "Brightness";
-      break;
-    case TutorialStage.Colours_Complementary:
-      heading = HEADING_COLOURS;
-      pageTitle = "Mixing Red, Green and Blue";
-      break;
-    default:
-      throw LogService.Error(
-        LOG_SUBJECT,
-        `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
-      );
-  }
-
   ModalService.ShowModal({
-    heading: heading,
-    pages: [{ title: pageTitle, content: modalContent }],
+    reference: { type: modalContentType, index: Number(stage) },
   });
 };
 

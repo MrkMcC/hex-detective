@@ -1,11 +1,5 @@
-type ModalPageT = {
-  title: string;
-  content: { type: "tutorial"; index: number };
-};
-
 type ModalOptionsT = {
-  heading: string;
-  pages: ModalPageT[];
+  reference: { type: "tutorial"; index: number };
 };
 
 export default ModalOptionsT;

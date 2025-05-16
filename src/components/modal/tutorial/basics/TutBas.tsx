@@ -17,7 +17,7 @@ const suspect = new PersonData(
 );
 suspect.variations = { hat: 1, eyes: 3, mouth: 9, shirt: 1, pants: 1 };
 
-const TutorialBasicsPage1 = ({}: Props) => {
+const TutBasScoring = ({}: Props) => {
   const [hasSelectedSuspect, setHasSelectedSuspect] = useState(false);
 
   return (
@@ -42,4 +42,4 @@ const TutorialBasicsPage1 = ({}: Props) => {
   );
 };
 
-export default TutorialBasicsPage1;
+export default TutBasScoring;

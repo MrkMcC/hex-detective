@@ -31,6 +31,7 @@
       "version": "1.2",
       "name": "The UI Update",
       "features": [
+        "Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)",
         "On wrong guess, show comparison of colour values",
         "Ruled out people can be removed entirely (can be undone)",
         "Help texts to explain details, e.g. the fact that skirts are pants ;)"
