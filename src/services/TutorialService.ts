@@ -20,7 +20,6 @@ const showModal = (stage: TutorialStage) => {
 };
 
 const generateCrowd = (state: TutorialState): Crowd => {
-  let crowd: Crowd;
   let people: PersonData[];
 
   switch (state.stage) {
