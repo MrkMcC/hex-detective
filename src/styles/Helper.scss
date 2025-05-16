@@ -37,6 +37,12 @@ h2 {
   }
 }
 
+p {
+  > .icon {
+    vertical-align: text-bottom;
+  }
+}
+
 .white {
   color: Colours.$c-white;
 }
@@ -131,6 +137,15 @@ input.cool {
   }
   &.justify-between {
     justify-content: space-between;
+  }
+  &.align-start {
+    align-items: start;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-end {
+    align-items: end;
   }
 
   &.wrap {

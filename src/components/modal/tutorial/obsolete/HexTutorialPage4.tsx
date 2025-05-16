@@ -19,7 +19,7 @@ const HexTutorialPage4 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>Computers represent these RGB values on a scale from 0 to 255.</p>
-      <div className="flex-row gap-1 wrap justify-center tutorial-colours">
+      <div className="flex-row gap-1 wrap justify-center ">
         <ColourMix
           colour={new Colour(0, 128, 255)}
           options={percentageOptions}

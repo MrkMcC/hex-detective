@@ -16,25 +16,25 @@ const modalContentType: "tutorial" = "tutorial";
 
 const showModal = (stage: TutorialStage) => {
   const modalContent = { type: modalContentType, index: Number(stage) };
+  let heading = "";
+  let pageTitle = "";
 
   switch (stage) {
     case TutorialStage.Basics_Scoring:
-      ModalService.ShowModal({
-        heading: HEADING_BASICS,
-        pages: [{ title: "How to Score", content: modalContent }],
-      });
+      heading = HEADING_BASICS;
+      pageTitle = "How to Score";
       break;
     case TutorialStage.Basics_SelectionMode:
-      ModalService.ShowModal({
-        heading: HEADING_BASICS,
-        pages: [{ title: "Ruling Out", content: modalContent }],
-      });
+      heading = HEADING_BASICS;
+      pageTitle = "Ruling Out";
       break;
     case TutorialStage.Colours_Brightness:
-      ModalService.ShowModal({
-        heading: HEADING_COLOURS,
-        pages: [{ title: "Brightness", content: modalContent }],
-      });
+      heading = HEADING_COLOURS;
+      pageTitle = "Brightness";
+      break;
+    case TutorialStage.Colours_Complementary:
+      heading = HEADING_COLOURS;
+      pageTitle = "Mixing Red, Green and Blue";
       break;
     default:
       throw LogService.Error(
@@ -42,6 +42,11 @@ const showModal = (stage: TutorialStage) => {
         `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
       );
   }
+
+  ModalService.ShowModal({
+    heading: heading,
+    pages: [{ title: pageTitle, content: modalContent }],
+  });
 };
 
 const generateCrowd = (state: TutorialState): Crowd => {
@@ -90,68 +95,90 @@ const generateCrowd = (state: TutorialState): Crowd => {
       if (state.round === 1) {
         people = [
           new PersonData(
-            ColourPresets.RedPerc100,
-            ColourPresets.RedPerc25,
-            ColourPresets.RedPerc25,
-            ColourPresets.RedPerc100
+            ColourPresets.Tutorial.RedPerc100,
+            ColourPresets.Tutorial.RedPerc25,
+            ColourPresets.Tutorial.RedPerc25,
+            ColourPresets.Tutorial.RedPerc100
           ),
           new PersonData(
-            ColourPresets.RedPerc100,
-            ColourPresets.RedPerc50,
-            ColourPresets.RedPerc25,
-            ColourPresets.RedPerc100
+            ColourPresets.Tutorial.RedPerc100,
+            ColourPresets.Tutorial.RedPerc50,
+            ColourPresets.Tutorial.RedPerc25,
+            ColourPresets.Tutorial.RedPerc100
           ),
           new PersonData(
-            ColourPresets.RedPerc100,
-            ColourPresets.RedPerc100,
-            ColourPresets.RedPerc25,
-            ColourPresets.RedPerc100
+            ColourPresets.Tutorial.RedPerc100,
+            ColourPresets.Tutorial.RedPerc100,
+            ColourPresets.Tutorial.RedPerc25,
+            ColourPresets.Tutorial.RedPerc100
           ),
         ];
       } else if (state.round === 2) {
         people = [
           new PersonData(
-            ColourPresets.GreenPerc100,
-            ColourPresets.GreenPerc25,
-            ColourPresets.GreenPerc25,
-            ColourPresets.GreenPerc100
+            ColourPresets.Tutorial.GreenPerc100,
+            ColourPresets.Tutorial.GreenPerc25,
+            ColourPresets.Tutorial.GreenPerc25,
+            ColourPresets.Tutorial.GreenPerc100
           ),
           new PersonData(
-            ColourPresets.GreenPerc100,
-            ColourPresets.GreenPerc50,
-            ColourPresets.GreenPerc25,
-            ColourPresets.GreenPerc100
+            ColourPresets.Tutorial.GreenPerc100,
+            ColourPresets.Tutorial.GreenPerc50,
+            ColourPresets.Tutorial.GreenPerc25,
+            ColourPresets.Tutorial.GreenPerc100
           ),
           new PersonData(
-            ColourPresets.GreenPerc100,
-            ColourPresets.GreenPerc100,
-            ColourPresets.GreenPerc25,
-            ColourPresets.GreenPerc100
+            ColourPresets.Tutorial.GreenPerc100,
+            ColourPresets.Tutorial.GreenPerc100,
+            ColourPresets.Tutorial.GreenPerc25,
+            ColourPresets.Tutorial.GreenPerc100
           ),
         ];
       } else {
         people = [
           new PersonData(
-            ColourPresets.BluePerc100,
-            ColourPresets.BluePerc25,
-            ColourPresets.BluePerc25,
-            ColourPresets.BluePerc100
+            ColourPresets.Tutorial.BluePerc100,
+            ColourPresets.Tutorial.BluePerc25,
+            ColourPresets.Tutorial.BluePerc25,
+            ColourPresets.Tutorial.BluePerc100
           ),
           new PersonData(
-            ColourPresets.BluePerc100,
-            ColourPresets.BluePerc50,
-            ColourPresets.BluePerc25,
-            ColourPresets.BluePerc100
+            ColourPresets.Tutorial.BluePerc100,
+            ColourPresets.Tutorial.BluePerc50,
+            ColourPresets.Tutorial.BluePerc25,
+            ColourPresets.Tutorial.BluePerc100
           ),
           new PersonData(
-            ColourPresets.BluePerc100,
-            ColourPresets.BluePerc100,
-            ColourPresets.BluePerc25,
-            ColourPresets.BluePerc100
+            ColourPresets.Tutorial.BluePerc100,
+            ColourPresets.Tutorial.BluePerc100,
+            ColourPresets.Tutorial.BluePerc25,
+            ColourPresets.Tutorial.BluePerc100
           ),
         ];
       }
       return new Crowd(people, ArrayHelper.RandomElement(people).id);
+    case TutorialStage.Colours_Complementary:
+      people = [
+        new PersonData(
+          ColourPresets.Tutorial.RedAndGreen,
+          ColourPresets.Tutorial.RedAndGreen,
+          ColourPresets.Tutorial.RedAndGreen,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.GreenAndBlue,
+          ColourPresets.Tutorial.GreenAndBlue,
+          ColourPresets.Tutorial.GreenAndBlue,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.BlueAndRed,
+          ColourPresets.Tutorial.BlueAndRed,
+          ColourPresets.Tutorial.BlueAndRed,
+          ColourPresets.Grey
+        ),
+      ];
+      return new Crowd(ArrayHelper.Shuffle(people), people[state.round - 1].id);
   }
 
   throw LogService.Error(

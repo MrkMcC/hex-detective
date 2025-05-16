@@ -31,7 +31,7 @@ const HexTutorialPage3 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>If we combine two colours we get yellow, cyan or magenta.</p>
-      <div className="flex-row gap-1 wrap justify-center tutorial-colours">
+      <div className="flex-row gap-1 wrap justify-center ">
         <ColourMix
           name="R + G = Yellow"
           colour={ColourService.ColourFromHex("ffff00")}
@@ -49,7 +49,7 @@ const HexTutorialPage3 = ({}: Props) => {
         />
       </div>
       <p>If three values are close to each other, we get a shade of grey.</p>
-      <div className="flex-row gap-1 wrap justify-center tutorial-colours">
+      <div className="flex-row gap-1 wrap justify-center ">
         <ColourMix
           name="White"
           colour={ColourService.ColourFromHex("ffffff")}

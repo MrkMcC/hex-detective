@@ -21,7 +21,7 @@ const HexTutorialPage1 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>Every colour we can see is a mix of Red, Green and Blue, or RGB.</p>
-      <div className="flex-row wrap justify-center gap-2 tutorial-colours">
+      <div className="flex-row wrap justify-center gap-2 ">
         <ColourMix
           colour={ColourService.ColourFromHex("c04080")}
           options={rgbExampleOptions}
@@ -39,7 +39,7 @@ const HexTutorialPage1 = ({}: Props) => {
         This colour has a lot more blue than anything else, so the result looks
         blue-ish:
       </p>
-      <div className="flex-row wrap justify-center tutorial-colours">
+      <div className="flex-row wrap justify-center ">
         <ColourMix
           name="result"
           colour={ColourService.ColourFromHex("4533e5")}

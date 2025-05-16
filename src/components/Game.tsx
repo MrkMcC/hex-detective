@@ -115,7 +115,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#region tutorial
   const setupTutorialRound = () => {
     if (tutorialState === null) {
-      setTutorialState({ stage: TutorialStage.Colours_Brightness, round: 1 });
+      setTutorialState({
+        stage: TutorialStage.Colours_Complementary,
+        round: 1,
+      });
       return;
     }
 
@@ -123,18 +126,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
     switch (tutorialState.stage) {
       case TutorialStage.Basics_Scoring:
-        setSuspectInfoOptions((prev) => ({
-          ...prev,
-          flavour: ColourFlavour.Name,
-        }));
-        break;
       case TutorialStage.Basics_SelectionMode:
-        setSuspectInfoOptions((prev) => ({
-          ...prev,
-          flavour: ColourFlavour.Name,
-        }));
-        break;
       case TutorialStage.Colours_Brightness:
+      case TutorialStage.Colours_Complementary:
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Name,

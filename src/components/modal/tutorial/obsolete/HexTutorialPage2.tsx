@@ -24,8 +24,8 @@ const HexTutorialPage2 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>Higher colour values are brighter, lower values are darker.</p>
-      <div className="flex-col gap-1 wrap justify-space-around tutorial-colours">
-        <div className="flex-row wrap justify-center tutorial-colours">
+      <div className="flex-col gap-1 wrap justify-space-around ">
+        <div className="flex-row wrap justify-center ">
           <ColourMix
             colour={ColourService.ColourFromHex("ff0000")}
             options={redShadesOptions}
@@ -39,7 +39,7 @@ const HexTutorialPage2 = ({}: Props) => {
             options={redShadesOptions}
           />
         </div>
-        <div className="flex-row wrap justify-center tutorial-colours">
+        <div className="flex-row wrap justify-center ">
           <ColourMix
             colour={ColourService.ColourFromHex("00ff00")}
             options={greenShadesOptions}
@@ -53,7 +53,7 @@ const HexTutorialPage2 = ({}: Props) => {
             options={greenShadesOptions}
           />
         </div>
-        <div className="flex-row wrap justify-center tutorial-colours">
+        <div className="flex-row wrap justify-center ">
           <ColourMix
             colour={ColourService.ColourFromHex("0000ff")}
             options={blueShadesOptions}
