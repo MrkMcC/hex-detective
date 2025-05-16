@@ -1,10 +1,10 @@
+import Crowd from "../classes/Crowd";
 import PersonData from "../classes/PersonData";
 import TutorialBasicsPage1 from "../components/modal/tutorial/basics/TutorialBasicsPage1";
 import TutorialBasicsPage2 from "../components/modal/tutorial/basics/TutorialBasicsPage2";
 import TutorialColoursPage1 from "../components/modal/tutorial/colour-mixing/TutorialColoursPage1";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
-import CrowdT from "../types/CrowdT";
 import TutorialState from "../types/TutorialState";
 import LogService from "./LogService";
 import ModalService from "./ModalService";
@@ -40,7 +40,7 @@ const showModal = (stage: number) => {
   }
 };
 
-const generateCrowd = (state: TutorialState): CrowdT => {
+const generateCrowd = (state: TutorialState): Crowd => {
   let people: PersonData[];
 
   switch (state.stage) {
@@ -65,7 +65,7 @@ const generateCrowd = (state: TutorialState): CrowdT => {
           ColourPresets.Grey
         ),
       ];
-      return new CrowdT(people, people[state.round - 1].id);
+      return new Crowd(people, people[state.round - 1].id);
     case 2:
       const baseColours = [
         ColourPresets.Red,
@@ -148,7 +148,7 @@ const generateCrowd = (state: TutorialState): CrowdT => {
           ),
         ];
       }
-      return new CrowdT(people, ArrayHelper.RandomElement(people).id);
+      return new Crowd(people, ArrayHelper.RandomElement(people).id);
   }
 
   throw LogService.Error(

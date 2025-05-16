@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
+import Crowd from "../classes/Crowd";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialService from "../services/TutorialService";
-import CrowdT from "../types/CrowdT";
 import GameSettingsT from "../types/GameSettingsT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
@@ -26,7 +26,7 @@ const initialGameData: GameDataT = {
 function Game({ status, onChangeStatus, settings }: Props) {
   const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
 
-  const [crowd, setCrowd] = useState<CrowdT>();
+  const [crowd, setCrowd] = useState<Crowd>();
 
   //TODO Remove
   // const [people, setPeople] = useState<PersonData[]>([]);

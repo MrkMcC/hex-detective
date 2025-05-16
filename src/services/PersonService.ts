@@ -1,6 +1,6 @@
+import Crowd from "../classes/Crowd";
 import PersonData from "../classes/PersonData";
 import ArrayHelper from "../helper/ArrayHelper";
-import CrowdT from "../types/CrowdT";
 import ColourService from "./ColourService";
 import LogService from "./LogService";
 
@@ -29,7 +29,7 @@ const generateNonDuplicate = (
 const generatePeople = (
   constructionInstruction: () => PersonData,
   amount: number
-): CrowdT => {
+): Crowd => {
   const people: PersonData[] = [];
   let suspect: PersonData | undefined = undefined;
   for (let index = 0; index < amount; index++) {
@@ -38,7 +38,7 @@ const generatePeople = (
 
     people.push(newPerson);
   }
-  return new CrowdT(ArrayHelper.Shuffle(people), suspect!.id);
+  return new Crowd(ArrayHelper.Shuffle(people), suspect!.id);
 };
 
 const randomCrowd = (amount: number) => {
