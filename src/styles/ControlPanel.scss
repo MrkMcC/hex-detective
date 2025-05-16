@@ -26,20 +26,6 @@
 
     .info {
       margin: 0 1em 0 1em;
-      .suspect-info {
-        .colour-text {
-          border: 1px solid gray;
-          padding: 0.2em;
-          &:first-child {
-            border-top-left-radius: 7px;
-            border-bottom-left-radius: 7px;
-          }
-          &:last-child {
-            border-top-right-radius: 7px;
-            border-bottom-right-radius: 7px;
-          }
-        }
-      }
     }
   }
   &.expanded {
@@ -50,11 +36,6 @@
     }
     .info {
       width: 50%;
-      .suspect-info {
-        p {
-          text-align: center;
-        }
-      }
       .icon {
         margin-left: 0.5em;
         margin-right: 0.5em;

@@ -146,3 +146,14 @@ input.cool {
     margin-bottom: 2em;
   }
 }
+
+.border {
+  border-width: 0.1em;
+  border-color: grey;
+  border-style: solid;
+  border-radius: 1em;
+}
+
+.p-1 {
+  padding: 1em;
+}

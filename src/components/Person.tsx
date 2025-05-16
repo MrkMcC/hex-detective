@@ -8,21 +8,21 @@ import Shirt from "./body/Shirt";
 
 interface Props {
   person: PersonData;
-  disabled: boolean;
-  isAccused: boolean;
-  isRevealedSuspect: boolean;
-  onSelect: (personId: string) => void;
+  disabled?: boolean;
+  isAccused?: boolean;
+  isRevealedSuspect?: boolean;
+  onSelect?: (personId: string) => void;
 }
 
 const Person = ({
   person,
-  disabled,
-  isAccused,
-  isRevealedSuspect,
+  disabled = false,
+  isAccused = false,
+  isRevealedSuspect = false,
   onSelect,
 }: Props) => {
   const handleSelect = () => {
-    if (!disabled) {
+    if (onSelect && !disabled) {
       onSelect(person.id);
     }
   };
@@ -35,7 +35,7 @@ const Person = ({
       id={`person_${person.id}`}
     >
       <div
-        className={`person ${disabled ? "disabled" : "enabled"} ${
+        className={`person ${disabled || !onSelect ? "disabled" : "enabled"} ${
           isAccused ? "accused" : "unaccused"
         } ${isRevealedSuspect ? "revealed-suspect" : ""}`}
         onClick={handleSelect}
