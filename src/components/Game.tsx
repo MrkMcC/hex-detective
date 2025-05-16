@@ -3,7 +3,7 @@ import { FaCaretLeft } from "react-icons/fa";
 import PersonData from "../classes/PersonData";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
-import ModalService from "../services/ModalService";
+import TutorialService from "../services/TutorialService";
 import GameSettingsT from "../types/GameSettingsT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
@@ -119,7 +119,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   //#region tutorial
   const setupTutorialRound = (state: TutorialState) => {
-    const newPeople = PersonService.GenerateTutorialPeople(state);
+    const newPeople = TutorialService.GeneratePeople(state);
     let newSuspect: PersonData | null = null;
 
     switch (state.stage) {
@@ -153,7 +153,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
   useEffect(() => {
     if (tutorialState !== null && tutorialState.round === 1)
-      ModalService.ShowTutorial(tutorialState.stage);
+      TutorialService.ShowModal(tutorialState.stage);
   }, [tutorialState]);
   //#endregion
 
