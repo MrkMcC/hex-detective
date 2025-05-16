@@ -11,6 +11,7 @@ import GameSettingsT from "./types/GameSettingsT";
 
 //consolidate these + other notes into roadmap
 
+//- hover-help such as pants: this includes skirts
 //- Add "How to read hex colour codes" to how-to-play
 //- Difficulty Options
 //-- show colour triangle option

@@ -24,6 +24,13 @@ class PersonData {
   colours: PersonColoursT;
   variations: PersonVariationsT;
   ruledOut = false;
+  equals = (other: PersonData) => {
+    return (
+      this.colours.hat.equals(other.colours.hat) &&
+      this.colours.shirt.equals(other.colours.shirt) &&
+      this.colours.pants.equals(other.colours.pants)
+    );
+  };
 
   constructor(hat: Colour, shirt: Colour, pants: Colour, head?: Colour) {
     this.id = nanoid();

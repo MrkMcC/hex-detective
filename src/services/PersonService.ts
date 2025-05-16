@@ -1,5 +1,10 @@
 import PersonData from "../classes/PersonData";
+import ArrayHelper from "../helper/ArrayHelper";
+import CrowdT from "../types/CrowdT";
 import ColourService from "./ColourService";
+import LogService from "./LogService";
+
+const LOG_SUBJECT = "PersonService";
 
 const randomPerson = (): PersonData => {
   return new PersonData(
@@ -9,23 +14,35 @@ const randomPerson = (): PersonData => {
   );
 };
 
-const randomPeople = (amount: number) => {
-  const ppl: PersonData[] = [];
-  for (let index = 0; index < amount; index++) {
-    ppl.push(randomPerson());
-  }
-  return ppl;
+const generateNonDuplicate = (
+  constructionInstruction: () => PersonData,
+  unique?: PersonData
+) => {
+  const newPerson = constructionInstruction();
+
+  if (unique && unique.equals(newPerson)) {
+    LogService.Debug(LOG_SUBJECT, "Duplicate detected. Re-generating...");
+    return generateNonDuplicate(constructionInstruction, unique);
+  } else return newPerson;
 };
 
 const generatePeople = (
   constructionInstruction: () => PersonData,
   amount: number
-) => {
-  const result: PersonData[] = [];
+): CrowdT => {
+  const people: PersonData[] = [];
+  let suspect: PersonData | undefined = undefined;
   for (let index = 0; index < amount; index++) {
-    result.push(constructionInstruction());
+    const newPerson = generateNonDuplicate(constructionInstruction, suspect);
+    if (!suspect) suspect = newPerson;
+
+    people.push(newPerson);
   }
-  return result;
+  return new CrowdT(ArrayHelper.Shuffle(people), suspect!.id);
+};
+
+const randomCrowd = (amount: number) => {
+  return generatePeople(randomPerson, amount);
 };
 
 const findPersonById = (people: PersonData[], id?: string) => {
@@ -33,7 +50,7 @@ const findPersonById = (people: PersonData[], id?: string) => {
 };
 
 const PersonService = {
-  RandomPeople: randomPeople,
+  RandomCrowd: randomCrowd,
   GeneratePeople: generatePeople,
   FindPersonById: findPersonById,
 };

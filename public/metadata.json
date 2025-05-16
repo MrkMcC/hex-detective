@@ -10,6 +10,11 @@
         "Playable on Chrome desktop and mostly free of critical bugs"
       ],
       "bugs": []
+    },
+    {
+      "version": "1.1",
+      "features": ["Interactive Tutorial"],
+      "bugs": ["It was possible that multiple persons fit the description"]
     }
   ],
   "roadmap": [

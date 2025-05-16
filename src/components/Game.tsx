@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
-import PersonData from "../classes/PersonData";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialService from "../services/TutorialService";
+import CrowdT from "../types/CrowdT";
 import GameSettingsT from "../types/GameSettingsT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
 import GameStatus from "./../enum/GameStatus";
-import ArrayHelper from "./../helper/ArrayHelper";
 import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
@@ -26,8 +25,14 @@ const initialGameData: GameDataT = {
 
 function Game({ status, onChangeStatus, settings }: Props) {
   const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
-  const [people, setPeople] = useState<PersonData[]>([]);
-  const [suspectId, setSuspectId] = useState<string>();
+
+  const [crowd, setCrowd] = useState<CrowdT>();
+
+  //TODO Remove
+  // const [people, setPeople] = useState<PersonData[]>([]);
+  //TODO Remove
+  // const [suspectId, setSuspectId] = useState<string>();
+
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
     SuspectSelectionMode.Accuse
   );
@@ -38,12 +43,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
 
-  const getSuspect = () => PersonService.FindPersonById(people, suspectId);
+  //TODO Remove
+  // const getSuspect = () => PersonService.FindPersonById(people, suspectId);
 
   const initialiseRoundState = () => {
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
-    setPeople([]);
+    setCrowd(undefined);
   };
 
   const score = () => {
@@ -70,7 +76,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const accuse = (personId: string) => {
     setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
-      if (personId === suspectId) {
+      if (personId === crowd!.suspectId) {
         score();
       } else onChangeStatus(GameStatus.GameOver);
     }
@@ -80,11 +86,18 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const handleSelect = (personId: string) => {
     switch (currentSelectionMode) {
       case SuspectSelectionMode.RuleOut:
-        setPeople((prevPeople) =>
-          prevPeople.map((p) =>
+        setCrowd((prev) => ({
+          ...prev!,
+          people: prev!.people.map((p) =>
             p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
-          )
-        );
+          ),
+        }));
+        //TODO Remove
+        // setPeople((prevPeople) =>
+        //   prevPeople.map((p) =>
+        //     p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
+        //   )
+        // );
         break;
       case SuspectSelectionMode.Accuse:
         accuse(personId);
@@ -120,8 +133,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       return;
     }
 
-    const newPeople = TutorialService.GeneratePeople(tutorialState);
-    let newSuspect: PersonData | null = null;
+    const newCrowd = TutorialService.GeneratePeople(tutorialState);
 
     switch (tutorialState.stage) {
       case 1:
@@ -129,7 +141,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
           ...prev,
           flavour: ColourFlavour.Name,
         }));
-        newSuspect = newPeople[gameData.roundsWon];
         break;
       case 2:
         setSuspectInfoOptions((prev) => ({
@@ -146,11 +157,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
       default:
         throw `NOT IMPLEMENTED: setup tutorial stage ${tutorialState.stage}.${tutorialState.round}`;
     }
-
-    if (newSuspect === null) newSuspect = ArrayHelper.RandomElement(newPeople);
-
-    setPeople(newPeople);
-    setSuspectId(newSuspect.id);
+    setCrowd(newCrowd);
+    //TODO Remove
+    // setPeople(newCrowd.people);
+    // setSuspectId(newCrowd.suspectId);
   };
   useEffect(() => {
     if (tutorialState !== null && tutorialState.round === 1)
@@ -162,13 +172,14 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const startNewRound = () => {
     if (settings.tutorial) setupTutorialRound();
     else {
-      const newPeople = PersonService.RandomPeople(
+      const newCrowd = PersonService.RandomCrowd(
         settings.crowdSizeInitial +
           settings.crowdSizeIncrement * gameData.roundsWon
       );
-      const suspect = ArrayHelper.RandomElement(newPeople);
-      setPeople(newPeople);
-      setSuspectId(suspect.id);
+      setCrowd(newCrowd);
+      //TODO Remove
+      // setPeople(newCrowd.people);
+      // setSuspectId(newCrowd.suspectId);
     }
 
     setAccusedPersonId(null);
@@ -176,7 +187,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const tryStartNextRound = () => {
-    if (people.length === 0) {
+    if (crowd === undefined) {
       startNewRound();
     }
   };
@@ -184,7 +195,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#endregion
 
   //#region Component Construction
-  const personElements = people.map((p) => (
+  const personElements = crowd?.people.map((p) => (
     <Person
       key={p.id}
       person={p}
@@ -194,7 +205,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       }
       isAccused={accusedPersonId === p.id}
       isRevealedSuspect={
-        status === GameStatus.GameOver && p.id === getSuspect()!.id
+        status === GameStatus.GameOver && p.id === crowd.getSuspect()!.id
       }
       onSelect={handleSelect}
     />
@@ -219,7 +230,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
           suspectInfoOptions={suspectInfoOptions}
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}
-          suspect={getSuspect()}
+          suspect={crowd?.getSuspect()}
           onReset={handleReset}
         />
       </div>

@@ -26,6 +26,13 @@ class Colour {
   hex: Rgb<string>;
   percentage: Rgb<string>;
   toString = () => this.hex.toString();
+  equals = (other: Colour) => {
+    return (
+      this.int.red === other.int.red &&
+      this.int.green === other.int.green &&
+      this.int.blue === other.int.blue
+    );
+  };
 
   constructor(red: number, green: number, blue: number, name?: string) {
     this.name = name;

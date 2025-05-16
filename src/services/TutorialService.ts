@@ -4,9 +4,13 @@ import TutorialBasicsPage2 from "../components/modal/tutorial/basics/TutorialBas
 import TutorialColoursPage1 from "../components/modal/tutorial/colour-mixing/TutorialColoursPage1";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
+import CrowdT from "../types/CrowdT";
 import TutorialState from "../types/TutorialState";
+import LogService from "./LogService";
 import ModalService from "./ModalService";
 import PersonService from "./PersonService";
+
+const LOG_SUBJECT = "TutorialService";
 
 const showModal = (stage: number) => {
   switch (stage) {
@@ -29,14 +33,19 @@ const showModal = (stage: number) => {
       });
       break;
     default:
-      throw `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`;
+      throw LogService.Error(
+        LOG_SUBJECT,
+        `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
+      );
   }
 };
 
-const generatePeople = (state: TutorialState) => {
+const generateCrowd = (state: TutorialState): CrowdT => {
+  let people: PersonData[];
+
   switch (state.stage) {
     case 1:
-      return [
+      people = [
         new PersonData(
           ColourPresets.Red,
           ColourPresets.Grey,
@@ -56,6 +65,7 @@ const generatePeople = (state: TutorialState) => {
           ColourPresets.Grey
         ),
       ];
+      return new CrowdT(people, people[state.round - 1].id);
     case 2:
       const baseColours = [
         ColourPresets.Red,
@@ -73,8 +83,8 @@ const generatePeople = (state: TutorialState) => {
         5 + 5 * state.round
       );
     case 3:
-      if (state.round === 1)
-        return [
+      if (state.round === 1) {
+        people = [
           new PersonData(
             ColourPresets.RedPerc100,
             ColourPresets.RedPerc25,
@@ -94,8 +104,9 @@ const generatePeople = (state: TutorialState) => {
             ColourPresets.RedPerc100
           ),
         ];
+      }
       if (state.round === 2)
-        return [
+        people = [
           new PersonData(
             ColourPresets.GreenPerc100,
             ColourPresets.GreenPerc25,
@@ -115,8 +126,8 @@ const generatePeople = (state: TutorialState) => {
             ColourPresets.GreenPerc100
           ),
         ];
-      if (state.round === 3)
-        return [
+      else {
+        people = [
           new PersonData(
             ColourPresets.BluePerc100,
             ColourPresets.BluePerc25,
@@ -136,14 +147,19 @@ const generatePeople = (state: TutorialState) => {
             ColourPresets.BluePerc100
           ),
         ];
+      }
+      return new CrowdT(people, ArrayHelper.RandomElement(people).id);
   }
 
-  throw `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`;
+  throw LogService.Error(
+    LOG_SUBJECT,
+    `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`
+  );
 };
 
 const TutorialService = {
   ShowModal: showModal,
-  GeneratePeople: generatePeople,
+  GeneratePeople: generateCrowd,
 };
 
 export default TutorialService;
