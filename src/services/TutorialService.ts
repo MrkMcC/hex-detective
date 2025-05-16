@@ -1,8 +1,6 @@
 import Crowd from "../classes/Crowd";
 import PersonData from "../classes/PersonData";
-import TutorialBasicsPage1 from "../components/modal/tutorial/basics/TutorialBasicsPage1";
-import TutorialBasicsPage2 from "../components/modal/tutorial/basics/TutorialBasicsPage2";
-import TutorialColoursPage1 from "../components/modal/tutorial/colour-mixing/TutorialColoursPage1";
+import TutorialStage from "../enum/TutorialStage";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
 import TutorialState from "../types/TutorialState";
@@ -10,26 +8,32 @@ import LogService from "./LogService";
 import ModalService from "./ModalService";
 import PersonService from "./PersonService";
 
+const HEADING_BASICS = "Basics";
+const HEADING_COLOURS = "Colours";
 const LOG_SUBJECT = "TutorialService";
 
-const showModal = (stage: number) => {
+const modalContentType: "tutorial" = "tutorial";
+
+const showModal = (stage: TutorialStage) => {
+  const modalContent = { type: modalContentType, index: Number(stage) };
+
   switch (stage) {
-    case 1:
+    case TutorialStage.Basics_Scoring:
       ModalService.ShowModal({
-        heading: "Basics",
-        pages: [{ title: "How to Score", body: TutorialBasicsPage1({}) }],
+        heading: HEADING_BASICS,
+        pages: [{ title: "How to Score", content: modalContent }],
       });
       break;
-    case 2:
+    case TutorialStage.Basics_SelectionMode:
       ModalService.ShowModal({
-        heading: "Basics",
-        pages: [{ title: "Ruling Out", body: TutorialBasicsPage2({}) }],
+        heading: HEADING_BASICS,
+        pages: [{ title: "Ruling Out", content: modalContent }],
       });
       break;
-    case 3:
+    case TutorialStage.Colours_Brightness:
       ModalService.ShowModal({
-        heading: "Colours",
-        pages: [{ title: "Brightness", body: TutorialColoursPage1({}) }],
+        heading: HEADING_COLOURS,
+        pages: [{ title: "Brightness", content: modalContent }],
       });
       break;
     default:
@@ -44,7 +48,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
   let people: PersonData[];
 
   switch (state.stage) {
-    case 1:
+    case TutorialStage.Basics_Scoring:
       people = [
         new PersonData(
           ColourPresets.Red,
@@ -66,7 +70,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
         ),
       ];
       return new Crowd(people, people[state.round - 1].id);
-    case 2:
+    case TutorialStage.Basics_SelectionMode:
       const baseColours = [
         ColourPresets.Red,
         ColourPresets.Green,
@@ -82,7 +86,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
           ),
         5 + 5 * state.round
       );
-    case 3:
+    case TutorialStage.Colours_Brightness:
       if (state.round === 1) {
         people = [
           new PersonData(

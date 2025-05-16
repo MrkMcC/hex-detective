@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
 type ModalPageT = {
   title: string;
-  body: ReactNode;
+  content: { type: "tutorial"; index: number };
 };
 
 type ModalOptionsT = {

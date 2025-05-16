@@ -3,7 +3,7 @@ $base_white: white !default;
 $base_grey: grey !default;
 $base_grey-bright: #999999 !default;
 $base_grey-dark: #505050 !default;
-$base_grey-darkest: #000000 !default;
+$base_grey-darkest: #101010 !default;
 $base_green: green !default;
 $base_red: red !default;
 
@@ -16,6 +16,7 @@ $bg-red: $base_red;
 
 $c-white: $base_white;
 $c-black: $base_black;
+$c_green: $base_green;
 $c-grey: $base_grey;
 
 $br_black: $base_black;

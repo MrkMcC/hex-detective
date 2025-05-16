@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import PersonData from "../../types/PersonData_deprecated";
+import PersonData from "../../classes/PersonData";
 import Eye from "./Eye";
 
 interface Props {
@@ -28,7 +28,10 @@ const Eyes = ({ person }: Props) => {
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      console.log("called");
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (

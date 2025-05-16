@@ -52,59 +52,6 @@
     text-align: center;
   }
 
-  .selection-mode {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &:not(.accuse) .description .accuse {
-      visibility: hidden;
-    }
-    &:not(.rule-out) .description .rule-out {
-      visibility: hidden;
-    }
-
-    .description {
-      width: 100%;
-      position: relative;
-      p {
-        width: 100%;
-        position: absolute;
-      }
-    }
-    p {
-      flex-shrink: 1;
-      text-align: center;
-      text-overflow: ellipsis;
-      text-wrap-mode: wrap;
-    }
-    .button-group {
-      button {
-        border-color: Colours.$br_black;
-        &.rule-out {
-          background-color: Colours.$bg-green;
-        }
-        &.accuse {
-          background-color: Colours.$bg-red;
-        }
-        &.active {
-          cursor: unset;
-          color: Colours.$c-black;
-        }
-        &.inactive {
-          color: Colours.$c-black;
-          background-color: darkgray;
-
-          &:hover {
-            background-color: gray;
-            color: white;
-            border-color: white;
-          }
-        }
-      }
-    }
-  }
-
   .status {
     margin: 0;
   }

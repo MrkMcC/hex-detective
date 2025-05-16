@@ -3,10 +3,14 @@ import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 interface Props {
   currentMode: SuspectSelectionMode;
   onSelect: (mode: SuspectSelectionMode) => void;
-  compact: boolean;
+  compact?: boolean;
 }
 
-const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
+const SelectionModeControl = ({
+  currentMode,
+  onSelect,
+  compact = false,
+}: Props) => {
   return (
     <div
       className={`selection-mode ${currentMode} ${
@@ -38,10 +42,10 @@ const SelectionModeControl = ({ currentMode, onSelect, compact }: Props) => {
       </div>
       {!compact && (
         <div className="description">
+          <p className="accuse spectral">Found the suspect? Click on them!</p>
           <p className="rule-out">
             Click on people who DO NOT fit the description to rule them out
           </p>
-          <p className="accuse">Found the suspect? Click on them!</p>
         </div>
       )}
     </div>

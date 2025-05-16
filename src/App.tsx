@@ -8,6 +8,7 @@ import GameStatus from "./enum/GameStatus";
 
 //#region development notes
 //Tutorial Update notes
+//-visually separate modal heading from content somehow (underline?)
 //-BUG: Modal Overlay not above Control Panel
 //-Add Hex code tutorial
 //-Improve tutorial modal to show tutorial progress

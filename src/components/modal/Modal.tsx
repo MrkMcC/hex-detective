@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ColourService from "../../services/ColourService";
 import ModalService from "../../services/ModalService";
 import ModalOptionsT from "../../types/components/ModalOptionsT";
+import TutorialPage from "./tutorial/TutorialPage";
 
 interface Props {}
 
@@ -9,6 +10,7 @@ const Modal = ({}: Props) => {
   const [options, setOptions] = useState<ModalOptionsT | null>(null);
   const [pageIndex, setPageIndex] = useState(0);
 
+  const currentPage = options?.pages[pageIndex];
   const multiPage = options && options.pages.length > 1;
 
   useEffect(() => ModalService.SetListener(initialiseNewModal));
@@ -30,7 +32,7 @@ const Modal = ({}: Props) => {
     setPageIndex((prev) => prev - 1);
   };
 
-  return options !== null ? (
+  return currentPage ? (
     <>
       <div className="modal-overlay"></div>
       <div
@@ -40,12 +42,16 @@ const Modal = ({}: Props) => {
         <button className="modal-btn-close large" onClick={handleClose}>
           X
         </button>
-        <div className="modal-header">
+        <div className="modal-header text-center">
           <h1 className="margin-0">
-            {options.heading} - {options.pages[pageIndex].title}
+            {options.heading} - {currentPage.title}
           </h1>
         </div>
-        <div className="modal-body">{options.pages[pageIndex].body}</div>
+        <div className="modal-body">
+          {currentPage.content.type === "tutorial" && (
+            <TutorialPage stage={currentPage.content.index} />
+          )}
+        </div>
         <div className={`modal-footer flex-row justify-between`}>
           <div>
             {multiPage && (

@@ -41,6 +41,10 @@ h2 {
   color: Colours.$c-white;
 }
 
+.color-green {
+  color: green;
+}
+
 .text-center {
   text-align: center;
 }
@@ -156,4 +160,8 @@ input.cool {
 
 .p-1 {
   padding: 1em;
+}
+
+.hidden {
+  visibility: hidden;
 }

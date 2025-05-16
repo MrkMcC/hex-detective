@@ -1,3 +1,24 @@
-.hex-tutorial {
+@use "vars/Colours";
+
+.tutorial {
   font-size: 1.5em;
+
+  .tutorial-task {
+    &.complete {
+      color: Colours.$c_green;
+    }
+    &.incomplete {
+      .check-mark {
+        visibility: hidden;
+      }
+    }
+
+    .check-mark {
+      position: absolute;
+      color: Colours.$c_green;
+      vertical-align: text-bottom;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+    }
+  }
 }

@@ -4,6 +4,7 @@ import Crowd from "../classes/Crowd";
 import GameSettings from "../classes/GameSettings";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
+import TutorialStage from "../enum/TutorialStage";
 import TutorialService from "../services/TutorialService";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
@@ -114,26 +115,26 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#region tutorial
   const setupTutorialRound = () => {
     if (tutorialState === null) {
-      setTutorialState({ stage: 1, round: 1 });
+      setTutorialState({ stage: TutorialStage.Basics_Scoring, round: 1 });
       return;
     }
 
     const newCrowd = TutorialService.GeneratePeople(tutorialState);
 
     switch (tutorialState.stage) {
-      case 1:
+      case TutorialStage.Basics_Scoring:
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Name,
         }));
         break;
-      case 2:
+      case TutorialStage.Basics_SelectionMode:
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Name,
         }));
         break;
-      case 3:
+      case TutorialStage.Colours_Brightness:
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Name,

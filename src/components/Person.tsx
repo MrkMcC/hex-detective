@@ -29,6 +29,7 @@ const Person = ({
 
   return (
     <div
+      key={person.id}
       className={`person-container ${
         person.ruledOut ? "ruled-out" : "ruled-in"
       }`}

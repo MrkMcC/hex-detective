@@ -1,5 +1,7 @@
+import TutorialStage from "../enum/TutorialStage";
+
 type TutorialState = {
-  stage: number;
+  stage: TutorialStage;
   round: number;
 };
 
