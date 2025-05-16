@@ -42,5 +42,8 @@
   }
   .modal-footer {
     padding: 1em;
+    button {
+      min-width: 6em;
+    }
   }
 }

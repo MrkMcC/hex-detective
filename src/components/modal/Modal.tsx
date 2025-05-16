@@ -9,6 +9,8 @@ const Modal = ({}: Props) => {
   const [options, setOptions] = useState<ModalOptionsT | null>(null);
   const [pageIndex, setPageIndex] = useState(0);
 
+  const multiPage = options && options.pages.length > 1;
+
   useEffect(() => ModalService.SetListener(initialiseNewModal));
 
   const initialiseNewModal = (options: ModalOptionsT) => {
@@ -44,10 +46,14 @@ const Modal = ({}: Props) => {
           </h1>
         </div>
         <div className="modal-body">{options.pages[pageIndex].body}</div>
-        <div className="modal-footer flex-row justify-between">
+        <div className={`modal-footer flex-row justify-between`}>
           <div>
-            {pageIndex > 0 && (
-              <button className="large" onClick={handlePrevious}>
+            {multiPage && (
+              <button
+                className="large"
+                onClick={handlePrevious}
+                disabled={pageIndex <= 0}
+              >
                 Previous
               </button>
             )}
@@ -58,7 +64,7 @@ const Modal = ({}: Props) => {
             </button>
           ) : (
             <button className="large" onClick={handleClose}>
-              Close
+              {multiPage ? "Close" : "OK"}
             </button>
           )}
         </div>
