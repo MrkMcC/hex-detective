@@ -108,8 +108,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
             ColourPresets.RedPerc100
           ),
         ];
-      }
-      if (state.round === 2)
+      } else if (state.round === 2) {
         people = [
           new PersonData(
             ColourPresets.GreenPerc100,
@@ -130,7 +129,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
             ColourPresets.GreenPerc100
           ),
         ];
-      else {
+      } else {
         people = [
           new PersonData(
             ColourPresets.BluePerc100,

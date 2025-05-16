@@ -115,7 +115,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   //#region tutorial
   const setupTutorialRound = () => {
     if (tutorialState === null) {
-      setTutorialState({ stage: TutorialStage.Basics_Scoring, round: 1 });
+      setTutorialState({ stage: TutorialStage.Colours_Brightness, round: 1 });
       return;
     }
 

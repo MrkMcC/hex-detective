@@ -20,7 +20,7 @@ const TutorialColoursPage1 = ({}: Props) => {
 
   return (
     <div
-      className="hex-tutorial font-sans-serif text-center"
+      className="tutorial font-sans-serif text-center"
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>Colours are made of light. More colour, more light!</p>
@@ -39,34 +39,6 @@ const TutorialColoursPage1 = ({}: Props) => {
           <ColourMix
             colour={ColourService.ColourFromHex("400000")}
             options={redShadesOptions}
-          />
-        </div>
-        <div className="flex-row wrap justify-center tutorial-colours">
-          <ColourMix
-            colour={ColourService.ColourFromHex("00ff00")}
-            options={greenShadesOptions}
-          />
-          <ColourMix
-            colour={ColourService.ColourFromHex("008000")}
-            options={greenShadesOptions}
-          />
-          <ColourMix
-            colour={ColourService.ColourFromHex("004000")}
-            options={greenShadesOptions}
-          />
-        </div>
-        <div className="flex-row wrap justify-center tutorial-colours">
-          <ColourMix
-            colour={ColourService.ColourFromHex("0000ff")}
-            options={blueShadesOptions}
-          />
-          <ColourMix
-            colour={ColourService.ColourFromHex("000080")}
-            options={blueShadesOptions}
-          />
-          <ColourMix
-            colour={ColourService.ColourFromHex("000040")}
-            options={blueShadesOptions}
           />
         </div>
       </div>
