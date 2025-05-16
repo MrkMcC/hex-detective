@@ -31,11 +31,18 @@ import GameSettingsT from "./types/GameSettingsT";
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
   const [settings, setSettings] = useState<GameSettingsT>({
+    tutorial: false,
     crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
   });
 
   const handleStartGame = () => {
+    setSettings((prev) => ({ ...prev, tutorial: false }));
+    setStatus(GameStatus.InProgress);
+  };
+
+  const handleStartTutorial = () => {
+    setSettings((prev) => ({ ...prev, tutorial: true }));
     setStatus(GameStatus.InProgress);
   };
 
@@ -47,6 +54,7 @@ function App() {
           settings={settings}
           onChangeSettings={setSettings}
           onStartGame={handleStartGame}
+          onStartTutorial={handleStartTutorial}
         />
       ) : (
         <Game

@@ -7,9 +7,15 @@ interface Props {
   settings: GameSettingsT;
   onChangeSettings: (settings: GameSettingsT) => void;
   onStartGame: () => void;
+  onStartTutorial: () => void;
 }
 
-const MainMenu = ({ settings, onChangeSettings, onStartGame }: Props) => {
+const MainMenu = ({
+  settings,
+  onChangeSettings,
+  onStartGame,
+  onStartTutorial,
+}: Props) => {
   return (
     <div className="main-menu">
       <div className="column column-left">
@@ -24,6 +30,9 @@ const MainMenu = ({ settings, onChangeSettings, onStartGame }: Props) => {
         <div className="new-game-container">
           <button className="large" onClick={onStartGame}>
             New Game
+          </button>
+          <button className="large" onClick={onStartTutorial}>
+            Tutorial
           </button>
         </div>
       </div>
