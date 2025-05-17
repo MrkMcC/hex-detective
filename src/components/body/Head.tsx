@@ -1,4 +1,4 @@
-import PersonData from "../../types/PersonData_deprecated";
+import PersonData from "../../classes/PersonData";
 import Eyes from "./Eyes";
 import Mouth from "./Mouth";
 

@@ -1,4 +1,4 @@
-import PersonData from "../../types/PersonData_deprecated";
+import PersonData from "../../classes/PersonData";
 
 interface Props {
   person: PersonData;
