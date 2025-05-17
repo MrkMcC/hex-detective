@@ -49,7 +49,7 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         },
       ];
       break;
-    case TutorialStage.Colours_Dominance:
+    case TutorialStage.Colours_Imbalance:
       heading = HEADING_COLOURS;
       pages = [
         {

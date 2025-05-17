@@ -116,7 +116,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Colours_Saturation,
+        stage: TutorialStage.Colours_Imbalance,
         round: 1,
       });
       return;
@@ -134,7 +134,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
           flavour: ColourFlavour.Name,
         }));
         break;
-      case TutorialStage.Colours_Dominance:
+      case TutorialStage.Colours_Imbalance:
       case TutorialStage.Colours_Saturation:
         setSuspectInfoOptions((prev) => ({
           ...prev,

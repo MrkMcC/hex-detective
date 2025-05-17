@@ -167,7 +167,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
         ),
       ];
       return new Crowd(ArrayHelper.Shuffle(people), people[state.round - 1].id);
-    case TutorialStage.Colours_Dominance:
+    case TutorialStage.Colours_Imbalance:
       people = [
         new PersonData(
           ColourService.GenerateColour(0, 128, 255),

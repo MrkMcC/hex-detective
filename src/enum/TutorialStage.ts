@@ -4,7 +4,7 @@ enum TutorialStage {
   Colours_Brightness,
   Colours_Complementary,
   Colours_Saturation,
-  Colours_Dominance,
+  Colours_Imbalance,
   Colours_Exam,
 }
 
