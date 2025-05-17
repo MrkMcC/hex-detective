@@ -27,11 +27,11 @@ const TutColComplementary2 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>
-        The descriptions you get will only tell you how much red, green and blue
-        are in a colour.
+        #HexDetective will test your understanding of how R, G and B interact.
       </p>
       <p>
-        You have to figure out yourself what that mix looks like. Some examples:
+        If we mix two primary colours, we get a secondary colour. The secondary
+        colours are:
       </p>
       <div className="flex-row gap-1 wrap justify-center">
         <BarChart
@@ -50,6 +50,8 @@ const TutColComplementary2 = ({}: Props) => {
           options={magentaOptions}
         />
       </div>
+      <p>You don't need to remember the names of these colours.</p>
+      <p>The descriptions you get will only refer to red, green and blue.</p>
       <p>
         Once again, take your time to understand each chart. This will be on the
         test.

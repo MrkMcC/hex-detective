@@ -35,7 +35,6 @@ const TutColSaturation2 = ({}: Props) => {
       </p>
       <div className="flex-row gap-1 wrap justify-center ">
         <BarChart
-          name="low saturation"
           colour={ColourService.ColourFromHex("b38080")}
           options={greyOptions}
         />
@@ -44,7 +43,6 @@ const TutColSaturation2 = ({}: Props) => {
           options={greyOptions}
         />
         <BarChart
-          name="high saturation"
           colour={ColourService.ColourFromHex("ff8000")}
           options={greyOptions}
         />

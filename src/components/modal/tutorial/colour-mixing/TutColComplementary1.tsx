@@ -31,7 +31,7 @@ const TutColComplementary1 = ({}: Props) => {
         <Green>G</Green>
         <Blue>B</Blue> for short.
       </p>
-      <p>All other colours are a mix of these three.</p>
+      <p>All other colours are a mix of these primary colours.</p>
       <p>#HexDetective uses this RGB chart to visualise colour mixing:</p>
       <div className="flex-row justify-center">
         <SimulationFrame>
