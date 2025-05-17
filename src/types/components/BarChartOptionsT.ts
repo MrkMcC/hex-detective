@@ -5,6 +5,10 @@ type ColourMixOptionsT = {
   showLetterR?: boolean;
   showLetterG?: boolean;
   showLetterB?: boolean;
+  editing?: {
+    enabled: boolean;
+    step?: number;
+  };
 };
 
 export default ColourMixOptionsT;

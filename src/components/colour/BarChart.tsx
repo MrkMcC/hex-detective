@@ -1,20 +1,38 @@
 import Colour from "../../classes/Colour";
 import ColourFlavour from "../../enum/ColourFlavour";
-import ColourMixOptionsT from "../../types/components/ColourMixOptionsT";
+import BarChartOptionsT from "../../types/components/BarChartOptionsT";
+import Slider from "../common/Slider";
 
 interface Props {
   colour: Colour;
   name?: string;
-  options?: ColourMixOptionsT;
+  options?: BarChartOptionsT;
+  onChange?: (colour: Colour) => void;
 }
 
-const BarChart = ({ colour, name = "", options }: Props) => {
+const BarChart = ({ colour, name = "", options, onChange }: Props) => {
   options! = {
     flavour: ColourFlavour.Hex,
     showLetterR: false,
     showLetterG: false,
     showLetterB: false,
+    editing: { enabled: false, step: 1 },
     ...options,
+  };
+
+  const handleRedChange = (value: number) => {
+    if (onChange)
+      onChange(
+        new Colour(Math.round(value), colour.int.green, colour.int.blue)
+      );
+  };
+  const handleGreenChange = (value: number) => {
+    if (onChange)
+      onChange(new Colour(colour.int.red, Math.round(value), colour.int.blue));
+  };
+  const handleBlueChange = (value: number) => {
+    if (onChange)
+      onChange(new Colour(colour.int.red, colour.int.green, Math.round(value)));
   };
 
   return (
@@ -84,6 +102,31 @@ const BarChart = ({ colour, name = "", options }: Props) => {
               {options.showLetterB && "B"}
             </span>
           </div>
+          {options.editing?.enabled && (
+            <>
+              <Slider
+                className="red"
+                value={colour.int.red}
+                onChange={handleRedChange}
+                max={255}
+                step={options.editing?.step}
+              />
+              <Slider
+                className="green"
+                value={colour.int.green}
+                onChange={handleGreenChange}
+                max={255}
+                step={options.editing?.step}
+              />
+              <Slider
+                className="blue"
+                value={colour.int.blue}
+                onChange={handleBlueChange}
+                max={255}
+                step={options.editing?.step}
+              />
+            </>
+          )}
         </div>
       </div>
       <div className="result-container">
