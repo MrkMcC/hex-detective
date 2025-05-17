@@ -167,6 +167,49 @@ const generateCrowd = (state: TutorialState): Crowd => {
         ),
       ];
       return new Crowd(ArrayHelper.Shuffle(people), people[state.round - 1].id);
+    case TutorialStage.Colours_PercNotation:
+      people = [
+        new PersonData(
+          ColourPresets.Tutorial.YellowPerc50,
+          ColourPresets.Tutorial.YellowPerc50,
+          ColourPresets.Tutorial.YellowPerc50,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.CyanPerc50,
+          ColourPresets.Tutorial.CyanPerc50,
+          ColourPresets.Tutorial.CyanPerc50,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.MagentaPerc50,
+          ColourPresets.Tutorial.MagentaPerc50,
+          ColourPresets.Tutorial.MagentaPerc50,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.RedPerc50,
+          ColourPresets.Tutorial.RedPerc50,
+          ColourPresets.Tutorial.RedPerc50,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.GreenPerc50,
+          ColourPresets.Tutorial.GreenPerc50,
+          ColourPresets.Tutorial.GreenPerc50,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Tutorial.BluePerc50,
+          ColourPresets.Tutorial.BluePerc50,
+          ColourPresets.Tutorial.BluePerc50,
+          ColourPresets.Grey
+        ),
+      ];
+      return new Crowd(
+        ArrayHelper.Shuffle(people),
+        ArrayHelper.RandomElement(people).id
+      );
     case TutorialStage.Colours_Imbalance:
       people = [
         new PersonData(

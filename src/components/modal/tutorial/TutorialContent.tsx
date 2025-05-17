@@ -7,11 +7,11 @@ import TutBasRuleOut from "./basics/TutBasRuleOut";
 import TutColBrightness from "./colour-mixing/TutColBrightness";
 import TutColComplementary1 from "./colour-mixing/TutColComplementary1";
 import TutColComplementary2 from "./colour-mixing/TutColComplementary2";
-import TutColDominance1 from "./colour-mixing/TutColDominance1";
-import TutColDominance2 from "./colour-mixing/TutColDominance2";
+import TutColImbalance1 from "./colour-mixing/TutColImbalance1";
+import TutColImbalance2 from "./colour-mixing/TutColImbalance2";
+import TutColPercNotation from "./colour-mixing/TutColPercNotation";
 import TutColSaturation1 from "./colour-mixing/TutColSaturation1";
 import TutColSaturation2 from "./colour-mixing/TutColSaturation2";
-import TutorialColoursPage5 from "./colour-mixing/TutorialColoursPage5";
 
 interface Props {
   stage: TutorialStage;
@@ -49,15 +49,9 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         },
       ];
       break;
-    case TutorialStage.Colours_Imbalance:
+    case TutorialStage.Colours_PercNotation:
       heading = HEADING_COLOURS;
-      pages = [
-        {
-          title: "Colour Imbalance (1/2)",
-          body: <TutColDominance1 />,
-        },
-        { title: "Colour Imbalance (2/2)", body: <TutColDominance2 /> },
-      ];
+      pages = [{ title: "Percentage Notation", body: <TutColPercNotation /> }];
       break;
     case TutorialStage.Colours_Saturation:
       heading = HEADING_COLOURS;
@@ -66,10 +60,18 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         { title: "Saturation (2/2)", body: <TutColSaturation2 /> },
       ];
       break;
+    case TutorialStage.Colours_Imbalance:
+      heading = HEADING_COLOURS;
+      pages = [
+        {
+          title: "Colour Imbalance (1/2)",
+          body: <TutColImbalance1 />,
+        },
+        { title: "Colour Imbalance (2/2)", body: <TutColImbalance2 /> },
+      ];
+      break;
     case TutorialStage.Colours_Exam:
       heading = HEADING_COLOURS;
-      pages = [{ title: "", body: <TutorialColoursPage5 /> }];
-      break;
     default:
       throw LogService.Error(
         LOG_SUBJECT,
