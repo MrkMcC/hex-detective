@@ -70,8 +70,7 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         { title: "Colour Imbalance (2/2)", body: <TutColImbalance2 /> },
       ];
       break;
-    case TutorialStage.Colours_Exam:
-      heading = HEADING_COLOURS;
+    // case TutorialStage.Colours_Exam:
     default:
       throw LogService.Error(
         LOG_SUBJECT,
