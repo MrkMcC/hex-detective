@@ -28,16 +28,18 @@ const MainMenu = ({
           onChangeSettings={onChangeSettings}
         />
         <div className="new-game-container">
-          <button
-            className="large"
-            onClick={onStartGame}
-            disabled={!settings.valid()}
-          >
-            New Game
-          </button>
-          <button className="large" onClick={onStartTutorial}>
-            Tutorial
-          </button>
+          <div className="flex-col gap-1">
+            <button
+              className="large"
+              onClick={onStartGame}
+              disabled={!settings.valid()}
+            >
+              New Game
+            </button>
+            <button className="large" onClick={onStartTutorial}>
+              Tutorial (beta)
+            </button>
+          </div>
         </div>
       </div>
       <div className="column column-right">
