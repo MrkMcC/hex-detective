@@ -13,6 +13,7 @@ import GameStatus from "./enum/GameStatus";
 //-BUG: Modal Overlay not above Control Panel
 //-Add Hex code tutorial
 //-Improve tutorial modal to show tutorial progress
+//-Include an explanation on RGB vs. CMYK somewhere?
 
 //Difficulty Update notes
 //-show colour triangle option

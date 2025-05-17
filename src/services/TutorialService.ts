@@ -228,6 +228,69 @@ const generateCrowd = (state: TutorialState): Crowd => {
         ArrayHelper.Shuffle(people),
         ArrayHelper.RandomElement(people.slice(0, 6)).id
       );
+    case TutorialStage.Colours_Saturation:
+      people = [
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.BrighterGrey,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.BrightGrey,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.DarkGrey,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.LowSatRed,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.LowSatGreen,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.LowSatBlue,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.HighSatRed,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.HighSatGreen,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+        new PersonData(
+          ColourPresets.Grey,
+          ColourPresets.Tutorial.HighSatBlue,
+          ColourPresets.Grey,
+          ColourPresets.Grey
+        ),
+      ];
+      return new Crowd(
+        ArrayHelper.Shuffle(people),
+        ArrayHelper.RandomElement(
+          people.slice(state.round * 3 - 3, state.round * 3)
+        ).id
+      );
   }
 
   throw LogService.Error(

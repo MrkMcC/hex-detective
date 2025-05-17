@@ -9,7 +9,8 @@ import TutColComplementary1 from "./colour-mixing/TutColComplementary1";
 import TutColComplementary2 from "./colour-mixing/TutColComplementary2";
 import TutColDominance1 from "./colour-mixing/TutColDominance1";
 import TutColDominance2 from "./colour-mixing/TutColDominance2";
-import TutorialColoursPage4 from "./colour-mixing/TutorialColoursPage4";
+import TutColSaturation1 from "./colour-mixing/TutColSaturation1";
+import TutColSaturation2 from "./colour-mixing/TutColSaturation2";
 import TutorialColoursPage5 from "./colour-mixing/TutorialColoursPage5";
 
 interface Props {
@@ -60,7 +61,10 @@ const TutorialContent = ({ stage, onClose }: Props) => {
       break;
     case TutorialStage.Colours_Saturation:
       heading = HEADING_COLOURS;
-      pages = [{ title: "", body: <TutorialColoursPage4 /> }];
+      pages = [
+        { title: "Saturation (1/2)", body: <TutColSaturation1 /> },
+        { title: "Saturation (2/2)", body: <TutColSaturation2 /> },
+      ];
       break;
     case TutorialStage.Colours_Exam:
       heading = HEADING_COLOURS;

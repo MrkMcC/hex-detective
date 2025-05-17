@@ -14,7 +14,10 @@ const ColourPresets = {
   Magenta: new Colour(255, 0, 255, "magenta"),
   Crimson: new Colour(255, 0, 128, "crimson"),
   White: new Colour(255, 255, 255, "white"),
+  BrighterGrey: new Colour(216, 216, 216, "brighter grey"),
+  BrightGrey: new Colour(152, 152, 152, "bright grey"),
   Grey: new Colour(128, 128, 128, "grey"),
+  DarkGrey: new Colour(39, 39, 39, "dark grey"),
   Black: new Colour(0, 0, 0, "black"),
 
   Tutorial: {
@@ -31,6 +34,13 @@ const ColourPresets = {
     RedAndGreen: new Colour(255, 255, 0, "a mix of red and green"),
     GreenAndBlue: new Colour(0, 255, 255, "a mix of green and blue"),
     BlueAndRed: new Colour(255, 0, 255, "a mix of blue and red"),
+
+    LowSatRed: new Colour(179, 128, 128, "low saturated red"),
+    LowSatGreen: new Colour(128, 179, 128, "low saturated green"),
+    LowSatBlue: new Colour(128, 128, 179, "low saturated blue"),
+    HighSatRed: new Colour(179, 64, 64, "high saturated red"),
+    HighSatGreen: new Colour(64, 179, 64, "high saturated green"),
+    HighSatBlue: new Colour(64, 64, 179, "high saturated blue"),
   },
 };
 

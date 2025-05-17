@@ -3,8 +3,8 @@ enum TutorialStage {
   Basics_SelectionMode,
   Colours_Brightness,
   Colours_Complementary,
-  Colours_Dominance,
   Colours_Saturation,
+  Colours_Dominance,
   Colours_Exam,
 }
 
