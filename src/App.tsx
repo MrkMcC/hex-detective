@@ -22,6 +22,7 @@ import GameStatus from "./enum/GameStatus";
 
 //UI Update notes
 //-Rework collapse to increase people-container height as well
+//-Custom "Game over" message for the tutorial that is extra encouraging i.e. "Don't worry, making mistakes is part of learning."
 
 //#region maybe
 //Ultimate Immersion Update notes

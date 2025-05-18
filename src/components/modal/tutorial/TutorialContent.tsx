@@ -7,6 +7,8 @@ import TutBasRuleOut from "./basics/TutBasRuleOut";
 import TutColBrightness from "./colour-mixing/TutColBrightness";
 import TutColComplementary1 from "./colour-mixing/TutColComplementary1";
 import TutColComplementary2 from "./colour-mixing/TutColComplementary2";
+import TutColExam1 from "./colour-mixing/TutColExam1";
+import TutColExam2 from "./colour-mixing/TutColExam2";
 import TutColImbalance1 from "./colour-mixing/TutColImbalance1";
 import TutColImbalance2 from "./colour-mixing/TutColImbalance2";
 import TutColPercNotation from "./colour-mixing/TutColPercNotation";
@@ -70,7 +72,13 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         { title: "Colour Imbalance (2/2)", body: <TutColImbalance2 /> },
       ];
       break;
-    // case TutorialStage.Colours_Exam:
+    case TutorialStage.Colours_Exam:
+      heading = HEADING_COLOURS;
+      pages = [
+        { title: "Conclusion (1/2)", body: <TutColExam1 /> },
+        { title: "Conclusion (2/2)", body: <TutColExam2 /> },
+      ];
+      break;
     default:
       throw LogService.Error(
         LOG_SUBJECT,

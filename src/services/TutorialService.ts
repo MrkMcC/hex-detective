@@ -3,6 +3,7 @@ import PersonData from "../classes/PersonData";
 import TutorialStage from "../enum/TutorialStage";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
+import MathHelper from "../helper/MathHelper";
 import TutorialState from "../types/TutorialState";
 import ColourService from "./ColourService";
 import LogService from "./LogService";
@@ -334,12 +335,27 @@ const generateCrowd = (state: TutorialState): Crowd => {
           people.slice(state.round * 3 - 3, state.round * 3)
         ).id
       );
+    case TutorialStage.Colours_Exam:
+      const examColourConstruction = () => {
+        return Math.round(MathHelper.GetRandomNumberSliced(0, 255, 11));
+      };
+      const examPersonConstruction = () => {
+        return new PersonData(
+          ColourService.GenerateColour(examColourConstruction),
+          ColourService.GenerateColour(examColourConstruction),
+          ColourService.GenerateColour(examColourConstruction)
+        );
+      };
+      return PersonService.GenerateCrowd(
+        examPersonConstruction,
+        5 + state.round * 5
+      );
+    default:
+      throw LogService.Error(
+        LOG_SUBJECT,
+        `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`
+      );
   }
-
-  throw LogService.Error(
-    LOG_SUBJECT,
-    `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`
-  );
 };
 
 const TutorialService = {
