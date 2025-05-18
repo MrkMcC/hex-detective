@@ -20,19 +20,47 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
     ...options,
   };
 
+  const convertToCustomScale = (value: number) => {
+    if (options.editing?.customIntScale)
+      return Math.round((value / 255) * options.editing?.customIntScale);
+    else return value;
+  };
+
+  const convertFromCustomScale = (value: number) => {
+    if (options.editing?.customIntScale)
+      return Math.round((value / options.editing?.customIntScale) * 255);
+    else return value;
+  };
+
   const handleRedChange = (value: number) => {
     if (onChange)
       onChange(
-        new Colour(Math.round(value), colour.int.green, colour.int.blue)
+        new Colour(
+          Math.round(convertFromCustomScale(value)),
+          colour.int.green,
+          colour.int.blue
+        )
       );
   };
   const handleGreenChange = (value: number) => {
     if (onChange)
-      onChange(new Colour(colour.int.red, Math.round(value), colour.int.blue));
+      onChange(
+        new Colour(
+          colour.int.red,
+          Math.round(convertFromCustomScale(value)),
+          colour.int.blue
+        )
+      );
   };
   const handleBlueChange = (value: number) => {
     if (onChange)
-      onChange(new Colour(colour.int.red, colour.int.green, Math.round(value)));
+      onChange(
+        new Colour(
+          colour.int.red,
+          colour.int.green,
+          Math.round(convertFromCustomScale(value))
+        )
+      );
   };
 
   return (
@@ -53,9 +81,9 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
           )}
           {options.flavour === ColourFlavour.Int && (
             <>
-              <span>{colour.int.red}</span>
-              <span>{colour.int.green}</span>
-              <span>{colour.int.blue}</span>
+              <span>{convertToCustomScale(colour.int.red)}</span>
+              <span>{convertToCustomScale(colour.int.green)}</span>
+              <span>{convertToCustomScale(colour.int.blue)}</span>
             </>
           )}
           {options.flavour === ColourFlavour.Percentage && (
@@ -106,23 +134,23 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
             <>
               <Slider
                 className="red"
-                value={colour.int.red}
+                value={convertToCustomScale(colour.int.red)}
                 onChange={handleRedChange}
-                max={255}
+                max={options.editing.customIntScale ?? 255}
                 step={options.editing?.step}
               />
               <Slider
                 className="green"
-                value={colour.int.green}
+                value={convertToCustomScale(colour.int.green)}
                 onChange={handleGreenChange}
-                max={255}
+                max={options.editing.customIntScale ?? 255}
                 step={options.editing?.step}
               />
               <Slider
                 className="blue"
-                value={colour.int.blue}
+                value={convertToCustomScale(colour.int.blue)}
                 onChange={handleBlueChange}
-                max={255}
+                max={options.editing.customIntScale ?? 255}
                 step={options.editing?.step}
               />
             </>

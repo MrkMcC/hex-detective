@@ -6,7 +6,7 @@ interface Props {
   colour: Colour;
   reveal?: boolean;
   children?: ReactNode;
-  flavour: ColourFlavour;
+  flavour: ColourFlavour | ((colour: Colour) => string);
 }
 
 const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
@@ -21,6 +21,7 @@ const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
         {flavour === ColourFlavour.Int && colour.int.toString()}
         {flavour === ColourFlavour.Name && colour.name}
         {flavour === ColourFlavour.Percentage && colour.percentage.toString()}
+        {typeof flavour === "function" && flavour(colour)}
       </span>
     </span>
   );

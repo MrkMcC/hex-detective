@@ -45,6 +45,14 @@ const ColourPresets = {
     HighSatRed: new Colour(179, 64, 64, "high saturated red"),
     HighSatGreen: new Colour(64, 179, 64, "high saturated green"),
     HighSatBlue: new Colour(64, 64, 179, "high saturated blue"),
+
+    Base16Grey: new Colour(85, 85, 85, "grey"),
+    Base16LowSatRed: new Colour(85, 0, 0, "low saturated red"),
+    Base16LowSatGreen: new Colour(0, 85, 0, "low saturated green"),
+    Base16LowSatBlue: new Colour(0, 0, 85, "low saturated blue"),
+    Base16LowSatYellow: new Colour(85, 85, 0, "low saturated yellow"),
+    Base16LowSatCyan: new Colour(0, 85, 85, "low saturated cyan"),
+    Base16LowSatMagenta: new Colour(85, 0, 85, "low saturated magenta"),
   },
 };
 

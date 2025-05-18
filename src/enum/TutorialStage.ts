@@ -7,6 +7,7 @@ enum TutorialStage {
   Colours_Saturation,
   Colours_Imbalance,
   Colours_Exam,
+  Hex_ChangingScale,
 }
 
 export default TutorialStage;

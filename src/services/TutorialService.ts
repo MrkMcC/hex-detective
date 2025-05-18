@@ -350,6 +350,107 @@ const generateCrowd = (state: TutorialState): Crowd => {
         examPersonConstruction,
         5 + state.round * 5
       );
+    case TutorialStage.Hex_ChangingScale:
+      switch (state.round) {
+        case 1:
+          people = [
+            new PersonData(
+              ColourPresets.Tutorial.RedAndGreen,
+              ColourPresets.Tutorial.RedAndGreen,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.GreenAndBlue,
+              ColourPresets.Tutorial.GreenAndBlue,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.BlueAndRed,
+              ColourPresets.Tutorial.BlueAndRed,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Red,
+              ColourPresets.Red,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Green,
+              ColourPresets.Green,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Blue,
+              ColourPresets.Blue,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatRed,
+              ColourPresets.Tutorial.Base16LowSatRed,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatGreen,
+              ColourPresets.Tutorial.Base16LowSatGreen,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatBlue,
+              ColourPresets.Tutorial.Base16LowSatBlue,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatYellow,
+              ColourPresets.Tutorial.Base16LowSatYellow,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatCyan,
+              ColourPresets.Tutorial.Base16LowSatCyan,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+            new PersonData(
+              ColourPresets.Tutorial.Base16LowSatMagenta,
+              ColourPresets.Tutorial.Base16LowSatMagenta,
+              ColourPresets.Tutorial.Base16Grey,
+              ColourPresets.Grey
+            ),
+          ];
+          return new Crowd(
+            ArrayHelper.Shuffle(people),
+            ArrayHelper.RandomElement(people).id
+          );
+        case 2:
+        case 3:
+          const colourConstruction = () =>
+            ColourService.GenerateColour(
+              (MathHelper.GetRandomNumber(16) - 1) * 17,
+              (MathHelper.GetRandomNumber(16) - 1) * 17,
+              (MathHelper.GetRandomNumber(16) - 1) * 17
+            );
+          return PersonService.GenerateCrowd(
+            () =>
+              new PersonData(
+                colourConstruction(),
+                colourConstruction(),
+                colourConstruction(),
+                ColourPresets.Tutorial.Base16Grey
+              ),
+            12
+          );
+      }
+      throw "todo";
     default:
       throw LogService.Error(
         LOG_SUBJECT,

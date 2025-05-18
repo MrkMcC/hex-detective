@@ -9,6 +9,8 @@ class Rgb<T> {
   toString() {
     if (this.flavour == ColourFlavour.Hex)
       return `#${this.red}${this.green}${this.blue}`;
+    else if (this.flavour == ColourFlavour.Int)
+      return `(${this.red}, ${this.green}, ${this.blue})`;
     else return `(${this.red} ${this.green} ${this.blue})`;
   }
   toArray() {

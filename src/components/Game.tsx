@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
+import Colour from "../classes/Colour";
 import Crowd from "../classes/Crowd";
 import GameSettings from "../classes/GameSettings";
 import ColourFlavour from "../enum/ColourFlavour";
@@ -116,7 +117,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Colours_Exam,
+        stage: TutorialStage.Hex_ChangingScale,
         round: 1,
       });
       return;
@@ -141,6 +142,16 @@ function Game({ status, onChangeStatus, settings }: Props) {
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Percentage,
+        }));
+        break;
+      case TutorialStage.Hex_ChangingScale:
+        const convertToBase16 = (int: number) => (int / 255) * 15;
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: (colour: Colour) =>
+            `(${convertToBase16(colour.int.red)}, ${convertToBase16(
+              colour.int.green
+            )}, ${convertToBase16(colour.int.blue)})`,
         }));
         break;
       default:

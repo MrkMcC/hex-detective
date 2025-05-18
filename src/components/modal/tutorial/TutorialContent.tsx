@@ -14,6 +14,8 @@ import TutColImbalance2 from "./colour-mixing/TutColImbalance2";
 import TutColPercNotation from "./colour-mixing/TutColPercNotation";
 import TutColSaturation1 from "./colour-mixing/TutColSaturation1";
 import TutColSaturation2 from "./colour-mixing/TutColSaturation2";
+import TutHexChangingScale1 from "./hex/TutHexChangingScale1";
+import TutHexChangingScale2 from "./hex/TutHexChangingScale2";
 
 interface Props {
   stage: TutorialStage;
@@ -23,6 +25,7 @@ interface Props {
 const LOG_SUBJECT = "TutorialPage";
 const HEADING_BASICS = "";
 const HEADING_COLOURS = "";
+const HEADING_HEX = "";
 
 const TutorialContent = ({ stage, onClose }: Props) => {
   let heading: string;
@@ -77,6 +80,13 @@ const TutorialContent = ({ stage, onClose }: Props) => {
       pages = [
         { title: "Conclusion (1/2)", body: <TutColExam1 /> },
         { title: "Conclusion (2/2)", body: <TutColExam2 /> },
+      ];
+      break;
+    case TutorialStage.Hex_ChangingScale:
+      heading = HEADING_HEX;
+      pages = [
+        { title: "Changing the Scale (1/2)", body: <TutHexChangingScale1 /> },
+        { title: "Changing the Scale (2/2)", body: <TutHexChangingScale2 /> },
       ];
       break;
     default:

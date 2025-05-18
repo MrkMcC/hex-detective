@@ -8,6 +8,7 @@ type ColourMixOptionsT = {
   editing?: {
     enabled: boolean;
     step?: number;
+    customIntScale?: number;
   };
 };
 
