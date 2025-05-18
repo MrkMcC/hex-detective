@@ -117,7 +117,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Hex_ChangingScale,
+        stage: TutorialStage.Hex_Letters,
         round: 1,
       });
       return;
@@ -145,7 +145,18 @@ function Game({ status, onChangeStatus, settings }: Props) {
         }));
         break;
       case TutorialStage.Hex_ChangingScale:
-        const convertToBase16 = (int: number) => (int / 255) * 15;
+        const convertToInt16 = (int: number) => (int / 255) * 15;
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: (colour: Colour) =>
+            `(${convertToInt16(colour.int.red)}, ${convertToInt16(
+              colour.int.green
+            )}, ${convertToInt16(colour.int.blue)})`,
+        }));
+        break;
+      case TutorialStage.Hex_Letters:
+        const convertToBase16 = (int: number) =>
+          ((int / 255) * 15).toString(16).toUpperCase();
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: (colour: Colour) =>

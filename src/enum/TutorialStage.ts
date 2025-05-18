@@ -8,6 +8,7 @@ enum TutorialStage {
   Colours_Imbalance,
   Colours_Exam,
   Hex_ChangingScale,
+  Hex_Letters,
 }
 
 export default TutorialStage;

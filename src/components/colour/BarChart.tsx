@@ -72,26 +72,32 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
     >
       {options.flavour !== ColourFlavour.Hidden && (
         <div className="colour-text font-mono updog">
-          {options.flavour === ColourFlavour.Hex && (
+          {options.editing?.customValueText ? (
+            <>
+              <span>{options.editing.customValueText(colour.int.red)}</span>
+              <span>{options.editing.customValueText(colour.int.green)}</span>
+              <span>{options.editing.customValueText(colour.int.blue)}</span>
+            </>
+          ) : options.flavour === ColourFlavour.Hex ? (
             <>
               <span>{colour.hex.red}</span>
               <span>{colour.hex.green}</span>
               <span>{colour.hex.blue}</span>
             </>
-          )}
-          {options.flavour === ColourFlavour.Int && (
+          ) : options.flavour === ColourFlavour.Int ? (
             <>
               <span>{convertToCustomScale(colour.int.red)}</span>
               <span>{convertToCustomScale(colour.int.green)}</span>
               <span>{convertToCustomScale(colour.int.blue)}</span>
             </>
-          )}
-          {options.flavour === ColourFlavour.Percentage && (
-            <>
-              <span>{colour.percentage.red}</span>
-              <span>{colour.percentage.green}</span>
-              <span>{colour.percentage.blue}</span>
-            </>
+          ) : (
+            options.flavour === ColourFlavour.Percentage && (
+              <>
+                <span>{colour.percentage.red}</span>
+                <span>{colour.percentage.green}</span>
+                <span>{colour.percentage.blue}</span>
+              </>
+            )
           )}
         </div>
       )}

@@ -23,6 +23,23 @@ const showModal = (stage: TutorialStage) => {
 const generateCrowd = (state: TutorialState): Crowd => {
   let people: PersonData[];
 
+  const base16ColourConstruction = () =>
+    ColourService.GenerateColour(
+      (MathHelper.GetRandomNumber(16) - 1) * 17,
+      (MathHelper.GetRandomNumber(16) - 1) * 17,
+      (MathHelper.GetRandomNumber(16) - 1) * 17
+    );
+  const base16Crowd = PersonService.GenerateCrowd(
+    () =>
+      new PersonData(
+        base16ColourConstruction(),
+        base16ColourConstruction(),
+        base16ColourConstruction(),
+        ColourPresets.Tutorial.Base16Grey
+      ),
+    12
+  );
+
   switch (state.stage) {
     case TutorialStage.Basics_Scoring:
       people = [
@@ -433,24 +450,10 @@ const generateCrowd = (state: TutorialState): Crowd => {
           );
         case 2:
         case 3:
-          const colourConstruction = () =>
-            ColourService.GenerateColour(
-              (MathHelper.GetRandomNumber(16) - 1) * 17,
-              (MathHelper.GetRandomNumber(16) - 1) * 17,
-              (MathHelper.GetRandomNumber(16) - 1) * 17
-            );
-          return PersonService.GenerateCrowd(
-            () =>
-              new PersonData(
-                colourConstruction(),
-                colourConstruction(),
-                colourConstruction(),
-                ColourPresets.Tutorial.Base16Grey
-              ),
-            12
-          );
+          return base16Crowd;
       }
-      throw "todo";
+    case TutorialStage.Hex_Letters:
+      return base16Crowd;
     default:
       throw LogService.Error(
         LOG_SUBJECT,
