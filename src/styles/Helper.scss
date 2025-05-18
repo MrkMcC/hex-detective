@@ -151,22 +151,21 @@ input.cool {
   &.wrap {
     flex-wrap: wrap;
   }
-}
-
-.gap-mini > *:not(:last-child) {
-  margin-right: 0.25em;
-}
-.gap-1 > *:not(:last-child) {
-  margin-right: 1em;
-}
-.gap-1 > *:not(:last-child) {
-  margin-bottom: 1em;
-}
-.gap-2 > *:not(:last-child) {
-  margin-right: 2em;
-}
-.gap-2 > *:not(:last-child) {
-  margin-bottom: 2em;
+  &.gap-mini.flex-row > *:not(:last-child) {
+    margin-right: 0.25em;
+  }
+  &.gap-1.flex-row > *:not(:last-child) {
+    margin-right: 1em;
+  }
+  &.gap-1.flex-col > *:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  &.gap-2.flex-row > *:not(:last-child) {
+    margin-right: 2em;
+  }
+  &.gap-2.flex-col > *:not(:last-child) {
+    margin-bottom: 2em;
+  }
 }
 
 .border {

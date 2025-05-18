@@ -117,7 +117,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Hex_Letters,
+        stage: TutorialStage.Hex_DoubleDigits,
         round: 1,
       });
       return;
@@ -163,6 +163,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
             `(${convertToBase16(colour.int.red)}, ${convertToBase16(
               colour.int.green
             )}, ${convertToBase16(colour.int.blue)})`,
+        }));
+        break;
+      case TutorialStage.Hex_DoubleDigits:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: (colour: Colour) =>
+            `(${colour.hex.red}, ${colour.hex.green}, ${colour.hex.blue})`.toUpperCase(),
         }));
         break;
       default:

@@ -454,6 +454,8 @@ const generateCrowd = (state: TutorialState): Crowd => {
       }
     case TutorialStage.Hex_Letters:
       return base16Crowd;
+    case TutorialStage.Hex_DoubleDigits:
+      return PersonService.RandomCrowd(3);
     default:
       throw LogService.Error(
         LOG_SUBJECT,

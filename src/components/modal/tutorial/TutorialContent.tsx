@@ -16,6 +16,8 @@ import TutColSaturation1 from "./colour-mixing/TutColSaturation1";
 import TutColSaturation2 from "./colour-mixing/TutColSaturation2";
 import TutHexChangingScale1 from "./hex/TutHexChangingScale1";
 import TutHexChangingScale2 from "./hex/TutHexChangingScale2";
+import TutHexDoubleDigits1 from "./hex/TutHexDoubleDigits1";
+import TutHexDoubleDigits2 from "./hex/TutHexDoubleDigits2";
 import TutHexLetters1 from "./hex/TutHexLetters";
 import TutHexLetters2 from "./hex/TutHexLetters2";
 
@@ -96,6 +98,13 @@ const TutorialContent = ({ stage, onClose }: Props) => {
       pages = [
         { title: "Counting with Letters (1/2)", body: <TutHexLetters1 /> },
         { title: "Counting with Letters (2/2)", body: <TutHexLetters2 /> },
+      ];
+      break;
+    case TutorialStage.Hex_DoubleDigits:
+      heading = HEADING_HEX;
+      pages = [
+        { title: "Almost Done (1/2)", body: <TutHexDoubleDigits1 /> },
+        { title: "Almost Done (2/2)", body: <TutHexDoubleDigits2 /> },
       ];
       break;
     default:

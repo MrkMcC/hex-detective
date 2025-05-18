@@ -7,9 +7,7 @@ import SimulationFrame from "../SimulationFrame";
 interface Props {}
 
 const TutHexLetters2 = ({}: Props) => {
-  const [colour, setColour] = useState(
-    new Colour(119, 204, 255, "low saturated magenta")
-  );
+  const [colour, setColour] = useState(new Colour(119, 204, 255));
 
   const editableOptions = {
     flavour: ColourFlavour.Name,
@@ -25,12 +23,9 @@ const TutHexLetters2 = ({}: Props) => {
     <div className="tutorial font-sans-serif text-center">
       <p>Let's borrow a few letters from the alphabet.</p>
       <SimulationFrame>
-        <p className="m-0">1 2 3 4 5 6 7 8 9 A B C D E F</p>
+        <p className="m-0">0 1 2 3 4 5 6 7 8 9 A B C D E F</p>
       </SimulationFrame>
-      <p>
-        We'll just call it A instead of 10, B instead of 11, C instead of 12, D
-        instead of 13, E instead of 14 and F instead of 15.
-      </p>
+      <p>We'll just call it A instead of 10, B instead of 11, and so on.</p>
       <div className="flex-row gap-1 justify-center align-start">
         <SimulationFrame>
           <div className="flex-col">
