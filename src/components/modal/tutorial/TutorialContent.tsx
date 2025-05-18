@@ -18,6 +18,7 @@ import TutHexChangingScale1 from "./hex/TutHexChangingScale1";
 import TutHexChangingScale2 from "./hex/TutHexChangingScale2";
 import TutHexDoubleDigits1 from "./hex/TutHexDoubleDigits1";
 import TutHexDoubleDigits2 from "./hex/TutHexDoubleDigits2";
+import TutHexExam1 from "./hex/TutHexExam1";
 import TutHexLetters1 from "./hex/TutHexLetters";
 import TutHexLetters2 from "./hex/TutHexLetters2";
 
@@ -106,6 +107,10 @@ const TutorialContent = ({ stage, onClose }: Props) => {
         { title: "Almost Done (1/2)", body: <TutHexDoubleDigits1 /> },
         { title: "Almost Done (2/2)", body: <TutHexDoubleDigits2 /> },
       ];
+      break;
+    case TutorialStage.Hex_Exam:
+      heading = HEADING_HEX;
+      pages = [{ title: "The Finish Line", body: <TutHexExam1 /> }];
       break;
     default:
       throw LogService.Error(

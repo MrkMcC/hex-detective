@@ -117,7 +117,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Hex_DoubleDigits,
+        stage: TutorialStage.Hex_Exam,
         round: 1,
       });
       return;
@@ -170,6 +170,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
           ...prev,
           flavour: (colour: Colour) =>
             `(${colour.hex.red}, ${colour.hex.green}, ${colour.hex.blue})`.toUpperCase(),
+        }));
+        break;
+      case TutorialStage.Hex_Exam:
+        setSuspectInfoOptions((prev) => ({
+          ...prev,
+          flavour: ColourFlavour.Hex,
         }));
         break;
       default:

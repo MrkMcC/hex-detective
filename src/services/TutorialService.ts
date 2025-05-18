@@ -457,6 +457,8 @@ const generateCrowd = (state: TutorialState): Crowd => {
       return base16Crowd;
     case TutorialStage.Hex_DoubleDigits:
       return PersonService.RandomCrowd(3);
+    case TutorialStage.Hex_Exam:
+      return PersonService.RandomCrowd(5 * state.round);
   }
   throw LogService.Error(
     LOG_SUBJECT,

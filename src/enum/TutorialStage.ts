@@ -10,6 +10,7 @@ enum TutorialStage {
   Hex_ChangingScale,
   Hex_Letters,
   Hex_DoubleDigits,
+  Hex_Exam,
 }
 
 export default TutorialStage;
