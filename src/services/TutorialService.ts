@@ -452,16 +452,16 @@ const generateCrowd = (state: TutorialState): Crowd => {
         case 3:
           return base16Crowd;
       }
+      break;
     case TutorialStage.Hex_Letters:
       return base16Crowd;
     case TutorialStage.Hex_DoubleDigits:
       return PersonService.RandomCrowd(3);
-    default:
-      throw LogService.Error(
-        LOG_SUBJECT,
-        `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`
-      );
   }
+  throw LogService.Error(
+    LOG_SUBJECT,
+    `NOT IMPLEMENTED: Person generation for tutorial stage ${state.stage}.${state.round}`
+  );
 };
 
 const TutorialService = {
