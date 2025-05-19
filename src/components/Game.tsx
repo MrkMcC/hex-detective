@@ -251,7 +251,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
           onSelectSelectionMode={handleSelectSelectionMode}
           suspect={crowd?.getSuspect()}
           accused={crowd?.getPersonById(accusedPersonId)}
-          onReset={handleReset}
         />
         <HighScore gameData={gameData} />
         <div className="flex-col justify-center">

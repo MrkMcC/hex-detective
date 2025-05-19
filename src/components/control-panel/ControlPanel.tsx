@@ -16,7 +16,6 @@ interface Props {
   suspectInfoOptions: SuspectInfoOptionsT;
   currentSelectionMode: SuspectSelectionMode;
   onSelectSelectionMode: (mode: SuspectSelectionMode) => void;
-  onReset: () => void;
 }
 
 const ControlPanel = ({
@@ -26,7 +25,6 @@ const ControlPanel = ({
   suspectInfoOptions,
   currentSelectionMode,
   onSelectSelectionMode,
-  onReset,
 }: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
