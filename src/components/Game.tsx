@@ -51,13 +51,19 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const isRoundInProgress = status === GameStatus.InProgress;
   //#endregion
 
-  const initialiseRoundState = () => {
+  const initialiseRoundState = (resetProgress = false) => {
+    if (resetProgress) setGameData({ ...initialGameData });
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);
 
     if (tutorialState !== null) {
-      if (gameData.roundsWon >= 3) {
+      if (resetProgress)
+        setTutorialState((prev) => ({
+          stage: prev!.stage,
+          round: 1,
+        }));
+      else if (gameData.roundsWon >= 3) {
         setTutorialState((prev) => ({
           stage: prev!.stage + 1,
           round: 1,
@@ -66,7 +72,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       } else
         setTutorialState((prev) => ({
           ...prev!,
-          round: prev!.round + 1,
+          round: gameData.roundsWon + 1,
         }));
     }
   };
@@ -118,10 +124,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
       onChangeStatus(GameStatus.Setup);
   };
 
-  const handleReset = () => {
-    if (tutorialState) setTutorialState((prev) => ({ ...prev!, round: 1 }));
-    setGameData({ ...initialGameData });
+  const handleContinue = () => {
     initialiseRoundState();
+  };
+
+  const handleReset = () => {
+    initialiseRoundState(true);
   };
 
   const handleHideRuledOut = () => {
@@ -336,13 +344,21 @@ function Game({ status, onChangeStatus, settings }: Props) {
           </div>
           <div className="flex-col justify-center">
             {status === GameStatus.Scored && (
-              <button className="large" onClick={initialiseRoundState}>
+              <button className="large" onClick={handleContinue}>
                 Continue <FaCircleArrowRight className="icon" />
               </button>
             )}
             {status === GameStatus.Failed && (
               <button className="large" onClick={handleReset}>
-                Play again <FaRepeat className="icon" />
+                {tutorialState === null ? (
+                  <>
+                    Play again <FaRepeat className="icon" />
+                  </>
+                ) : (
+                  <>
+                    Continue <FaCircleArrowRight className="icon" />
+                  </>
+                )}
               </button>
             )}
           </div>
