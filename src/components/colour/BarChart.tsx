@@ -72,11 +72,11 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
     >
       {options.flavour !== ColourFlavour.Hidden && (
         <div className="colour-text font-mono updog">
-          {options.editing?.customValueText ? (
+          {options.customValueText ? (
             <>
-              <span>{options.editing.customValueText(colour.int.red)}</span>
-              <span>{options.editing.customValueText(colour.int.green)}</span>
-              <span>{options.editing.customValueText(colour.int.blue)}</span>
+              <span>{options.customValueText(colour.int.red)}</span>
+              <span>{options.customValueText(colour.int.green)}</span>
+              <span>{options.customValueText(colour.int.blue)}</span>
             </>
           ) : options.flavour === ColourFlavour.Hex ? (
             <>

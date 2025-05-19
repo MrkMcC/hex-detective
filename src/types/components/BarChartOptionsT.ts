@@ -9,8 +9,8 @@ type ColourMixOptionsT = {
     enabled: boolean;
     step?: number;
     customIntScale?: number;
-    customValueText?: (int: number) => string;
   };
+  customValueText?: (int: number) => string;
 };
 
 export default ColourMixOptionsT;

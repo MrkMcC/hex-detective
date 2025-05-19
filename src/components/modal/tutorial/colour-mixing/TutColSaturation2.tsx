@@ -48,7 +48,7 @@ const TutColSaturation2 = ({}: Props) => {
         />
       </div>
       <p>
-        Low saturation makes a colour greyish, high saturation means the colour
+        Low saturation makes a colour greyish. High saturation means the colour
         is more intense.
       </p>
     </div>

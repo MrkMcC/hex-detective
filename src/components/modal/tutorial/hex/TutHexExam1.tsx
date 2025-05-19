@@ -12,12 +12,12 @@ const TutHexExam1 = ({}: Props) => {
       </p>
       <p>Hexa-decem is half greek, half latin and means 16.</p>
       <p>
-        It's also known as base-16, because of it's 16 digits, while our
-        everyday numeral system is called base-10.
+        It's also known as "base 16", because of its 16 digits, while our
+        regular numeral system is base 10.
       </p>
       <p>
-        The hexadecimal system - or hex for short - is commonly used by programs
-        such as internet browsers.
+        The hexadecimal system - or hex for short - is commonly used by
+        applications such as internet browsers.
       </p>
       <p>
         Instead of (<Red>FF</Red>, <Green>FF</Green>, <Blue>FF</Blue>), the
@@ -31,7 +31,7 @@ const TutHexExam1 = ({}: Props) => {
         These hex colour codes can distinguish between 256 different levels of
         red, green and blue each, resulting in over 16 million possible colours.
       </p>
-      <p>You are now capable of reading and writing them.</p>
+      <p>You are now capable of reading and writing these hex codes.</p>
     </div>
   );
 };

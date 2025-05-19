@@ -8,9 +8,31 @@ import SimulationFrame from "../SimulationFrame";
 interface Props {}
 
 const TutHexDoubleDigits1 = ({}: Props) => {
-  const [colour, setColour] = useState(new Colour(240, 128, 43));
+  const initialColour = new Colour(240, 128, 43);
+  const toOldScale = (colour: Colour) => {
+    const transform = (int: number) => Math.round(int / 17) * 17;
+    return new Colour(
+      transform(colour.int.red),
+      transform(colour.int.green),
+      transform(colour.int.blue)
+    );
+  };
 
-  const editableOptions = {
+  const [colour, setColour] = useState(initialColour);
+  const [oldScaleColour, setOldScaleColour] = useState(
+    toOldScale(initialColour)
+  );
+
+  const handleSetColour = (colour: Colour) => {
+    setColour(colour);
+    setOldScaleColour(toOldScale(colour));
+  };
+
+  const oldScaleOptions = {
+    flavour: ColourFlavour.Hex,
+    customValueText: (int: number) => (int / 17).toString(16).toUpperCase(),
+  };
+  const newScaleOptions = {
     flavour: ColourFlavour.Hex,
     editing: {
       enabled: true,
@@ -36,15 +58,23 @@ const TutHexDoubleDigits1 = ({}: Props) => {
         <div className="flex-row gap-1 justify-center align-start">
           <SimulationFrame>
             <div className="flex-col align-center">
-              <BarChart
-                colour={colour}
-                options={editableOptions}
-                onChange={setColour}
-              />
+              <div className="flex-row gap-1">
+                <BarChart
+                  name="old scale"
+                  colour={oldScaleColour}
+                  options={oldScaleOptions}
+                />
+                <BarChart
+                  name="new scale"
+                  colour={colour}
+                  options={newScaleOptions}
+                  onChange={handleSetColour}
+                />
+              </div>
               <p>
-                The left digit does the same as before,
+                The first digit does the same as before,
                 <br />
-                the right digit allows more fine tuning.
+                the second digit allows more fine tuning.
               </p>
             </div>
           </SimulationFrame>

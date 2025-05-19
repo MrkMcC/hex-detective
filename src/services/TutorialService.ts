@@ -470,7 +470,7 @@ const generateCrowd = (state: TutorialState): Crowd => {
 
 const TutorialService = {
   ShowModal: showModal,
-  GeneratePeople: generateCrowd,
+  GenerateCrowd: generateCrowd,
 };
 
 export default TutorialService;

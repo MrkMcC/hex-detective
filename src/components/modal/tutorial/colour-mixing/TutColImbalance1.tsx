@@ -12,8 +12,8 @@ const TutColImbalance1 = ({}: Props) => {
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>So far, we've only been mixing colours in equal amounts.</p>
-      <p>But what if the amounts are not equal?</p>
+      <p>So far, we've only worked with primary and secondary colours.</p>
+      <p>But what if all three value are different?</p>
       <div className="flex-row justify-center ">
         <SimulationFrame>
           <div className="flex-col">
@@ -32,7 +32,11 @@ const TutColImbalance1 = ({}: Props) => {
               />
             </div>
             <p className="mb-0">
-              We can see the dominant colour coming through in the result.
+              We see the dominant colour coming through in the result.
+              <br />
+              <p className="mb-0">
+                But there is a hint of secondary colour in there.
+              </p>
             </p>
           </div>
         </SimulationFrame>

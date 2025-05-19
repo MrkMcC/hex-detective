@@ -30,8 +30,8 @@ const TutColComplementary2 = ({}: Props) => {
         #HexDetective will test your understanding of how R, G and B interact.
       </p>
       <p>
-        If we mix two primary colours, we get a secondary colour. The secondary
-        colours are:
+        If we mix two equal amounts of primary colour, we get a secondary
+        colour. The secondary colours are:
       </p>
       <div className="flex-row gap-1 wrap justify-center">
         <BarChart

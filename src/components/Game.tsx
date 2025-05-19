@@ -123,7 +123,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       return;
     }
 
-    const newCrowd = TutorialService.GeneratePeople(tutorialState);
+    const newCrowd = TutorialService.GenerateCrowd(tutorialState);
 
     switch (tutorialState.stage) {
       case TutorialStage.Basics_Scoring:
