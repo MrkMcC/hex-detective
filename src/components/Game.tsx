@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
-import { FaRepeat } from "react-icons/fa6";
+import { FaCircleArrowRight, FaRepeat } from "react-icons/fa6";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import GameSettings from "../classes/GameSettings";
@@ -46,28 +46,26 @@ function Game({ status, onChangeStatus, settings }: Props) {
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);
-  };
-
-  const score = () => {
-    // onChangeStatus(GameStatus.Scored);
-    let roundsWon = gameData.roundsWon + 1;
 
     if (tutorialState !== null) {
-      if (roundsWon >= 3) {
+      if (gameData.roundsWon >= 3) {
         setTutorialState((prev) => ({
           stage: prev!.stage + 1,
           round: 1,
         }));
-        roundsWon = 0;
+        setGameData((prev) => ({ ...prev, roundsWon: 0 }));
       } else
         setTutorialState((prev) => ({
           ...prev!,
           round: prev!.round + 1,
         }));
     }
+  };
 
+  const score = () => {
+    onChangeStatus(GameStatus.Scored);
+    let roundsWon = gameData.roundsWon + 1;
     setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
-    initialiseRoundState();
   };
 
   const accuse = (personId: string) => {
@@ -184,8 +182,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
           flavour: ColourFlavour.Hex,
         }));
         break;
-      // default:
-      // throw `NOT IMPLEMENTED: setup tutorial stage ${tutorialState.stage}.${tutorialState.round}`;
     }
     setCrowd(newCrowd);
   };
@@ -259,9 +255,14 @@ function Game({ status, onChangeStatus, settings }: Props) {
         />
         <HighScore gameData={gameData} />
         <div className="flex-col justify-center">
+          {status === GameStatus.Scored && (
+            <button className="large" onClick={initialiseRoundState}>
+              Continue <FaCircleArrowRight className="icon" />
+            </button>
+          )}
           {status === GameStatus.Failed && (
             <button className="large" onClick={handleReset}>
-              <FaRepeat className="icon" /> Play again
+              Play again <FaRepeat className="icon" />
             </button>
           )}
         </div>
