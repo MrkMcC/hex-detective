@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
+import { FaRepeat } from "react-icons/fa6";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import GameSettings from "../classes/GameSettings";
@@ -240,7 +241,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       <div className="people-container">
         <div className="people">{personElements}</div>
       </div>
-      <div className="bottom-bar">
+      <div className="bottom-bar flex-row justify-between">
         <div className="flex-col">
           <button className="btn-main-menu" onClick={handleQuit}>
             <FaCaretLeft className="icon" />
@@ -257,6 +258,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
           onReset={handleReset}
         />
         <HighScore gameData={gameData} />
+        <div className="flex-col justify-center">
+          {status === GameStatus.Failed && (
+            <button className="large" onClick={handleReset}>
+              <FaRepeat className="icon" /> Play again
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

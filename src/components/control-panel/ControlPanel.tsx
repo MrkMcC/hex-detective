@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { MdRefresh } from "react-icons/md";
 import PersonData from "../../classes/PersonData";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import Collapsor from "./Collapsor";
-import RoundSummary from "./round-summary/RoundSummary";
+import RoundSummary from "./RoundSummary";
 import SelectionModeControl from "./SelectionModeControl";
 import StatusText from "./StatusText";
 import SuspectInfo from "./SuspectInfo";
@@ -37,13 +36,6 @@ const ControlPanel = ({
 
   return (
     <div className="control-panel-container">
-      <div className="btn-restart-container">
-        {gameStatus === GameStatus.Failed && (
-          <button className="btn-restart large" onClick={onReset}>
-            <MdRefresh className="icon" /> Play again
-          </button>
-        )}
-      </div>
       <div
         className={`control-panel ui-panel ${gameStatus} ${
           isCollapsed ? "collapsed" : "expanded"
