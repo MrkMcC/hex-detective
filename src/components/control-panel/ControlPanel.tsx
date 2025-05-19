@@ -4,7 +4,6 @@ import PersonData from "../../classes/PersonData";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
-import GameDataT from "../../types/GameDataT";
 import Collapsor from "./Collapsor";
 import RoundSummary from "./round-summary/RoundSummary";
 import SelectionModeControl from "./SelectionModeControl";
@@ -14,7 +13,6 @@ import SuspectInfo from "./SuspectInfo";
 interface Props {
   suspect?: PersonData;
   accused?: PersonData;
-  gameData: GameDataT;
   gameStatus: GameStatus;
   suspectInfoOptions: SuspectInfoOptionsT;
   currentSelectionMode: SuspectSelectionMode;
@@ -25,7 +23,6 @@ interface Props {
 const ControlPanel = ({
   suspect,
   accused,
-  gameData,
   gameStatus,
   suspectInfoOptions,
   currentSelectionMode,

@@ -248,7 +248,6 @@ function Game({ status, onChangeStatus, settings }: Props) {
           </button>
         </div>
         <ControlPanel
-          gameData={gameData}
           gameStatus={status}
           suspectInfoOptions={suspectInfoOptions}
           currentSelectionMode={currentSelectionMode}
