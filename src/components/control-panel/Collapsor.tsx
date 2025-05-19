@@ -8,7 +8,8 @@ interface Props {
 const Collapsor = ({ isCollapsed, onToggle }: Props) => {
   return (
     <div
-      className="collapsor"
+      // its broken atm, therefore hidden. will be fixed in the mobile update.
+      className="collapsor hidden"
       onClick={onToggle}
       title={isCollapsed ? "expand this panel" : "collapse this panel"}
     >

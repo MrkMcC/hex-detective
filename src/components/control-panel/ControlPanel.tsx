@@ -4,6 +4,7 @@ import PersonData from "../../classes/PersonData";
 import GameStatus from "../../enum/GameStatus";
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
+import Collapsor from "./Collapsor";
 import RoundSummary from "./round-summary/RoundSummary";
 import SelectionModeControl from "./SelectionModeControl";
 import StatusText from "./StatusText";
@@ -78,8 +79,7 @@ const ControlPanel = ({
             suspectInfoOptions={suspectInfoOptions}
           />
         )}
-        {/* its broken atm, will be fixed in the mobile update */}
-        {/* <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} /> */}
+        <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
       </div>
     </div>
   );

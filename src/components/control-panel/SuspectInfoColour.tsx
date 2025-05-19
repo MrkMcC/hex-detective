@@ -11,10 +11,6 @@ interface Props {
 }
 
 const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
-  const customFlavour = () => {
-    return (flavour as CustomFlavour).transformColour(colour);
-  };
-
   return (
     <span className="colour-text">
       {children && <span>{children} </span>}
