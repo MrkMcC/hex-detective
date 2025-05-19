@@ -1,0 +1,25 @@
+@use "_theme";
+@use "vars/Colours";
+
+button {
+  color: Colours.$c-white;
+  padding: 0.5em;
+  border: 0.1em solid Colours.$c-white;
+  border-radius: theme.$border-radius_btn_l;
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: Colours.$btn-disabled_bg;
+    color: Colours.$btn-disabled_c;
+    border-color: Colours.$btn-disabled_br;
+  }
+  &:not([disabled]) {
+    cursor: pointer;
+    background-color: Colours.$bg-black;
+    &:hover {
+      background-color: Colours.$btn-hover_bg;
+      color: Colours.$btn-hover_c;
+      border-color: Colours.$btn-hover_br;
+    }
+  }
+}
