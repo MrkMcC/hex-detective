@@ -14,6 +14,7 @@ import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
 import ControlPanel from "./control-panel/ControlPanel";
+import HighScore from "./control-panel/HighScore";
 
 interface Props {
   status: GameStatus;
@@ -253,8 +254,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
           currentSelectionMode={currentSelectionMode}
           onSelectSelectionMode={handleSelectSelectionMode}
           suspect={crowd?.getSuspect()}
+          accused={crowd?.getPersonById(accusedPersonId)}
           onReset={handleReset}
         />
+        <HighScore gameData={gameData} />
       </div>
     </div>
   );

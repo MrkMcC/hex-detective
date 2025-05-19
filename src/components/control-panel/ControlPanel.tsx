@@ -6,13 +6,14 @@ import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import GameDataT from "../../types/GameDataT";
 import Collapsor from "./Collapsor";
-import HighScore from "./HighScore";
+import RoundSummary from "./round-summary/RoundSummary";
 import SelectionModeControl from "./SelectionModeControl";
 import StatusText from "./StatusText";
 import SuspectInfo from "./SuspectInfo";
 
 interface Props {
   suspect?: PersonData;
+  accused?: PersonData;
   gameData: GameDataT;
   gameStatus: GameStatus;
   suspectInfoOptions: SuspectInfoOptionsT;
@@ -23,6 +24,7 @@ interface Props {
 
 const ControlPanel = ({
   suspect,
+  accused,
   gameData,
   gameStatus,
   suspectInfoOptions,
@@ -46,31 +48,40 @@ const ControlPanel = ({
         )}
       </div>
       <div
-        className={`control-panel ui-panel ${
+        className={`control-panel ui-panel ${gameStatus} ${
           isCollapsed ? "collapsed" : "expanded"
         }`}
       >
-        <div className="info">
-          {!isCollapsed && <StatusText state={gameStatus} />}
-          {suspect && (
-            <SuspectInfo
-              suspect={suspect}
-              options={{
-                compact: isCollapsed,
-                revealColours: gameStatus !== GameStatus.InProgress,
-                ...suspectInfoOptions,
-              }}
-            />
-          )}
-        </div>
-        {gameStatus === GameStatus.InProgress && (
-          <SelectionModeControl
-            currentMode={currentSelectionMode}
-            onSelect={onSelectSelectionMode}
-            compact={isCollapsed}
+        {gameStatus === GameStatus.InProgress ? (
+          <>
+            <div className="info">
+              {!isCollapsed && <StatusText state={gameStatus} />}
+              {suspect && (
+                <SuspectInfo
+                  suspect={suspect}
+                  options={{
+                    compact: isCollapsed,
+                    revealColours: gameStatus !== GameStatus.InProgress,
+                    ...suspectInfoOptions,
+                  }}
+                />
+              )}
+            </div>
+            {gameStatus === GameStatus.InProgress && (
+              <SelectionModeControl
+                currentMode={currentSelectionMode}
+                onSelect={onSelectSelectionMode}
+                compact={isCollapsed}
+              />
+            )}
+          </>
+        ) : (
+          <RoundSummary
+            suspect={suspect!}
+            accused={accused!}
+            gameData={gameData}
           />
         )}
-        {gameStatus === GameStatus.Failed && <HighScore gameData={gameData} />}
         <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
       </div>
     </div>

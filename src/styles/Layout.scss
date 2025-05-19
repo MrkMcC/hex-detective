@@ -31,7 +31,7 @@
     left: 50%;
     top: 100%;
     transform: translate(-50%, -100%);
-    .control-panel {
+    .control-panel.in-progress {
       height: 20vh;
     }
   }
@@ -49,7 +49,6 @@
 @media (min-width: Breakpoints.$breakpoint-large) {
   .control-panel {
     width: Dimensions.$control-panel_w-l;
-    height: 25vh;
   }
   .person-container {
     width: Dimensions.$person-r-l-w;
