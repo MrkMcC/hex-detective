@@ -67,8 +67,8 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const accuse = (personId: string) => {
-    setAccusedPersonId(personId);
     if (status === GameStatus.InProgress) {
+      setAccusedPersonId(personId);
       if (personId === crowd!.suspectId) {
         score();
       } else onChangeStatus(GameStatus.GameOver);
@@ -98,7 +98,8 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   const handleQuit = () => {
     if (
-      status !== GameStatus.InProgress ||
+      status === GameStatus.InProgress ||
+      status === GameStatus.Scored ||
       confirm(
         "You are about to quit the game. Your current progress will be lost."
       )

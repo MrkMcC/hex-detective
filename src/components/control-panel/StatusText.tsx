@@ -10,6 +10,8 @@ const StatusText = ({ state }: Props) => {
     switch (state) {
       case GameStatus.InProgress:
         return "Find the suspect";
+      case GameStatus.Scored:
+        return "Correct!";
       case GameStatus.GameOver:
         return "Game over";
     }
