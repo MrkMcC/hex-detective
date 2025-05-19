@@ -26,9 +26,6 @@ const Modal = ({}: Props) => {
         className="modal ui-panel"
         style={ColourService.RandomBorderColourStyle()}
       >
-        <button className="modal-btn-close large" onClick={handleClose}>
-          X
-        </button>
         {options.reference.type === "tutorial" && (
           <TutorialContent
             stage={options.reference.index}

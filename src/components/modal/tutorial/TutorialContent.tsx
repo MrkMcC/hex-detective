@@ -1,5 +1,5 @@
+import HexDetectiveEvent from "../../../enum/HexDetectiveEvent";
 import TutorialStage from "../../../enum/TutorialStage";
-import LogService from "../../../services/LogService";
 import ModalPageT from "../../../types/components/ModalPageT";
 import ModalContent from "../ModalContent";
 import TutBasScoring from "./basics/TutBas";
@@ -14,6 +14,7 @@ import TutColImbalance2 from "./colour-mixing/TutColImbalance2";
 import TutColPercNotation from "./colour-mixing/TutColPercNotation";
 import TutColSaturation1 from "./colour-mixing/TutColSaturation1";
 import TutColSaturation2 from "./colour-mixing/TutColSaturation2";
+import TutDone1 from "./done/TutDone1";
 import TutHexChangingScale1 from "./hex/TutHexChangingScale1";
 import TutHexChangingScale2 from "./hex/TutHexChangingScale2";
 import TutHexDoubleDigits1 from "./hex/TutHexDoubleDigits1";
@@ -27,10 +28,11 @@ interface Props {
   onClose: () => void;
 }
 
-const LOG_SUBJECT = "TutorialPage";
+// const LOG_SUBJECT = "TutorialPage";
 const HEADING_BASICS = "";
 const HEADING_COLOURS = "";
 const HEADING_HEX = "";
+const HEADING_DONE = "";
 
 const TutorialContent = ({ stage, onClose }: Props) => {
   let heading: string;
@@ -113,10 +115,26 @@ const TutorialContent = ({ stage, onClose }: Props) => {
       pages = [{ title: "The Finish Line", body: <TutHexExam1 /> }];
       break;
     default:
-      throw LogService.Error(
-        LOG_SUBJECT,
-        `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
-      );
+      heading = HEADING_DONE;
+      pages = [
+        {
+          title: "That's all",
+          body: <TutDone1 />,
+          allowClose: false,
+          dialogOptions: [
+            {
+              buttonText: "Bye!",
+              event: HexDetectiveEvent.BackToMenu,
+            },
+          ],
+        },
+      ];
+
+      // throw LogService.Error(
+      //   LOG_SUBJECT,
+      //   `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
+      // );
+      break;
   }
 
   return <ModalContent heading={heading} onClose={onClose} pages={pages} />;

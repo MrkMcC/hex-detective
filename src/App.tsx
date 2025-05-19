@@ -1,10 +1,12 @@
 import objectHash from "object-hash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameSettings from "./classes/GameSettings";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
 import Modal from "./components/modal/Modal";
 import GameStatus from "./enum/GameStatus";
+import HexDetectiveEvent from "./enum/HexDetectiveEvent";
+import EventService from "./services/EventService";
 
 //#region development notes
 //Tutorial Update notes
@@ -41,6 +43,15 @@ import GameStatus from "./enum/GameStatus";
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
   const [settings, setSettings] = useState<GameSettings>(new GameSettings());
+
+  const handleHexDetectiveEvent = (event: HexDetectiveEvent) => {
+    if (event === HexDetectiveEvent.BackToMenu) setStatus(GameStatus.Setup);
+  };
+
+  useEffect(() => {
+    EventService.AddListener(handleHexDetectiveEvent);
+    return () => EventService.RemoveListener(handleHexDetectiveEvent);
+  }, []);
 
   const handleStartGame = () => {
     setSettings(

@@ -117,7 +117,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Hex_Exam,
+        stage: TutorialStage.Basics_Scoring,
         round: 1,
       });
       return;
@@ -173,13 +173,15 @@ function Game({ status, onChangeStatus, settings }: Props) {
         }));
         break;
       case TutorialStage.Hex_Exam:
+      case TutorialStage.Done:
+      default:
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: ColourFlavour.Hex,
         }));
         break;
-      default:
-        throw `NOT IMPLEMENTED: setup tutorial stage ${tutorialState.stage}.${tutorialState.round}`;
+      // default:
+      // throw `NOT IMPLEMENTED: setup tutorial stage ${tutorialState.stage}.${tutorialState.round}`;
     }
     setCrowd(newCrowd);
   };

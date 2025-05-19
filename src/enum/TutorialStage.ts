@@ -11,6 +11,7 @@ enum TutorialStage {
   Hex_Letters,
   Hex_DoubleDigits,
   Hex_Exam,
+  Done,
 }
 
 export default TutorialStage;

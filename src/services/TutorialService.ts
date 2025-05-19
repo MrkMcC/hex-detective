@@ -459,6 +459,8 @@ const generateCrowd = (state: TutorialState): Crowd => {
       return PersonService.RandomCrowd(3);
     case TutorialStage.Hex_Exam:
       return PersonService.RandomCrowd(5 * state.round);
+    default:
+      return PersonService.RandomCrowd(2);
   }
   throw LogService.Error(
     LOG_SUBJECT,
