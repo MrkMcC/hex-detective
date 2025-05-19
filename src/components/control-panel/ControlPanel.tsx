@@ -76,11 +76,7 @@ const ControlPanel = ({
             )}
           </>
         ) : (
-          <RoundSummary
-            suspect={suspect!}
-            accused={accused!}
-            gameData={gameData}
-          />
+          <RoundSummary suspect={suspect!} accused={accused!} />
         )}
         <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
       </div>
