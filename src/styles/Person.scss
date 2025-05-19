@@ -6,6 +6,10 @@
   // position: relative;
   margin: Dimensions.$margin-person;
 
+  &.hidden {
+    display: none;
+  }
+
   .person {
     position: relative;
     width: 100%;
@@ -50,10 +54,11 @@
 
     > * {
       position: absolute;
+      box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 92%;
+      width: 100%;
       height: 100%;
       top: 50%;
       left: 50%;
@@ -71,7 +76,6 @@
       background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='black' stroke-width='5'/><path d='M0 0 L100 100 ' stroke='black' stroke-width='5'/></svg>");
       background-color: grey;
       opacity: 0.5;
-      width: 100%;
       border-radius: 0.65em;
     }
   }

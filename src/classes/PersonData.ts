@@ -24,6 +24,7 @@ class PersonData {
   colours: PersonColoursT;
   variations: PersonVariationsT;
   ruledOut = false;
+  hidden = false;
   equals = (other: PersonData) => {
     return (
       this.colours.hat.equals(other.colours.hat) &&

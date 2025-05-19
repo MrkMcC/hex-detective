@@ -6,3 +6,20 @@ body {
   background-color: Colours.$bg-dark;
   color: white;
 }
+
+//TODO find a place for this
+.btn-group-ruled-out {
+  > button {
+    width: 7em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon {
+      font-size: 2em;
+    }
+    span {
+      font-size: 0.9em;
+    }
+  }
+}

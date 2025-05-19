@@ -11,9 +11,6 @@ import EventService from "./services/EventService";
 //#region development notes
 
 //UI Update notes
-//-Success Screen
-//-Failure Screen
-//--show comparison of colour values
 //-Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)
 //-Ruled out people can be removed entirely (can be undone)
 //-Help texts to explain details, e.g. the fact that skirts are pants ;)

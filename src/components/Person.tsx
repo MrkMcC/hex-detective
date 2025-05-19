@@ -32,6 +32,8 @@ const Person = ({
         person.ruledOut ? "ruled-out" : "ruled-in"
       } ${isAccused ? "accused" : "unaccused"} ${
         isRevealedSuspect ? "suspect" : ""
+      } ${person.hidden ? "hidden" : "shown"} ${
+        isRevealedSuspect ? "suspect" : ""
       }`}
       id={`person_${person.id}`}
     >

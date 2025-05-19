@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
-import { FaCircleArrowRight, FaRepeat } from "react-icons/fa6";
+import {
+  FaCircleArrowRight,
+  FaEye,
+  FaEyeSlash,
+  FaRepeat,
+} from "react-icons/fa6";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import GameSettings from "../classes/GameSettings";
@@ -113,6 +118,27 @@ function Game({ status, onChangeStatus, settings }: Props) {
     if (tutorialState) setTutorialState((prev) => ({ ...prev!, round: 1 }));
     setGameData({ ...initialGameData });
     initialiseRoundState();
+  };
+
+  const handleHideRuledOut = () => {
+    setCrowd((prev) => ({
+      ...prev!,
+      people: prev!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
+    }));
+  };
+
+  const handleUnhideRuledOut = () => {
+    setCrowd((prev) => ({
+      ...prev!,
+      people: prev!.people.map((p) => ({ ...p, hidden: false })),
+    }));
+  };
+
+  const handleResetRuledOut = () => {
+    setCrowd((prev) => ({
+      ...prev!,
+      people: prev!.people.map((p) => ({ ...p, ruledOut: false })),
+    }));
   };
   //#endregion
 
@@ -239,11 +265,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="people">{personElements}</div>
       </div>
       <div className="bottom-bar flex-row justify-between">
-        <div className="flex-col">
+        <div className="bottom-left flex-row justify-between align-start">
           <button className="btn-main-menu" onClick={handleQuit}>
             <FaCaretLeft className="icon" />
             Back to Menu
           </button>
+          <HighScore gameData={gameData} />
         </div>
         <ControlPanel
           gameStatus={status}
@@ -253,18 +280,53 @@ function Game({ status, onChangeStatus, settings }: Props) {
           suspect={crowd?.getSuspect()}
           accused={crowd?.getPersonById(accusedPersonId)}
         />
-        <HighScore gameData={gameData} />
-        <div className="flex-col justify-center">
-          {status === GameStatus.Scored && (
-            <button className="large" onClick={initialiseRoundState}>
-              Continue <FaCircleArrowRight className="icon" />
-            </button>
-          )}
-          {status === GameStatus.Failed && (
-            <button className="large" onClick={handleReset}>
-              Play again <FaRepeat className="icon" />
-            </button>
-          )}
+        <div className="bottom-right flex-row justify-start">
+          <div className="flex-col justify-center align-stretch">
+            <div className="btn-group-ruled-out flex-row gap-mini">
+              <button onClick={handleHideRuledOut}>
+                <FaEyeSlash className="icon" />
+                <span>
+                  Hide
+                  <br />
+                  ruled out
+                </span>
+              </button>
+              <button
+                onClick={handleUnhideRuledOut}
+                disabled={crowd?.people.every((p) => !p.hidden)}
+              >
+                <FaEye className="icon" />
+                <span>
+                  Unhide
+                  <br />
+                  ruled out
+                </span>
+              </button>
+              <button
+                onClick={handleResetRuledOut}
+                disabled={crowd?.people.every((p) => !p.ruledOut)}
+              >
+                <FaRepeat className="icon" />
+                <span>
+                  Reset
+                  <br />
+                  ruled out
+                </span>
+              </button>
+            </div>
+          </div>
+          <div className="flex-col justify-center">
+            {status === GameStatus.Scored && (
+              <button className="large" onClick={initialiseRoundState}>
+                Continue <FaCircleArrowRight className="icon" />
+              </button>
+            )}
+            {status === GameStatus.Failed && (
+              <button className="large" onClick={handleReset}>
+                Play again <FaRepeat className="icon" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
