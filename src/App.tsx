@@ -12,7 +12,6 @@ import EventService from "./services/EventService";
 
 //UI Update notes
 //-visually separate modal heading from content somehow (underline?)
-//-Custom "Game over" message for the tutorial that is extra encouraging i.e. "Don't worry, making mistakes is part of learning."
 //-improve interactive bar chart ui
 //-rework control panel (bottom bar) layout
 

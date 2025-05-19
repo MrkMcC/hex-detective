@@ -60,6 +60,12 @@
       "bugs": []
     },
     {
+      "version": "1.1",
+      "name": "The Cosmetic Update",
+      "features": ["New hats", "New shirts", "New pants", "New eyes"],
+      "bugs": []
+    },
+    {
       "version": "TBD",
       "name": "The Cookie Update",
       "features": ["Highscore", "Highscore is preserved between sessions"],
