@@ -47,6 +47,10 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
 
+  //#region Shorthand variables
+  const isRoundInProgress = status === GameStatus.InProgress;
+  //#endregion
+
   const initialiseRoundState = () => {
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
@@ -74,7 +78,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const accuse = (personId: string) => {
-    if (status === GameStatus.InProgress) {
+    if (isRoundInProgress) {
       setAccusedPersonId(personId);
       if (personId === crowd!.suspectId) {
         score();
@@ -234,7 +238,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
     }
 
     setAccusedPersonId(null);
-    if (status !== GameStatus.InProgress) onChangeStatus(GameStatus.InProgress);
+    if (!isRoundInProgress) onChangeStatus(GameStatus.InProgress);
   };
 
   const tryStartNextRound = () => {
@@ -288,7 +292,13 @@ function Game({ status, onChangeStatus, settings }: Props) {
         <div className="bottom-right flex-row justify-start">
           <div className="flex-col justify-center align-stretch">
             <div className="btn-group-ruled-out flex-row gap-mini">
-              <button onClick={handleHideRuledOut}>
+              <button
+                onClick={handleHideRuledOut}
+                disabled={
+                  !isRoundInProgress ||
+                  crowd?.people.every((p) => !p.ruledOut || p.hidden)
+                }
+              >
                 <FaEyeSlash className="icon" />
                 <span>
                   Hide
@@ -298,7 +308,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
               </button>
               <button
                 onClick={handleUnhideRuledOut}
-                disabled={crowd?.people.every((p) => !p.hidden)}
+                disabled={
+                  !isRoundInProgress || crowd?.people.every((p) => !p.hidden)
+                }
               >
                 <FaEye className="icon" />
                 <span>
@@ -309,7 +321,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
               </button>
               <button
                 onClick={handleResetRuledOut}
-                disabled={crowd?.people.every((p) => !p.ruledOut)}
+                disabled={
+                  !isRoundInProgress || crowd?.people.every((p) => !p.ruledOut)
+                }
               >
                 <FaRepeat className="icon" />
                 <span>
