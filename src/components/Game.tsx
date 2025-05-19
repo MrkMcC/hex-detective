@@ -163,7 +163,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Basics_Scoring,
+        stage: TutorialStage.Colours_Imbalance,
         round: 1,
       });
       return;

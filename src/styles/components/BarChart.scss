@@ -1,6 +1,6 @@
 @use "../vars/Colours";
 
-.colour-mix {
+.bar-chart {
   height: 7em;
   width: 7.5em;
   display: flex;
@@ -50,50 +50,26 @@
         appearance: none;
         background-color: transparent;
         &::-webkit-slider-thumb {
-          appearance: none;
+          visibility: hidden;
           cursor: pointer;
           width: 20%;
-          height: 2em;
-          clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 100%, 0% 50%);
-          border-top-style: solid;
-          border-top-width: 1em;
+          height: 4.5em;
         }
 
         position: absolute;
-        transform: translate(-50%, -50%) rotate(-90deg);
-
         top: 49%;
         width: 76%;
+        height: 55%;
+        transform: translate(-50%, -50%) rotate(-90deg);
 
-        &.red {
-          left: 5%;
-          &::-webkit-slider-thumb {
-            border-top-color: #800000;
-            background: #ff0000;
-            &:hover {
-              border-top-color: #ff0000;
-            }
-          }
+        &.slider-red {
+          left: 15%;
         }
-        &.green {
-          left: 34%;
-          &::-webkit-slider-thumb {
-            border-top-color: #008000;
-            background: #00ff00;
-            &:hover {
-              border-top-color: #00ff00;
-            }
-          }
+        &.slider-green {
+          left: 49%;
         }
-        &.blue {
-          left: 67%;
-          &::-webkit-slider-thumb {
-            border-top-color: #000080;
-            background: #0000ff;
-            &:hover {
-              border-top-color: #0000ff;
-            }
-          }
+        &.slider-blue {
+          left: 82%;
         }
       }
     }
@@ -108,5 +84,23 @@
     .result {
       flex-grow: 1;
     }
+  }
+
+  .interact-icon {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -50%);
+    color: grey;
+  }
+
+  &:has(.slider-red:hover) .bar-red .interact-icon {
+    color: white;
+  }
+  &:has(.slider-green:hover) .bar-green .interact-icon {
+    color: white;
+  }
+  &:has(.slider-blue:hover) .bar-blue .interact-icon {
+    color: white;
   }
 }

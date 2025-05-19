@@ -26,7 +26,8 @@
         "If the choice was incorrect, a second breakdown is shown to compare the suspect with the accused",
         "New button to completely hide ruled-out people",
         "New button to unhide ruled-out people",
-        "New button to remove reset ruled-out status for all"
+        "New button to remove reset ruled-out status for all",
+        "Improved design and usability of interactive bar charts"
       ],
       "bugs": []
     }

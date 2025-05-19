@@ -3,6 +3,7 @@ import CustomFlavour from "../../classes/CustomFlavour";
 import ColourFlavour from "../../enum/ColourFlavour";
 import BarChartOptionsT from "../../types/components/BarChartOptionsT";
 import Slider from "../common/Slider";
+import InteractIcon from "./InteractIcon";
 
 interface Props {
   colour: Colour;
@@ -66,7 +67,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
 
   return (
     <div
-      className="colour-mix"
+      className="bar-chart"
       style={{
         border: `1px solid ${colour.toString()}`,
       }}
@@ -125,6 +126,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#${colour.hex.red}0000`,
             }}
           >
+            {options.editing?.enabled && <InteractIcon int={colour.int.red} />}
             <span className="colour-letter text-contrast">
               {options.showLetterR && "R"}
             </span>
@@ -136,6 +138,9 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#00${colour.hex.green}00`,
             }}
           >
+            {options.editing?.enabled && (
+              <InteractIcon int={colour.int.green} />
+            )}
             <span className="colour-letter text-contrast">
               {options.showLetterG && "G"}
             </span>
@@ -147,6 +152,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#0000${colour.hex.blue}`,
             }}
           >
+            {options.editing?.enabled && <InteractIcon int={colour.int.blue} />}
             <span className="colour-letter text-contrast">
               {options.showLetterB && "B"}
             </span>
@@ -154,21 +160,21 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
           {options.editing?.enabled && (
             <>
               <Slider
-                className="red"
+                className="slider-red"
                 value={convertToCustomScale(colour.int.red)}
                 onChange={handleRedChange}
                 max={options.editing.customIntScale ?? 255}
                 step={options.editing?.step}
               />
               <Slider
-                className="green"
+                className="slider-green"
                 value={convertToCustomScale(colour.int.green)}
                 onChange={handleGreenChange}
                 max={options.editing.customIntScale ?? 255}
                 step={options.editing?.step}
               />
               <Slider
-                className="blue"
+                className="slider-blue"
                 value={convertToCustomScale(colour.int.blue)}
                 onChange={handleBlueChange}
                 max={options.editing.customIntScale ?? 255}

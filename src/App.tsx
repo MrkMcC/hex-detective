@@ -11,9 +11,8 @@ import EventService from "./services/EventService";
 //#region development notes
 
 //UI Update notes
-//-visually separate modal heading from content somehow (underline?)
-//-improve interactive bar chart ui
 //-rework control panel (bottom bar) layout
+//-auto-continue
 
 //Difficulty Update notes
 //-show colour triangle option
