@@ -6,14 +6,13 @@
   "changelog": [
     {
       "version": "1.0",
-      "features": [
-        "Playable on Chrome desktop and mostly free of critical bugs"
-      ],
+      "features": ["Playable on Chrome desktop widescreen"],
       "bugs": []
     },
     {
       "version": "1.1",
-      "features": ["Interactive Tutorial"],
+      "name": "The Tutorial Update",
+      "features": ["Interactive Tutorial with 12 levels"],
       "bugs": [
         "It was possible for multiple persons to fit the description",
         "Clicking 'New Game' after entering invalid difficulty settings caused a critical error"
@@ -21,12 +20,6 @@
     }
   ],
   "roadmap": [
-    {
-      "version": "1.1",
-      "name": "The Tutorial Update",
-      "features": ["Interactive Tutorial"],
-      "bugs": []
-    },
     {
       "version": "1.2",
       "name": "The UI Update",

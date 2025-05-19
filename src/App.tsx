@@ -9,8 +9,6 @@ import HexDetectiveEvent from "./enum/HexDetectiveEvent";
 import EventService from "./services/EventService";
 
 //#region development notes
-//Tutorial Update notes
-//-disabled button zu hell (siehe multipage modal)
 
 //Difficulty Update notes
 //-show colour triangle option
