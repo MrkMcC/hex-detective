@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Colour from "../../../../classes/Colour";
-import ColourFlavour from "../../../../enum/ColourFlavour";
+import CustomFlavour from "../../../../classes/CustomFlavour";
 import BarChart from "../../../colour/BarChart";
 import SimulationFrame from "../SimulationFrame";
 
@@ -10,13 +10,14 @@ const TutHexLetters2 = ({}: Props) => {
   const [colour, setColour] = useState(new Colour(119, 204, 255));
 
   const editableOptions = {
-    flavour: ColourFlavour.Name,
+    flavour: new CustomFlavour((int: number) =>
+      (int / 17).toString(16).toUpperCase()
+    ),
     editing: {
       enabled: true,
       step: 1,
       customIntScale: 15,
     },
-    customValueText: (int: number) => (int / 17).toString(16).toUpperCase(),
   };
 
   return (

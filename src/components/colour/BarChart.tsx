@@ -1,4 +1,5 @@
 import Colour from "../../classes/Colour";
+import CustomFlavour from "../../classes/CustomFlavour";
 import ColourFlavour from "../../enum/ColourFlavour";
 import BarChartOptionsT from "../../types/components/BarChartOptionsT";
 import Slider from "../common/Slider";
@@ -71,18 +72,12 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
       }}
     >
       {options.flavour !== ColourFlavour.Hidden && (
-        <div className="colour-text font-mono updog">
-          {options.customValueText ? (
+        <div className="colour-text font-mono">
+          {options.flavour === ColourFlavour.Hex ? (
             <>
-              <span>{options.customValueText(colour.int.red)}</span>
-              <span>{options.customValueText(colour.int.green)}</span>
-              <span>{options.customValueText(colour.int.blue)}</span>
-            </>
-          ) : options.flavour === ColourFlavour.Hex ? (
-            <>
-              <span>{colour.hex.red}</span>
-              <span>{colour.hex.green}</span>
-              <span>{colour.hex.blue}</span>
+              <span className="updog">{colour.hex.red}</span>
+              <span className="updog">{colour.hex.green}</span>
+              <span className="updog">{colour.hex.blue}</span>
             </>
           ) : options.flavour === ColourFlavour.Int ? (
             <>
@@ -90,14 +85,34 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               <span>{convertToCustomScale(colour.int.green)}</span>
               <span>{convertToCustomScale(colour.int.blue)}</span>
             </>
+          ) : options.flavour === ColourFlavour.Percentage ? (
+            <>
+              <span>{colour.percentage.red}</span>
+              <span>{colour.percentage.green}</span>
+              <span>{colour.percentage.blue}</span>
+            </>
+          ) : options.flavour === ColourFlavour.Name ? (
+            <>
+              <span>{colour.name}</span>
+            </>
           ) : (
-            options.flavour === ColourFlavour.Percentage && (
-              <>
-                <span>{colour.percentage.red}</span>
-                <span>{colour.percentage.green}</span>
-                <span>{colour.percentage.blue}</span>
-              </>
-            )
+            <>
+              <span>
+                {(options.flavour as CustomFlavour).transformValue(
+                  colour.int.red
+                )}
+              </span>
+              <span>
+                {(options.flavour as CustomFlavour).transformValue(
+                  colour.int.green
+                )}
+              </span>
+              <span>
+                {(options.flavour as CustomFlavour).transformValue(
+                  colour.int.blue
+                )}
+              </span>
+            </>
           )}
         </div>
       )}

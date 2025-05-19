@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Colour from "../../../../classes/Colour";
+import CustomFlavour from "../../../../classes/CustomFlavour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import BarChart from "../../../colour/BarChart";
 import Green from "../../../common/Green";
@@ -29,8 +30,9 @@ const TutHexDoubleDigits1 = ({}: Props) => {
   };
 
   const oldScaleOptions = {
-    flavour: ColourFlavour.Hex,
-    customValueText: (int: number) => (int / 17).toString(16).toUpperCase(),
+    flavour: new CustomFlavour((int: number) =>
+      (int / 17).toString(16).toUpperCase()
+    ),
   };
   const newScaleOptions = {
     flavour: ColourFlavour.Hex,

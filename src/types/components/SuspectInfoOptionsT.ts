@@ -1,8 +1,8 @@
-import Colour from "../../classes/Colour";
+import CustomFlavour from "../../classes/CustomFlavour";
 import ColourFlavour from "../../enum/ColourFlavour";
 
 type SuspectInfoOptionsT = {
-  flavour?: ColourFlavour | ((colour: Colour) => string);
+  flavour?: ColourFlavour | CustomFlavour;
   revealColours?: boolean;
   compact?: boolean;
 };

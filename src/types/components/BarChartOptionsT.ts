@@ -1,7 +1,8 @@
+import CustomFlavour from "../../classes/CustomFlavour";
 import ColourFlavour from "../../enum/ColourFlavour";
 
-type ColourMixOptionsT = {
-  flavour?: ColourFlavour;
+type BarChartOptionsT = {
+  flavour?: ColourFlavour | CustomFlavour;
   showLetterR?: boolean;
   showLetterG?: boolean;
   showLetterB?: boolean;
@@ -10,7 +11,6 @@ type ColourMixOptionsT = {
     step?: number;
     customIntScale?: number;
   };
-  customValueText?: (int: number) => string;
 };
 
-export default ColourMixOptionsT;
+export default BarChartOptionsT;

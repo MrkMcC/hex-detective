@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaCaretLeft } from "react-icons/fa";
-import Colour from "../classes/Colour";
 import Crowd from "../classes/Crowd";
+import CustomFlavour from "../classes/CustomFlavour";
 import GameSettings from "../classes/GameSettings";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
+import ColourService from "../services/ColourService";
 import TutorialService from "../services/TutorialService";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
@@ -151,10 +152,9 @@ function Game({ status, onChangeStatus, settings }: Props) {
         const convertToInt16 = (int: number) => (int / 255) * 15;
         setSuspectInfoOptions((prev) => ({
           ...prev,
-          flavour: (colour: Colour) =>
-            `(${convertToInt16(colour.int.red)}, ${convertToInt16(
-              colour.int.green
-            )}, ${convertToInt16(colour.int.blue)})`,
+          flavour: new CustomFlavour((int: number) =>
+            convertToInt16(int).toString()
+          ),
         }));
         break;
       case TutorialStage.Hex_Letters:
@@ -162,17 +162,17 @@ function Game({ status, onChangeStatus, settings }: Props) {
           ((int / 255) * 15).toString(16).toUpperCase();
         setSuspectInfoOptions((prev) => ({
           ...prev,
-          flavour: (colour: Colour) =>
-            `(${convertToBase16(colour.int.red)}, ${convertToBase16(
-              colour.int.green
-            )}, ${convertToBase16(colour.int.blue)})`,
+          flavour: new CustomFlavour((int: number) =>
+            convertToBase16(int).toUpperCase()
+          ),
         }));
         break;
       case TutorialStage.Hex_DoubleDigits:
         setSuspectInfoOptions((prev) => ({
           ...prev,
-          flavour: (colour: Colour) =>
-            `(${colour.hex.red}, ${colour.hex.green}, ${colour.hex.blue})`.toUpperCase(),
+          flavour: new CustomFlavour((int: number) =>
+            ColourService.IntToHex(int).toUpperCase()
+          ),
         }));
         break;
       case TutorialStage.Hex_Exam:

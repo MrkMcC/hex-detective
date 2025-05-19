@@ -1,15 +1,20 @@
 import { ReactNode } from "react";
 import Colour from "../../classes/Colour";
+import CustomFlavour from "../../classes/CustomFlavour";
 import ColourFlavour from "../../enum/ColourFlavour";
 
 interface Props {
   colour: Colour;
   reveal?: boolean;
   children?: ReactNode;
-  flavour: ColourFlavour | ((colour: Colour) => string);
+  flavour: ColourFlavour | CustomFlavour;
 }
 
 const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
+  const customFlavour = () => {
+    return (flavour as CustomFlavour).transformColour(colour);
+  };
+
   return (
     <span className="colour-text">
       {children && <span>{children} </span>}
@@ -21,7 +26,8 @@ const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
         {flavour === ColourFlavour.Int && colour.int.toString()}
         {flavour === ColourFlavour.Name && colour.name}
         {flavour === ColourFlavour.Percentage && colour.percentage.toString()}
-        {typeof flavour === "function" && flavour(colour)}
+        {typeof flavour !== "string" &&
+          (flavour as CustomFlavour).transformColour(colour)}
       </span>
     </span>
   );

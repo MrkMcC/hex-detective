@@ -20,6 +20,7 @@ import EventService from "./services/EventService";
 //-visually separate modal heading from content somehow (underline?)
 //-Rework collapse to increase people-container height as well
 //-Custom "Game over" message for the tutorial that is extra encouraging i.e. "Don't worry, making mistakes is part of learning."
+//-improve interactive bar chart ui
 
 //Difficulty Update notes
 //-show colour triangle option
