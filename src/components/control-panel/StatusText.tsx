@@ -12,7 +12,7 @@ const StatusText = ({ state }: Props) => {
         return "Find the suspect";
       case GameStatus.Scored:
         return "Correct!";
-      case GameStatus.GameOver:
+      case GameStatus.Failed:
         return "Game over";
     }
   };

@@ -39,7 +39,7 @@ const ControlPanel = ({
   return (
     <div className="control-panel-container">
       <div className="btn-restart-container">
-        {gameStatus === GameStatus.GameOver && (
+        {gameStatus === GameStatus.Failed && (
           <button className="btn-restart large" onClick={onReset}>
             <MdRefresh className="icon" /> Play again
           </button>
@@ -70,9 +70,7 @@ const ControlPanel = ({
             compact={isCollapsed}
           />
         )}
-        {gameStatus === GameStatus.GameOver && (
-          <HighScore gameData={gameData} />
-        )}
+        {gameStatus === GameStatus.Failed && <HighScore gameData={gameData} />}
         <Collapsor isCollapsed={isCollapsed} onToggle={toggleCollapse} />
       </div>
     </div>

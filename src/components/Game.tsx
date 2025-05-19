@@ -72,7 +72,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       setAccusedPersonId(personId);
       if (personId === crowd!.suspectId) {
         score();
-      } else onChangeStatus(GameStatus.GameOver);
+      } else onChangeStatus(GameStatus.Failed);
     }
   };
 
@@ -227,7 +227,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
       }
       isAccused={accusedPersonId === p.id}
       isRevealedSuspect={
-        status === GameStatus.GameOver && p.id === crowd.getSuspect()!.id
+        status === GameStatus.Failed && p.id === crowd.getSuspect()!.id
       }
       onSelect={handleSelect}
     />
