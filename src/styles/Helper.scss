@@ -9,17 +9,17 @@ button {
 
   &[disabled] {
     cursor: not-allowed;
-    background-color: Colours.$bg_btn-disabled;
-    color: Colours.$c_btn-disabled;
-    border-color: Colours.$br_btn-disabled;
+    background-color: Colours.$btn-disabled_bg;
+    color: Colours.$btn-disabled_c;
+    border-color: Colours.$btn-disabled_br;
   }
   &:not([disabled]) {
     cursor: pointer;
     background-color: Colours.$bg-black;
     &:hover {
-      background-color: Colours.$bg-bright;
-      color: Colours.$bg-black;
-      border-color: Colours.$c-black;
+      background-color: Colours.$btn-hover_bg;
+      color: Colours.$btn-hover_c;
+      border-color: Colours.$btn-hover_br;
     }
   }
   &.large {

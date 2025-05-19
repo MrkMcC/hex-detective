@@ -11,11 +11,6 @@ import EventService from "./services/EventService";
 //#region development notes
 //Tutorial Update notes
 //-disabled button zu hell (siehe multipage modal)
-//-visually separate modal heading from content somehow (underline?)
-//-BUG: Modal Overlay not above Control Panel
-//-Add Hex code tutorial
-//-Improve tutorial modal to show tutorial progress
-//-Include an explanation on RGB vs. CMYK somewhere?
 
 //Difficulty Update notes
 //-show colour triangle option
@@ -23,10 +18,23 @@ import EventService from "./services/EventService";
 //-show percentages option
 
 //UI Update notes
+//-visually separate modal heading from content somehow (underline?)
 //-Rework collapse to increase people-container height as well
 //-Custom "Game over" message for the tutorial that is extra encouraging i.e. "Don't worry, making mistakes is part of learning."
 
 //#region maybe
+
+//Tutorial Improvements
+//-Improve tutorial modal to show tutorial progress
+//-Allow navigating to a specific tutorial stage (maybe near the Back to menu button)
+
+//Hover Texts
+//-Include an explanation on RGB vs. CMYK somewhere?
+//-RGB, primary colour, secondary colour, hue, saturation, brightness
+//-for fun:
+//--greek: Ancient Greek was spoken by Ancient Greeks. They are known for thinking very hard. Just like us!
+//--latin: Latin was spoken by Ancient Romans. They are known for counting weirdly. Just like us!
+
 //Ultimate Immersion Update notes
 //-Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)
 //-Random "wanted for _" text for each suspect
