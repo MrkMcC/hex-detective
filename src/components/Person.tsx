@@ -1,5 +1,3 @@
-import { BsIncognito } from "react-icons/bs";
-import { FaCheck } from "react-icons/fa";
 import PersonData from "../classes/PersonData";
 import Hat from "./body/Hat";
 import Head from "./body/Head";
@@ -32,20 +30,23 @@ const Person = ({
       key={person.id}
       className={`person-container ${
         person.ruledOut ? "ruled-out" : "ruled-in"
+      } ${isAccused ? "accused" : "unaccused"} ${
+        isRevealedSuspect ? "suspect" : ""
       }`}
       id={`person_${person.id}`}
     >
       <div
-        className={`person ${disabled || !onSelect ? "disabled" : "enabled"} ${
-          isAccused ? "accused" : "unaccused"
-        } ${isRevealedSuspect ? "revealed-suspect" : ""}`}
+        className={`person ${disabled || !onSelect ? "disabled" : "enabled"}  `}
         onClick={handleSelect}
       >
-        <div className="icon-overlay">
-          {person.ruledOut && <FaCheck className="icon ruled-out" />}
-          {isRevealedSuspect && (
-            <BsIncognito className="icon revealed-suspect" />
-          )}
+        <div className="person-overlay">
+          <div className="ruled-out-overlay" />
+          <div className="accused-overlay text-center text-contrast">
+            {isAccused && !isRevealedSuspect && "accused"}
+          </div>
+          <div className="suspect-overlay text-center text-contrast">
+            suspect
+          </div>
         </div>
         <div className={`body`}>
           <Hat person={person} />

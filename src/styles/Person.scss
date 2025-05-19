@@ -3,38 +3,14 @@
 @use "vars/Dimensions";
 
 .person-container {
-  position: relative;
+  // position: relative;
   margin: Dimensions.$margin-person;
-
-  &:hover,
-  :hover {
-    * {
-      visibility: visible;
-    }
-  }
 
   .person {
     position: relative;
     width: 100%;
     height: 100%;
-    &.revealed-suspect .icon-overlay {
-      display: flex;
-      border: 0.1em solid green;
-      align-items: center;
-      .icon.revealed-suspect {
-        position: absolute;
-        font-size: 2.5em;
-        color: white;
-        border-color: white;
-        opacity: 0.5;
-      }
-    }
-    &.accused .icon-overlay {
-      display: unset;
-      border: 0.1em solid red;
-
-      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='red' stroke-width='3'/><path d='M0 0 L100 100 ' stroke='red' stroke-width='3'/></svg>");
-    }
+    border-radius: 1em;
 
     &:not(.disabled) {
       cursor: pointer;
@@ -42,33 +18,27 @@
         background-color: Colours.$bg-white;
       }
     }
-  }
 
-  &.ruled-out {
-    .icon-overlay {
-      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='black' stroke-width='5'/><path d='M0 0 L100 100 ' stroke='black' stroke-width='5'/></svg>");
-
-      background-color: grey;
-      opacity: 0.5;
-      display: flex;
-
-      .icon.ruled-out {
-        position: absolute;
-        top: 0%;
-        margin-top: 0.25em;
-      }
+    &.accused:not(.suspect) .accused-overlay {
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='red' stroke-width='3'/><path d='M0 0 L100 100 ' stroke='red' stroke-width='3'/></svg>");
     }
   }
 
-  .icon-overlay {
-    display: none;
+  &:not(.ruled-out) .ruled-out-overlay {
+    visibility: hidden;
+  }
+  &:not(.suspect) .suspect-overlay {
+    visibility: hidden;
+  }
+  &:not(.accused) .accused-overlay {
+    visibility: hidden;
+  }
+
+  .person-overlay {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     justify-content: center;
-    height: 99%;
-    width: 99%;
     font-size: x-large;
     z-index: theme.$z_body_overlay;
 
@@ -76,6 +46,33 @@
       padding: 0.1em;
       border: 0.1em solid white;
       border-radius: 1em;
+    }
+
+    > * {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 92%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 1em;
+    }
+
+    .suspect-overlay {
+      border: 0.15em solid white;
+    }
+    .accused-overlay {
+      border: 0.15em solid red;
+    }
+    .ruled-out-overlay {
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M100 0 L0 100 ' stroke='black' stroke-width='5'/><path d='M0 0 L100 100 ' stroke='black' stroke-width='5'/></svg>");
+      background-color: grey;
+      opacity: 0.5;
+      width: 100%;
+      border-radius: 0.65em;
     }
   }
 }

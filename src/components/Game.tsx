@@ -225,7 +225,8 @@ function Game({ status, onChangeStatus, settings }: Props) {
       }
       isAccused={accusedPersonId === p.id}
       isRevealedSuspect={
-        status === GameStatus.Failed && p.id === crowd.getSuspect()!.id
+        (status === GameStatus.Failed || status === GameStatus.Scored) &&
+        p.id === crowd.getSuspect()!.id
       }
       onSelect={handleSelect}
     />
