@@ -46,6 +46,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const score = () => {
+    // onChangeStatus(GameStatus.Scored);
     let roundsWon = gameData.roundsWon + 1;
 
     if (tutorialState !== null) {
