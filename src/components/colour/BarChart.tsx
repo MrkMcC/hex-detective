@@ -126,7 +126,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#${colour.hex.red}0000`,
             }}
           >
-            {options.editing?.enabled && <InteractIcon int={colour.int.red} />}
+            {options.editing?.enabled && <InteractIcon />}
             <span className="colour-letter text-contrast">
               {options.showLetterR && "R"}
             </span>
@@ -138,9 +138,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#00${colour.hex.green}00`,
             }}
           >
-            {options.editing?.enabled && (
-              <InteractIcon int={colour.int.green} />
-            )}
+            {options.editing?.enabled && <InteractIcon />}
             <span className="colour-letter text-contrast">
               {options.showLetterG && "G"}
             </span>
@@ -152,7 +150,7 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
               backgroundColor: `#0000${colour.hex.blue}`,
             }}
           >
-            {options.editing?.enabled && <InteractIcon int={colour.int.blue} />}
+            {options.editing?.enabled && <InteractIcon />}
             <span className="colour-letter text-contrast">
               {options.showLetterB && "B"}
             </span>

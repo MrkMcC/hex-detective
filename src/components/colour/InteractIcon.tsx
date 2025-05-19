@@ -1,10 +1,8 @@
 import { FaArrowsUpDown } from "react-icons/fa6";
 
-interface Props {
-  int: number;
-}
+interface Props {}
 
-const InteractIcon = ({ int }: Props) => {
+const InteractIcon = ({}: Props) => {
   const className = "interact-icon";
   return <FaArrowsUpDown className={className} />;
 };
