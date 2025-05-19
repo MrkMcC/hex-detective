@@ -23,7 +23,10 @@
       "name": "The UI Update",
       "features": [
         "After accusing a person, a bar chart breakdown of the suspects colours is shown",
-        "If the choice was incorrect, a second breakdown is shown to compare the suspect with the accused"
+        "If the choice was incorrect, a second breakdown is shown to compare the suspect with the accused",
+        "New button to completely hide ruled-out people",
+        "New button to unhide ruled-out people",
+        "New button to remove reset ruled-out status for all"
       ],
       "bugs": []
     }
@@ -34,7 +37,6 @@
       "name": "The UI Update",
       "features": [
         "Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)",
-        "Ruled out people can be removed entirely (can be undone)",
         "Help texts to explain details, e.g. the fact that skirts are pants ;)"
       ],
       "bugs": []

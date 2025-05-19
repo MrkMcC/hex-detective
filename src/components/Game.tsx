@@ -135,10 +135,15 @@ function Game({ status, onChangeStatus, settings }: Props) {
   };
 
   const handleResetRuledOut = () => {
-    setCrowd((prev) => ({
-      ...prev!,
-      people: prev!.people.map((p) => ({ ...p, ruledOut: false })),
-    }));
+    if (confirm("Rule everyone back in?"))
+      setCrowd((prev) => ({
+        ...prev!,
+        people: prev!.people.map((p) => ({
+          ...p,
+          ruledOut: false,
+          hidden: false,
+        })),
+      }));
   };
   //#endregion
 
