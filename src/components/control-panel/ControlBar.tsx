@@ -60,7 +60,7 @@ const ControlBar = ({
   //#endregion
 
   return (
-    <div className="bottom-bar flex-row justify-between">
+    <div className="control-bar flex-row justify-between">
       <div className="bottom-left flex-row justify-between align-start">
         <button className="btn-main-menu" onClick={handleQuit}>
           <FaCaretLeft className="icon" />
