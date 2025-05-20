@@ -12,6 +12,7 @@ import RoundSummary from "./RoundSummary";
 import RuleOutControls from "./RuleOutControls";
 import SelectionModeControl from "./SelectionModeControl";
 import SessionInfo from "./SessionInfo";
+import StatusText from "./StatusText";
 import SuspectInfo from "./SuspectInfo";
 
 interface Props {
@@ -78,7 +79,7 @@ const ControlBar = ({
         </div>
       </div>
       <div className="area-center">
-        <h1>Find the suspect</h1>
+        <StatusText state={gameStatus} />
         {suspect && (
           <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
         )}

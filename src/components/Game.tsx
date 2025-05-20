@@ -149,6 +149,7 @@ function Game({
   const accuse = (personId: string) => {
     if (isRoundInProgress) {
       setAccusedPersonId(personId);
+      setSuspectInfoOptions((prev) => ({ ...prev, revealColours: true }));
       if (personId === roundData.crowd!.suspectId) {
         score();
       } else onChangeStatus(GameStatus.Failed);
