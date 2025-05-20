@@ -1,4 +1,4 @@
-type SettingsStateT = {
+type DifficultyStateT = {
   tutorial: boolean;
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
@@ -6,8 +6,8 @@ type SettingsStateT = {
 
 /**Settings that can be changed before the game, but not during it. */
 //difficulty templates are defined in the upcoming difficulty selection component, not here
-class GameSettings {
-  parameters: SettingsStateT = {
+class DifficultyConfig {
+  parameters: DifficultyStateT = {
     tutorial: false,
     crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
@@ -24,9 +24,9 @@ class GameSettings {
     return valid_crowdSizeInitial && valid_crowdSizeIncrement;
   }
 
-  constructor(params?: SettingsStateT) {
+  constructor(params?: DifficultyStateT) {
     if (params) this.parameters = params;
   }
 }
 
-export default GameSettings;
+export default DifficultyConfig;

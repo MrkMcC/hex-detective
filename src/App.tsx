@@ -1,6 +1,6 @@
 import objectHash from "object-hash";
 import { useEffect, useState } from "react";
-import GameSettings from "./classes/GameSettings";
+import DifficultyConfig from "./classes/DifficultyConfig";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
 import Modal from "./components/modal/Modal";
@@ -50,7 +50,9 @@ import EventService from "./services/EventService";
 
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
-  const [settings, setSettings] = useState<GameSettings>(new GameSettings());
+  const [settings, setSettings] = useState<DifficultyConfig>(
+    new DifficultyConfig()
+  );
 
   const handleHexDetectiveEvent = (event: HexDetectiveEvent) => {
     if (event === HexDetectiveEvent.BackToMenu) setStatus(GameStatus.Setup);
@@ -63,14 +65,14 @@ function App() {
 
   const handleStartGame = () => {
     setSettings(
-      (prev) => new GameSettings({ ...prev.parameters, tutorial: false })
+      (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: false })
     );
     setStatus(GameStatus.InProgress);
   };
 
   const handleStartTutorial = () => {
     setSettings(
-      (prev) => new GameSettings({ ...prev.parameters, tutorial: true })
+      (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: true })
     );
     setStatus(GameStatus.InProgress);
   };

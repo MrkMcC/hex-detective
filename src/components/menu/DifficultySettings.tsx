@@ -1,10 +1,10 @@
 import { ChangeEvent } from "react";
-import GameSettings from "../../classes/GameSettings";
+import DifficultyConfig from "../../classes/DifficultyConfig";
 import ColourService from "../../services/ColourService";
 
 interface Props {
-  settings: GameSettings;
-  onChangeSettings: (settings: GameSettings) => void;
+  settings: DifficultyConfig;
+  onChangeSettings: (settings: DifficultyConfig) => void;
 }
 
 const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
@@ -24,7 +24,7 @@ const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
               value={settings.parameters.crowdSizeInitial}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 onChangeSettings(
-                  new GameSettings({
+                  new DifficultyConfig({
                     ...settings.parameters,
                     crowdSizeInitial: Number(e.target.value),
                   })
@@ -40,7 +40,7 @@ const DifficultySettings = ({ settings, onChangeSettings }: Props) => {
               value={settings.parameters.crowdSizeIncrement}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 onChangeSettings(
-                  new GameSettings({
+                  new DifficultyConfig({
                     ...settings.parameters,
                     crowdSizeIncrement: Number(e.target.value),
                   })

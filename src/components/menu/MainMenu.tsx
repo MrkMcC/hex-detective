@@ -1,11 +1,11 @@
-import GameSettings from "../../classes/GameSettings";
+import DifficultyConfig from "../../classes/DifficultyConfig";
 import HowToPlay from "../help/HowToPlay";
 import DifficultySettings from "./DifficultySettings";
 import Title from "./Title";
 
 interface Props {
-  settings: GameSettings;
-  onChangeSettings: (settings: GameSettings) => void;
+  settings: DifficultyConfig;
+  onChangeSettings: (settings: DifficultyConfig) => void;
   onStartGame: () => void;
   onStartTutorial: () => void;
 }

@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa6";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
-import GameSettings from "../classes/GameSettings";
+import DifficultyConfig from "../classes/DifficultyConfig";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
@@ -26,7 +26,7 @@ import HighScore from "./control-panel/HighScore";
 interface Props {
   status: GameStatus;
   onChangeStatus: (status: GameStatus) => void;
-  settings: GameSettings;
+  settings: DifficultyConfig;
 }
 
 const initialGameData: GameDataT = {
@@ -348,6 +348,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
                 Continue <FaCircleArrowRight className="icon" />
               </button>
             )}
+            {/* <Switch onChange={console.log} /> */}
             {status === GameStatus.Failed && (
               <button className="large" onClick={handleReset}>
                 {tutorialState === null ? (
