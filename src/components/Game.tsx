@@ -15,6 +15,7 @@ import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
 import ColourService from "../services/ColourService";
 import TutorialService from "../services/TutorialService";
+import RoundDataT from "../types/RoundDataT";
 import SessionDataT from "../types/SessionDataT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
@@ -49,16 +50,68 @@ function Game({
     ...initialSessionData,
   });
 
-  const [crowd, setCrowd] = useState<Crowd>();
+  const [roundData, setRoundData] = useState<RoundDataT>({
+    accusedPersonId: null,
+  });
+
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
     SuspectSelectionMode.Accuse
   );
-  const [accusedPersonId, setAccusedPersonId] = useState<string | null>(null);
   const [tutorialState, setTutorialState] = useState<TutorialState | null>(
     null
   );
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
+
+  //#region Shorthand State Setters
+  const setAccusedPersonId = (id: string | null) =>
+    setRoundData((prev) => ({ ...prev, accusedPersonId: id }));
+  const setCrowd = (crowd?: Crowd) => {
+    setRoundData((prev) => ({ ...prev, crowd: crowd }));
+  };
+  const toggleRuleOut = (id: string) => {
+    setRoundData((prev) => ({
+      ...prev,
+      crowd: {
+        ...prev.crowd!,
+        people: prev.crowd!.people.map((p) =>
+          p.id === id ? { ...p, ruledOut: !p.ruledOut } : p
+        ),
+      },
+    }));
+  };
+  const hideRuledOut = () => {
+    setRoundData((prev) => ({
+      ...prev,
+      crowd: {
+        ...prev.crowd!,
+        people: prev.crowd!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
+      },
+    }));
+  };
+  const unhideAll = () => {
+    setRoundData((prev) => ({
+      ...prev,
+      crowd: {
+        ...prev.crowd!,
+        people: prev.crowd!.people.map((p) => ({ ...p, hidden: false })),
+      },
+    }));
+  };
+  const ruleInAll = () => {
+    setRoundData((prev) => ({
+      ...prev,
+      crowd: {
+        ...prev.crowd!,
+        people: prev.crowd!.people.map((p) => ({
+          ...p,
+          hidden: false,
+          ruledOut: false,
+        })),
+      },
+    }));
+  };
+  //#endregion
 
   //#region Shorthand variables
   const isRoundInProgress = status === GameStatus.InProgress;
@@ -99,7 +152,7 @@ function Game({
   const accuse = (personId: string) => {
     if (isRoundInProgress) {
       setAccusedPersonId(personId);
-      if (personId === crowd!.suspectId) {
+      if (personId === roundData.crowd!.suspectId) {
         score();
       } else onChangeStatus(GameStatus.Failed);
     }
@@ -109,12 +162,7 @@ function Game({
   const handleSelect = (personId: string) => {
     switch (currentSelectionMode) {
       case SuspectSelectionMode.RuleOut:
-        setCrowd((prev) => ({
-          ...prev!,
-          people: prev!.people.map((p) =>
-            p.id === personId ? { ...p, ruledOut: !p.ruledOut } : p
-          ),
-        }));
+        toggleRuleOut(personId);
         break;
       case SuspectSelectionMode.Accuse:
         accuse(personId);
@@ -122,7 +170,7 @@ function Game({
     }
   };
 
-  const handleSelectSelectionMode = (mode: SuspectSelectionMode) => {
+  const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
     setCurrentSelectionMode(mode);
   };
 
@@ -151,30 +199,10 @@ function Game({
     );
   };
 
-  const handleHideRuledOut = () => {
-    setCrowd((prev) => ({
-      ...prev!,
-      people: prev!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
-    }));
-  };
-
-  const handleUnhideRuledOut = () => {
-    setCrowd((prev) => ({
-      ...prev!,
-      people: prev!.people.map((p) => ({ ...p, hidden: false })),
-    }));
-  };
-
+  const handleHideRuledOut = () => hideRuledOut();
+  const handleUnhideRuledOut = () => unhideAll();
   const handleResetRuledOut = () => {
-    if (confirm("Rule everyone back in?"))
-      setCrowd((prev) => ({
-        ...prev!,
-        people: prev!.people.map((p) => ({
-          ...p,
-          ruledOut: false,
-          hidden: false,
-        })),
-      }));
+    if (confirm("Rule everyone back in?")) ruleInAll();
   };
   //#endregion
 
@@ -269,7 +297,7 @@ function Game({
   };
 
   const tryStartNextRound = () => {
-    if (crowd === undefined) {
+    if (roundData.crowd === undefined) {
       startNewRound();
     }
   };
@@ -277,18 +305,18 @@ function Game({
   //#endregion
 
   //#region Component Construction
-  const personElements = crowd?.people.map((p) => (
+  const personElements = roundData.crowd?.people.map((p) => (
     <Person
       key={p.id}
       person={p}
       disabled={
-        accusedPersonId !== null ||
+        roundData.accusedPersonId !== null ||
         (p.ruledOut && currentSelectionMode !== SuspectSelectionMode.RuleOut)
       }
-      isAccused={accusedPersonId === p.id}
+      isAccused={roundData.accusedPersonId === p.id}
       isRevealedSuspect={
         (status === GameStatus.Failed || status === GameStatus.Scored) &&
-        p.id === crowd.getSuspect()!.id
+        p.id === roundData.crowd!.getSuspect()!.id
       }
       onSelect={handleSelect}
     />
@@ -306,15 +334,15 @@ function Game({
             <FaCaretLeft className="icon" />
             Back to Menu
           </button>
-          <HighScore gameData={sessionData} />
+          <HighScore sessionData={sessionData} />
         </div>
         <ControlPanel
           gameStatus={status}
           suspectInfoOptions={suspectInfoOptions}
           currentSelectionMode={currentSelectionMode}
-          onSelectSelectionMode={handleSelectSelectionMode}
-          suspect={crowd?.getSuspect()}
-          accused={crowd?.getPersonById(accusedPersonId)}
+          onChangeSelectionMode={handleChangeSelectionMode}
+          suspect={roundData.crowd?.getSuspect()}
+          accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)}
         />
         <div className="bottom-right flex-row justify-start">
           <div className="flex-col justify-center align-stretch">
@@ -323,7 +351,7 @@ function Game({
                 onClick={handleHideRuledOut}
                 disabled={
                   !isRoundInProgress ||
-                  crowd?.people.every((p) => !p.ruledOut || p.hidden)
+                  roundData.crowd?.people.every((p) => !p.ruledOut || p.hidden)
                 }
               >
                 <FaEyeSlash className="icon" />
@@ -336,7 +364,8 @@ function Game({
               <button
                 onClick={handleUnhideRuledOut}
                 disabled={
-                  !isRoundInProgress || crowd?.people.every((p) => !p.hidden)
+                  !isRoundInProgress ||
+                  roundData.crowd?.people.every((p) => !p.hidden)
                 }
               >
                 <FaEye className="icon" />
@@ -349,7 +378,8 @@ function Game({
               <button
                 onClick={handleResetRuledOut}
                 disabled={
-                  !isRoundInProgress || crowd?.people.every((p) => !p.ruledOut)
+                  !isRoundInProgress ||
+                  roundData.crowd?.people.every((p) => !p.ruledOut)
                 }
               >
                 <FaRepeat className="icon" />

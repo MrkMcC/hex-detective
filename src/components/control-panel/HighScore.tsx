@@ -1,13 +1,13 @@
 import SessionDataT from "../../types/SessionDataT";
 
 interface Props {
-  gameData: SessionDataT;
+  sessionData: SessionDataT;
 }
 
-const HighScore = ({ gameData }: Props) => {
+const HighScore = ({ sessionData }: Props) => {
   return (
     <div className="score">
-      <h2>Your Score: {gameData.roundsWon}</h2>
+      <h2>Your Score: {sessionData.roundsWon}</h2>
     </div>
   );
 };

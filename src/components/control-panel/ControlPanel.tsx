@@ -15,7 +15,7 @@ interface Props {
   gameStatus: GameStatus;
   suspectInfoOptions: SuspectInfoOptionsT;
   currentSelectionMode: SuspectSelectionMode;
-  onSelectSelectionMode: (mode: SuspectSelectionMode) => void;
+  onChangeSelectionMode: (mode: SuspectSelectionMode) => void;
 }
 
 const ControlPanel = ({
@@ -24,7 +24,7 @@ const ControlPanel = ({
   gameStatus,
   suspectInfoOptions,
   currentSelectionMode,
-  onSelectSelectionMode,
+  onChangeSelectionMode,
 }: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -57,7 +57,7 @@ const ControlPanel = ({
             {gameStatus === GameStatus.InProgress && (
               <SelectionModeControl
                 currentMode={currentSelectionMode}
-                onSelect={onSelectSelectionMode}
+                onSelect={onChangeSelectionMode}
                 compact={isCollapsed}
               />
             )}
