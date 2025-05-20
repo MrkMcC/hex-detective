@@ -1,8 +1,10 @@
 @use "../theme";
+@use "../vars/Colours";
 
 .control-bar {
   z-index: theme.$z_control-panel;
   position: relative;
+  box-sizing: border-box;
 
   .area-left {
     display: flex;
@@ -24,14 +26,36 @@
   }
 
   .area-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
+    position: relative;
     flex: 0 0 30%;
+    height: 100%;
 
-    > h1 {
-      margin-bottom: 0;
+    .area-suspect-info {
+      position: absolute;
+      z-index: theme.$z_control-panel_suspect-info;
+      box-sizing: border-box;
+      left: 50%;
+      bottom: 0%;
+      transform: translate(-50%);
+      height: 120%;
+      max-width: 100%;
+      padding: 1em;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .status-text {
+        position: relative;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0.25em;
+        text-wrap-mode: nowrap;
+      }
+
+      .suspect-info {
+        flex-grow: 1;
+      }
     }
   }
 
@@ -64,10 +88,46 @@
     }
   }
 
-  .round-summary {
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, -100%);
+  .btn-group-ruled-out {
+    > button {
+      width: 7em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .icon {
+        font-size: 2em;
+      }
+      span {
+        font-size: 0.9em;
+      }
+    }
   }
+
+  button.btn-next-round {
+    &:not([disabled]) {
+      background-color: Colours.$btn-next-round_bg;
+      &:hover {
+        background-color: Colours.$btn_next-round_hover_bg;
+      }
+    }
+    &.auto-click {
+      color: Colours.$btn_next-round_autoclick_c;
+      background-color: Colours.$btn_next-round_autoclick_bg;
+      .icon {
+        color: Colours.$c-white;
+      }
+    }
+  }
+}
+
+.round-summary {
+  position: fixed;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
 }

@@ -30,7 +30,7 @@ const StatusText = ({ state }: Props) => {
     }
   };
 
-  return <h1 className="status">{getStatusMessage()}</h1>;
+  return <h1 className="status-text">{getStatusMessage()}</h1>;
 };
 
 export default StatusText;

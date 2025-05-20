@@ -18,7 +18,11 @@ const RoundSummary = ({ suspect, accused, suspectInfoOptions }: Props) => {
   const isCorrect = suspect.id === accused.id;
 
   return (
-    <div className="round-summary ui-panel flex-col align-center">
+    <div
+      className={`round-summary ui-panel flex-col align-center ${
+        isCorrect ? "border-green" : "border-red"
+      }`}
+    >
       <div className="flex-row justify-between align-center">
         {accused && !isCorrect && (
           <div className="accused-breakdown flex-row align-center">

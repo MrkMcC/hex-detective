@@ -131,6 +131,7 @@ function Game({
 
   const initialiseRoundState = (resetProgress = false) => {
     if (resetProgress) restartStage();
+    setSuspectInfoOptions((prev) => ({ ...prev, revealColours: false }));
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);

@@ -79,10 +79,16 @@ const ControlBar = ({
         </div>
       </div>
       <div className="area-center">
-        <StatusText state={gameStatus} />
-        {suspect && (
-          <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
-        )}
+        <div
+          className={`area-suspect-info ui-panel ${
+            gameStatus === GameStatus.Scored ? "border-green" : "border-red"
+          }`}
+        >
+          <StatusText state={gameStatus} />
+          {suspect && (
+            <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
+          )}
+        </div>
       </div>
       <div className="area-right">
         <div className="area-rule-out">

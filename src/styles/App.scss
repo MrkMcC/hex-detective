@@ -7,36 +7,3 @@ body {
   color: white;
   font-family: arial;
 }
-
-//TODO find a place for these control panel / bottom bar items
-.btn-group-ruled-out {
-  > button {
-    width: 7em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .icon {
-      font-size: 2em;
-    }
-    span {
-      font-size: 0.9em;
-    }
-  }
-}
-
-button.btn-next-round {
-  &:not([disabled]) {
-    background-color: Colours.$btn-next-round_bg;
-    &:hover {
-      background-color: Colours.$btn_next-round_hover_bg;
-    }
-  }
-  &.auto-click {
-    color: Colours.$btn_next-round_autoclick_c;
-    background-color: Colours.$btn_next-round_autoclick_bg;
-    .icon {
-      color: Colours.$c-white;
-    }
-  }
-}

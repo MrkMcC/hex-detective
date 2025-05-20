@@ -1,4 +1,8 @@
 .suspect-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
   .icon {
     margin-left: 0.5em;
     margin-right: 0.5em;
@@ -6,6 +10,7 @@
 
   .description-text {
     margin-right: 0.5em;
+    text-wrap-mode: nowrap;
     &.hat {
       word-spacing: 0.65em;
     }
