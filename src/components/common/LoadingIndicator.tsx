@@ -15,8 +15,6 @@ const LoadingIndicator = ({
   const quarter3 = quarters >= 3 ? "quarter-3" : undefined;
   const quarter4 = quarters >= 4 ? "quarter-4" : undefined;
 
-  console.log(quarters);
-
   return (
     <div
       className={ClassHelper.Join(
