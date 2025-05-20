@@ -15,11 +15,11 @@ import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
 import ColourService from "../services/ColourService";
 import TutorialService from "../services/TutorialService";
+import SessionDataT from "../types/SessionDataT";
 import TutorialState from "../types/TutorialState";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
 import GameStatus from "./../enum/GameStatus";
 import PersonService from "./../services/PersonService";
-import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
 import AutoButton from "./common/AutoButton";
 import Switch from "./common/Switch";
@@ -34,7 +34,7 @@ interface Props {
   onChangeSettings: (settings: UserSettings) => void;
 }
 
-const initialGameData: GameDataT = {
+const initialSessionData: SessionDataT = {
   roundsWon: 0,
 };
 
@@ -45,7 +45,9 @@ function Game({
   onChangeStatus,
   onChangeSettings,
 }: Props) {
-  const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
+  const [sessionData, setSessionData] = useState<SessionDataT>({
+    ...initialSessionData,
+  });
 
   const [crowd, setCrowd] = useState<Crowd>();
   const [currentSelectionMode, setCurrentSelectionMode] = useState(
@@ -63,7 +65,7 @@ function Game({
   //#endregion
 
   const initialiseRoundState = (resetProgress = false) => {
-    if (resetProgress) setGameData({ ...initialGameData });
+    if (resetProgress) setSessionData({ ...initialSessionData });
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);
@@ -74,24 +76,24 @@ function Game({
           stage: prev!.stage,
           round: 1,
         }));
-      else if (gameData.roundsWon >= 3) {
+      else if (sessionData.roundsWon >= 3) {
         setTutorialState((prev) => ({
           stage: prev!.stage + 1,
           round: 1,
         }));
-        setGameData((prev) => ({ ...prev, roundsWon: 0 }));
+        setSessionData((prev) => ({ ...prev, roundsWon: 0 }));
       } else
         setTutorialState((prev) => ({
           ...prev!,
-          round: gameData.roundsWon + 1,
+          round: sessionData.roundsWon + 1,
         }));
     }
   };
 
   const score = () => {
     onChangeStatus(GameStatus.Scored);
-    let roundsWon = gameData.roundsWon + 1;
-    setGameData((prev) => ({ ...prev, roundsWon: roundsWon }));
+    let roundsWon = sessionData.roundsWon + 1;
+    setSessionData((prev) => ({ ...prev, roundsWon: roundsWon }));
   };
 
   const accuse = (personId: string) => {
@@ -180,7 +182,7 @@ function Game({
   const setupTutorialRound = () => {
     if (tutorialState === null) {
       setTutorialState({
-        stage: TutorialStage.Colours_Imbalance,
+        stage: TutorialStage.Basics_Scoring,
         round: 1,
       });
       return;
@@ -257,7 +259,7 @@ function Game({
     else {
       const newCrowd = PersonService.RandomCrowd(
         difficulty.parameters.crowdSizeInitial +
-          difficulty.parameters.crowdSizeIncrement * gameData.roundsWon
+          difficulty.parameters.crowdSizeIncrement * sessionData.roundsWon
       );
       setCrowd(newCrowd);
     }
@@ -304,7 +306,7 @@ function Game({
             <FaCaretLeft className="icon" />
             Back to Menu
           </button>
-          <HighScore gameData={gameData} />
+          <HighScore gameData={sessionData} />
         </div>
         <ControlPanel
           gameStatus={status}

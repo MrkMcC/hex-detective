@@ -1,7 +1,7 @@
-import GameDataT from "../../types/GameDataT";
+import SessionDataT from "../../types/SessionDataT";
 
 interface Props {
-  gameData: GameDataT;
+  gameData: SessionDataT;
 }
 
 const HighScore = ({ gameData }: Props) => {

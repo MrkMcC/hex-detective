@@ -27,6 +27,7 @@ import EventService from "./services/EventService";
 //Tutorial Improvements
 //-Improve tutorial modal to show tutorial progress
 //-Allow navigating to a specific tutorial stage (maybe near the Back to menu button)
+//-Update Basics Tutorial to explain ~all UI elements, hiding the unexplained ones and piece by piece unhiding them
 
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?
