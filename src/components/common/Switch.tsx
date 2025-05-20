@@ -1,18 +1,19 @@
 import { ChangeEvent } from "react";
 
 interface Props {
+  id?: string;
   value: boolean;
   onChange: (value: boolean) => void;
 }
 
-const Switch = ({ value, onChange }: Props) => {
+const Switch = ({ id, value, onChange }: Props) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.checked);
   };
 
   return (
     <label className="switch">
-      <input type="checkbox" checked={value} onChange={handleChange} />{" "}
+      <input id={id} type="checkbox" checked={value} onChange={handleChange} />{" "}
       <span className="slider round"></span>
     </label>
   );

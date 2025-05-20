@@ -10,10 +10,9 @@ interface Props {
   flavour: ColourFlavour | CustomFlavour;
 }
 
-const SuspectInfoColour = ({ colour, reveal, children, flavour }: Props) => {
+const SuspectInfoColour = ({ colour, reveal, flavour }: Props) => {
   return (
     <span className="colour-text">
-      {children && <span>{children} </span>}
       <span
         className={`flavour-${flavour}`}
         style={{ color: reveal ? colour.toString() : undefined }}

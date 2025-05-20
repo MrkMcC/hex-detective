@@ -1,24 +1,23 @@
-import {
-  FaCaretLeft,
-  FaCircleArrowRight,
-  FaEye,
-  FaEyeSlash,
-  FaRepeat,
-} from "react-icons/fa6";
+import { FaCaretLeft } from "react-icons/fa6";
+import DifficultyConfig from "../../classes/DifficultyConfig";
 import UserSettings from "../../classes/UserSettings";
 import ControlAction from "../../enum/ControlAction";
 import GameStatus from "../../enum/GameStatus";
+import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import RoundDataT from "../../types/RoundDataT";
 import SessionDataT from "../../types/SessionDataT";
-import AutoButton from "../common/AutoButton";
-import Switch from "../common/Switch";
-import ControlPanel from "./ControlPanel";
-import HighScore from "./HighScore";
+import RoundNavigation from "./RoundNavigation";
+import RoundSummary from "./RoundSummary";
+import RuleOutControls from "./RuleOutControls";
+import SelectionModeControl from "./SelectionModeControl";
+import SessionInfo from "./SessionInfo";
+import SuspectInfo from "./SuspectInfo";
 
 interface Props {
   gameStatus: GameStatus;
   settings: UserSettings;
+  difficulty: DifficultyConfig;
   sessionData: SessionDataT;
   roundData: RoundDataT;
   suspectInfoOptions: SuspectInfoOptionsT;
@@ -30,6 +29,7 @@ interface Props {
 const ControlBar = ({
   gameStatus,
   settings,
+  difficulty,
   sessionData,
   roundData,
   suspectInfoOptions,
@@ -38,7 +38,7 @@ const ControlBar = ({
   onChangeRoundData,
 }: Props) => {
   //#region Shorthand Variables
-  const isRoundInProgress = gameStatus === GameStatus.InProgress;
+  const suspect = roundData.crowd?.getSuspect();
   //#endregion
 
   //#region Event Handling
@@ -53,118 +53,68 @@ const ControlBar = ({
       onControlAction(ControlAction.QuitSession);
   };
 
-  const handleResetRuledOut = () => {
-    if (confirm("Rule everyone back in?"))
-      onControlAction(ControlAction.ResetRuledOut);
+  const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
+    onChangeRoundData({ ...roundData, selectionMode: mode });
   };
   //#endregion
 
   return (
     <div className="control-bar flex-row justify-between">
-      <div className="bottom-left flex-row justify-between align-start">
-        <button className="btn-main-menu" onClick={handleQuit}>
-          <FaCaretLeft className="icon" />
-          Back to Menu
-        </button>
-        <HighScore sessionData={sessionData} />
+      <div className="area-left">
+        <div className="area-menu">
+          {/* there's nothing to set yet */}
+          <button className="hidden">Settings</button>
+          <button className="btn-main-menu" onClick={handleQuit}>
+            <FaCaretLeft className="icon" />
+            Back to Menu
+          </button>
+        </div>
+        <div className="area-session-data">
+          <SessionInfo
+            difficulty={difficulty}
+            sessionData={sessionData}
+            roundData={roundData}
+          />
+        </div>
       </div>
-      <ControlPanel
-        gameStatus={gameStatus}
-        suspectInfoOptions={suspectInfoOptions}
-        currentSelectionMode={roundData.selectionMode}
-        onChangeSelectionMode={(mode) =>
-          onChangeRoundData({ ...roundData, selectionMode: mode })
-        }
-        suspect={roundData.crowd?.getSuspect()}
-        accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)}
-      />
-      <div className="bottom-right flex-row justify-start">
-        <div className="flex-col justify-center align-stretch">
-          <div className="btn-group-ruled-out flex-row gap-mini">
-            <button
-              onClick={() => onControlAction(ControlAction.HideRuledOut)}
-              disabled={
-                !isRoundInProgress ||
-                roundData.crowd?.people.every((p) => !p.ruledOut || p.hidden)
-              }
-            >
-              <FaEyeSlash className="icon" />
-              <span>
-                Hide
-                <br />
-                ruled out
-              </span>
-            </button>
-            <button
-              onClick={() => onControlAction(ControlAction.UnhideAll)}
-              disabled={
-                !isRoundInProgress ||
-                roundData.crowd?.people.every((p) => !p.hidden)
-              }
-            >
-              <FaEye className="icon" />
-              <span>
-                Unhide
-                <br />
-                ruled out
-              </span>
-            </button>
-            <button
-              onClick={handleResetRuledOut}
-              disabled={
-                !isRoundInProgress ||
-                roundData.crowd?.people.every((p) => !p.ruledOut)
-              }
-            >
-              <FaRepeat className="icon" />
-              <span>
-                Reset
-                <br />
-                ruled out
-              </span>
-            </button>
+      <div className="area-center">
+        <h1>Find the suspect</h1>
+        {suspect && (
+          <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
+        )}
+      </div>
+      <div className="area-right">
+        <div className="area-rule-out">
+          <SelectionModeControl
+            currentMode={roundData.selectionMode}
+            onChange={handleChangeSelectionMode}
+          />
+          <RuleOutControls
+            roundData={roundData}
+            onControlAction={onControlAction}
+            disableAll={gameStatus !== GameStatus.InProgress}
+          />
+        </div>
+        <div className="area-round-navigation">
+          <div className="round-navigation">
+            <RoundNavigation
+              gameStatus={gameStatus}
+              settings={settings}
+              sessionData={sessionData}
+              onChangeSettings={onChangeSettings}
+              onControlAction={onControlAction}
+            />
           </div>
         </div>
-        <div className="flex-col justify-center">
-          {gameStatus === GameStatus.Scored && (
-            <AutoButton
-              className="btn-next-round large"
-              onClick={() => onControlAction(ControlAction.NextRound)}
-              autoClickMs={settings.parameters.autoContinue ? 2000 : undefined}
-            >
-              Continue <FaCircleArrowRight className="icon" />
-            </AutoButton>
-          )}
-          <Switch
-            value={settings.parameters.autoContinue}
-            onChange={(value) =>
-              onChangeSettings(
-                new UserSettings({
-                  ...settings.parameters,
-                  autoContinue: value,
-                })
-              )
-            }
-          />
-          <label>Auto-continue</label>
-          {gameStatus === GameStatus.Failed && (
-            <button
-              className="large"
-              onClick={() => onControlAction(ControlAction.Restart)}
-            >
-              {sessionData.tutorialProgress === null ? (
-                <>
-                  Play again <FaRepeat className="icon" />
-                </>
-              ) : (
-                <>
-                  Continue <FaCircleArrowRight className="icon" />
-                </>
-              )}
-            </button>
-          )}
-        </div>
       </div>
+      {(gameStatus === GameStatus.Scored ||
+        gameStatus === GameStatus.Failed) && (
+        <RoundSummary
+          suspect={roundData.crowd!.getSuspect()!}
+          accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)!}
+          suspectInfoOptions={suspectInfoOptions}
+        />
+      )}
     </div>
   );
 };

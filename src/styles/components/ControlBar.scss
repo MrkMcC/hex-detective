@@ -1,0 +1,73 @@
+@use "../theme";
+
+.control-bar {
+  z-index: theme.$z_control-panel;
+  position: relative;
+
+  .area-left {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 0;
+
+    .area-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      button {
+        font-size: 1.1em;
+        .icon {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+
+  .area-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    flex: 0 0 30%;
+
+    > h1 {
+      margin-bottom: 0;
+    }
+  }
+
+  .area-right {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 0;
+
+    .area-rule-out {
+      display: flex;
+      flex-direction: column;
+
+      .selection-mode {
+        margin-bottom: 0.5em;
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      .btn-group-ruled-out {
+        > :not(:last-child) {
+          margin-right: 0.5em;
+        }
+      }
+    }
+    .area-round-navigation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .round-summary {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+}

@@ -1,4 +1,5 @@
 type DifficultyStateT = {
+  templateName: string;
   tutorial: boolean;
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
@@ -8,6 +9,7 @@ type DifficultyStateT = {
 //difficulty templates are defined in the upcoming difficulty selection component, not here
 class DifficultyConfig {
   parameters: DifficultyStateT = {
+    templateName: "",
     tutorial: false,
     crowdSizeInitial: 5,
     crowdSizeIncrement: 5,

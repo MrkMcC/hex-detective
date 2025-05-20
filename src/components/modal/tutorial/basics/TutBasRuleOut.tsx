@@ -28,7 +28,7 @@ const TutBasRuleOut = ({}: Props) => {
         <SimulationFrame>
           <SelectionModeControl
             currentMode={selectionMode}
-            onSelect={handleSelectSelectionMode}
+            onChange={handleSelectSelectionMode}
           />
         </SimulationFrame>
       </div>

@@ -3,8 +3,9 @@
 
 :root,
 body {
-  background-color: Colours.$bg-dark;
+  background-color: Colours.$default_background;
   color: white;
+  font-family: arial;
 }
 
 //TODO find a place for these control panel / bottom bar items

@@ -22,6 +22,7 @@
       "version": "0.3",
       "name": "The UI Update",
       "features": [
+        "Redesigned the control panel",
         "After accusing a person, a bar chart breakdown of the suspects colours is shown",
         "If the choice was incorrect, a second breakdown is shown to compare the suspect with the accused",
         "New button to completely hide ruled-out people",

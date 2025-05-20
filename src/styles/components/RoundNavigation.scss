@@ -1,0 +1,32 @@
+@use "../vars/Colours";
+
+.round-navigation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-wrap-mode: nowrap;
+
+  .btn-next-round {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .area-auto-continue {
+    border: 1px solid Colours.$base-grey-dark;
+    border-radius: 1em;
+
+    margin-top: 1em;
+
+    display: flex;
+    align-items: center;
+
+    .switch {
+      margin-right: 0.5em;
+    }
+
+    label {
+      cursor: pointer;
+    }
+  }
+}

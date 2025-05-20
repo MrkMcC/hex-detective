@@ -20,7 +20,11 @@ const SuspectInfo = ({ suspect, options }: Props) => {
   };
 
   return (
-    <div className={`suspect-info ${options.compact ? "compact" : "extended"}`}>
+    <div
+      className={`suspect-info font-mono ${
+        options.compact ? "compact" : "extended"
+      }`}
+    >
       {options.compact ? (
         <p>
           <SuspectInfoColour
@@ -47,39 +51,42 @@ const SuspectInfo = ({ suspect, options }: Props) => {
         </p>
       ) : (
         <>
-          <p>
+          <div className="flex-row justify-between">
             <FaRedhat className="icon" />
-            <SuspectInfoColour
-              flavour={options.flavour!}
-              colour={suspect.colours.hat}
-              reveal={options.revealColours}
-            >
-              Their hat is
-            </SuspectInfoColour>
+            <span className="grow flex-row justify-between">
+              <span className="description-text hat">their hat is </span>
+              <SuspectInfoColour
+                flavour={options.flavour!}
+                colour={suspect.colours.hat}
+                reveal={options.revealColours}
+              />
+            </span>
             <FaRedhat className="icon" />
-          </p>
-          <p>
+          </div>
+          <div className="flex-row justify-between">
             <FaShirt className="icon" />
-            <SuspectInfoColour
-              flavour={options.flavour!}
-              colour={suspect.colours.shirt}
-              reveal={options.revealColours}
-            >
-              Their shirt is
-            </SuspectInfoColour>
+            <span className="grow flex-row justify-between">
+              <span className="description-text shirt">their shirt is </span>
+              <SuspectInfoColour
+                flavour={options.flavour!}
+                colour={suspect.colours.shirt}
+                reveal={options.revealColours}
+              />
+            </span>
             <FaShirt className="icon" />
-          </p>
-          <p>
+          </div>
+          <div className="flex-row justify-between">
             <PiPantsFill className="icon" />
-            <SuspectInfoColour
-              flavour={options.flavour!}
-              colour={suspect.colours.pants}
-              reveal={options.revealColours}
-            >
-              Their pants are
-            </SuspectInfoColour>
+            <span className="grow flex-row justify-between">
+              <span className="description-text pants">their pants are </span>
+              <SuspectInfoColour
+                flavour={options.flavour!}
+                colour={suspect.colours.pants}
+                reveal={options.revealColours}
+              />
+            </span>
             <PiPantsFill className="icon" />
-          </p>
+          </div>
         </>
       )}
     </div>

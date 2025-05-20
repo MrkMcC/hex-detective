@@ -326,6 +326,7 @@ function Game({
       </div>
       <ControlBar
         gameStatus={status}
+        difficulty={difficulty}
         settings={settings}
         sessionData={sessionData}
         roundData={roundData}

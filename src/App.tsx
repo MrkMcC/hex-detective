@@ -13,6 +13,8 @@ import EventService from "./services/EventService";
 
 //UI Update notes
 //-rework control panel (bottom bar) layout
+//-make round summary collapsable (just display correct/incorrect where "find the suspect" is, reset to expanded on next round)
+//-disable auto-continue on failure
 
 //Difficulty Update notes
 //-show colour triangle option

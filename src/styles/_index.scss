@@ -1,5 +1,4 @@
 @use "App";
-@use "ControlPanel";
 @use "DefaultElements";
 @use "Helper";
 @use "Layout";
@@ -16,10 +15,13 @@
 @use "components/AutoButton";
 @use "components/BarChart";
 @use "components/BaseIndicator";
+@use "components/Collapsor";
+@use "components/ControlBar";
 @use "components/LoadingIndicator";
 @use "components/MainMenu";
 @use "components/Modal";
 @use "components/RGBAmounts";
+@use "components/RoundNavigation";
 @use "components/RoundSummary";
 @use "components/SelectionModeControl";
 @use "components/SimulationFrame";

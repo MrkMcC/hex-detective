@@ -19,7 +19,7 @@ const RoundSummary = ({ suspect, accused, suspectInfoOptions }: Props) => {
   const isCorrect = suspect.id === accused.id;
 
   return (
-    <div className="grow round-summary flex-col align-center m-1">
+    <div className="round-summary ui-panel flex-col align-center">
       {isCorrect ? (
         <h2 className="m-0">
           <FaCheck className="icon color-green" /> Correct

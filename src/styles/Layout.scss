@@ -4,12 +4,20 @@
 @use "vars/Dimensions";
 
 .game-session {
+  position: fixed;
+  box-sizing: border-box;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   .people-container {
+    box-sizing: border-box;
     width: 100%;
-    height: 80vh;
+    flex: 1 0 0;
     border: 2px gray dashed;
     display: flex;
     justify-content: center;
@@ -27,63 +35,34 @@
   }
   .control-bar {
     width: 100%;
-    height: 100%;
+    flex-grow: 0;
 
     .bottom-left,
     .bottom-right {
       flex: 1 0 0;
     }
-
-    .control-panel-container {
-      .control-panel {
-        position: fixed;
-        box-sizing: border-box;
-        left: 50%;
-        top: 100%;
-        transform: translate(-50%, -100%);
-        .in-progress {
-          height: 20vh;
-        }
-      }
-    }
   }
 }
 
 @media (max-width: Breakpoints.$breakpoint-large) {
-  .control-panel-container,
-  .control-panel {
-    width: Dimensions.$control-panel_w-m;
-  }
   .person-container {
     width: Dimensions.$person-a-l-w;
     height: Dimensions.$person-a-l-h;
   }
 }
 @media (min-width: Breakpoints.$breakpoint-large) {
-  .control-panel-container,
-  .control-panel {
-    width: Dimensions.$control-panel_w-l;
-  }
   .person-container {
     width: Dimensions.$person-r-l-w;
     height: Dimensions.$person-r-l-h;
   }
 }
 @media (min-width: Breakpoints.$breakpoint-x-large) {
-  .control-panel-container,
-  .control-panel {
-    width: Dimensions.$control-panel_w-xl;
-  }
   .person-container {
     width: Dimensions.$person-r-xl-w;
     height: Dimensions.$person-r-xl-h;
   }
 }
 @media (min-width: Breakpoints.$breakpoint-xx-large) {
-  .control-panel-container,
-  .control-panel {
-    width: Dimensions.$control-panel_w-xxl;
-  }
   .person-container {
     width: Dimensions.$person-r-xxl-w;
     height: Dimensions.$person-r-xxl-h;
