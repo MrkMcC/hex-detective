@@ -7,7 +7,7 @@ body {
   color: white;
 }
 
-//TODO find a place for this
+//TODO find a place for these control panel / bottom bar items
 .btn-group-ruled-out {
   > button {
     width: 7em;
@@ -21,5 +21,16 @@ body {
     span {
       font-size: 0.9em;
     }
+  }
+}
+
+button.btn-next-round {
+  &:not([disabled]) {
+    background-color: Colours.$btn-next-round_bg;
+    &:hover {
+      background-color: Colours.$btn_next-round_bg_hover;
+    }
+  }
+  &[disabled] {
   }
 }

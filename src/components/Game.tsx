@@ -344,7 +344,7 @@ function Game({ status, onChangeStatus, settings }: Props) {
           </div>
           <div className="flex-col justify-center">
             {status === GameStatus.Scored && (
-              <button className="large" onClick={handleContinue}>
+              <button className="btn-next-round large" onClick={handleContinue}>
                 Continue <FaCircleArrowRight className="icon" />
               </button>
             )}
