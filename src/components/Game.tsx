@@ -9,6 +9,7 @@ import {
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import DifficultyConfig from "../classes/DifficultyConfig";
+import UserSettings from "../classes/UserSettings";
 import ColourFlavour from "../enum/ColourFlavour";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
@@ -20,20 +21,30 @@ import GameStatus from "./../enum/GameStatus";
 import PersonService from "./../services/PersonService";
 import GameDataT from "./../types/GameDataT";
 import Person from "./Person";
+import AutoButton from "./common/AutoButton";
+import Switch from "./common/Switch";
 import ControlPanel from "./control-panel/ControlPanel";
 import HighScore from "./control-panel/HighScore";
 
 interface Props {
   status: GameStatus;
+  settings: UserSettings;
+  difficulty: DifficultyConfig;
   onChangeStatus: (status: GameStatus) => void;
-  settings: DifficultyConfig;
+  onChangeSettings: (settings: UserSettings) => void;
 }
 
 const initialGameData: GameDataT = {
   roundsWon: 0,
 };
 
-function Game({ status, onChangeStatus, settings }: Props) {
+function Game({
+  status,
+  settings,
+  difficulty,
+  onChangeStatus,
+  onChangeSettings,
+}: Props) {
   const [gameData, setGameData] = useState<GameDataT>({ ...initialGameData });
 
   const [crowd, setCrowd] = useState<Crowd>();
@@ -130,6 +141,12 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   const handleReset = () => {
     initialiseRoundState(true);
+  };
+
+  const handleChangeAutoContinue = (value: boolean) => {
+    onChangeSettings(
+      new UserSettings({ ...settings.parameters, autoContinue: value })
+    );
   };
 
   const handleHideRuledOut = () => {
@@ -236,11 +253,11 @@ function Game({ status, onChangeStatus, settings }: Props) {
 
   //#region Game State
   const startNewRound = () => {
-    if (settings.parameters.tutorial) setupTutorialRound();
+    if (difficulty.parameters.tutorial) setupTutorialRound();
     else {
       const newCrowd = PersonService.RandomCrowd(
-        settings.parameters.crowdSizeInitial +
-          settings.parameters.crowdSizeIncrement * gameData.roundsWon
+        difficulty.parameters.crowdSizeInitial +
+          difficulty.parameters.crowdSizeIncrement * gameData.roundsWon
       );
       setCrowd(newCrowd);
     }
@@ -344,11 +361,21 @@ function Game({ status, onChangeStatus, settings }: Props) {
           </div>
           <div className="flex-col justify-center">
             {status === GameStatus.Scored && (
-              <button className="btn-next-round large" onClick={handleContinue}>
+              <AutoButton
+                className="btn-next-round large"
+                onClick={handleContinue}
+                autoClickMs={
+                  settings.parameters.autoContinue ? 2000 : undefined
+                }
+              >
                 Continue <FaCircleArrowRight className="icon" />
-              </button>
+              </AutoButton>
             )}
-            {/* <Switch onChange={console.log} /> */}
+            <Switch
+              value={settings.parameters.autoContinue}
+              onChange={handleChangeAutoContinue}
+            />
+            <label>Auto-continue</label>
             {status === GameStatus.Failed && (
               <button className="large" onClick={handleReset}>
                 {tutorialState === null ? (

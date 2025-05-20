@@ -1,6 +1,7 @@
 import objectHash from "object-hash";
 import { useEffect, useState } from "react";
 import DifficultyConfig from "./classes/DifficultyConfig";
+import UserSettings from "./classes/UserSettings";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
 import Modal from "./components/modal/Modal";
@@ -50,7 +51,8 @@ import EventService from "./services/EventService";
 
 function App() {
   const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
-  const [settings, setSettings] = useState<DifficultyConfig>(
+  const [settings, setSettings] = useState<UserSettings>(new UserSettings());
+  const [difficulty, setDifficulty] = useState<DifficultyConfig>(
     new DifficultyConfig()
   );
 
@@ -64,14 +66,14 @@ function App() {
   }, []);
 
   const handleStartGame = () => {
-    setSettings(
+    setDifficulty(
       (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: false })
     );
     setStatus(GameStatus.InProgress);
   };
 
   const handleStartTutorial = () => {
-    setSettings(
+    setDifficulty(
       (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: true })
     );
     setStatus(GameStatus.InProgress);
@@ -82,17 +84,19 @@ function App() {
       <Modal />
       {status === GameStatus.Setup ? (
         <MainMenu
-          settings={settings}
-          onChangeSettings={setSettings}
+          settings={difficulty}
+          onChangeSettings={setDifficulty}
           onStartGame={handleStartGame}
           onStartTutorial={handleStartTutorial}
         />
       ) : (
         <Game
-          key={objectHash(settings.parameters.crowdSizeInitial)}
+          key={objectHash(difficulty.parameters.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
+          difficulty={difficulty}
           settings={settings}
+          onChangeSettings={setSettings}
         />
       )}
     </div>

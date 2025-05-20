@@ -13,8 +13,10 @@
 @use "body/Pants";
 @use "body/Shirts";
 
+@use "components/AutoButton";
 @use "components/BarChart";
 @use "components/BaseIndicator";
+@use "components/LoadingIndicator";
 @use "components/MainMenu";
 @use "components/Modal";
 @use "components/RGBAmounts";

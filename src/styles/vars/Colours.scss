@@ -31,4 +31,13 @@ $btn_disabled_c: $base_grey;
 $btn_disabled_bg: $base_grey-dark;
 $btn_disabled_br: $base_grey-dark;
 $btn_next-round_bg: $base_green-darker;
-$btn_next-round_bg_hover: $base_green;
+$btn_next-round_hover_bg: $base_green;
+$btn_next-round_autoclick_c: $base_grey-bright;
+$btn_next-round_autoclick_bg: $base_green-darker;
+
+$loading-indicator_unfilled: $base_grey-darkest;
+$loading-indicator_nextQuarter: $base_grey;
+$loading-indicator_filled: $base_white;
+
+$switch_disabled_bg: $base_grey;
+$switch_enabled_bg: $base_green;

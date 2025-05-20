@@ -1,0 +1,38 @@
+@use "../vars/Colours";
+
+.loading-indicator {
+  border: 0.25em solid Colours.$loading-indicator_unfilled;
+  border-top-color: Colours.$loading-indicator_nextQuarter;
+  border-radius: 50%;
+  width: 0.85em;
+  height: 0.85em;
+  animation: spin 2s linear infinite;
+
+  &.dashed {
+    border-style: dashed;
+  }
+  &.quarter-1 {
+    border-top-color: Colours.$loading-indicator_filled;
+    border-right-color: Colours.$loading-indicator_nextQuarter;
+  }
+  &.quarter-2 {
+    border-right-color: Colours.$loading-indicator_filled;
+    border-bottom-color: Colours.$loading-indicator_nextQuarter;
+  }
+  &.quarter-3 {
+    border-bottom-color: Colours.$loading-indicator_filled;
+    border-left-color: Colours.$loading-indicator_nextQuarter;
+  }
+  &.quarter-4 {
+    border-left-color: Colours.$loading-indicator_filled;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

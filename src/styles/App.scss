@@ -28,9 +28,14 @@ button.btn-next-round {
   &:not([disabled]) {
     background-color: Colours.$btn-next-round_bg;
     &:hover {
-      background-color: Colours.$btn_next-round_bg_hover;
+      background-color: Colours.$btn_next-round_hover_bg;
     }
   }
-  &[disabled] {
+  &.auto-click {
+    color: Colours.$btn_next-round_autoclick_c;
+    background-color: Colours.$btn_next-round_autoclick_bg;
+    .icon {
+      color: Colours.$c-white;
+    }
   }
 }
