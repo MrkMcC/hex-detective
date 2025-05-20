@@ -17,7 +17,7 @@ import ColourService from "../services/ColourService";
 import TutorialService from "../services/TutorialService";
 import RoundDataT from "../types/RoundDataT";
 import SessionDataT from "../types/SessionDataT";
-import TutorialState from "../types/TutorialState";
+import TutorialProgress from "../types/TutorialProgress";
 import SuspectInfoOptionsT from "../types/components/SuspectInfoOptionsT";
 import GameStatus from "./../enum/GameStatus";
 import PersonService from "./../services/PersonService";
@@ -37,6 +37,7 @@ interface Props {
 
 const initialSessionData: SessionDataT = {
   roundsWon: 0,
+  tutorialProgress: null,
 };
 
 function Game({
@@ -53,10 +54,6 @@ function Game({
     accusedPersonId: null,
     selectionMode: SuspectSelectionMode.Accuse,
   });
-
-  const [tutorialState, setTutorialState] = useState<TutorialState | null>(
-    null
-  );
   const [suspectInfoOptions, setSuspectInfoOptions] =
     useState<SuspectInfoOptionsT>({});
 
@@ -68,6 +65,8 @@ function Game({
   };
   const setSelectionMode = (mode: SuspectSelectionMode) =>
     setRoundData((prev) => ({ ...prev, selectionMode: mode }));
+  const setTutorialProgress = (state: TutorialProgress | null) =>
+    setSessionData((prev) => ({ ...prev, tutorialProgress: state }));
   const toggleRuleOut = (id: string) => {
     setRoundData((prev) => ({
       ...prev,
@@ -110,6 +109,31 @@ function Game({
       },
     }));
   };
+  /**Resets the session, but remembers the current tutorial stage.*/
+  const restartStage = () => {
+    setSessionData((prev) => ({
+      ...initialSessionData,
+      tutorialProgress: !!prev.tutorialProgress
+        ? { ...sessionData.tutorialProgress!, round: 1 }
+        : null,
+    }));
+  };
+  const setNextTutorialStage = () => {
+    setSessionData((prev) => {
+      let nextProgress: TutorialProgress;
+      if (prev.tutorialProgress!.round >= 3) {
+        nextProgress = {
+          stage: prev.tutorialProgress!.stage + 1,
+          round: 1,
+        };
+      } else
+        nextProgress = {
+          ...prev.tutorialProgress!,
+          round: prev.tutorialProgress!.round + 1,
+        };
+      return { ...prev, tutorialProgress: nextProgress };
+    });
+  };
   //#endregion
 
   //#region Shorthand variables
@@ -117,28 +141,13 @@ function Game({
   //#endregion
 
   const initialiseRoundState = (resetProgress = false) => {
-    if (resetProgress) setSessionData({ ...initialSessionData });
+    if (resetProgress) restartStage();
     setAccusedPersonId(null);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);
 
-    if (tutorialState !== null) {
-      if (resetProgress)
-        setTutorialState((prev) => ({
-          stage: prev!.stage,
-          round: 1,
-        }));
-      else if (sessionData.roundsWon >= 3) {
-        setTutorialState((prev) => ({
-          stage: prev!.stage + 1,
-          round: 1,
-        }));
-        setSessionData((prev) => ({ ...prev, roundsWon: 0 }));
-      } else
-        setTutorialState((prev) => ({
-          ...prev!,
-          round: sessionData.roundsWon + 1,
-        }));
+    if (!resetProgress && sessionData.tutorialProgress !== null) {
+      setNextTutorialStage();
     }
   };
 
@@ -207,17 +216,19 @@ function Game({
 
   //#region tutorial
   const setupTutorialRound = () => {
-    if (tutorialState === null) {
-      setTutorialState({
+    if (sessionData.tutorialProgress === null) {
+      setTutorialProgress({
         stage: TutorialStage.Basics_Scoring,
         round: 1,
       });
       return;
     }
 
-    const newCrowd = TutorialService.GenerateCrowd(tutorialState);
+    const newCrowd = TutorialService.GenerateCrowd(
+      sessionData.tutorialProgress
+    );
 
-    switch (tutorialState.stage) {
+    switch (sessionData.tutorialProgress.stage) {
       case TutorialStage.Basics_Scoring:
       case TutorialStage.Basics_SelectionMode:
       case TutorialStage.Colours_Brightness:
@@ -275,9 +286,12 @@ function Game({
     setCrowd(newCrowd);
   };
   useEffect(() => {
-    if (tutorialState !== null && tutorialState.round === 1)
-      TutorialService.ShowModal(tutorialState.stage);
-  }, [tutorialState]);
+    if (
+      sessionData.tutorialProgress !== null &&
+      sessionData.tutorialProgress.round === 1
+    )
+      TutorialService.ShowModal(sessionData.tutorialProgress.stage);
+  }, [sessionData.tutorialProgress]);
   //#endregion
 
   //#region Game State
@@ -409,7 +423,7 @@ function Game({
             <label>Auto-continue</label>
             {status === GameStatus.Failed && (
               <button className="large" onClick={handleReset}>
-                {tutorialState === null ? (
+                {sessionData.tutorialProgress === null ? (
                   <>
                     Play again <FaRepeat className="icon" />
                   </>

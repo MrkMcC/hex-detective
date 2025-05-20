@@ -1,8 +1,8 @@
 import TutorialStage from "../enum/TutorialStage";
 
-type TutorialState = {
+type TutorialProgress = {
   stage: TutorialStage;
   round: number;
 };
 
-export default TutorialState;
+export default TutorialProgress;

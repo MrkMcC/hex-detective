@@ -4,7 +4,7 @@ import TutorialStage from "../enum/TutorialStage";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
 import MathHelper from "../helper/MathHelper";
-import TutorialState from "../types/TutorialState";
+import TutorialProgress from "../types/TutorialProgress";
 import ColourService from "./ColourService";
 import LogService from "./LogService";
 import ModalService from "./ModalService";
@@ -20,7 +20,7 @@ const showModal = (stage: TutorialStage) => {
   });
 };
 
-const generateCrowd = (state: TutorialState): Crowd => {
+const generateCrowd = (state: TutorialProgress): Crowd => {
   let people: PersonData[];
 
   const base16ColourConstruction = () =>
