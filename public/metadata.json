@@ -27,7 +27,8 @@
         "New button to completely hide ruled-out people",
         "New button to unhide ruled-out people",
         "New button to remove reset ruled-out status for all",
-        "Improved design and usability of interactive bar charts"
+        "Improved design and usability of interactive bar charts",
+        "New switch to auto-continue after a correct accusation"
       ],
       "bugs": []
     }

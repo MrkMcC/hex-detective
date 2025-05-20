@@ -13,7 +13,6 @@ import EventService from "./services/EventService";
 
 //UI Update notes
 //-rework control panel (bottom bar) layout
-//-auto-continue
 
 //Difficulty Update notes
 //-show colour triangle option
