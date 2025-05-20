@@ -1,8 +1,8 @@
-import Colour from "../../classes/Colour";
-import CustomFlavour from "../../classes/CustomFlavour";
-import ColourFlavour from "../../enum/ColourFlavour";
-import BarChartOptionsT from "../../types/components/BarChartOptionsT";
-import Slider from "../common/Slider";
+import Colour from "../../../classes/Colour";
+import CustomFlavour from "../../../classes/CustomFlavour";
+import ColourFlavour from "../../../enum/ColourFlavour";
+import BarChartOptionsT from "../../../types/components/BarChartOptionsT";
+import Slider from "../Slider";
 import InteractIcon from "./InteractIcon";
 
 interface Props {

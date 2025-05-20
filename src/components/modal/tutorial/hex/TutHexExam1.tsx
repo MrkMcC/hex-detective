@@ -1,6 +1,6 @@
-import Blue from "../../../common/Blue";
-import Green from "../../../common/Green";
-import Red from "../../../common/Red";
+import Blue from "../../../common/colour/text/Blue";
+import Green from "../../../common/colour/text/Green";
+import Red from "../../../common/colour/text/Red";
 
 interface Props {}
 

@@ -2,8 +2,8 @@ import { useState } from "react";
 import Colour from "../../../../classes/Colour";
 import CustomFlavour from "../../../../classes/CustomFlavour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
-import BarChart from "../../../colour/BarChart";
-import Green from "../../../common/Green";
+import BarChart from "../../../common/colour/BarChart";
+import Green from "../../../common/colour/text/Green";
 import SimulationFrame from "../SimulationFrame";
 
 interface Props {}

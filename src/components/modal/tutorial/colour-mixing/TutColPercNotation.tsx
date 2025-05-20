@@ -1,7 +1,7 @@
 import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourPresets from "../../../../helper/ColourPresets";
-import BarChart from "../../../colour/BarChart";
+import BarChart from "../../../common/colour/BarChart";
 
 interface Props {}
 

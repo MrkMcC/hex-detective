@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
-import BarChart from "../../../colour/BarChart";
-import Red from "../../../common/Red";
+import BarChart from "../../../common/colour/BarChart";
+import Red from "../../../common/colour/text/Red";
 import SimulationFrame from "../SimulationFrame";
 import TutorialColourTask from "../TutorialColourTask";
 

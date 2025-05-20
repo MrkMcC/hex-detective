@@ -1,6 +1,6 @@
 import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
-import BarChart from "../../../colour/BarChart";
+import BarChart from "../../../common/colour/BarChart";
 import SimulationFrame from "../SimulationFrame";
 
 interface Props {}

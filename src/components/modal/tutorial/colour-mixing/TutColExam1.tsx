@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import BarChart from "../../../colour/BarChart";
+import BarChart from "../../../common/colour/BarChart";
 import SimulationFrame from "../SimulationFrame";
 
 interface Props {}

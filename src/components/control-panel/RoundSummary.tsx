@@ -2,7 +2,7 @@ import { FaCheck, FaXmark } from "react-icons/fa6";
 import PersonData from "../../classes/PersonData";
 import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
-import BarChart from "../colour/BarChart";
+import BarChart from "../common/colour/BarChart";
 import Person from "../Person";
 
 interface Props {

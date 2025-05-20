@@ -1,5 +1,5 @@
-import Green from "../../../common/Green";
-import Red from "../../../common/Red";
+import Green from "../../../common/colour/text/Green";
+import Red from "../../../common/colour/text/Red";
 import SimulationFrame from "../SimulationFrame";
 
 interface Props {}

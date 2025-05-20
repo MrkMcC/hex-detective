@@ -1,11 +1,11 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
-import BarChart from "../../../colour/BarChart";
-import Blue from "../../../common/Blue";
-import ColouredText from "../../../common/ColouredText";
-import Green from "../../../common/Green";
-import Red from "../../../common/Red";
+import BarChart from "../../../common/colour/BarChart";
+import Blue from "../../../common/colour/text/Blue";
+import ColouredText from "../../../common/colour/text/ColouredText";
+import Green from "../../../common/colour/text/Green";
+import Red from "../../../common/colour/text/Red";
 import SimulationFrame from "../SimulationFrame";
 
 interface Props {}

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import ColourPresets from "../../helper/ColourPresets";
+import ColourPresets from "../../../../helper/ColourPresets";
 import ColouredText from "./ColouredText";
 
 interface Props {
