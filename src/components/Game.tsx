@@ -49,14 +49,11 @@ function Game({
   const [sessionData, setSessionData] = useState<SessionDataT>({
     ...initialSessionData,
   });
-
   const [roundData, setRoundData] = useState<RoundDataT>({
     accusedPersonId: null,
+    selectionMode: SuspectSelectionMode.Accuse,
   });
 
-  const [currentSelectionMode, setCurrentSelectionMode] = useState(
-    SuspectSelectionMode.Accuse
-  );
   const [tutorialState, setTutorialState] = useState<TutorialState | null>(
     null
   );
@@ -69,6 +66,8 @@ function Game({
   const setCrowd = (crowd?: Crowd) => {
     setRoundData((prev) => ({ ...prev, crowd: crowd }));
   };
+  const setSelectionMode = (mode: SuspectSelectionMode) =>
+    setRoundData((prev) => ({ ...prev, selectionMode: mode }));
   const toggleRuleOut = (id: string) => {
     setRoundData((prev) => ({
       ...prev,
@@ -160,7 +159,7 @@ function Game({
 
   //#region Event Handling
   const handleSelect = (personId: string) => {
-    switch (currentSelectionMode) {
+    switch (roundData.selectionMode) {
       case SuspectSelectionMode.RuleOut:
         toggleRuleOut(personId);
         break;
@@ -171,7 +170,7 @@ function Game({
   };
 
   const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
-    setCurrentSelectionMode(mode);
+    setSelectionMode(mode);
   };
 
   const handleQuit = () => {
@@ -311,7 +310,7 @@ function Game({
       person={p}
       disabled={
         roundData.accusedPersonId !== null ||
-        (p.ruledOut && currentSelectionMode !== SuspectSelectionMode.RuleOut)
+        (p.ruledOut && roundData.selectionMode !== SuspectSelectionMode.RuleOut)
       }
       isAccused={roundData.accusedPersonId === p.id}
       isRevealedSuspect={
@@ -339,7 +338,7 @@ function Game({
         <ControlPanel
           gameStatus={status}
           suspectInfoOptions={suspectInfoOptions}
-          currentSelectionMode={currentSelectionMode}
+          currentSelectionMode={roundData.selectionMode}
           onChangeSelectionMode={handleChangeSelectionMode}
           suspect={roundData.crowd?.getSuspect()}
           accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)}
