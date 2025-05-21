@@ -49,6 +49,12 @@
       .slider {
         appearance: none;
         background-color: transparent;
+        position: absolute;
+        top: 49%;
+        width: 76%;
+        height: 55%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+
         &::-webkit-slider-thumb {
           visibility: hidden;
           cursor: pointer;
@@ -56,11 +62,9 @@
           height: 4.5em;
         }
 
-        position: absolute;
-        top: 49%;
-        width: 76%;
-        height: 55%;
-        transform: translate(-50%, -50%) rotate(-90deg);
+        &::-moz-range-thumb {
+          visibility: hidden;
+        }
 
         &.slider-red {
           left: 15%;
