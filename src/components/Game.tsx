@@ -51,6 +51,9 @@ function Game({
   //#region Shorthand State Setters
   const setAccusedPersonId = (id: string | null) =>
     setRoundData((prev) => ({ ...prev, accusedPersonId: id }));
+  const setSelectionMode = (mode: SuspectSelectionMode) => {
+    setRoundData((prev) => ({ ...prev, selectionMode: mode }));
+  };
   const setCrowd = (crowd?: Crowd) => {
     setRoundData((prev) => ({ ...prev, crowd: crowd }));
   };
@@ -133,6 +136,7 @@ function Game({
     if (resetProgress) restartStage();
     setSuspectInfoOptions((prev) => ({ ...prev, revealColours: false }));
     setAccusedPersonId(null);
+    setSelectionMode(SuspectSelectionMode.Accuse);
     onChangeStatus(GameStatus.InProgress);
     setCrowd(undefined);
 

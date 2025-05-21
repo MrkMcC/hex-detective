@@ -11,6 +11,8 @@ import EventService from "./services/EventService";
 
 //#region development notes
 
+//-hide/unhide ruled out should work during summary
+
 //Difficulty Update notes
 //-show colour triangle option
 //-show int values (0-255) option
