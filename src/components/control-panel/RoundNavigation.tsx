@@ -53,6 +53,7 @@ const RoundNavigation = ({
           gameStatus === GameStatus.Scored ? "shown" : "hidden"
         }`}
         onClick={() => onControlAction(ControlAction.NextRound)}
+        disabled={gameStatus !== GameStatus.Scored}
         autoClickMs={settings.parameters.autoContinue ? 2000 : undefined}
       >
         Continue <FaCircleArrowRight className="icon" />

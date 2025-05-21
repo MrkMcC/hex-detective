@@ -22,7 +22,7 @@ const AutoButton = ({
   const [quarters, setQuarters] = useState(0);
 
   useEffect(() => {
-    if (autoClickMs) {
+    if (autoClickMs && !disabled) {
       timerRef.current = setTimeout(() => {
         if (onClick) onClick();
       }, autoClickMs);
@@ -37,7 +37,7 @@ const AutoButton = ({
       if (intervalRef.current) clearInterval(intervalRef.current);
       setQuarters(0);
     };
-  }, [autoClickMs]);
+  }, [autoClickMs, disabled]);
 
   return (
     <button
