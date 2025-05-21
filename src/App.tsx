@@ -11,10 +11,6 @@ import EventService from "./services/EventService";
 
 //#region development notes
 
-//UI Update notes
-//-make round summary collapsable (just display correct/incorrect where "find the suspect" is, reset to expanded on next round)
-//-disable auto-continue on failure
-
 //Difficulty Update notes
 //-show colour triangle option
 //-show int values (0-255) option
