@@ -147,13 +147,17 @@ function Game({
     setSessionData((prev) => ({ ...prev, roundsWon: roundsWon }));
   };
 
+  const fail = () => {
+    onChangeStatus(GameStatus.Failed);
+  };
+
   const accuse = (personId: string) => {
     if (isRoundInProgress) {
       setAccusedPersonId(personId);
       setSuspectInfoOptions((prev) => ({ ...prev, revealColours: true }));
       if (personId === roundData.crowd!.suspectId) {
         score();
-      } else onChangeStatus(GameStatus.Failed);
+      } else fail();
     }
   };
 
