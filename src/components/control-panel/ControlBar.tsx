@@ -61,10 +61,6 @@ const ControlBar = ({
   const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
     onChangeRoundData({ ...roundData, selectionMode: mode });
   };
-
-  const handleControlAction = (action: ControlAction) => {
-    onControlAction(action);
-  };
   //#endregion
 
   return (
