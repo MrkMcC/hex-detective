@@ -1,5 +1,5 @@
 import { BsIncognito } from "react-icons/bs";
-import { FaXmark } from "react-icons/fa6";
+import { FaEyeSlash, FaXmark } from "react-icons/fa6";
 import PersonData from "../../classes/PersonData";
 import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
@@ -36,13 +36,14 @@ const RoundSummary = ({
     >
       <div className="flex-row justify-between align-center">
         {accused && !isCorrect && (
-          <div className="accused-breakdown flex-row align-center">
-            <div className="flex-col align-center">
+          <div className="person-breakdown accused-breakdown">
+            <div className="role-breakdown">
               <div className="role-header flex-col align-center">
                 <FaXmark className="icon color-red" />
-                <div className="person-role text-contrast">accused</div>
+                <div className="person-role">accused</div>
               </div>
               <Person person={accused} />
+              <div className="tag-breakdown" />
             </div>
             <div className="breakdown-charts flex-col gap-1">
               <BarChart
@@ -63,7 +64,7 @@ const RoundSummary = ({
             </div>
           </div>
         )}
-        <div className="suspect-breakdown flex-row align-center">
+        <div className="person-breakdown suspect-breakdown">
           <div className="breakdown-charts flex-col gap-1">
             <BarChart
               name="hat"
@@ -81,14 +82,27 @@ const RoundSummary = ({
               options={barChartOptions}
             />
           </div>
-          <div className="flex-col align-center text-center text-contrast">
+          <div className="role-breakdown">
             <div className="role-header flex-col align-center">
               <BsIncognito className="icon color-grey" />
-              <div className="person-role text-center text-contrast">
-                suspect
-              </div>
+              <div className="person-role text-center">suspect</div>
             </div>
-            <Person person={suspect} />
+            <Person person={{ ...suspect, ruledOut: false, hidden: false }} />
+            <div className="tag-breakdown color-grey">
+              {suspect.hidden ? (
+                <>
+                  <FaEyeSlash className="icon" />
+                  <span>hidden</span>
+                </>
+              ) : (
+                suspect.ruledOut && (
+                  <>
+                    <FaXmark className="icon" />
+                    <span>ruled out</span>
+                  </>
+                )
+              )}
+            </div>
           </div>
         </div>
       </div>

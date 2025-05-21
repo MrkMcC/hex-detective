@@ -59,43 +59,43 @@ function Game({
   const toggleRuleOut = (id: string) => {
     setRoundData((prev) => ({
       ...prev,
-      crowd: {
-        ...prev.crowd!,
-        people: prev.crowd!.people.map((p) =>
+      crowd: new Crowd(
+        prev.crowd!.people.map((p) =>
           p.id === id ? { ...p, ruledOut: !p.ruledOut } : p
         ),
-      },
+        prev.crowd?.suspectId!
+      ),
     }));
   };
   const hideRuledOut = () => {
     setRoundData((prev) => ({
       ...prev,
-      crowd: {
-        ...prev.crowd!,
-        people: prev.crowd!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
-      },
+      crowd: new Crowd(
+        prev.crowd!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
+        prev.crowd?.suspectId!
+      ),
     }));
   };
   const unhideAll = () => {
     setRoundData((prev) => ({
       ...prev,
-      crowd: {
-        ...prev.crowd!,
-        people: prev.crowd!.people.map((p) => ({ ...p, hidden: false })),
-      },
+      crowd: new Crowd(
+        prev.crowd!.people.map((p) => ({ ...p, hidden: false })),
+        prev.crowd?.suspectId!
+      ),
     }));
   };
   const ruleInAll = () => {
     setRoundData((prev) => ({
       ...prev,
-      crowd: {
-        ...prev.crowd!,
-        people: prev.crowd!.people.map((p) => ({
+      crowd: new Crowd(
+        prev.crowd!.people.map((p) => ({
           ...p,
           hidden: false,
           ruledOut: false,
         })),
-      },
+        prev.crowd?.suspectId!
+      ),
     }));
   };
   /**Resets the session, but remembers the current tutorial stage.*/
