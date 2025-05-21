@@ -37,7 +37,7 @@ const MainMenu = ({
               New Game
             </button>
             <button className="large" onClick={onStartTutorial}>
-              Tutorial (beta)
+              Tutorial
             </button>
           </div>
         </div>
