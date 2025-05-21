@@ -24,10 +24,23 @@ import EventService from "./services/EventService";
 //#region maybe
 
 //Tutorial Improvements
+//-Make it clear that the tutorial expects you to make mistakes, and that failing is part of learning.
+//-the main menu text 'Accuse the wrong person and it's game over.' primes the player poorly for the tutorial
+//-on first success and first fail show a message referring to the summary and continue-button
+//-make it clear that ruling out can be undone and has no consequences -> the rule out tutorial modal should have a task for rule out & rule back in each
 //-Improve tutorial modal to show tutorial progress
 //-Allow navigating to a specific tutorial stage (maybe near the Back to menu button)
 //-Update Basics Tutorial to explain ~all UI elements, hiding the unexplained ones and piece by piece unhiding them
 //-Disable/hide auto-continue completely
+//-Mixing Colours 2/2 - 'You don't need to remember the names' can be misunderstood. Make it clear that you DO need to remember the secondary colours.
+//-Saturation 2/2 make it more obvious that saturation refers to the difference between the first and third value, ignoring the middle, maybe add a TutorialTask
+//-show stage progess in place of score or lives (e.g. three dots, or three arrow-shaped bars)
+//-once easy-difficulty colour help exists
+
+//UI Improvements
+//-a correct guess should be more obvious and more rewarding
+//-number inputs show a bright +/- Element (on hover in Chrome, always in Firefox) - remove that and replace with pretty +/- buttons
+//-make continue-button more obvious, maybe move it to the center
 
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?
@@ -47,6 +60,10 @@ import EventService from "./services/EventService";
 
 //Other game modes
 //- Game mode "Tinder" - shows a person and colours and asks: Does this match?
+
+//Add credits
+//ask playtesters what name to use
+//playtesters: ambi, inot, jankins
 //#endregion
 //#endregion
 

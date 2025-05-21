@@ -13,7 +13,7 @@ const TutColImbalance1 = ({}: Props) => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>So far, we've only worked with primary and secondary colours.</p>
-      <p>But what if all three value are different?</p>
+      <p>But what if all three values are different?</p>
       <div className="flex-row justify-center ">
         <SimulationFrame>
           <div className="flex-col">

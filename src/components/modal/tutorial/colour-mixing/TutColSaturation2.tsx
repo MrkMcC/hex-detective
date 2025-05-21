@@ -12,7 +12,7 @@ const TutColSaturation2 = ({}: Props) => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>
-        The closer the three values are to each other, the less saturated the
+        The closer the three values are to each other, the less 'saturated' the
         colour is.
       </p>
       <div className="flex-row gap-1 wrap justify-center ">
