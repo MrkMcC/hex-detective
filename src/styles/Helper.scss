@@ -11,12 +11,7 @@ button {
 }
 
 h1,
-h2 {
-  > .icon {
-    vertical-align: sub;
-  }
-}
-
+h2,
 p {
   > .icon {
     vertical-align: text-bottom;
@@ -24,32 +19,39 @@ p {
 }
 
 .color-green {
-  color: green;
+  color: green !important;
 }
 .color-red {
-  color: red;
+  color: red !important;
+}
+.color-grey {
+  color: grey !important;
 }
 
 .text-start {
-  text-align: start;
+  text-align: start !important;
 }
 .text-center {
-  text-align: center;
+  text-align: center !important;
 }
 .text-end {
-  text-align: end;
+  text-align: end !important;
+}
+
+.valign-text-top {
+  vertical-align: text-top !important;
 }
 
 .margin-0 {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .font-mono {
-  font-family: monospace;
+  font-family: monospace !important;
 }
 
 .font-sans-serif {
-  font-family: sans-serif;
+  font-family: sans-serif !important;
 }
 
 .flavour-hex {

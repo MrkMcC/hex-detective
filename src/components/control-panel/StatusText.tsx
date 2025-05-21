@@ -12,19 +12,20 @@ const StatusText = ({ state }: Props) => {
       case GameStatus.InProgress:
         return (
           <>
-            <BsIncognito className="icon" /> Find the suspect
+            Find the suspect{" "}
+            <BsIncognito className="icon color-grey valign-text-top" />
           </>
         );
       case GameStatus.Scored:
         return (
           <>
-            <FaCheck className="icon color-green" /> Correct
+            Correct <FaCheck className="icon color-green" />
           </>
         );
       case GameStatus.Failed:
         return (
           <>
-            <FaXmark className="icon color-red" /> Incorrect
+            Incorrect <FaXmark className="icon color-red" />
           </>
         );
     }

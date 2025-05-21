@@ -52,7 +52,6 @@ const SuspectInfo = ({ suspect, options }: Props) => {
       ) : (
         <>
           <div className="flex-row justify-between">
-            <FaRedhat className="icon" />
             <span className="grow flex-row justify-between">
               <span className="description-text hat">their hat is </span>
               <SuspectInfoColour
@@ -64,7 +63,6 @@ const SuspectInfo = ({ suspect, options }: Props) => {
             <FaRedhat className="icon" />
           </div>
           <div className="flex-row justify-between">
-            <FaShirt className="icon" />
             <span className="grow flex-row justify-between">
               <span className="description-text shirt">their shirt is </span>
               <SuspectInfoColour
@@ -76,7 +74,6 @@ const SuspectInfo = ({ suspect, options }: Props) => {
             <FaShirt className="icon" />
           </div>
           <div className="flex-row justify-between">
-            <PiPantsFill className="icon" />
             <span className="grow flex-row justify-between">
               <span className="description-text pants">their pants are </span>
               <SuspectInfoColour
