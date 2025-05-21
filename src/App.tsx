@@ -12,7 +12,6 @@ import EventService from "./services/EventService";
 //#region development notes
 
 //UI Update notes
-//-rework control panel (bottom bar) layout
 //-make round summary collapsable (just display correct/incorrect where "find the suspect" is, reset to expanded on next round)
 //-disable auto-continue on failure
 
@@ -30,6 +29,7 @@ import EventService from "./services/EventService";
 //-Improve tutorial modal to show tutorial progress
 //-Allow navigating to a specific tutorial stage (maybe near the Back to menu button)
 //-Update Basics Tutorial to explain ~all UI elements, hiding the unexplained ones and piece by piece unhiding them
+//-Disable/hide auto-continue completely
 
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?
@@ -43,6 +43,7 @@ import EventService from "./services/EventService";
 //-Random "wanted for _" text for each suspect
 
 //Animation Update notes
+//-animation for scoring
 //-option: disable animations (&center pupils with css)
 //-People shiver and sweat on accuse hover
 
