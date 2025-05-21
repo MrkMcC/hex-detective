@@ -27,7 +27,7 @@
 
   .area-center {
     position: relative;
-    flex: 0 0 30%;
+    flex: 0 0 50%;
     height: 100%;
 
     .area-suspect-info {
@@ -37,8 +37,8 @@
       left: 50%;
       bottom: 0%;
       transform: translate(-50%);
-      height: 120%;
-      max-width: 100%;
+      min-height: 120%;
+      width: 90%;
       padding: 1em;
 
       display: flex;
