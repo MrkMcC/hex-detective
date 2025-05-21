@@ -3,14 +3,23 @@ import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import BarChart from "../common/colour/BarChart";
 import Person from "../Person";
+import Collapsor from "./Collapsor";
 
 interface Props {
+  isCollapsed: boolean;
+  onChangeCollapsed: (collapsed: boolean) => void;
   suspect: PersonData;
   accused: PersonData;
   suspectInfoOptions: SuspectInfoOptionsT;
 }
 
-const RoundSummary = ({ suspect, accused, suspectInfoOptions }: Props) => {
+const RoundSummary = ({
+  isCollapsed,
+  onChangeCollapsed,
+  suspect,
+  accused,
+  suspectInfoOptions,
+}: Props) => {
   const barChartOptions = {
     flavour: suspectInfoOptions.flavour ?? ColourFlavour.Hex,
   };
@@ -20,8 +29,8 @@ const RoundSummary = ({ suspect, accused, suspectInfoOptions }: Props) => {
   return (
     <div
       className={`round-summary ui-panel flex-col align-center ${
-        isCorrect ? "border-green" : "border-red"
-      }`}
+        isCollapsed ? "collapsed" : "expanded"
+      } ${isCorrect ? "border-green" : "border-red"}`}
     >
       <div className="flex-row justify-between align-center">
         {accused && !isCorrect && (
@@ -73,6 +82,11 @@ const RoundSummary = ({ suspect, accused, suspectInfoOptions }: Props) => {
           </div>
         </div>
       </div>
+      <Collapsor
+        isCollapsed={isCollapsed}
+        onChange={onChangeCollapsed}
+        corner="top-right"
+      />
     </div>
   );
 };

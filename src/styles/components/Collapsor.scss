@@ -1,20 +1,46 @@
+@use "../vars/Colours";
+
 .collapsor {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  color: Colours.$collapsor_c;
+  min-width: 3em;
+  height: 3em;
+  box-sizing: border-box;
+  padding: 0.5em;
 
   &:hover {
-    color: black;
-    background-color: gray;
-    border: white solid 1px;
-    border-top: 0px;
-    border-right: 0px;
+    color: Colours.$collapsor_hover_c;
+    background-color: Colours.$collapsor_hover_bg;
+  }
+  &.top-right {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    border-bottom-left-radius: 0.5em;
+    border-top: 0 !important;
+    border-right: 0 !important;
   }
 
   .icon {
-    font-size: xx-large;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    vertical-align: text-bottom;
+    // margin-left: 0.25em;
+    font-size: 2em;
+    // margin-right: -1em;
+    // width: 2em;
+    // height: 2em;
+    // position: absolute;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+  }
+
+  span {
+    margin-left: 0.5em;
+    font-size: 1.25em;
+    // padding: 0.75em;
   }
 }

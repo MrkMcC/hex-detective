@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FaCaretLeft } from "react-icons/fa6";
 import DifficultyConfig from "../../classes/DifficultyConfig";
 import UserSettings from "../../classes/UserSettings";
@@ -7,6 +8,7 @@ import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import RoundDataT from "../../types/RoundDataT";
 import SessionDataT from "../../types/SessionDataT";
+import Collapsor from "./Collapsor";
 import RoundNavigation from "./RoundNavigation";
 import RoundSummary from "./RoundSummary";
 import RuleOutControls from "./RuleOutControls";
@@ -38,6 +40,8 @@ const ControlBar = ({
   onChangeSettings,
   onChangeRoundData,
 }: Props) => {
+  const [isSummaryCollapsed, setIsSummaryCollapsed] = useState(false);
+
   //#region Shorthand Variables
   const suspect = roundData.crowd?.getSuspect();
   //#endregion
@@ -56,6 +60,10 @@ const ControlBar = ({
 
   const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
     onChangeRoundData({ ...roundData, selectionMode: mode });
+  };
+
+  const handleControlAction = (action: ControlAction) => {
+    onControlAction(action);
   };
   //#endregion
 
@@ -88,6 +96,12 @@ const ControlBar = ({
           {suspect && (
             <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
           )}
+          <Collapsor
+            isCollapsed={isSummaryCollapsed}
+            onChange={setIsSummaryCollapsed}
+            corner="top-right"
+            label="compare"
+          />
         </div>
       </div>
       <div className="area-right">
@@ -117,6 +131,8 @@ const ControlBar = ({
       {(gameStatus === GameStatus.Scored ||
         gameStatus === GameStatus.Failed) && (
         <RoundSummary
+          isCollapsed={isSummaryCollapsed}
+          onChangeCollapsed={setIsSummaryCollapsed}
           suspect={roundData.crowd!.getSuspect()!}
           accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)!}
           suspectInfoOptions={suspectInfoOptions}

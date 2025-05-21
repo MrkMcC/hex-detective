@@ -1,6 +1,12 @@
+@use "../_theme";
+
 .round-summary {
   box-sizing: border-box;
   padding: 1em;
+
+  &.collapsed {
+    display: none;
+  }
 
   .person-container {
     width: 11em;
@@ -15,5 +21,9 @@
   }
   .accused-breakdown .breakdown-charts {
     margin-left: 1em;
+  }
+
+  .collapsor {
+    z-index: theme.$z_control-panel_suspect-info;
   }
 }

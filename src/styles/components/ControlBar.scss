@@ -56,6 +56,13 @@
       .suspect-info {
         flex-grow: 1;
       }
+
+      .collapsor {
+        border: 1px Colours.$base_grey solid;
+        &.expanded {
+          visibility: hidden;
+        }
+      }
     }
   }
 
@@ -126,7 +133,7 @@
   box-sizing: border-box;
   box-sizing: border-box;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;

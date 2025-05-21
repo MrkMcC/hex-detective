@@ -327,6 +327,7 @@ function Game({
         <div className="people">{personElements}</div>
       </div>
       <ControlBar
+        key={roundData.accusedPersonId}
         gameStatus={status}
         difficulty={difficulty}
         settings={settings}
