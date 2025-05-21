@@ -6,6 +6,10 @@
   flex-direction: column;
   text-wrap-mode: nowrap;
 
+  .btn-restart {
+    width: 7em;
+  }
+
   .btn-next-round {
     position: absolute;
     left: 50%;

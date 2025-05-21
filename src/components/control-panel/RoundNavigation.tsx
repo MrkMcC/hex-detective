@@ -38,15 +38,8 @@ const RoundNavigation = ({
         }`}
         onClick={() => onControlAction(ControlAction.Restart)}
       >
-        {sessionData.tutorialProgress === null ? (
-          <>
-            Play again <FaRepeat className="icon" />
-          </>
-        ) : (
-          <>
-            Continue <FaCircleArrowRight className="icon" />
-          </>
-        )}
+        {sessionData.tutorialProgress === null ? "Play again " : "Try again "}
+        <FaRepeat className="icon" />
       </button>
       <AutoButton
         className={`btn-next-round large ${
