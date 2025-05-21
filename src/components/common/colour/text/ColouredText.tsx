@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Colour from "../../classes/Colour";
+import Colour from "../../../../classes/Colour";
 
 interface Props {
   colour?: Colour;

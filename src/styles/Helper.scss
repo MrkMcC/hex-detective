@@ -102,9 +102,10 @@ input.cool {
 }
 
 .text-contrast {
-  font-family: fantasy;
   color: white;
-  -webkit-text-stroke: 0.06em black;
+  -webkit-text-stroke: 0.075em black;
+  font-family: "Impact", sans-serif;
+  font-style: normal;
 }
 
 .flex-row,

@@ -18,7 +18,7 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
   return (
     <div className="session-info">
       <p>Score: {sessionData.roundsWon}</p>
-      <p>Difficulty: Custom</p>
+      <p>Difficulty: {difficulty.parameters.templateName}</p>
       <p>Crowd Size: {crowdSize}</p>
       <p>
         Hidden / Ruled Out: {hiddenCount}/{ruledOutCount}
