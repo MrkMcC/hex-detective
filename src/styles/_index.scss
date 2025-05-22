@@ -17,7 +17,6 @@
 @use "components/BaseIndicator";
 @use "components/Collapsor";
 @use "components/ControlBar";
-@use "components/DifficultySelection";
 @use "components/LoadingIndicator";
 @use "components/Modal";
 @use "components/RGBAmounts";
@@ -28,5 +27,7 @@
 @use "components/SuspectInfo";
 @use "components/Switch";
 
+@use "components/main-menu/DifficultyBreakdown";
+@use "components/main-menu/DifficultySelection";
 @use "components/main-menu/MainMenu";
 @use "components/main-menu/NewGame";

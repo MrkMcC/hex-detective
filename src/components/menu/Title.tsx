@@ -1,3 +1,4 @@
+import SaturationBias from "../../enum/colour-generation-bias/SaturationBias";
 import ColourService from "../../services/ColourService";
 
 interface Props {}
@@ -8,7 +9,7 @@ const Title = ({}: Props) => {
     <span
       key={i}
       style={{
-        color: ColourService.RandomColour().hex.toString(),
+        color: ColourService.RandomColour(SaturationBias.Strong).hex.toString(),
       }}
     >
       {c}

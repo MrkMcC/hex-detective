@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Constants from "../Constants";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import DifficultyConfig from "../classes/DifficultyConfig";
@@ -321,7 +322,9 @@ function Game({
       }
       isAccused={roundData.accusedPersonId === p.id}
       isRevealedSuspect={
-        (status === GameStatus.Failed || status === GameStatus.Scored) &&
+        (status === GameStatus.Failed ||
+          status === GameStatus.Scored ||
+          Constants.DEBUG.REVEAL_SOLUTION) &&
         p.id === roundData.crowd!.getSuspect()!.id
       }
       onSelect={handleSelect}

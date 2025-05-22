@@ -1,8 +1,10 @@
 import Constants from "../Constants";
+import ColourGenerationBias from "./ColourGenerationBias";
 
 type DifficultyStateT = {
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
+  colourGenerationBias: ColourGenerationBias;
 };
 
 /**Can be changed before starting the game, but not during it. */

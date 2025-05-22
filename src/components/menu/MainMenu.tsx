@@ -21,8 +21,6 @@ const MainMenu = ({
     MainMenuNavigation.Index
   );
 
-  // const [activeScreen, setActiveScreen] = useState<ReactNode>();
-
   const handleNavigation = (destination: MainMenuNavigation) => {
     switch (destination) {
       case MainMenuNavigation.Start:

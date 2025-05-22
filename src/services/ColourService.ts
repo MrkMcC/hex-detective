@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import Colour from "../classes/Colour";
+import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
 import ArrayHelper from "../helper/ArrayHelper";
 
 const intToHex = (colour: number) => {
@@ -14,12 +15,44 @@ const randomIntColorValue = () => {
   return Math.floor(Math.random() * 256);
 };
 
-const randomColour = () => {
-  return new Colour(
+const ensureDistance = (distance: number, ...values: number[]): number[] => {
+  values.sort((a, b) => a - b);
+  let lowest = values[0];
+  let highest = values[values.length - 1];
+  if (highest - lowest < distance) {
+    lowest -= distance / 2;
+    highest += distance / 2;
+
+    if (lowest < 0) highest += Math.abs(lowest);
+    if (highest > 255) lowest -= highest;
+
+    values[0] = Math.max(Math.floor(lowest), 0);
+    values[values.length - 1] = Math.min(Math.ceil(highest), 255);
+  }
+
+  return values;
+};
+
+const randomColour = (saturationBias: SaturationBias = SaturationBias.None) => {
+  let rgbValues = [
     randomIntColorValue(),
     randomIntColorValue(),
-    randomIntColorValue()
-  );
+    randomIntColorValue(),
+  ];
+
+  switch (saturationBias) {
+    case SaturationBias.Subtle:
+      rgbValues = ensureDistance(50, ...rgbValues);
+      break;
+    case SaturationBias.Strong:
+      rgbValues = ensureDistance(150, ...rgbValues);
+      break;
+    case SaturationBias.Extreme:
+      rgbValues = ensureDistance(255, ...rgbValues);
+      break;
+  }
+
+  return generateColour(rgbValues[0], rgbValues[1], rgbValues[2]);
 };
 
 const generateColour = (

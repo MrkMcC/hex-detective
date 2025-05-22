@@ -17,7 +17,7 @@ import EventService from "./services/EventService";
 //-Other names for difficulty 'easy', as that is subjective
 //-Difficulty options should have borders that reflect their colour bias
 //-Re-integrate custom difficulty
-//-Main Menu Title - minimale helligkeit begrenzen
+//-Main Menu Title - Saturation-Bias setzen
 
 //Easy
 //-Bias: colours have a minimum distance to the suspect
@@ -77,9 +77,12 @@ import EventService from "./services/EventService";
 //Other game modes
 //- Game mode "Tinder" - shows a person and colours and asks: Does this match?
 
-//Add credits
-//ask playtesters what name to use
-//playtesters: ambi, inot, jankins
+//#region other 1.0 requirements
+//-Add a note on accessibility
+//-Add credits
+//--ask playtesters what name to use
+//---playtesters: ambi, inot, jankins
+//#endregion
 //#endregion
 //#endregion
 
