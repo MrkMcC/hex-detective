@@ -13,9 +13,11 @@ import EventService from "./services/EventService";
 
 //Difficulty Update notes
 
+//-'How to Play' might be obsolete
 //-Other names for difficulty 'easy', as that is subjective
 //-Difficulty options should have borders that reflect their colour bias
 //-Re-integrate custom difficulty
+//-Main Menu Title - minimale helligkeit begrenzen
 
 //Easy
 //-Bias: colours have a minimum distance to the suspect

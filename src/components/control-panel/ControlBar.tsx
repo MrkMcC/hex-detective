@@ -49,8 +49,7 @@ const ControlBar = ({
   //#region Event Handling
   const handleQuit = () => {
     if (
-      gameStatus === GameStatus.InProgress ||
-      gameStatus === GameStatus.Scored ||
+      gameStatus === GameStatus.Failed ||
       confirm(
         "You are about to quit the game. Your current progress will be lost."
       )

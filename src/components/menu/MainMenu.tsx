@@ -1,7 +1,8 @@
+import { useState } from "react";
 import DifficultyConfig from "../../classes/DifficultyConfig";
-import HowToPlay from "../help/HowToPlay";
-import DifficultySelection from "./difficulty/DifficultySelection";
-import Title from "./Title";
+import MainMenuNavigation from "../../enum/MainMenuNavigation";
+import Index from "./screens/Index";
+import NewGame from "./screens/NewGame";
 
 interface Props {
   difficulty: DifficultyConfig;
@@ -16,34 +17,37 @@ const MainMenu = ({
   onStartGame,
   onStartTutorial,
 }: Props) => {
-  return (
-    <div className="main-menu">
-      <div className="column column-left">
-        <HowToPlay />
-      </div>
-      <div className="column column-center">
-        <Title />
-        <DifficultySelection value={difficulty} onSelect={onChangeDifficulty} />
-        <div className="new-game-container">
-          <div className="flex-col gap-1">
-            <button
-              className="large"
-              onClick={onStartGame}
-              disabled={!difficulty.valid()}
-            >
-              New Game
-            </button>
-            <button className="large" onClick={onStartTutorial}>
-              Tutorial
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="column column-right">
-        <div className="context-info"></div>
-      </div>
-    </div>
+  const [currentNavigation, setCurrentNavigation] = useState(
+    MainMenuNavigation.Index
   );
+
+  // const [activeScreen, setActiveScreen] = useState<ReactNode>();
+
+  const handleNavigation = (destination: MainMenuNavigation) => {
+    switch (destination) {
+      case MainMenuNavigation.Start:
+        onStartGame();
+        break;
+      case MainMenuNavigation.Tutorial:
+        onStartTutorial();
+        break;
+      default:
+        setCurrentNavigation(destination);
+    }
+  };
+
+  switch (currentNavigation) {
+    case MainMenuNavigation.NewGame:
+      return (
+        <NewGame
+          onNavigate={handleNavigation}
+          difficulty={difficulty}
+          onChangeDifficulty={onChangeDifficulty}
+        />
+      );
+    default:
+      return <Index onNavigate={handleNavigation} />;
+  }
 };
 
 export default MainMenu;

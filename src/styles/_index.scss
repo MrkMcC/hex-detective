@@ -19,7 +19,6 @@
 @use "components/ControlBar";
 @use "components/DifficultySelection";
 @use "components/LoadingIndicator";
-@use "components/MainMenu";
 @use "components/Modal";
 @use "components/RGBAmounts";
 @use "components/RoundNavigation";
@@ -28,3 +27,6 @@
 @use "components/SimulationFrame";
 @use "components/SuspectInfo";
 @use "components/Switch";
+
+@use "components/main-menu/MainMenu";
+@use "components/main-menu/NewGame";
