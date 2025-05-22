@@ -6,8 +6,13 @@ $panel_difficulty-settings_mh: 10vw;
 
 .main-menu {
   position: fixed;
+  left: 0%;
+  top: 0%;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+
   > * {
     height: 100%;
     display: flex;
