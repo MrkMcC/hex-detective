@@ -289,7 +289,7 @@ function Game({
 
   //#region Game State
   const startNewRound = () => {
-    if (difficulty.parameters.tutorial) setupTutorialRound();
+    if (difficulty.isTutorial) setupTutorialRound();
     else {
       const newCrowd = PersonService.RandomCrowd(
         difficulty.parameters.crowdSizeInitial +

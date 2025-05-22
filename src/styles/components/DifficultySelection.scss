@@ -1,0 +1,57 @@
+@use "../vars/Colours";
+
+.difficulty-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+
+  h2 {
+    font-size: 2em;
+    margin: 0;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+  }
+}
+
+.difficulty-selection-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  width: 20em;
+
+  .icon {
+    font-size: 3em;
+  }
+
+  &.selected {
+    width: 22em;
+  }
+  &:not(.selected) {
+    .icon {
+      visibility: hidden;
+    }
+    button:not(:hover) {
+      color: Colours.$btn_disabled_c;
+    }
+  }
+
+  button {
+    width: 100%;
+    font-size: 2em;
+    border: 0.1em dashed grey;
+  }
+
+  &.easy {
+    button {
+      border-color: Colours.$base_green Colours.$base_blue Colours.$base_white
+        Colours.$base_red;
+    }
+  }
+}

@@ -1,18 +1,18 @@
 import DifficultyConfig from "../../classes/DifficultyConfig";
 import HowToPlay from "../help/HowToPlay";
-import DifficultySettings from "./DifficultySettings";
+import DifficultySelection from "./difficulty/DifficultySelection";
 import Title from "./Title";
 
 interface Props {
-  settings: DifficultyConfig;
-  onChangeSettings: (settings: DifficultyConfig) => void;
+  difficulty: DifficultyConfig;
+  onChangeDifficulty: (settings: DifficultyConfig) => void;
   onStartGame: () => void;
   onStartTutorial: () => void;
 }
 
 const MainMenu = ({
-  settings,
-  onChangeSettings,
+  difficulty,
+  onChangeDifficulty,
   onStartGame,
   onStartTutorial,
 }: Props) => {
@@ -23,16 +23,13 @@ const MainMenu = ({
       </div>
       <div className="column column-center">
         <Title />
-        <DifficultySettings
-          settings={settings}
-          onChangeSettings={onChangeSettings}
-        />
+        <DifficultySelection value={difficulty} onSelect={onChangeDifficulty} />
         <div className="new-game-container">
           <div className="flex-col gap-1">
             <button
               className="large"
               onClick={onStartGame}
-              disabled={!settings.valid()}
+              disabled={!difficulty.valid()}
             >
               New Game
             </button>

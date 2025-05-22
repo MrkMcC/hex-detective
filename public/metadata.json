@@ -1,5 +1,5 @@
 {
-  "currentVersion": "0.3",
+  "currentVersion": "0.4pre1",
   "name": "#HexDetective",
   "description": "Learn and practice to read hex colour codes",
   "githubRepo": "https://github.com/MrkMcC/hex-detective",
@@ -36,6 +36,12 @@
         "Bar chart font and colour sliders appeared wrong in Firefox",
         "Fixed font size differing between Chrome and Firefox"
       ]
+    },
+    {
+      "version": "0.4pre1",
+      "name": "The Difficulty Update (work in progress)",
+      "features": ["Added difficulty options"],
+      "bugs": []
     }
   ],
   "roadmap": [

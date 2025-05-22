@@ -1,4 +1,5 @@
 import DifficultyConfig from "../../classes/DifficultyConfig";
+import Localise from "../../services/Localise";
 import RoundDataT from "../../types/RoundDataT";
 import SessionDataT from "../../types/SessionDataT";
 
@@ -18,7 +19,7 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
   return (
     <div className="session-info">
       <p>Score: {sessionData.roundsWon}</p>
-      <p>Difficulty: {difficulty.parameters.templateName}</p>
+      <p>Difficulty: {Localise.Text(`difficulty_${difficulty.key}`)}</p>
       <p>Crowd Size: {crowdSize}</p>
       <p>
         Hidden / Ruled Out: {hiddenCount}/{ruledOutCount}

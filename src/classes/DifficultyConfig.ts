@@ -1,19 +1,15 @@
+import Constants from "../Constants";
+
 type DifficultyStateT = {
-  templateName: string;
-  tutorial: boolean;
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
 };
 
-/**Settings that can be changed before the game, but not during it. */
-//difficulty templates are defined in the upcoming difficulty selection component, not here
+/**Can be changed before starting the game, but not during it. */
 class DifficultyConfig {
-  parameters: DifficultyStateT = {
-    templateName: "",
-    tutorial: false,
-    crowdSizeInitial: 5,
-    crowdSizeIncrement: 5,
-  };
+  key: string;
+  parameters: DifficultyStateT;
+  isTutorial = false;
 
   valid() {
     const valid_crowdSizeInitial =
@@ -26,8 +22,13 @@ class DifficultyConfig {
     return valid_crowdSizeInitial && valid_crowdSizeIncrement;
   }
 
-  constructor(params?: DifficultyStateT) {
-    if (params) this.parameters = params;
+  constructor(
+    params: DifficultyStateT,
+    key: string = Constants.DIFFICULTY_KEY_CUSTOM
+  ) {
+    this.key = key;
+    this.parameters = params;
+    this.isTutorial = key === Constants.DIFFICULTY_KEY_TUTORIAL;
   }
 }
 

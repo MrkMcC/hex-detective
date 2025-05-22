@@ -1,19 +1,33 @@
 import objectHash from "object-hash";
 import { useEffect, useState } from "react";
-import DifficultyConfig from "./classes/DifficultyConfig";
 import UserSettings from "./classes/UserSettings";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
 import Modal from "./components/modal/Modal";
 import GameStatus from "./enum/GameStatus";
 import HexDetectiveEvent from "./enum/HexDetectiveEvent";
+import DifficultyPresets from "./helper/DifficultyPresets";
 import EventService from "./services/EventService";
 
 //#region development notes
 
-//-hide/unhide ruled out should work during summary
-
 //Difficulty Update notes
+
+//-Other names for difficulty 'easy', as that is subjective
+//-Difficulty options should have borders that reflect their colour bias
+//-Re-integrate custom difficulty
+
+//Easy
+//-Bias: colours have a minimum distance to the suspect
+
+//Normal
+//-Bias: None
+
+//Hard:
+//-Bias: Colours have a maximum distance to the suspect
+
+//Harder modes: maybe, after testing hard mode
+
 //-show colour triangle option
 //-show int values (0-255) option
 //-show percentages option
@@ -68,11 +82,12 @@ import EventService from "./services/EventService";
 //#endregion
 
 function App() {
-  const [status, setStatus] = useState<GameStatus>(GameStatus.Setup);
-  const [settings, setSettings] = useState<UserSettings>(new UserSettings());
-  const [difficulty, setDifficulty] = useState<DifficultyConfig>(
-    new DifficultyConfig()
+  const [status, setStatus] = useState(GameStatus.Setup);
+  const [settings, setSettings] = useState(new UserSettings());
+  const [selectedDifficulty, setSelectedDifficulty] = useState(
+    DifficultyPresets.Default
   );
+  const [isTutorial, setIsTutorial] = useState(false);
 
   const handleHexDetectiveEvent = (event: HexDetectiveEvent) => {
     if (event === HexDetectiveEvent.BackToMenu) setStatus(GameStatus.Setup);
@@ -84,16 +99,12 @@ function App() {
   }, []);
 
   const handleStartGame = () => {
-    setDifficulty(
-      (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: false })
-    );
+    setIsTutorial(false);
     setStatus(GameStatus.InProgress);
   };
 
   const handleStartTutorial = () => {
-    setDifficulty(
-      (prev) => new DifficultyConfig({ ...prev.parameters, tutorial: true })
-    );
+    setIsTutorial(true);
     setStatus(GameStatus.InProgress);
   };
 
@@ -102,17 +113,19 @@ function App() {
       <Modal />
       {status === GameStatus.Setup ? (
         <MainMenu
-          settings={difficulty}
-          onChangeSettings={setDifficulty}
+          difficulty={selectedDifficulty}
+          onChangeDifficulty={setSelectedDifficulty}
           onStartGame={handleStartGame}
           onStartTutorial={handleStartTutorial}
         />
       ) : (
         <Game
-          key={objectHash(difficulty.parameters.crowdSizeInitial)}
+          key={objectHash(selectedDifficulty.parameters.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
-          difficulty={difficulty}
+          difficulty={
+            isTutorial ? DifficultyPresets.Tutorial : selectedDifficulty
+          }
           settings={settings}
           onChangeSettings={setSettings}
         />

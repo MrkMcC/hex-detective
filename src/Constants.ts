@@ -4,6 +4,12 @@ const Constants = {
   VARIATION_AMOUNT_MOUTH: 10,
   VARIATION_AMOUNT_SHIRT: 5,
   VARIATION_AMOUNT_PANTS: 4,
+
+  DIFFICULTY_KEY_TUTORIAL: "tutorial",
+  DIFFICULTY_KEY_EASY: "easy",
+  DIFFICULTY_KEY_NORMAL: "normal",
+  DIFFICULTY_KEY_HARD: "hard",
+  DIFFICULTY_KEY_CUSTOM: "custom",
 };
 
 export default Constants;

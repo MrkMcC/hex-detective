@@ -55,6 +55,12 @@ const randomBorderColourStyle = (): CSSProperties => {
   };
 };
 
+const randomColourStyle = (): CSSProperties => {
+  return {
+    color: ColourService.RandomColour().hex.toString(),
+  };
+};
+
 const colourFromHex = (code: string) => {
   return new Colour(
     Number(`0x${code.slice(0, 2)}`),
@@ -67,6 +73,7 @@ const ColourService = {
   RandomColour: randomColour,
   GenerateColour: generateColour,
   RandomBorderColourStyle: randomBorderColourStyle,
+  RandomColourStyle: randomColourStyle,
   IntToHex: intToHex,
   ColourFromHex: colourFromHex,
 };

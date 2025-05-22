@@ -40,6 +40,12 @@ $panel_difficulty-settings_mh: 10vw;
     }
   }
 
+  .difficulty-selection {
+    width: $panel_difficulty-settings_w;
+    // min-height: $panel_difficulty-settings_mh;
+    box-sizing: border-box;
+  }
+
   .difficulty-settings {
     width: $panel_difficulty-settings_w;
     min-height: $panel_difficulty-settings_mh;
