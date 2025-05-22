@@ -1,3 +1,4 @@
+import ColourGenerationBias from "../classes/ColourGenerationBias";
 import Crowd from "../classes/Crowd";
 import PersonData from "../classes/PersonData";
 import ArrayHelper from "../helper/ArrayHelper";
@@ -6,11 +7,13 @@ import LogService from "./LogService";
 
 const LOG_SUBJECT = "PersonService";
 
-const randomPerson = (): PersonData => {
+const randomPerson = (
+  colourGenerationBias?: ColourGenerationBias
+): PersonData => {
   return new PersonData(
-    ColourService.RandomColour(),
-    ColourService.RandomColour(),
-    ColourService.RandomColour()
+    ColourService.RandomColour(colourGenerationBias?.saturationBias),
+    ColourService.RandomColour(colourGenerationBias?.saturationBias),
+    ColourService.RandomColour(colourGenerationBias?.saturationBias)
   );
 };
 
@@ -41,8 +44,11 @@ const generateCrowd = (
   return new Crowd(ArrayHelper.Shuffle(people), suspect!.id);
 };
 
-const randomCrowd = (amount: number) => {
-  return generateCrowd(randomPerson, amount);
+const randomCrowd = (
+  amount: number,
+  colourGenerationBias?: ColourGenerationBias
+) => {
+  return generateCrowd(() => randomPerson(colourGenerationBias), amount);
 };
 
 const findPersonById = (people: PersonData[], id?: string) => {

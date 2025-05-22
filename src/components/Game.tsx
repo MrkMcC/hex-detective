@@ -294,7 +294,8 @@ function Game({
     else {
       const newCrowd = PersonService.RandomCrowd(
         difficulty.parameters.crowdSizeInitial +
-          difficulty.parameters.crowdSizeIncrement * sessionData.roundsWon
+          difficulty.parameters.crowdSizeIncrement * sessionData.roundsWon,
+        difficulty.parameters.colourGenerationBias
       );
       setCrowd(newCrowd);
     }
