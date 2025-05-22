@@ -15,6 +15,9 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
       <h2 className="border-underline">
         {Localise.Text(`difficulty_${difficulty.key}`)}
       </h2>
+      <h3 className="text-center">
+        {Localise.Text(`difficulty-description_${difficulty.key}`)}
+      </h3>
       <div className="text-center">
         <p>
           Crowd Size - initial: <br />

@@ -15,11 +15,15 @@ const randomIntColorValue = () => {
   return Math.floor(Math.random() * 256);
 };
 
-const ensureDistance = (distance: number, ...values: number[]): number[] => {
+const ensureDistance = (
+  targetDistance: number,
+  ...values: number[]
+): number[] => {
   values.sort((a, b) => a - b);
   let lowest = values[0];
   let highest = values[values.length - 1];
-  if (highest - lowest < distance) {
+  const distance = highest - lowest;
+  if (distance < targetDistance) {
     lowest -= distance / 2;
     highest += distance / 2;
 
@@ -48,7 +52,7 @@ const randomColour = (saturationBias: SaturationBias = SaturationBias.None) => {
       rgbValues = ensureDistance(150, ...rgbValues);
       break;
     case SaturationBias.Extreme:
-      rgbValues = ensureDistance(255, ...rgbValues);
+      rgbValues = ensureDistance(200, ...rgbValues);
       break;
   }
 

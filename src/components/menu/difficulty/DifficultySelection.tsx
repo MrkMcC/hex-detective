@@ -46,7 +46,7 @@ const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
       className="difficulty-selection ui-panel"
       style={ColourService.RandomBorderColourStyle()}
     >
-      <h2 className="border-underline">Difficulty</h2>
+      <h2 className="border-underline">Dress Code</h2>
       <div className="options">{optionElements}</div>
     </div>
   );
