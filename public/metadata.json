@@ -29,7 +29,8 @@
         "New button to unhide ruled-out people",
         "New button to remove reset ruled-out status for all",
         "Improved design and usability of interactive bar charts",
-        "New switch to auto-continue after a correct accusation"
+        "New switch to auto-continue after a correct accusation",
+        "Selection Mode control is now disabled between rounds"
       ],
       "bugs": [
         "Bar chart font and colour sliders appeared wrong in Firefox",

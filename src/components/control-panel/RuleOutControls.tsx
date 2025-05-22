@@ -1,14 +1,15 @@
 import { FaEye, FaEyeSlash, FaRepeat } from "react-icons/fa6";
 import ControlAction from "../../enum/ControlAction";
+import GameStatus from "../../enum/GameStatus";
 import RoundDataT from "../../types/RoundDataT";
 
 interface Props {
+  gameStatus: GameStatus;
   roundData: RoundDataT;
-  disableAll?: boolean;
   onControlAction: (action: ControlAction) => void;
 }
 
-const RuleOutControls = ({ roundData, disableAll, onControlAction }: Props) => {
+const RuleOutControls = ({ gameStatus, roundData, onControlAction }: Props) => {
   const handleResetRuledOut = () => {
     if (confirm("Rule everyone back in?"))
       onControlAction(ControlAction.ResetRuledOut);
@@ -18,10 +19,7 @@ const RuleOutControls = ({ roundData, disableAll, onControlAction }: Props) => {
     <div className="btn-group-ruled-out flex-row gap-mini">
       <button
         onClick={() => onControlAction(ControlAction.HideRuledOut)}
-        disabled={
-          disableAll ||
-          roundData.crowd?.people.every((p) => !p.ruledOut || p.hidden)
-        }
+        disabled={roundData.crowd?.people.every((p) => !p.ruledOut || p.hidden)}
       >
         <FaEyeSlash className="icon" />
         <span>
@@ -32,7 +30,7 @@ const RuleOutControls = ({ roundData, disableAll, onControlAction }: Props) => {
       </button>
       <button
         onClick={() => onControlAction(ControlAction.UnhideAll)}
-        disabled={disableAll || roundData.crowd?.people.every((p) => !p.hidden)}
+        disabled={roundData.crowd?.people.every((p) => !p.hidden)}
       >
         <FaEye className="icon" />
         <span>
@@ -44,7 +42,8 @@ const RuleOutControls = ({ roundData, disableAll, onControlAction }: Props) => {
       <button
         onClick={handleResetRuledOut}
         disabled={
-          disableAll || roundData.crowd?.people.every((p) => !p.ruledOut)
+          gameStatus !== GameStatus.InProgress ||
+          roundData.crowd?.people.every((p) => !p.ruledOut)
         }
       >
         <FaRepeat className="icon" />

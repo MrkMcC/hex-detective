@@ -105,11 +105,12 @@ const ControlBar = ({
           <SelectionModeControl
             currentMode={roundData.selectionMode}
             onChange={handleChangeSelectionMode}
+            disabled={gameStatus !== GameStatus.InProgress}
           />
           <RuleOutControls
+            gameStatus={gameStatus}
             roundData={roundData}
             onControlAction={onControlAction}
-            disableAll={gameStatus !== GameStatus.InProgress}
           />
         </div>
         <div className="area-round-navigation">
