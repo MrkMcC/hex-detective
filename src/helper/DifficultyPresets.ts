@@ -4,6 +4,7 @@ import Constants from "../Constants";
 import HueDifferenceBias from "../enum/colour-generation-bias/HueDifferenceBias";
 import IncrementBias from "../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
+import ValueBias from "../enum/colour-generation-bias/ValueBias";
 
 const tutorial = new DifficultyConfig(
   {
@@ -12,7 +13,8 @@ const tutorial = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.None
+      HueDifferenceBias.None,
+      ValueBias.None
     ),
   },
   Constants.DIFFICULTY_KEY_TUTORIAL
@@ -24,7 +26,8 @@ const easiest = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
       SaturationBias.Extreme,
-      HueDifferenceBias.MinDifferenceStrong
+      HueDifferenceBias.MinDifferenceStrong,
+      ValueBias.Extreme
     ),
   },
   Constants.DIFFICULTY_KEY_EASIEST
@@ -35,8 +38,9 @@ const easy = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
-      SaturationBias.Subtle,
-      HueDifferenceBias.MinDifferenceSome
+      SaturationBias.None,
+      HueDifferenceBias.None,
+      ValueBias.Strong
     ),
   },
   Constants.DIFFICULTY_KEY_EASY
@@ -48,7 +52,8 @@ const normal = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.None
+      HueDifferenceBias.None,
+      ValueBias.Subtle
     ),
   },
   Constants.DIFFICULTY_KEY_NORMAL
@@ -60,7 +65,8 @@ const hard = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.MaxDifferenceSome
+      HueDifferenceBias.MaxDifferenceSome,
+      ValueBias.None
     ),
   },
   Constants.DIFFICULTY_KEY_HARD
@@ -72,7 +78,8 @@ const hardest = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.MaxDifferenceStrong
+      HueDifferenceBias.MaxDifferenceStrong,
+      ValueBias.None
     ),
   },
   Constants.DIFFICULTY_KEY_HARDEST

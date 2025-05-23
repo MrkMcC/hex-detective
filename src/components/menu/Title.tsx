@@ -2,6 +2,7 @@ import ColourGenerationBias from "../../classes/ColourGenerationBias";
 import HueDifferenceBias from "../../enum/colour-generation-bias/HueDifferenceBias";
 import IncrementBias from "../../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../../enum/colour-generation-bias/SaturationBias";
+import ValueBias from "../../enum/colour-generation-bias/ValueBias";
 import ColourService from "../../services/ColourService";
 
 interface Props {}
@@ -16,7 +17,8 @@ const Title = ({}: Props) => {
           new ColourGenerationBias(
             IncrementBias.None,
             SaturationBias.Strong,
-            HueDifferenceBias.None
+            HueDifferenceBias.None,
+            ValueBias.Extreme
           )
         ).hex.toString(),
       }}

@@ -2,6 +2,7 @@ import DifficultyConfig from "../../../classes/DifficultyConfig";
 import HueDifferenceBias from "../../../enum/colour-generation-bias/HueDifferenceBias";
 import IncrementBias from "../../../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../../../enum/colour-generation-bias/SaturationBias";
+import ValueBias from "../../../enum/colour-generation-bias/ValueBias";
 import Localise from "../../../services/Localise";
 import FunkyPanel from "../../common/FunkyPanel";
 
@@ -36,6 +37,14 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
           }
         </p>
         <p>
+          Hue Bias: <br />
+          {
+            Object.values(HueDifferenceBias)[
+              difficulty.parameters.colourGenerationBias.hueDifferenceBias
+            ]
+          }
+        </p>
+        <p>
           Saturation Bias: <br />
           {
             Object.values(SaturationBias)[
@@ -44,10 +53,10 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
           }
         </p>
         <p>
-          Hue Bias: <br />
+          Value Bias: <br />
           {
-            Object.values(HueDifferenceBias)[
-              difficulty.parameters.colourGenerationBias.hueDifferenceBias
+            Object.values(ValueBias)[
+              difficulty.parameters.colourGenerationBias.valueBias
             ]
           }
         </p>
