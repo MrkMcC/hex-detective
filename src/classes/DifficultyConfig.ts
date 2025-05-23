@@ -14,6 +14,8 @@ class DifficultyConfig {
   isTutorial = false;
 
   valid() {
+    if (Constants.DEBUG.UNLIMIT_DIFFICULTY_SETTINGS) return true;
+
     const valid_crowdSizeInitial =
       this.parameters.crowdSizeInitial > 1 &&
       this.parameters.crowdSizeInitial < 101;

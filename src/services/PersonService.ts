@@ -8,20 +8,21 @@ import LogService from "./LogService";
 const LOG_SUBJECT = "PersonService";
 
 const randomPerson = (
-  colourGenerationBias?: ColourGenerationBias
+  colourGenerationBias?: ColourGenerationBias,
+  suspect?: PersonData
 ): PersonData => {
   return new PersonData(
-    ColourService.RandomColour(colourGenerationBias?.saturationBias),
-    ColourService.RandomColour(colourGenerationBias?.saturationBias),
-    ColourService.RandomColour(colourGenerationBias?.saturationBias)
+    ColourService.RandomColour(colourGenerationBias, suspect?.colours.hat),
+    ColourService.RandomColour(colourGenerationBias, suspect?.colours.shirt),
+    ColourService.RandomColour(colourGenerationBias, suspect?.colours.pants)
   );
 };
 
 const generateNonDuplicate = (
-  constructionInstruction: () => PersonData,
+  constructionInstruction: (unique?: PersonData) => PersonData,
   unique?: PersonData
 ) => {
-  const newPerson = constructionInstruction();
+  const newPerson = constructionInstruction(unique);
 
   if (unique && unique.equals(newPerson)) {
     LogService.Debug(LOG_SUBJECT, "Duplicate detected. Re-generating...");
@@ -30,7 +31,7 @@ const generateNonDuplicate = (
 };
 
 const generateCrowd = (
-  constructionInstruction: () => PersonData,
+  constructionInstruction: (unique?: PersonData) => PersonData,
   amount: number
 ): Crowd => {
   const people: PersonData[] = [];
@@ -48,7 +49,10 @@ const randomCrowd = (
   amount: number,
   colourGenerationBias?: ColourGenerationBias
 ) => {
-  return generateCrowd(() => randomPerson(colourGenerationBias), amount);
+  return generateCrowd(
+    (unique?: PersonData) => randomPerson(colourGenerationBias, unique),
+    amount
+  );
 };
 
 const findPersonById = (people: PersonData[], id?: string) => {

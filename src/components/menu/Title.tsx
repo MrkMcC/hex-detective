@@ -1,3 +1,6 @@
+import ColourGenerationBias from "../../classes/ColourGenerationBias";
+import HueDifferenceBias from "../../enum/colour-generation-bias/HueDifferenceBias";
+import IncrementBias from "../../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../../enum/colour-generation-bias/SaturationBias";
 import ColourService from "../../services/ColourService";
 
@@ -9,7 +12,13 @@ const Title = ({}: Props) => {
     <span
       key={i}
       style={{
-        color: ColourService.RandomColour(SaturationBias.Strong).hex.toString(),
+        color: ColourService.RandomColour(
+          new ColourGenerationBias(
+            IncrementBias.None,
+            SaturationBias.Strong,
+            HueDifferenceBias.None
+          )
+        ).hex.toString(),
       }}
     >
       {c}

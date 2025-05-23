@@ -12,9 +12,14 @@ const error = (subject: string, message: string, ...objects: any[]) => {
   return text;
 };
 
+const warn = (subject: string, message: string, ...objects: any[]) => {
+  console.warn(formatLogText(subject, message), ...objects);
+};
+
 const LogService = {
   Debug: debug,
   Error: error,
+  Warn: warn,
 };
 
 export default LogService;

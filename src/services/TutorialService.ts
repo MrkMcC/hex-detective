@@ -25,9 +25,9 @@ const generateCrowd = (state: TutorialProgress): Crowd => {
 
   const base16ColourConstruction = () =>
     ColourService.GenerateColour(
-      (MathHelper.GetRandomNumber(16) - 1) * 17,
-      (MathHelper.GetRandomNumber(16) - 1) * 17,
-      (MathHelper.GetRandomNumber(16) - 1) * 17
+      MathHelper.GetRandomNumber(0, 15) * 17,
+      MathHelper.GetRandomNumber(0, 15) * 17,
+      MathHelper.GetRandomNumber(0, 15) * 17
     );
   const base16Crowd = PersonService.GenerateCrowd(
     () =>

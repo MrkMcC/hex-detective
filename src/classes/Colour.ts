@@ -1,5 +1,6 @@
 import ColourFlavour from "../enum/ColourFlavour";
 import ColourService from "../services/ColourService";
+import LogService from "../services/LogService";
 
 class Rgb<T> {
   flavour: ColourFlavour;
@@ -67,6 +68,22 @@ class Colour {
   }
 
   constructor(red: number, green: number, blue: number, name?: string) {
+    if (
+      red % 1 !== 0 ||
+      green % 1 !== 0 ||
+      blue % 1 !== 0 ||
+      Math.max(red, green, blue) > 255 ||
+      Math.min(red, green, blue) < 0
+    )
+      throw LogService.Error(
+        "Colour",
+        "Constructor received an unexcepted input. Expected integer in range 0-255.",
+        red,
+        green,
+        blue,
+        name
+      );
+
     this.name = name;
 
     this.int = new Rgb<number>(ColourFlavour.Int, red, green, blue);

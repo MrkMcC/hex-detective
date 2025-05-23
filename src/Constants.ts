@@ -15,8 +15,10 @@ const Constants = {
   DIFFICULTY_KEY_HARDEST: "hardest",
   DIFFICULTY_KEY_CUSTOM: "custom",
 
+  /**These should be false in production. */
   DEBUG: {
     REVEAL_SOLUTION: true,
+    UNLIMIT_DIFFICULTY_SETTINGS: true,
   },
 };
 

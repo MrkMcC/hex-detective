@@ -1,7 +1,11 @@
 import { CSSProperties } from "react";
 import Colour from "../classes/Colour";
+import ColourGenerationBias from "../classes/ColourGenerationBias";
+import HueDifferenceBias from "../enum/colour-generation-bias/HueDifferenceBias";
+import IncrementBias from "../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
 import ArrayHelper from "../helper/ArrayHelper";
+import MathHelper from "../helper/MathHelper";
 
 const intToHex = (colour: number) => {
   let result = colour.toString(16);
@@ -11,52 +15,107 @@ const intToHex = (colour: number) => {
   return result;
 };
 
-const randomIntColorValue = () => {
-  return Math.floor(Math.random() * 256);
+const randomRgbValueWithinDistance = (
+  reference: number,
+  minDistance: number,
+  maxDistance: number
+) =>
+  MathHelper.GetRandomIntegerWithinDistance(
+    0,
+    255,
+    reference,
+    minDistance,
+    maxDistance
+  );
+
+const randomColourWithinDistance = (
+  reference: Colour,
+  minDistance: number,
+  maxDistance: number
+) => {
+  return new Colour(
+    randomRgbValueWithinDistance(reference.int.red, minDistance, maxDistance),
+    randomRgbValueWithinDistance(reference.int.green, minDistance, maxDistance),
+    randomRgbValueWithinDistance(reference.int.blue, minDistance, maxDistance)
+  );
 };
 
-const ensureDistance = (
-  targetDistance: number,
-  ...values: number[]
-): number[] => {
-  values.sort((a, b) => a - b);
-  let lowest = values[0];
-  let highest = values[values.length - 1];
-  const distance = highest - lowest;
-  if (distance < targetDistance) {
-    lowest -= distance / 2;
-    highest += distance / 2;
+const applySaturationBias = (colour: Colour, minSaturation: number) => {
+  let rgb = [colour.int.red, colour.int.green, colour.int.blue];
+  const indexOfMax = rgb.indexOf(Math.max(...rgb));
+  const indexOfMin = rgb.indexOf(Math.min(...rgb));
 
-    if (lowest < 0) highest += Math.abs(lowest);
-    if (highest > 255) lowest -= highest;
-
-    values[0] = Math.max(Math.floor(lowest), 0);
-    values[values.length - 1] = Math.min(Math.ceil(highest), 255);
-  }
-
-  return values;
+  const saturation = (rgb[indexOfMax] - rgb[indexOfMin]) / rgb[indexOfMax];
+  debugger;
+  if (saturation < minSaturation) {
+    const previousMinimum = rgb[indexOfMin];
+    const previousRange = rgb[indexOfMax] - previousMinimum;
+    rgb[indexOfMin] = rgb[indexOfMax] - rgb[indexOfMax] * minSaturation;
+    const newRange = rgb[indexOfMax] - rgb[indexOfMin];
+    rgb = rgb.map((v, index) =>
+      index !== indexOfMin && index !== indexOfMax
+        ? rgb[indexOfMin] + ((v - previousMinimum) / previousRange) * newRange
+        : v
+    );
+    return new Colour(
+      Math.round(rgb[0]),
+      Math.round(rgb[1]),
+      Math.round(rgb[2])
+    );
+  } else return colour;
 };
 
-const randomColour = (saturationBias: SaturationBias = SaturationBias.None) => {
-  let rgbValues = [
-    randomIntColorValue(),
-    randomIntColorValue(),
-    randomIntColorValue(),
-  ];
+const randomColour = (
+  colourGenerationBias: ColourGenerationBias = new ColourGenerationBias(
+    IncrementBias.None,
+    SaturationBias.None,
+    HueDifferenceBias.None
+  ),
+  reference?: Colour
+) => {
+  let result: Colour;
 
-  switch (saturationBias) {
+  if (reference) {
+    switch (colourGenerationBias.hueDifferenceBias) {
+      case HueDifferenceBias.MinDifferenceStrong:
+        result = randomColourWithinDistance(reference, 32, 255);
+        break;
+      case HueDifferenceBias.MinDifferenceSome:
+        result = randomColourWithinDistance(reference, 16, 255);
+        break;
+      case HueDifferenceBias.MaxDifferenceSome:
+        result = randomColourWithinDistance(reference, 16, 120);
+        break;
+      case HueDifferenceBias.MaxDifferenceStrong:
+        result = randomColourWithinDistance(reference, 16, 80);
+        break;
+      default:
+        result = new Colour(
+          MathHelper.GetRandomNumber(0, 255),
+          MathHelper.GetRandomNumber(0, 255),
+          MathHelper.GetRandomNumber(0, 255)
+        );
+    }
+  } else
+    result = new Colour(
+      MathHelper.GetRandomNumber(0, 255),
+      MathHelper.GetRandomNumber(0, 255),
+      MathHelper.GetRandomNumber(0, 255)
+    );
+
+  switch (colourGenerationBias.saturationBias) {
     case SaturationBias.Subtle:
-      rgbValues = ensureDistance(50, ...rgbValues);
+      result = applySaturationBias(result, 0);
       break;
     case SaturationBias.Strong:
-      rgbValues = ensureDistance(150, ...rgbValues);
+      result = applySaturationBias(result, 1);
       break;
     case SaturationBias.Extreme:
-      rgbValues = ensureDistance(200, ...rgbValues);
+      result = applySaturationBias(result, 1);
       break;
   }
 
-  return generateColour(rgbValues[0], rgbValues[1], rgbValues[2]);
+  return result;
 };
 
 const generateColour = (

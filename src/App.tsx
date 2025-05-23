@@ -8,6 +8,7 @@ import GameStatus from "./enum/GameStatus";
 import HexDetectiveEvent from "./enum/HexDetectiveEvent";
 import DifficultyPresets from "./helper/DifficultyPresets";
 import EventService from "./services/EventService";
+import LogService from "./services/LogService";
 
 //#region development notes
 
@@ -99,6 +100,10 @@ function App() {
   };
 
   useEffect(() => {
+    LogService.Warn(
+      "Thank you for playing #HexDetective!",
+      "Game lagging? Try closing the dev tools."
+    );
     EventService.AddListener(handleHexDetectiveEvent);
     return () => EventService.RemoveListener(handleHexDetectiveEvent);
   }, []);
