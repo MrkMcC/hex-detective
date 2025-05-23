@@ -38,8 +38,8 @@ const easy = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
-      SaturationBias.None,
-      HueDifferenceBias.None,
+      SaturationBias.Strong,
+      HueDifferenceBias.MinDifferenceSome,
       ValueBias.Strong
     ),
   },

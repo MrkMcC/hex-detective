@@ -41,8 +41,9 @@
       "version": "0.4pre1",
       "name": "The Difficulty Update (work in progress)",
       "features": [
-        "Added difficulty setting: Saturation Bias (None, Subtle, Strong, Extreme)",
-        "The title above the main menu now has a saturation bias of 'strong'"
+        "New difficulty parameter: Saturation Bias",
+        "New difficulty parameter: Value Bias",
+        "The title above the main menu now has a saturation and value bias"
       ],
       "bugs": []
     }

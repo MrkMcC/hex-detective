@@ -13,23 +13,11 @@ import LogService from "./services/LogService";
 //#region development notes
 
 //Difficulty Update notes
+//-rework hue bias (make it an actual hue bias)
 
-//-'How to Play' might be obsolete
-//-Other names for difficulty 'easy', as that is subjective
+//-'How to Play' might be obsolete -> A new kind of welcome message, maybe. connected to the test screen idea?
 //-Difficulty options should have borders that reflect their colour bias
 //-Re-integrate custom difficulty
-//-Main Menu Title - Saturation-Bias setzen
-
-//Easy
-//-Bias: colours have a minimum distance to the suspect
-
-//Normal
-//-Bias: None
-
-//Hard:
-//-Bias: Colours have a maximum distance to the suspect
-
-//Harder modes: maybe, after testing hard mode
 
 //-show colour triangle option
 //-show int values (0-255) option
