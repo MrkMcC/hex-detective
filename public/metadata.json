@@ -41,9 +41,10 @@
       "version": "0.4pre1",
       "name": "The Difficulty Update (work in progress)",
       "features": [
-        "New difficulty parameter: Saturation Bias",
-        "New difficulty parameter: Value Bias",
-        "The title above the main menu now has a saturation and value bias"
+        "New difficulty variable: Hue Bias - People will wear colours similar or different to the suspect's",
+        "New difficulty variable: Saturation Bias - Limits greyness",
+        "New difficulty variable: Value Bias - Limits darkness",
+        "The title above the main menu now has a minimum saturation and value"
       ],
       "bugs": []
     }

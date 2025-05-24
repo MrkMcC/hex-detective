@@ -3,6 +3,7 @@ enum GameStatus {
   InProgress = "in-progress",
   Scored = "scored",
   Failed = "failed",
+  GameOver = "game-over",
 }
 
 export default GameStatus;

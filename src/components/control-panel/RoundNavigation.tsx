@@ -34,7 +34,7 @@ const RoundNavigation = ({
     <div className="round-navigation">
       <button
         className={`btn-restart large ${
-          gameStatus === GameStatus.Failed ? "shown" : "hidden"
+          gameStatus === GameStatus.GameOver ? "shown" : "hidden"
         }`}
         onClick={() => onControlAction(ControlAction.Restart)}
       >
@@ -43,11 +43,18 @@ const RoundNavigation = ({
       </button>
       <AutoButton
         className={`btn-next-round large ${
-          gameStatus === GameStatus.Scored ? "shown" : "hidden"
+          gameStatus !== GameStatus.InProgress &&
+          gameStatus !== GameStatus.GameOver
+            ? "shown"
+            : "hidden"
         }`}
         onClick={() => onControlAction(ControlAction.NextRound)}
-        disabled={gameStatus !== GameStatus.Scored}
-        autoClickMs={settings.parameters.autoContinue ? 2000 : undefined}
+        disabled={gameStatus === GameStatus.GameOver}
+        autoClickMs={
+          gameStatus === GameStatus.Scored && settings.parameters.autoContinue
+            ? 2000
+            : undefined
+        }
       >
         Continue <FaCircleArrowRight className="icon" />
       </AutoButton>

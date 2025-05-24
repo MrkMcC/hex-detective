@@ -49,7 +49,7 @@ const ControlBar = ({
   //#region Event Handling
   const handleQuit = () => {
     if (
-      gameStatus === GameStatus.Failed ||
+      gameStatus === GameStatus.GameOver ||
       confirm(
         "You are about to quit the game. Your current progress will be lost."
       )
@@ -125,7 +125,8 @@ const ControlBar = ({
         </div>
       </div>
       {(gameStatus === GameStatus.Scored ||
-        gameStatus === GameStatus.Failed) && (
+        gameStatus === GameStatus.Failed ||
+        gameStatus === GameStatus.GameOver) && (
         <RoundSummary
           isCollapsed={isSummaryCollapsed}
           onChangeCollapsed={setIsSummaryCollapsed}

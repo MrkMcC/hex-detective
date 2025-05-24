@@ -29,6 +29,7 @@ interface Props {
 
 const initialSessionData: SessionDataT = {
   roundsWon: 0,
+  lives: 3,
   tutorialProgress: null,
 };
 
@@ -153,7 +154,10 @@ function Game({
   };
 
   const fail = () => {
-    onChangeStatus(GameStatus.Failed);
+    onChangeStatus(
+      sessionData.lives > 1 ? GameStatus.Failed : GameStatus.GameOver
+    );
+    setSessionData((prev) => ({ ...prev, lives: prev.lives - 1 }));
   };
 
   const accuse = (personId: string) => {
@@ -210,6 +214,8 @@ function Game({
 
   //#region tutorial
   const setupTutorialRound = () => {
+    if (sessionData.lives !== 1)
+      setSessionData((prev) => ({ ...prev, lives: 1 }));
     if (sessionData.tutorialProgress === null) {
       setTutorialProgress({
         stage: TutorialStage.Basics_Scoring,
@@ -323,8 +329,9 @@ function Game({
       }
       isAccused={roundData.accusedPersonId === p.id}
       isRevealedSuspect={
-        (status === GameStatus.Failed ||
-          status === GameStatus.Scored ||
+        (status === GameStatus.Scored ||
+          status === GameStatus.Failed ||
+          status === GameStatus.GameOver ||
           Constants.DEBUG.REVEAL_SOLUTION) &&
         p.id === roundData.crowd!.getSuspect()!.id
       }

@@ -28,6 +28,12 @@ const StatusText = ({ state }: Props) => {
             Incorrect <FaXmark className="icon color-red" />
           </>
         );
+      case GameStatus.GameOver:
+        return (
+          <>
+            Game Over <FaXmark className="icon color-red" />
+          </>
+        );
     }
   };
 

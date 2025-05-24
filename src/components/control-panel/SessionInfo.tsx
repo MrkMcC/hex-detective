@@ -19,6 +19,11 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
   return (
     <div className="session-info">
       <p>Score: {sessionData.roundsWon}</p>
+      <p>
+        Lives: {sessionData.lives >= 1 ? "O" : "X"}{" "}
+        {sessionData.lives >= 2 ? "O" : "X"}{" "}
+        {sessionData.lives >= 3 ? "O" : "X"}
+      </p>
       <p>Difficulty: {Localise.Text(`difficulty_${difficulty.key}`)}</p>
       <p>Crowd Size: {crowdSize}</p>
       <p>
