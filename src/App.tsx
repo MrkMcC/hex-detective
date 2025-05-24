@@ -13,7 +13,6 @@ import LogService from "./services/LogService";
 //#region development notes
 
 //Difficulty Update notes
-//-rework hue bias (make it an actual hue bias)
 
 //-'How to Play' might be obsolete -> A new kind of welcome message, maybe. connected to the test screen idea?
 //-Difficulty options should have borders that reflect their colour bias

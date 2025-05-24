@@ -7,6 +7,39 @@ import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
 import ValueBias from "../enum/colour-generation-bias/ValueBias";
 import ArrayHelper from "../helper/ArrayHelper";
 import MathHelper from "../helper/MathHelper";
+import HsvT from "../types/helper/HsvT";
+
+const unbiasedRandomRgbColour = () =>
+  new Colour(
+    MathHelper.GetRandomNumber(0, 255),
+    MathHelper.GetRandomNumber(0, 255),
+    MathHelper.GetRandomNumber(0, 255)
+  );
+
+// out: h in [0,360) and s,v in [0,1]
+function toHsv(colour: Colour): HsvT {
+  const [r, g, b] = [
+    colour.int.red / 255,
+    colour.int.green / 255,
+    colour.int.blue / 255,
+  ];
+  let v = Math.max(r, g, b),
+    c = v - Math.min(r, g, b);
+  let h =
+    c && (v == r ? (g - b) / c : v == g ? 2 + (b - r) / c : 4 + (r - g) / c);
+  return { hue: 60 * (h < 0 ? h + 6 : h), saturation: v && c / v, value: v };
+}
+
+// input: h in [0,360] and s,v in [0,1]
+function toColour(hsv: HsvT) {
+  let f = (n: number, k = (n + hsv.hue / 60) % 6) =>
+    hsv.value - hsv.value * hsv.saturation * Math.max(Math.min(k, 4 - k, 1), 0);
+  return new Colour(
+    Math.round(f(5) * 255),
+    Math.round(f(3) * 255),
+    Math.round(f(1) * 255)
+  );
+}
 
 const intToHex = (colour: number) => {
   let result = colour.toString(16);
@@ -16,6 +49,7 @@ const intToHex = (colour: number) => {
   return result;
 };
 
+/**@obsolete replaced by actual hue bias */
 const randomRgbValueWithinDistance = (
   reference: number,
   minDistance: number,
@@ -29,6 +63,7 @@ const randomRgbValueWithinDistance = (
     maxDistance
   );
 
+/**@obsolete replaced by actual hue bias */
 const randomColourWithinDistance = (
   reference: Colour,
   minDistance: number,
@@ -39,6 +74,23 @@ const randomColourWithinDistance = (
     randomRgbValueWithinDistance(reference.int.green, minDistance, maxDistance),
     randomRgbValueWithinDistance(reference.int.blue, minDistance, maxDistance)
   );
+};
+
+const randomiseHue = (
+  subject: Colour,
+  reference: Colour,
+  minDistance: number,
+  maxDistance?: number
+) => {
+  const subjectHsv = toHsv(subject);
+  const referenceHsv = toHsv(reference);
+  subjectHsv.hue = MathHelper.GetRandomAngleWithRangeBias(
+    referenceHsv.hue,
+    minDistance,
+    maxDistance
+  );
+
+  return toColour(subjectHsv);
 };
 
 /**Scale everything up so that all values fit withing the intended saturation / value scale. */
@@ -88,35 +140,26 @@ const randomColour = (
   ),
   reference?: Colour
 ) => {
-  let result: Colour;
+  let result = unbiasedRandomRgbColour();
 
   if (reference) {
     switch (colourGenerationBias.hueDifferenceBias) {
       case HueDifferenceBias.MinDifferenceStrong:
-        result = randomColourWithinDistance(reference, 32, 255);
+        result = randomiseHue(result, reference, 20);
         break;
       case HueDifferenceBias.MinDifferenceSome:
-        result = randomColourWithinDistance(reference, 16, 255);
+        result = randomiseHue(result, reference, 10);
         break;
       case HueDifferenceBias.MaxDifferenceSome:
-        result = randomColourWithinDistance(reference, 16, 120);
+        result = randomiseHue(result, reference, 1, 60);
         break;
       case HueDifferenceBias.MaxDifferenceStrong:
-        result = randomColourWithinDistance(reference, 16, 80);
+        result = randomiseHue(result, reference, 1, 30);
         break;
       default:
-        result = new Colour(
-          MathHelper.GetRandomNumber(0, 255),
-          MathHelper.GetRandomNumber(0, 255),
-          MathHelper.GetRandomNumber(0, 255)
-        );
+        result = randomiseHue(result, reference, 1);
     }
-  } else
-    result = new Colour(
-      MathHelper.GetRandomNumber(0, 255),
-      MathHelper.GetRandomNumber(0, 255),
-      MathHelper.GetRandomNumber(0, 255)
-    );
+  }
 
   let minValue = 0;
   switch (colourGenerationBias.valueBias) {
@@ -146,7 +189,6 @@ const randomColour = (
 
   result = applySaturationAndValueBias(result, minSaturation, minValue);
 
-  //Saturation and Value correction might undo the hue bias, i think -> because it's not actually a hue bias. if it was, they wouldn't.
   return result;
 };
 

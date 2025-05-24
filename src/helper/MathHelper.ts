@@ -65,12 +65,34 @@ const getRandomIntegerWithinDistance = (
   } else return getRandomNumber(min, max);
 };
 
+const getRandomAngleWithRangeBias = (
+  reference: number,
+  minDistance: number,
+  maxDistance?: number
+): number => {
+  maxDistance = maxDistance || 180;
+  const min = Math.max(reference - 180, reference - maxDistance);
+  const max = Math.min(reference + 180, reference + maxDistance);
+
+  if (minDistance > 0) {
+    const allowedTo = reference - minDistance;
+    const allowedFrom = reference + minDistance;
+    const forbiddenRange = allowedFrom - allowedTo;
+
+    let randomNumber = getRandomNumber(min, max - forbiddenRange);
+    if (randomNumber > allowedTo) randomNumber += forbiddenRange;
+
+    return (randomNumber + 360) % 360;
+  } else return (getRandomNumber(min, max) + 360) % 360;
+};
+
 const MathHelper = {
   Clamp: clamp,
   /**Ensures a certain distance between the highest and lowest value, by trying to equally increase/decrease them, while respecting min and max limits. The result is sorted.
    * @deprecated this was the old way of ensuring saturation bias
    */
   EnsureDistance: ensureDistance,
+  GetRandomAngleWithRangeBias: getRandomAngleWithRangeBias,
   /** Returns an integer between the specified minimum (inclusive) and maximum (inclusive). */
   GetRandomNumber: getRandomNumber,
   /** Returns a number from min (inclusive) to max (inclusive) in increments determined by the number of slices.
