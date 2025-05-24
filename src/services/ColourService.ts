@@ -49,33 +49,6 @@ const intToHex = (colour: number) => {
   return result;
 };
 
-/**@obsolete replaced by actual hue bias */
-const randomRgbValueWithinDistance = (
-  reference: number,
-  minDistance: number,
-  maxDistance: number
-) =>
-  MathHelper.GetRandomIntegerWithinDistance(
-    0,
-    255,
-    reference,
-    minDistance,
-    maxDistance
-  );
-
-/**@obsolete replaced by actual hue bias */
-const randomColourWithinDistance = (
-  reference: Colour,
-  minDistance: number,
-  maxDistance: number
-) => {
-  return new Colour(
-    randomRgbValueWithinDistance(reference.int.red, minDistance, maxDistance),
-    randomRgbValueWithinDistance(reference.int.green, minDistance, maxDistance),
-    randomRgbValueWithinDistance(reference.int.blue, minDistance, maxDistance)
-  );
-};
-
 const randomiseHue = (
   subject: Colour,
   reference: Colour,
