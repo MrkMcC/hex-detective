@@ -1,5 +1,6 @@
 import objectHash from "object-hash";
 import { useEffect, useState } from "react";
+import DifficultyConfig from "./classes/DifficultyConfig";
 import UserSettings from "./classes/UserSettings";
 import Game from "./components/Game";
 import MainMenu from "./components/menu/MainMenu";
@@ -77,9 +78,8 @@ import LogService from "./services/LogService";
 function App() {
   const [status, setStatus] = useState(GameStatus.Setup);
   const [settings, setSettings] = useState(new UserSettings());
-  const [selectedDifficulty, setSelectedDifficulty] = useState(
-    DifficultyPresets.Default
-  );
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<DifficultyConfig>();
   const [isTutorial, setIsTutorial] = useState(false);
 
   const handleHexDetectiveEvent = (event: HexDetectiveEvent) => {
@@ -117,11 +117,11 @@ function App() {
         />
       ) : (
         <Game
-          key={objectHash(selectedDifficulty.parameters.crowdSizeInitial)}
+          key={objectHash(selectedDifficulty!.parameters.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
           difficulty={
-            isTutorial ? DifficultyPresets.Tutorial : selectedDifficulty
+            isTutorial ? DifficultyPresets.Tutorial : selectedDifficulty!
           }
           settings={settings}
           onChangeSettings={setSettings}

@@ -9,7 +9,7 @@ import ColourService from "../../../services/ColourService";
 import DifficultySelectionOption from "./DifficultySelectionOption";
 
 interface Props {
-  value: DifficultyConfig;
+  value?: DifficultyConfig;
   onSelect: (settings: DifficultyConfig) => void;
 }
 
@@ -35,7 +35,7 @@ const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
   const optionElements = difficultyOptions.map((d) => (
     <DifficultySelectionOption
       key={d.key}
-      isSelected={d.key === value.key}
+      isSelected={d.key === value?.key}
       difficulty={d}
       onSelect={handleSelectDifficulty}
     />

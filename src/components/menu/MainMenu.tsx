@@ -5,7 +5,7 @@ import Index from "./screens/Index";
 import NewGame from "./screens/NewGame";
 
 interface Props {
-  difficulty: DifficultyConfig;
+  difficulty?: DifficultyConfig;
   onChangeDifficulty: (settings: DifficultyConfig) => void;
   onStartGame: () => void;
   onStartTutorial: () => void;

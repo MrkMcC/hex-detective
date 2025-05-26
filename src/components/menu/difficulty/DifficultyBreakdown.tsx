@@ -7,60 +7,66 @@ import Localise from "../../../services/Localise";
 import FunkyPanel from "../../common/FunkyPanel";
 
 interface Props {
-  difficulty: DifficultyConfig;
+  difficulty?: DifficultyConfig;
 }
 
 const DifficultyBreakdown = ({ difficulty }: Props) => {
   return (
     <FunkyPanel className="difficulty-breakdown">
-      <h2 className="border-underline">
-        {Localise.Text(`difficulty_${difficulty.key}`)}
-      </h2>
-      <h3 className="text-center">
-        {Localise.Text(`difficulty-description_${difficulty.key}`)}
-      </h3>
-      <div className="text-center">
-        <p>
-          Crowd Size - initial: <br />
-          {difficulty.parameters.crowdSizeInitial}
-        </p>
-        <p>
-          Crowd Size - Increase per round: <br />
-          {difficulty.parameters.crowdSizeInitial}
-        </p>
-        <p>
-          Increment: <br />
-          {
-            Object.values(IncrementBias)[
-              difficulty.parameters.colourGenerationBias.incrementBias
-            ]
-          }
-        </p>
-        <p>
-          Hue Bias: <br />
-          {
-            Object.values(HueDifferenceBias)[
-              difficulty.parameters.colourGenerationBias.hueDifferenceBias
-            ]
-          }
-        </p>
-        <p>
-          Saturation Bias: <br />
-          {
-            Object.values(SaturationBias)[
-              difficulty.parameters.colourGenerationBias.saturationBias
-            ]
-          }
-        </p>
-        <p>
-          Value Bias: <br />
-          {
-            Object.values(ValueBias)[
-              difficulty.parameters.colourGenerationBias.valueBias
-            ]
-          }
-        </p>
-      </div>
+      {difficulty ? (
+        <>
+          <h2 className="border-underline">
+            {Localise.Text(`difficulty_${difficulty.key}`)}
+          </h2>
+          <h3 className="text-center">
+            {Localise.Text(`difficulty-description_${difficulty.key}`)}
+          </h3>
+          <div className="text-center">
+            <p>
+              Crowd Size - initial: <br />
+              {difficulty.parameters.crowdSizeInitial}
+            </p>
+            <p>
+              Crowd Size - Increase per round: <br />
+              {difficulty.parameters.crowdSizeInitial}
+            </p>
+            <p>
+              Increment: <br />
+              {
+                Object.values(IncrementBias)[
+                  difficulty.parameters.colourGenerationBias.incrementBias
+                ]
+              }
+            </p>
+            <p>
+              Hue Bias: <br />
+              {
+                Object.values(HueDifferenceBias)[
+                  difficulty.parameters.colourGenerationBias.hueDifferenceBias
+                ]
+              }
+            </p>
+            <p>
+              Saturation Bias: <br />
+              {
+                Object.values(SaturationBias)[
+                  difficulty.parameters.colourGenerationBias.saturationBias
+                ]
+              }
+            </p>
+            <p>
+              Value Bias: <br />
+              {
+                Object.values(ValueBias)[
+                  difficulty.parameters.colourGenerationBias.valueBias
+                ]
+              }
+            </p>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </FunkyPanel>
   );
 };

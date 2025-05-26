@@ -7,7 +7,7 @@ import MainMenuScreen from "./MainMenuScreen";
 
 interface Props {
   onNavigate: (destination: MainMenuNavigation) => void;
-  difficulty: DifficultyConfig;
+  difficulty?: DifficultyConfig;
   onChangeDifficulty: (settings: DifficultyConfig) => void;
 }
 
@@ -30,7 +30,7 @@ const NewGame = ({ onNavigate, difficulty, onChangeDifficulty }: Props) => {
         <button
           className="large"
           onClick={() => onNavigate(MainMenuNavigation.Start)}
-          disabled={!difficulty.valid()}
+          disabled={!difficulty || !difficulty.valid()}
         >
           Start
         </button>
