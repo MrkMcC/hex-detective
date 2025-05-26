@@ -52,10 +52,29 @@
     }
   }
 
+  &.easiest {
+    button {
+      border-color: #ff00ff #00ff00 #ffffff #00ffff;
+    }
+  }
   &.easy {
     button {
-      border-color: Colours.$base_green Colours.$base_blue Colours.$base_white
-        Colours.$base_red;
+      border-color: #bb00ff #33cc00 #bbbbbb #00bbff;
+    }
+  }
+  &.normal {
+    button {
+      border-color: #8822ff #66cc11 #777777 #2288ff;
+    }
+  }
+  &.hard {
+    button {
+      border-color: #6644dd #77aa44 #444444 #4488dd;
+    }
+  }
+  &.hardest {
+    button {
+      border-color: #555588 #779966 #222222 #5566aa;
     }
   }
 }
