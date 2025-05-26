@@ -9,6 +9,7 @@ interface Props {
 const HueBiasOptions = ({ value }: Props) => {
   const elems = [
     <ColourBiasOption
+      key={HueDifferenceBias.MinDifferenceStrong}
       isActive={value === HueDifferenceBias.MinDifferenceStrong}
       colours={[
         new Colour(255, 0, 128),
@@ -18,6 +19,7 @@ const HueBiasOptions = ({ value }: Props) => {
       ]}
     />,
     <ColourBiasOption
+      key={HueDifferenceBias.MinDifferenceSome}
       isActive={value === HueDifferenceBias.MinDifferenceSome}
       colours={[
         new Colour(255, 0, 128),
@@ -27,6 +29,7 @@ const HueBiasOptions = ({ value }: Props) => {
       ]}
     />,
     <ColourBiasOption
+      key={HueDifferenceBias.None}
       isActive={value === HueDifferenceBias.None}
       colours={[
         new Colour(255, 0, 128),
@@ -36,6 +39,7 @@ const HueBiasOptions = ({ value }: Props) => {
       ]}
     />,
     <ColourBiasOption
+      key={HueDifferenceBias.MaxDifferenceSome}
       isActive={value === HueDifferenceBias.MaxDifferenceSome}
       colours={[
         new Colour(255, 0, 0),
@@ -45,6 +49,7 @@ const HueBiasOptions = ({ value }: Props) => {
       ]}
     />,
     <ColourBiasOption
+      key={HueDifferenceBias.MaxDifferenceStrong}
       isActive={value === HueDifferenceBias.MaxDifferenceStrong}
       colours={[
         new Colour(255, 0, 0),

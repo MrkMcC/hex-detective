@@ -6,24 +6,17 @@ interface Props {
 }
 
 const ColourBiasOption = ({ colours, isActive }: Props) => {
+  const colourSampleElements = colours.map((c, index) => (
+    <div
+      key={index}
+      className={`colour-sample sample-${index}`}
+      style={{ backgroundColor: c.toString() }}
+    />
+  ));
+
   return (
     <div className={`colour-bias-option ${isActive ? "active" : "inactive"}`}>
-      <div
-        className="colour-sample sample-1"
-        style={{ backgroundColor: colours[0].toString() }}
-      />
-      <div
-        className="colour-sample sample-2"
-        style={{ backgroundColor: colours[1].toString() }}
-      />
-      <div
-        className="colour-sample sample-3"
-        style={{ backgroundColor: colours[2].toString() }}
-      />
-      <div
-        className="colour-sample sample-4"
-        style={{ backgroundColor: colours[3].toString() }}
-      />
+      {colourSampleElements}
     </div>
   );
 };

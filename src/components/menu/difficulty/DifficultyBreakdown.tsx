@@ -1,12 +1,12 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
 import IncrementBias from "../../../enum/colour-generation-bias/IncrementBias";
-import SaturationBias from "../../../enum/colour-generation-bias/SaturationBias";
-import ValueBias from "../../../enum/colour-generation-bias/ValueBias";
 import Localise from "../../../services/Localise";
 import PersonService from "../../../services/PersonService";
 import FunkyPanel from "../../common/FunkyPanel";
 import Person from "../../Person";
 import HueBiasOptions from "./HueBiasOptions";
+import SaturationBiasOptions from "./SaturationBiasOptions";
+import ValueBiasOptions from "./ValueBiasOptions";
 
 interface Props {
   difficulty?: DifficultyConfig;
@@ -17,6 +17,7 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
     5,
     difficulty?.parameters.colourGenerationBias
   );
+
   const personElements = crowd.people.map((p) => (
     <Person key={p.id} person={p} />
   ));
@@ -43,22 +44,20 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
                 }
               />
             </div>
-            <p>
+            <div>
               Saturation Bias: <br />
-              {
-                Object.values(SaturationBias)[
+              <SaturationBiasOptions
+                value={
                   difficulty.parameters.colourGenerationBias.saturationBias
-                ]
-              }
-            </p>
-            <p>
+                }
+              />
+            </div>
+            <div>
               Value Bias: <br />
-              {
-                Object.values(ValueBias)[
-                  difficulty.parameters.colourGenerationBias.valueBias
-                ]
-              }
-            </p>
+              <ValueBiasOptions
+                value={difficulty.parameters.colourGenerationBias.valueBias}
+              />
+            </div>
             <p>
               Crowd Size - initial: <br />
               {difficulty.parameters.crowdSizeInitial}
