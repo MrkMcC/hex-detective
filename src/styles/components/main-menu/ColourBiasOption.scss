@@ -1,0 +1,39 @@
+@use "../../vars/Colours";
+
+.colour-bias-option {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  box-sizing: border-box;
+  border: 0.2em solid Colours.$base_grey-dark;
+  border-radius: 100%;
+
+  &.active {
+    border-color: Colours.$base_grey-brightest;
+  }
+
+  .colour-sample {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    clip-path: circle();
+    transform: translate(-50%, -50%);
+
+    &.sample-1 {
+      left: 30%;
+      top: 30%;
+    }
+    &.sample-2 {
+      left: 70%;
+      top: 30%;
+    }
+    &.sample-3 {
+      left: 30%;
+      top: 70%;
+    }
+    &.sample-4 {
+      left: 70%;
+      top: 70%;
+    }
+  }
+}
