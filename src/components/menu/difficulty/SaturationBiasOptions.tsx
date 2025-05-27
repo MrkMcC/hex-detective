@@ -1,5 +1,8 @@
 import Colour from "../../../classes/Colour";
+import Constants from "../../../Constants";
 import SaturationBias from "../../../enum/colour-generation-bias/SaturationBias";
+import ArrayHelper from "../../../helper/ArrayHelper";
+import ColourService from "../../../services/ColourService";
 import ColourBiasOption from "./ColourBiasOption";
 
 interface Props {
@@ -7,68 +10,52 @@ interface Props {
 }
 
 const SaturationBiasOptions = ({ value }: Props) => {
-  const elems = [
+  const sampleColours = {
+    Red: [
+      new Colour(200, 0, 0),
+      new Colour(200, 100, 100),
+      new Colour(200, 190, 190),
+    ],
+    Green: [
+      new Colour(0, 200, 0),
+      new Colour(100, 200, 100),
+      new Colour(190, 200, 190),
+    ],
+    Blue: [
+      new Colour(0, 0, 200),
+      new Colour(100, 100, 200),
+      new Colour(190, 190, 200),
+    ],
+  };
+
+  const applySaturationBias = (
+    colour: Colour,
+    saturationBias: SaturationBias
+  ) => {
+    return ColourService.ApplySaturationAndValueBias(
+      colour,
+      Constants.DIFFICULTY.SATURATION_BIAS[saturationBias],
+      0
+    );
+  };
+
+  const elems = ArrayHelper.GetEnumFlags<number>(SaturationBias).map((bias) => (
     <ColourBiasOption
-      key={SaturationBias.Extreme}
-      isActive={value === SaturationBias.Extreme}
+      key={bias}
+      isActive={value === bias}
       colours={[
-        new Colour(200, 0, 0),
-        new Colour(200, 25, 25),
-        new Colour(200, 50, 50),
-        new Colour(0, 200, 0),
-        new Colour(25, 200, 25),
-        new Colour(50, 200, 50),
-        new Colour(0, 0, 200),
-        new Colour(25, 25, 200),
-        new Colour(50, 50, 200),
+        applySaturationBias(sampleColours.Red[0], bias),
+        applySaturationBias(sampleColours.Red[1], bias),
+        applySaturationBias(sampleColours.Red[2], bias),
+        applySaturationBias(sampleColours.Green[0], bias),
+        applySaturationBias(sampleColours.Green[1], bias),
+        applySaturationBias(sampleColours.Green[2], bias),
+        applySaturationBias(sampleColours.Blue[0], bias),
+        applySaturationBias(sampleColours.Blue[1], bias),
+        applySaturationBias(sampleColours.Blue[2], bias),
       ]}
-    />,
-    <ColourBiasOption
-      key={SaturationBias.Strong}
-      isActive={value === SaturationBias.Strong}
-      colours={[
-        new Colour(200, 0, 0),
-        new Colour(200, 50, 50),
-        new Colour(200, 80, 80),
-        new Colour(0, 200, 0),
-        new Colour(50, 200, 50),
-        new Colour(80, 200, 80),
-        new Colour(0, 0, 200),
-        new Colour(50, 50, 200),
-        new Colour(80, 80, 200),
-      ]}
-    />,
-    <ColourBiasOption
-      key={SaturationBias.Subtle}
-      isActive={value === SaturationBias.Subtle}
-      colours={[
-        new Colour(200, 0, 0),
-        new Colour(200, 75, 75),
-        new Colour(200, 130, 130),
-        new Colour(0, 200, 0),
-        new Colour(75, 200, 75),
-        new Colour(130, 200, 130),
-        new Colour(0, 0, 200),
-        new Colour(75, 75, 200),
-        new Colour(130, 130, 200),
-      ]}
-    />,
-    <ColourBiasOption
-      key={SaturationBias.None}
-      isActive={value === SaturationBias.None}
-      colours={[
-        new Colour(200, 0, 0),
-        new Colour(200, 90, 90),
-        new Colour(200, 200, 200),
-        new Colour(0, 200, 0),
-        new Colour(90, 200, 90),
-        new Colour(200, 200, 200),
-        new Colour(0, 0, 200),
-        new Colour(90, 90, 200),
-        new Colour(200, 200, 200),
-      ]}
-    />,
-  ];
+    />
+  ));
 
   return <div className="difficulty-option-scale flex-row">{elems}</div>;
 };

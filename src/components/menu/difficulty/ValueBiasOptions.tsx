@@ -1,5 +1,8 @@
 import Colour from "../../../classes/Colour";
+import Constants from "../../../Constants";
 import ValueBias from "../../../enum/colour-generation-bias/ValueBias";
+import ArrayHelper from "../../../helper/ArrayHelper";
+import ColourService from "../../../services/ColourService";
 import ColourBiasOption from "./ColourBiasOption";
 
 interface Props {
@@ -7,68 +10,37 @@ interface Props {
 }
 
 const ValueBiasOptions = ({ value }: Props) => {
-  const elems = [
+  const sampleColours = {
+    Red: [new Colour(255, 0, 0), new Colour(128, 0, 0), new Colour(32, 0, 0)],
+    Green: [new Colour(0, 255, 0), new Colour(0, 128, 0), new Colour(0, 32, 0)],
+    Blue: [new Colour(0, 0, 255), new Colour(0, 0, 128), new Colour(0, 0, 32)],
+  };
+
+  const applyValueBias = (colour: Colour, valueBias: ValueBias) => {
+    return ColourService.ApplySaturationAndValueBias(
+      colour,
+      0.1,
+      Constants.DIFFICULTY.VALUE_BIAS[valueBias]
+    );
+  };
+
+  const elems = ArrayHelper.GetEnumFlags<number>(ValueBias).map((bias) => (
     <ColourBiasOption
-      key={ValueBias.Extreme}
-      isActive={value === ValueBias.Extreme}
+      key={bias}
+      isActive={value === bias}
       colours={[
-        new Colour(255, 0, 0),
-        new Colour(224, 0, 0),
-        new Colour(192, 0, 0),
-        new Colour(0, 255, 0),
-        new Colour(0, 224, 0),
-        new Colour(0, 192, 0),
-        new Colour(0, 0, 255),
-        new Colour(0, 0, 224),
-        new Colour(0, 0, 192),
+        applyValueBias(sampleColours.Red[0], bias),
+        applyValueBias(sampleColours.Red[1], bias),
+        applyValueBias(sampleColours.Red[2], bias),
+        applyValueBias(sampleColours.Green[0], bias),
+        applyValueBias(sampleColours.Green[1], bias),
+        applyValueBias(sampleColours.Green[2], bias),
+        applyValueBias(sampleColours.Blue[0], bias),
+        applyValueBias(sampleColours.Blue[1], bias),
+        applyValueBias(sampleColours.Blue[2], bias),
       ]}
-    />,
-    <ColourBiasOption
-      key={ValueBias.Strong}
-      isActive={value === ValueBias.Strong}
-      colours={[
-        new Colour(255, 0, 0),
-        new Colour(192, 0, 0),
-        new Colour(112, 0, 0),
-        new Colour(0, 255, 0),
-        new Colour(0, 192, 0),
-        new Colour(0, 112, 0),
-        new Colour(0, 0, 255),
-        new Colour(0, 0, 192),
-        new Colour(0, 0, 112),
-      ]}
-    />,
-    <ColourBiasOption
-      key={ValueBias.Subtle}
-      isActive={value === ValueBias.Subtle}
-      colours={[
-        new Colour(255, 0, 0),
-        new Colour(160, 0, 0),
-        new Colour(64, 0, 0),
-        new Colour(0, 255, 0),
-        new Colour(0, 160, 0),
-        new Colour(0, 64, 0),
-        new Colour(0, 0, 255),
-        new Colour(0, 0, 160),
-        new Colour(0, 0, 64),
-      ]}
-    />,
-    <ColourBiasOption
-      key={ValueBias.None}
-      isActive={value === ValueBias.None}
-      colours={[
-        new Colour(255, 0, 0),
-        new Colour(128, 0, 0),
-        new Colour(32, 0, 0),
-        new Colour(0, 255, 0),
-        new Colour(0, 128, 0),
-        new Colour(0, 32, 0),
-        new Colour(0, 0, 255),
-        new Colour(0, 0, 128),
-        new Colour(0, 0, 32),
-      ]}
-    />,
-  ];
+    />
+  ));
 
   return <div className="difficulty-option-scale flex-row">{elems}</div>;
 };
