@@ -1,4 +1,6 @@
 import HueDifferenceBias from "./enum/colour-generation-bias/HueDifferenceBias";
+import SaturationBias from "./enum/colour-generation-bias/SaturationBias";
+import ValueBias from "./enum/colour-generation-bias/ValueBias";
 
 interface IConstants {
   VARIATION: { AMOUNTS: { [k: string]: number } };
@@ -6,6 +8,12 @@ interface IConstants {
     KEYS: { [k: string]: string };
     HUE_BIAS: {
       [k: number]: { MIN: number | undefined; MAX: number | undefined };
+    };
+    SATURATION_BIAS: {
+      [k: number]: number;
+    };
+    VALUE_BIAS: {
+      [k: number]: number;
     };
   };
   DEBUG: { [k: string]: boolean };
@@ -39,6 +47,20 @@ const Constants: IConstants = {
       [HueDifferenceBias.None]: { MIN: 1, MAX: undefined },
       [HueDifferenceBias.MaxDifferenceSome]: { MIN: 1, MAX: 60 },
       [HueDifferenceBias.MaxDifferenceStrong]: { MIN: 1, MAX: 30 },
+    },
+
+    SATURATION_BIAS: {
+      [SaturationBias.None]: 0,
+      [SaturationBias.Subtle]: 0.1,
+      [SaturationBias.Strong]: 0.5,
+      [SaturationBias.Extreme]: 1,
+    },
+
+    VALUE_BIAS: {
+      [ValueBias.None]: 0,
+      [ValueBias.Subtle]: 0.1,
+      [ValueBias.Strong]: 0.25,
+      [ValueBias.Extreme]: 1,
     },
   },
 

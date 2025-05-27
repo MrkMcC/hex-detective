@@ -125,35 +125,11 @@ const randomColour = (
     );
   }
 
-  let minValue = 0;
-  switch (colourGenerationBias.valueBias) {
-    case ValueBias.Subtle:
-      minValue = 0.1;
-      break;
-    case ValueBias.Strong:
-      minValue = 0.25;
-      break;
-    case ValueBias.Extreme:
-      minValue = 1;
-      break;
-  }
-
-  let minSaturation = 0;
-  switch (colourGenerationBias.saturationBias) {
-    case SaturationBias.Subtle:
-      minSaturation = 0.1;
-      break;
-    case SaturationBias.Strong:
-      minSaturation = 0.5;
-      break;
-    case SaturationBias.Extreme:
-      minSaturation = 1;
-      break;
-  }
-
-  result = applySaturationAndValueBias(result, minSaturation, minValue);
-
-  return result;
+  return applySaturationAndValueBias(
+    result,
+    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias],
+    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias]
+  );
 };
 
 const shiftHue = (colour: Colour, angle: number = 0) => {
