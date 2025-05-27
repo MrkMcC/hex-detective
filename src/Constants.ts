@@ -53,7 +53,9 @@ const Constants: IConstants = {
       [SaturationBias.MinExtreme]: { MIN: 1, MAX: undefined },
       [SaturationBias.MinStrong]: { MIN: 0.5, MAX: undefined },
       [SaturationBias.MinSubtle]: { MIN: 0.1, MAX: undefined },
-      [SaturationBias.None]: { MIN: 0, MAX: undefined },
+      [SaturationBias.None]: { MIN: undefined, MAX: undefined },
+      [SaturationBias.MaxSubtle]: { MIN: undefined, MAX: 0.9 },
+      [SaturationBias.MaxStrong]: { MIN: undefined, MAX: 0.5 },
     },
 
     VALUE_BIAS: {

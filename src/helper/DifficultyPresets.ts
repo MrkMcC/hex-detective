@@ -64,7 +64,7 @@ const hard = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
-      SaturationBias.None,
+      SaturationBias.MaxSubtle,
       HueDifferenceBias.MaxSome,
       ValueBias.None
     ),
@@ -77,7 +77,7 @@ const hardest = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
-      SaturationBias.None,
+      SaturationBias.MaxStrong,
       HueDifferenceBias.MaxStrong,
       ValueBias.None
     ),

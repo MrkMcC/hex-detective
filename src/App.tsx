@@ -15,6 +15,8 @@ import LogService from "./services/LogService";
 
 //Difficulty Update notes
 
+//each Colour Bias Option should have exactly five presets that follow the same naming convention
+
 //-'How to Play' might be obsolete -> A new kind of welcome message, maybe. connected to the test screen idea?
 //-Difficulty options should have borders that reflect their colour bias
 //-Re-integrate custom difficulty

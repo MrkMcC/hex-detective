@@ -14,17 +14,17 @@ const SaturationBiasOptions = ({ value }: Props) => {
     Red: [
       new Colour(200, 0, 0),
       new Colour(200, 100, 100),
-      new Colour(200, 190, 190),
+      new Colour(200, 170, 170),
     ],
     Green: [
       new Colour(0, 200, 0),
       new Colour(100, 200, 100),
-      new Colour(190, 200, 190),
+      new Colour(170, 200, 170),
     ],
     Blue: [
       new Colour(0, 0, 200),
       new Colour(100, 100, 200),
-      new Colour(190, 190, 200),
+      new Colour(170, 170, 200),
     ],
   };
 
