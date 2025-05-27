@@ -1,8 +1,8 @@
 /**HSV Value Bias */
 enum ValueBias {
-  Extreme,
-  Strong,
-  Subtle,
+  MinExtreme,
+  MinStrong,
+  MinSubtle,
   None,
 }
 

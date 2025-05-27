@@ -25,9 +25,9 @@ const easiest = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
-      SaturationBias.Extreme,
-      HueDifferenceBias.MinDifferenceStrong,
-      ValueBias.Extreme
+      SaturationBias.MinExtreme,
+      HueDifferenceBias.MinStrong,
+      ValueBias.MinExtreme
     ),
   },
   Constants.DIFFICULTY.KEYS.EASIEST
@@ -38,9 +38,9 @@ const easy = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
-      SaturationBias.Strong,
-      HueDifferenceBias.MinDifferenceSome,
-      ValueBias.Strong
+      SaturationBias.MinStrong,
+      HueDifferenceBias.MinSome,
+      ValueBias.MinStrong
     ),
   },
   Constants.DIFFICULTY.KEYS.EASY
@@ -53,7 +53,7 @@ const normal = new DifficultyConfig(
       IncrementBias.None,
       SaturationBias.None,
       HueDifferenceBias.None,
-      ValueBias.Subtle
+      ValueBias.MinSubtle
     ),
   },
   Constants.DIFFICULTY.KEYS.NORMAL
@@ -65,7 +65,7 @@ const hard = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.MaxDifferenceSome,
+      HueDifferenceBias.MaxSome,
       ValueBias.None
     ),
   },
@@ -78,7 +78,7 @@ const hardest = new DifficultyConfig(
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.None,
       SaturationBias.None,
-      HueDifferenceBias.MaxDifferenceStrong,
+      HueDifferenceBias.MaxStrong,
       ValueBias.None
     ),
   },

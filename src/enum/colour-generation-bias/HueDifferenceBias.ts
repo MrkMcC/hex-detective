@@ -1,9 +1,9 @@
 enum HueDifferenceBias {
-  MinDifferenceStrong,
-  MinDifferenceSome,
+  MinStrong,
+  MinSome,
   None,
-  MaxDifferenceSome,
-  MaxDifferenceStrong,
+  MaxSome,
+  MaxStrong,
 }
 
 export default HueDifferenceBias;

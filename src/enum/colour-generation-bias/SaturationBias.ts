@@ -1,7 +1,7 @@
 enum SaturationBias {
-  Extreme,
-  Strong,
-  Subtle,
+  MinExtreme,
+  MinStrong,
+  MinSubtle,
   None,
 }
 
