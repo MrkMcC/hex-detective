@@ -1,6 +1,6 @@
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
-import DifficultyConfig from "../../../classes/DifficultyConfig";
-import Localise from "../../../services/Localise";
+import DifficultyConfig from "../../../../classes/DifficultyConfig";
+import Localise from "../../../../services/Localise";
 
 interface Props {
   isSelected: boolean;

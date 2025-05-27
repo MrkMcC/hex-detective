@@ -4,9 +4,9 @@ import Localise from "../../../services/Localise";
 import PersonService from "../../../services/PersonService";
 import FunkyPanel from "../../common/FunkyPanel";
 import Person from "../../Person";
-import HueBiasOptions from "./HueBiasOptions";
-import SaturationBiasOptions from "./SaturationBiasOptions";
-import ValueBiasOptions from "./ValueBiasOptions";
+import HueBiasOptions from "./common/HueBiasOptions";
+import SaturationBiasOptions from "./common/SaturationBiasOptions";
+import ValueBiasOptions from "./common/ValueBiasOptions";
 
 interface Props {
   difficulty?: DifficultyConfig;

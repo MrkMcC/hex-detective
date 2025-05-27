@@ -1,4 +1,4 @@
-import Colour from "../../../classes/Colour";
+import Colour from "../../../../classes/Colour";
 
 interface Props {
   colours: (Colour | undefined)[];

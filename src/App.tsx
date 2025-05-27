@@ -17,15 +17,9 @@ import LogService from "./services/LogService";
 
 //each Colour Bias Option should have exactly five presets that follow the same naming convention
 
-//-'How to Play' might be obsolete -> A new kind of welcome message, maybe. connected to the test screen idea?
-//-Difficulty options should have borders that reflect their colour bias
-//-Re-integrate custom difficulty
-//-Max Saturation Bias
-
 //-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option
 //-show percentages option
-//-Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)
 
 //Mobile Update notes
 //-Rework collapse to increase people-container height as well
@@ -49,6 +43,11 @@ import LogService from "./services/LogService";
 //-a correct guess should be more obvious and more rewarding
 //-number inputs show a bright +/- Element (on hover in Chrome, always in Firefox) - remove that and replace with pretty +/- buttons
 //-make continue-button more obvious, maybe move it to the center
+//-better, more distinct DifficultySelection
+//-Welcome message & test image to ensure an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)
+
+//Difficulty Improvements
+//-Implement custom difficulty
 
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?

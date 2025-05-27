@@ -1,8 +1,8 @@
-import Colour from "../../../classes/Colour";
-import Constants from "../../../Constants";
-import SaturationBias from "../../../enum/colour-generation-bias/SaturationBias";
-import ArrayHelper from "../../../helper/ArrayHelper";
-import ColourService from "../../../services/ColourService";
+import Colour from "../../../../classes/Colour";
+import Constants from "../../../../Constants";
+import SaturationBias from "../../../../enum/colour-generation-bias/SaturationBias";
+import ArrayHelper from "../../../../helper/ArrayHelper";
+import ColourService from "../../../../services/ColourService";
 import ColourBiasOption from "./ColourBiasOption";
 
 interface Props {

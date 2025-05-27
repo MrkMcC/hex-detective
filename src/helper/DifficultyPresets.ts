@@ -25,7 +25,7 @@ const easiest = new DifficultyConfig(
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       IncrementBias.HexPairs,
-      SaturationBias.MinExtreme,
+      SaturationBias.MinStrong,
       HueDifferenceBias.MinStrong,
       ValueBias.MinExtreme
     ),

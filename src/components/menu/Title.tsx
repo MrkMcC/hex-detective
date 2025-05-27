@@ -16,7 +16,7 @@ const Title = ({}: Props) => {
         color: ColourService.RandomColour(
           new ColourGenerationBias(
             IncrementBias.None,
-            SaturationBias.MinExtreme,
+            SaturationBias.MinStrong,
             HueDifferenceBias.None,
             ValueBias.MinStrong
           )

@@ -6,7 +6,7 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
 import DifficultyPresets from "../../../helper/DifficultyPresets";
 import ColourService from "../../../services/ColourService";
-import DifficultySelectionOption from "./DifficultySelectionOption";
+import DifficultySelectionOption from "./common/DifficultySelectionOption";
 
 interface Props {
   value?: DifficultyConfig;
