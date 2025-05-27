@@ -23,16 +23,16 @@ function toHsv(colour: Colour): HsvT {
     colour.int.green / 255,
     colour.int.blue / 255,
   ];
-  let v = Math.max(r, g, b),
+  const v = Math.max(r, g, b),
     c = v - Math.min(r, g, b);
-  let h =
+  const h =
     c && (v == r ? (g - b) / c : v == g ? 2 + (b - r) / c : 4 + (r - g) / c);
   return { hue: 60 * (h < 0 ? h + 6 : h), saturation: v && c / v, value: v };
 }
 
 // input: h in [0,360] and s,v in [0,1]
 function toColour(hsv: HsvT) {
-  let f = (n: number, k = (n + hsv.hue / 60) % 6) =>
+  const f = (n: number, k = (n + hsv.hue / 60) % 6) =>
     hsv.value - hsv.value * hsv.saturation * Math.max(Math.min(k, 4 - k, 1), 0);
   return new Colour(
     Math.round(f(5) * 255),
