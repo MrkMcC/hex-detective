@@ -1,8 +1,8 @@
 enum SaturationBias {
-  None,
-  Subtle,
-  Strong,
   Extreme,
+  Strong,
+  Subtle,
+  None,
 }
 
 export default SaturationBias;

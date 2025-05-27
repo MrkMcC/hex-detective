@@ -1,6 +1,6 @@
 enum IncrementBias {
-  None,
   HexPairs,
+  None,
 }
 
 export default IncrementBias;

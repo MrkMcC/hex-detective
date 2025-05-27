@@ -1,9 +1,9 @@
 /**HSV Value Bias */
 enum ValueBias {
-  None,
-  Subtle,
-  Strong,
   Extreme,
+  Strong,
+  Subtle,
+  None,
 }
 
 export default ValueBias;
