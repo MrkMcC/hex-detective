@@ -1,7 +1,7 @@
 import Colour from "../../../classes/Colour";
 
 interface Props {
-  colours: Colour[];
+  colours: (Colour | undefined)[];
   isActive: boolean;
 }
 
@@ -10,7 +10,7 @@ const ColourBiasOption = ({ colours, isActive }: Props) => {
     <div
       key={index}
       className={`colour-sample sample-${index}`}
-      style={{ backgroundColor: c.toString() }}
+      style={c && { backgroundColor: c.toString() }}
     />
   ));
 

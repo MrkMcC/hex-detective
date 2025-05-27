@@ -1,10 +1,16 @@
 import Colour from "../../../classes/Colour";
+import Constants from "../../../Constants";
 import HueDifferenceBias from "../../../enum/colour-generation-bias/HueDifferenceBias";
+import ColourService from "../../../services/ColourService";
 import ColourBiasOption from "./ColourBiasOption";
 
 interface Props {
   value: HueDifferenceBias;
 }
+
+const C_MAX_RED = new Colour(255, 0, 0);
+const C_MAX_GREEN = new Colour(0, 255, 0);
+const C_MAX_BLUE = new Colour(0, 0, 255);
 
 const HueBiasOptions = ({ value }: Props) => {
   const elems = [
@@ -12,50 +18,97 @@ const HueBiasOptions = ({ value }: Props) => {
       key={HueDifferenceBias.MinDifferenceStrong}
       isActive={value === HueDifferenceBias.MinDifferenceStrong}
       colours={[
-        new Colour(255, 0, 128),
-        new Colour(0, 255, 128),
-        new Colour(0, 128, 255),
-        new Colour(128, 255, 0),
+        undefined,
+        C_MAX_RED,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MinDifferenceStrong]
+            .MIN
+        ),
+        C_MAX_GREEN,
+        C_MAX_BLUE,
       ]}
     />,
     <ColourBiasOption
       key={HueDifferenceBias.MinDifferenceSome}
       isActive={value === HueDifferenceBias.MinDifferenceSome}
       colours={[
-        new Colour(255, 0, 128),
-        new Colour(0, 255, 128),
-        new Colour(0, 128, 255),
-        new Colour(128, 255, 0),
+        undefined,
+        C_MAX_RED,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MinDifferenceSome].MIN
+        ),
+        C_MAX_GREEN,
+        C_MAX_BLUE,
       ]}
     />,
     <ColourBiasOption
       key={HueDifferenceBias.None}
       isActive={value === HueDifferenceBias.None}
       colours={[
-        new Colour(255, 0, 128),
-        new Colour(0, 255, 128),
-        new Colour(0, 128, 255),
-        new Colour(128, 255, 0),
+        undefined,
+        C_MAX_RED,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        C_MAX_RED,
+        C_MAX_GREEN,
+        C_MAX_BLUE,
       ]}
     />,
     <ColourBiasOption
       key={HueDifferenceBias.MaxDifferenceSome}
       isActive={value === HueDifferenceBias.MaxDifferenceSome}
       colours={[
-        new Colour(255, 0, 0),
-        new Colour(255, 128, 0),
-        new Colour(255, 255, 0),
-        new Colour(255, 0, 128),
+        undefined,
+        C_MAX_RED,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        C_MAX_RED,
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MaxDifferenceSome].MAX
+        ),
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          -Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MaxDifferenceSome]
+            .MAX
+        ),
       ]}
     />,
     <ColourBiasOption
       key={HueDifferenceBias.MaxDifferenceStrong}
       isActive={value === HueDifferenceBias.MaxDifferenceStrong}
       colours={[
-        new Colour(255, 0, 0),
-        new Colour(255, 0, 128),
-        new Colour(255, 0, 255),
-        new Colour(128, 0, 255),
+        undefined,
+        C_MAX_RED,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        C_MAX_RED,
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MaxDifferenceStrong]
+            .MAX
+        ),
+        ColourService.ShiftHue(
+          C_MAX_RED,
+          -Constants.DIFFICULTY.HUE_BIAS[HueDifferenceBias.MaxDifferenceStrong]
+            .MAX
+        ),
       ]}
     />,
   ];
