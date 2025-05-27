@@ -34,8 +34,9 @@ const SaturationBiasOptions = ({ value }: Props) => {
   ) => {
     return ColourService.ApplySaturationAndValueBias(
       colour,
-      Constants.DIFFICULTY.SATURATION_BIAS[saturationBias],
-      0
+      Constants.DIFFICULTY.SATURATION_BIAS[saturationBias].MIN,
+      undefined,
+      Constants.DIFFICULTY.SATURATION_BIAS[saturationBias].MAX
     );
   };
 

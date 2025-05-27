@@ -1,4 +1,5 @@
 import ColourFlavour from "../enum/ColourFlavour";
+import MathHelper from "../helper/MathHelper";
 import ColourService from "../services/ColourService";
 import LogService from "../services/LogService";
 
@@ -69,11 +70,12 @@ class Colour {
 
   constructor(red: number, green: number, blue: number, name?: string) {
     if (
-      red % 1 !== 0 ||
-      green % 1 !== 0 ||
-      blue % 1 !== 0 ||
-      Math.max(red, green, blue) > 255 ||
-      Math.min(red, green, blue) < 0
+      !MathHelper.IsInteger(red) ||
+      !MathHelper.IsInteger(green) ||
+      !MathHelper.IsInteger(blue) ||
+      !MathHelper.IsWithinRange(red, 0, 255) ||
+      !MathHelper.IsWithinRange(green, 0, 255) ||
+      !MathHelper.IsWithinRange(blue, 0, 255)
     )
       throw LogService.Error(
         "Colour",

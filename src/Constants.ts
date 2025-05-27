@@ -10,10 +10,10 @@ interface IConstants {
       [k: number]: { MIN: number | undefined; MAX: number | undefined };
     };
     SATURATION_BIAS: {
-      [k: number]: number;
+      [k: number]: { MIN: number | undefined; MAX: number | undefined };
     };
     VALUE_BIAS: {
-      [k: number]: number;
+      [k: number]: { MIN: number | undefined; MAX: number | undefined };
     };
   };
   DEBUG: { [k: string]: boolean };
@@ -50,17 +50,17 @@ const Constants: IConstants = {
     },
 
     SATURATION_BIAS: {
-      [SaturationBias.None]: 0,
-      [SaturationBias.Subtle]: 0.1,
-      [SaturationBias.Strong]: 0.5,
-      [SaturationBias.Extreme]: 1,
+      [SaturationBias.Extreme]: { MIN: 1, MAX: undefined },
+      [SaturationBias.Strong]: { MIN: 0.5, MAX: undefined },
+      [SaturationBias.Subtle]: { MIN: 0.1, MAX: undefined },
+      [SaturationBias.None]: { MIN: 0, MAX: undefined },
     },
 
     VALUE_BIAS: {
-      [ValueBias.None]: 0,
-      [ValueBias.Subtle]: 0.1,
-      [ValueBias.Strong]: 0.25,
-      [ValueBias.Extreme]: 1,
+      [ValueBias.Extreme]: { MIN: 1, MAX: undefined },
+      [ValueBias.Strong]: { MIN: 0.25, MAX: undefined },
+      [ValueBias.Subtle]: { MIN: 0.1, MAX: undefined },
+      [ValueBias.None]: { MIN: undefined, MAX: undefined },
     },
   },
 

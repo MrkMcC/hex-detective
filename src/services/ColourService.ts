@@ -9,6 +9,9 @@ import ValueBias from "../enum/colour-generation-bias/ValueBias";
 import ArrayHelper from "../helper/ArrayHelper";
 import MathHelper from "../helper/MathHelper";
 import HsvT from "../types/helper/HsvT";
+import LogService from "./LogService";
+
+const LOG_SUBJECT = "ColourService";
 
 const unbiasedRandomRgbColour = () =>
   new Colour(
@@ -70,25 +73,59 @@ const randomiseHue = (
 /**Scale everything up so that all values fit withing the intended saturation / value scale. */
 const applySaturationAndValueBias = (
   colour: Colour,
-  minSaturation: number,
-  minValue: number
+  minSat: number = 0,
+  minVal: number = 0,
+  maxSat: number = 1,
+  maxVal: number = 1
 ) => {
-  const rgb = [colour.int.red, colour.int.green, colour.int.blue];
-  const iMin = rgb.indexOf(Math.min(...rgb));
-  const iMax = rgb.lastIndexOf(Math.max(...rgb));
+  if (
+    !MathHelper.IsWithinRange(minSat, 0, 1) ||
+    !MathHelper.IsWithinRange(maxSat, 0, 1) ||
+    !MathHelper.IsWithinRange(minVal, 0, 1) ||
+    !MathHelper.IsWithinRange(maxVal, 0, 1)
+  )
+    throw LogService.Error(
+      LOG_SUBJECT,
+      `Invalid argument. Expected numbers in range 0 to 1.`,
+      minSat,
+      maxSat,
+      minVal,
+      maxVal
+    );
+  if (minSat > maxSat || minVal > maxVal)
+    throw LogService.Error(
+      LOG_SUBJECT,
+      `Invalid argument. Minimum can't exceed maximum.`,
+      minSat,
+      maxSat,
+      minVal,
+      maxVal
+    );
 
-  const initialMin = rgb[iMin];
-  const initialMax = rgb[iMax];
-  const initialRange = initialMax - initialMin;
-  const initialSat = initialRange / initialMax;
-  const initialVal = initialMax / 255;
+  const applyBias = (subject: number, newMin: number, newMax: number) => {
+    if (newMin > 0 || newMax < 1) {
+      const initialSubject = subject;
+      const minMaxDifference = newMax - newMin;
+      const weightOfMin = newMin / (newMin + (1 - newMax));
+      const weightedCenter = newMin + minMaxDifference * weightOfMin;
 
-  const targetSaturation = initialSat + (1 - initialSat) * minSaturation;
-  const targetValue = initialVal + (1 - initialVal) * minValue;
+      if (initialSubject < weightedCenter) {
+        const differenceFactor = (weightedCenter - newMin) / weightedCenter;
+        const initialDifference = weightedCenter - initialSubject;
+        return weightedCenter - initialDifference * differenceFactor;
+      } else if (initialSubject > weightedCenter) {
+        const differenceFactor =
+          (newMax - weightedCenter) / (1 - weightedCenter);
+        const initialDifference = initialSubject - weightedCenter;
+        return weightedCenter + initialDifference * differenceFactor;
+      }
+    }
+    return subject;
+  };
 
   const hsv = toHsv(colour);
-  hsv.saturation = targetSaturation;
-  hsv.value = targetValue;
+  hsv.saturation = applyBias(hsv.saturation, minSat, maxSat);
+  hsv.value = applyBias(hsv.value, minVal, maxVal);
   return toColour(hsv);
 };
 
@@ -114,8 +151,12 @@ const randomColour = (
 
   return applySaturationAndValueBias(
     result,
-    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias],
-    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias]
+    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias]
+      .MIN,
+    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias].MIN,
+    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias]
+      .MAX,
+    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias].MAX
   );
 };
 

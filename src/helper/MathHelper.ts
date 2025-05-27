@@ -44,6 +44,14 @@ const clamp = (value: number, min: number, max: number) => {
   return Math.max(min, Math.min(max, value));
 };
 
+const isInteger = (value: number) => {
+  return value % 1 === 0;
+};
+
+const isWithinRange = (value: number, min: number, max: number) => {
+  return value === clamp(value, min, max);
+};
+
 const getRandomIntegerWithinDistance = (
   min: number,
   max: number,
@@ -101,6 +109,8 @@ const MathHelper = {
   GetRandomNumberSliced: getRandomNumberSliced,
   /**Returns a random integer within a range that has a certain minimum/maximum distance to the reference number.*/
   GetRandomIntegerWithinDistance: getRandomIntegerWithinDistance,
+  IsInteger: isInteger,
+  IsWithinRange: isWithinRange,
 };
 
 export default MathHelper;

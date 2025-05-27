@@ -19,8 +19,10 @@ const ValueBiasOptions = ({ value }: Props) => {
   const applyValueBias = (colour: Colour, valueBias: ValueBias) => {
     return ColourService.ApplySaturationAndValueBias(
       colour,
-      0,
-      Constants.DIFFICULTY.VALUE_BIAS[valueBias]
+      undefined,
+      Constants.DIFFICULTY.VALUE_BIAS[valueBias].MIN,
+      undefined,
+      Constants.DIFFICULTY.VALUE_BIAS[valueBias].MAX
     );
   };
 
