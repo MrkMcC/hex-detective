@@ -1,24 +1,19 @@
-import HueDifferenceBias from "../enum/colour-generation-bias/HueDifferenceBias";
-import IncrementBias from "../enum/colour-generation-bias/IncrementBias";
-import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
-import ValueBias from "../enum/colour-generation-bias/ValueBias";
+import ColourBiasAngle from "./ColourBiasAngle";
+import ColourBiasPercentage from "./ColourBiasPercentage";
 
 class ColourGenerationBias {
-  incrementBias: IncrementBias;
-  saturationBias: SaturationBias;
-  hueDifferenceBias: HueDifferenceBias;
-  valueBias: ValueBias;
+  hue: ColourBiasAngle;
+  saturation: ColourBiasPercentage;
+  value: ColourBiasPercentage;
 
   constructor(
-    incrementBias: IncrementBias,
-    saturationBias: SaturationBias,
-    hueDifferenceBias: HueDifferenceBias,
-    valueBias: ValueBias
+    hue?: ColourBiasAngle,
+    saturation?: ColourBiasPercentage,
+    value?: ColourBiasPercentage
   ) {
-    this.incrementBias = incrementBias;
-    this.saturationBias = saturationBias;
-    this.hueDifferenceBias = hueDifferenceBias;
-    this.valueBias = valueBias;
+    this.hue = hue ?? new ColourBiasAngle();
+    this.saturation = saturation ?? new ColourBiasPercentage();
+    this.value = value ?? new ColourBiasPercentage();
   }
 }
 

@@ -1,3 +1,4 @@
+/**@Obsolete */
 enum SaturationBias {
   MinExtreme,
   MinStrong,

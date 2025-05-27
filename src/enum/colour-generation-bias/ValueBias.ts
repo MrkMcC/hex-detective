@@ -1,4 +1,5 @@
 /**HSV Value Bias */
+/**@Obsolete */
 enum ValueBias {
   MinExtreme,
   MinStrong,

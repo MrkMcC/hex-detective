@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import ClassHelper from "../../helper/ClassHelper";
 
 interface Props {
   className?: string;
@@ -23,7 +24,7 @@ const Slider = ({
 
   return (
     <input
-      className={`slider ${className}`}
+      className={ClassHelper.Join("slider", className)}
       type="range"
       min={min}
       max={max}

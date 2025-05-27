@@ -21,9 +21,9 @@ const text = (key: string) => {
     case `difficulty-description_${Constants.DIFFICULTY.KEYS.NORMAL}`:
       return "baseline difficulty - completely random";
     case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARD}`:
-      return "oh no, they all dressed alike!";
+      return "Oh no, they all dressed alike!";
     case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARDEST}`:
-      return "they all look suspicious if you ask me";
+      return "They all look suspicious if you ask me.";
     case `difficulty-description_${Constants.DIFFICULTY.KEYS.CUSTOM}`:
       return "Mix and match";
     default:

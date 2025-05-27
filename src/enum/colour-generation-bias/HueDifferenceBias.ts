@@ -1,3 +1,4 @@
+/**@Obsolete */
 enum HueDifferenceBias {
   MinStrong,
   MinSome,

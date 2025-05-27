@@ -15,7 +15,7 @@ import LogService from "./services/LogService";
 
 //Difficulty Update notes
 
-//each Colour Bias Option should have exactly five presets that follow the same naming convention
+//Hue Bias seems broken. All difficulties appear biased.
 
 //-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option

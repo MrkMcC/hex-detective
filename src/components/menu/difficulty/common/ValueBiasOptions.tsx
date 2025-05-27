@@ -1,14 +1,13 @@
 import Colour from "../../../../classes/Colour";
-import Constants from "../../../../Constants";
 import ValueBias from "../../../../enum/colour-generation-bias/ValueBias";
 import ArrayHelper from "../../../../helper/ArrayHelper";
-import ColourService from "../../../../services/ColourService";
 import ColourBiasOption from "./ColourBiasOption";
 
 interface Props {
   value: ValueBias;
 }
 
+/**@Obsolete */
 const ValueBiasOptions = ({ value }: Props) => {
   const sampleColours = {
     Red: [new Colour(255, 0, 0), new Colour(128, 0, 0), new Colour(32, 0, 0)],
@@ -17,13 +16,15 @@ const ValueBiasOptions = ({ value }: Props) => {
   };
 
   const applyValueBias = (colour: Colour, valueBias: ValueBias) => {
-    return ColourService.ApplySaturationAndValueBias(
-      colour,
-      undefined,
-      Constants.DIFFICULTY.VALUE_BIAS[valueBias].MIN,
-      undefined,
-      Constants.DIFFICULTY.VALUE_BIAS[valueBias].MAX
-    );
+    console.log(valueBias);
+    return colour;
+    // return ColourService.ApplySaturationAndValueBias(
+    //   colour,
+    //   undefined,
+    //   Constants.DIFFICULTY.VALUE_BIAS[valueBias].MIN,
+    //   undefined,
+    //   Constants.DIFFICULTY.VALUE_BIAS[valueBias].MAX
+    // );
   };
 
   const elems = ArrayHelper.GetEnumFlags<number>(ValueBias).map((bias) => (

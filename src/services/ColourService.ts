@@ -1,11 +1,7 @@
 import { CSSProperties } from "react";
 import Colour from "../classes/Colour";
+import ColourBias from "../classes/ColourBiasPercentage";
 import ColourGenerationBias from "../classes/ColourGenerationBias";
-import Constants from "../Constants";
-import HueDifferenceBias from "../enum/colour-generation-bias/HueDifferenceBias";
-import IncrementBias from "../enum/colour-generation-bias/IncrementBias";
-import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
-import ValueBias from "../enum/colour-generation-bias/ValueBias";
 import ArrayHelper from "../helper/ArrayHelper";
 import MathHelper from "../helper/MathHelper";
 import HsvT from "../types/helper/HsvT";
@@ -73,33 +69,34 @@ const randomiseHue = (
 /**Scale everything up so that all values fit withing the intended saturation / value scale. */
 const applySaturationAndValueBias = (
   colour: Colour,
-  minSat: number = 0,
-  minVal: number = 0,
-  maxSat: number = 1,
-  maxVal: number = 1
+  saturationBias: ColourBias,
+  valueBias: ColourBias
 ) => {
   if (
-    !MathHelper.IsWithinRange(minSat, 0, 1) ||
-    !MathHelper.IsWithinRange(maxSat, 0, 1) ||
-    !MathHelper.IsWithinRange(minVal, 0, 1) ||
-    !MathHelper.IsWithinRange(maxVal, 0, 1)
+    !MathHelper.IsWithinRange(saturationBias.minimum, 0, 1) ||
+    !MathHelper.IsWithinRange(saturationBias.maximum, 0, 1) ||
+    !MathHelper.IsWithinRange(valueBias.minimum, 0, 1) ||
+    !MathHelper.IsWithinRange(valueBias.maximum, 0, 1)
   )
     throw LogService.Error(
       LOG_SUBJECT,
       `Invalid argument. Expected numbers in range 0 to 1.`,
-      minSat,
-      maxSat,
-      minVal,
-      maxVal
+      saturationBias.minimum,
+      saturationBias.maximum,
+      valueBias.minimum,
+      valueBias.maximum
     );
-  if (minSat > maxSat || minVal > maxVal)
+  if (
+    saturationBias.minimum > saturationBias.maximum ||
+    valueBias.minimum > valueBias.maximum
+  )
     throw LogService.Error(
       LOG_SUBJECT,
       `Invalid argument. Minimum can't exceed maximum.`,
-      minSat,
-      maxSat,
-      minVal,
-      maxVal
+      saturationBias.minimum,
+      saturationBias.maximum,
+      valueBias.minimum,
+      valueBias.maximum
     );
 
   const applyBias = (subject: number, newMin: number, newMax: number) => {
@@ -124,18 +121,17 @@ const applySaturationAndValueBias = (
   };
 
   const hsv = toHsv(colour);
-  hsv.saturation = applyBias(hsv.saturation, minSat, maxSat);
-  hsv.value = applyBias(hsv.value, minVal, maxVal);
+  hsv.saturation = applyBias(
+    hsv.saturation,
+    saturationBias.minimum,
+    saturationBias.maximum
+  );
+  hsv.value = applyBias(hsv.value, valueBias.minimum, valueBias.maximum);
   return toColour(hsv);
 };
 
 const randomColour = (
-  colourGenerationBias: ColourGenerationBias = new ColourGenerationBias(
-    IncrementBias.None,
-    SaturationBias.None,
-    HueDifferenceBias.None,
-    ValueBias.None
-  ),
+  colourGenerationBias: ColourGenerationBias = new ColourGenerationBias(),
   reference?: Colour
 ) => {
   let result = unbiasedRandomRgbColour();
@@ -144,19 +140,15 @@ const randomColour = (
     result = randomiseHue(
       result,
       reference,
-      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias].MIN,
-      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias].MAX
+      colourGenerationBias.hue.minimum,
+      colourGenerationBias.hue.maximum
     );
   }
 
   return applySaturationAndValueBias(
     result,
-    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias]
-      .MIN,
-    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias].MIN,
-    Constants.DIFFICULTY.SATURATION_BIAS[colourGenerationBias.saturationBias]
-      .MAX,
-    Constants.DIFFICULTY.VALUE_BIAS[colourGenerationBias.valueBias].MAX
+    colourGenerationBias.saturation,
+    colourGenerationBias.value
   );
 };
 

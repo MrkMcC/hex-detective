@@ -1,13 +1,8 @@
+import ColourBiasPercentage from "../../classes/ColourBiasPercentage";
 import ColourGenerationBias from "../../classes/ColourGenerationBias";
-import HueDifferenceBias from "../../enum/colour-generation-bias/HueDifferenceBias";
-import IncrementBias from "../../enum/colour-generation-bias/IncrementBias";
-import SaturationBias from "../../enum/colour-generation-bias/SaturationBias";
-import ValueBias from "../../enum/colour-generation-bias/ValueBias";
 import ColourService from "../../services/ColourService";
 
-interface Props {}
-
-const Title = ({}: Props) => {
+const Title = () => {
   const title = ["#", "he", "x-", "de", "te", "ct", "iv", "e"];
   const letterElements = title.map((c, i) => (
     <span
@@ -15,10 +10,9 @@ const Title = ({}: Props) => {
       style={{
         color: ColourService.RandomColour(
           new ColourGenerationBias(
-            IncrementBias.None,
-            SaturationBias.MinStrong,
-            HueDifferenceBias.None,
-            ValueBias.MinStrong
+            undefined,
+            new ColourBiasPercentage(0.5),
+            new ColourBiasPercentage(0.25)
           )
         ).hex.toString(),
       }}

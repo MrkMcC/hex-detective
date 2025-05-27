@@ -1,12 +1,9 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
-import IncrementBias from "../../../enum/colour-generation-bias/IncrementBias";
 import Localise from "../../../services/Localise";
 import PersonService from "../../../services/PersonService";
 import FunkyPanel from "../../common/FunkyPanel";
 import Person from "../../Person";
-import HueBiasOptions from "./common/HueBiasOptions";
-import SaturationBiasOptions from "./common/SaturationBiasOptions";
-import ValueBiasOptions from "./common/ValueBiasOptions";
+import GradientRangeSlider from "./common/GradientRangeSlider";
 
 interface Props {
   difficulty?: DifficultyConfig;
@@ -35,27 +32,27 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
           <div className="">
             <div className="flex-row difficulty-preview">{personElements}</div>
           </div>
-          <div className="text-center">
+          <div className="settings text-center">
             <div>
               Hue Bias: <br />
-              <HueBiasOptions
+              {/* <HueBiasOptions
                 value={
                   difficulty.parameters.colourGenerationBias.hueDifferenceBias
                 }
+              /> */}
+            </div>
+            <div className="setting-saturation">
+              Saturation Range: <br />
+              <GradientRangeSlider
+                gradient="saturation"
+                value={difficulty.parameters.colourGenerationBias.saturation}
               />
             </div>
             <div>
-              Saturation Bias: <br />
-              <SaturationBiasOptions
-                value={
-                  difficulty.parameters.colourGenerationBias.saturationBias
-                }
-              />
-            </div>
-            <div>
-              Value Bias: <br />
-              <ValueBiasOptions
-                value={difficulty.parameters.colourGenerationBias.valueBias}
+              Value Range: <br />
+              <GradientRangeSlider
+                gradient="value"
+                value={difficulty.parameters.colourGenerationBias.value}
               />
             </div>
             <p>
@@ -65,14 +62,6 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
             <p>
               Crowd Size - Increase per round: <br />
               {difficulty.parameters.crowdSizeInitial}
-            </p>
-            <p>
-              Increment: <br />
-              {
-                Object.values(IncrementBias)[
-                  difficulty.parameters.colourGenerationBias.incrementBias
-                ]
-              }
             </p>
           </div>
         </>
