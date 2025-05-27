@@ -11,7 +11,6 @@ const Constants = {
     },
   },
 
-  //TODO group as object
   DIFFICULTY: {
     KEYS: {
       TUTORIAL: "tutorial",
@@ -24,11 +23,11 @@ const Constants = {
     },
 
     HUE_BIAS: {
-      [HueDifferenceBias.MinDifferenceStrong]: [20, undefined],
-      [HueDifferenceBias.MinDifferenceSome]: [10, undefined],
-      [HueDifferenceBias.None]: [1, undefined],
-      [HueDifferenceBias.MaxDifferenceSome]: [1, 60],
-      [HueDifferenceBias.MaxDifferenceStrong]: [1, 30],
+      [HueDifferenceBias.MinDifferenceStrong]: { MIN: 25, MAX: undefined },
+      [HueDifferenceBias.MinDifferenceSome]: { MIN: 15, MAX: undefined },
+      [HueDifferenceBias.None]: { MIN: 1, MAX: undefined },
+      [HueDifferenceBias.MaxDifferenceSome]: { MIN: 1, MAX: 60 },
+      [HueDifferenceBias.MaxDifferenceStrong]: { MIN: 1, MAX: 30 },
     },
   },
 

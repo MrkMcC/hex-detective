@@ -120,8 +120,8 @@ const randomColour = (
     result = randomiseHue(
       result,
       reference,
-      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias][0],
-      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias][1]
+      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias].MIN,
+      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias].MAX
     );
   }
 
@@ -154,6 +154,12 @@ const randomColour = (
   result = applySaturationAndValueBias(result, minSaturation, minValue);
 
   return result;
+};
+
+const shiftHue = (colour: Colour, angle: number = 0) => {
+  const hsv = toHsv(colour);
+  hsv.hue += angle;
+  return toColour(hsv);
 };
 
 const generateColour = (
@@ -210,6 +216,7 @@ const ColourService = {
   RandomColourStyle: randomColourStyle,
   IntToHex: intToHex,
   ColourFromHex: colourFromHex,
+  ShiftHue: shiftHue,
 };
 
 export default ColourService;
