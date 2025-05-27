@@ -1,3 +1,5 @@
+import HueDifferenceBias from "./enum/colour-generation-bias/HueDifferenceBias";
+
 const Constants = {
   VARIATION: {
     AMOUNTS: {
@@ -19,6 +21,14 @@ const Constants = {
       HARD: "hard",
       HARDEST: "hardest",
       CUSTOM: "custom",
+    },
+
+    HUE_BIAS: {
+      [HueDifferenceBias.MinDifferenceStrong]: [20, undefined],
+      [HueDifferenceBias.MinDifferenceSome]: [10, undefined],
+      [HueDifferenceBias.None]: [1, undefined],
+      [HueDifferenceBias.MaxDifferenceSome]: [1, 60],
+      [HueDifferenceBias.MaxDifferenceStrong]: [1, 30],
     },
   },
 

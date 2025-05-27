@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import Colour from "../classes/Colour";
 import ColourGenerationBias from "../classes/ColourGenerationBias";
+import Constants from "../Constants";
 import HueDifferenceBias from "../enum/colour-generation-bias/HueDifferenceBias";
 import IncrementBias from "../enum/colour-generation-bias/IncrementBias";
 import SaturationBias from "../enum/colour-generation-bias/SaturationBias";
@@ -52,7 +53,7 @@ const intToHex = (colour: number) => {
 const randomiseHue = (
   subject: Colour,
   reference: Colour,
-  minDistance: number,
+  minDistance: number = 1,
   maxDistance?: number
 ) => {
   const subjectHsv = toHsv(subject);
@@ -116,22 +117,12 @@ const randomColour = (
   let result = unbiasedRandomRgbColour();
 
   if (reference) {
-    switch (colourGenerationBias.hueDifferenceBias) {
-      case HueDifferenceBias.MinDifferenceStrong:
-        result = randomiseHue(result, reference, 20);
-        break;
-      case HueDifferenceBias.MinDifferenceSome:
-        result = randomiseHue(result, reference, 10);
-        break;
-      case HueDifferenceBias.MaxDifferenceSome:
-        result = randomiseHue(result, reference, 1, 60);
-        break;
-      case HueDifferenceBias.MaxDifferenceStrong:
-        result = randomiseHue(result, reference, 1, 30);
-        break;
-      default:
-        result = randomiseHue(result, reference, 1);
-    }
+    result = randomiseHue(
+      result,
+      reference,
+      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias][0],
+      Constants.DIFFICULTY.HUE_BIAS[colourGenerationBias.hueDifferenceBias][1]
+    );
   }
 
   let minValue = 0;
