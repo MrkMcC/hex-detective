@@ -75,34 +75,21 @@ const applySaturationAndValueBias = (
 ) => {
   const rgb = [colour.int.red, colour.int.green, colour.int.blue];
   const iMin = rgb.indexOf(Math.min(...rgb));
-  const iMax = rgb.indexOf(Math.max(...rgb));
-  const iMed = rgb.findIndex((_v, i) => i !== iMin && i !== iMax);
+  const iMax = rgb.lastIndexOf(Math.max(...rgb));
 
   const initialMin = rgb[iMin];
   const initialMax = rgb[iMax];
-  const initialMed = rgb[iMed];
   const initialRange = initialMax - initialMin;
-  const initialSaturation = initialRange / initialMax;
-  const initialValue = initialMax / 255;
+  const initialSat = initialRange / initialMax;
+  const initialVal = initialMax / 255;
 
-  const targetSaturation =
-    initialSaturation + (1 - initialSaturation) * minSaturation;
-  const saturationFactor = targetSaturation / initialSaturation;
+  const targetSaturation = initialSat + (1 - initialSat) * minSaturation;
+  const targetValue = initialVal + (1 - initialVal) * minValue;
 
-  const targetValue = initialValue + (1 - initialValue) * minValue;
-  const valueFactor = targetValue / initialValue;
-
-  //Saturation
-  rgb[iMin] = initialMax - initialRange * saturationFactor;
-  const newRange = rgb[iMax] - rgb[iMin];
-  rgb[iMed] = rgb[iMin] + ((initialMed - initialMin) / initialRange) * newRange;
-
-  //Value
-  rgb[iMax] *= valueFactor;
-  rgb[iMin] *= valueFactor;
-  rgb[iMed] *= valueFactor;
-
-  return new Colour(Math.round(rgb[0]), Math.round(rgb[1]), Math.round(rgb[2]));
+  const hsv = toHsv(colour);
+  hsv.saturation = targetSaturation;
+  hsv.value = targetValue;
+  return toColour(hsv);
 };
 
 const randomColour = (
@@ -186,12 +173,13 @@ const colourFromHex = (code: string) => {
 };
 
 const ColourService = {
-  RandomColour: randomColour,
-  GenerateColour: generateColour,
-  RandomBorderColourStyle: randomBorderColourStyle,
-  RandomColourStyle: randomColourStyle,
-  IntToHex: intToHex,
+  ApplySaturationAndValueBias: applySaturationAndValueBias,
   ColourFromHex: colourFromHex,
+  GenerateColour: generateColour,
+  IntToHex: intToHex,
+  RandomColour: randomColour,
+  RandomColourStyle: randomColourStyle,
+  RandomBorderColourStyle: randomBorderColourStyle,
   ShiftHue: shiftHue,
 };
 
