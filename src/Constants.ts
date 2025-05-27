@@ -1,6 +1,17 @@
 import HueDifferenceBias from "./enum/colour-generation-bias/HueDifferenceBias";
 
-const Constants = {
+interface IConstants {
+  VARIATION: { AMOUNTS: { [k: string]: number } };
+  DIFFICULTY: {
+    KEYS: { [k: string]: string };
+    HUE_BIAS: {
+      [k: number]: { MIN: number | undefined; MAX: number | undefined };
+    };
+  };
+  DEBUG: { [k: string]: boolean };
+}
+
+const Constants: IConstants = {
   VARIATION: {
     AMOUNTS: {
       HAT: 9,
