@@ -44,11 +44,11 @@ class PersonData {
     };
 
     this.variations = {
-      hat: MathHelper.GetRandomNumber(1, Constants.VARIATION_AMOUNT_HAT),
-      eyes: MathHelper.GetRandomNumber(1, Constants.VARIATION_AMOUNT_EYES),
-      mouth: MathHelper.GetRandomNumber(1, Constants.VARIATION_AMOUNT_MOUTH),
-      shirt: MathHelper.GetRandomNumber(1, Constants.VARIATION_AMOUNT_SHIRT),
-      pants: MathHelper.GetRandomNumber(1, Constants.VARIATION_AMOUNT_PANTS),
+      hat: MathHelper.GetRandomNumber(1, Constants.VARIATION.AMOUNTS.HAT),
+      eyes: MathHelper.GetRandomNumber(1, Constants.VARIATION.AMOUNTS.EYES),
+      mouth: MathHelper.GetRandomNumber(1, Constants.VARIATION.AMOUNTS.MOUTH),
+      shirt: MathHelper.GetRandomNumber(1, Constants.VARIATION.AMOUNTS.SHIRT),
+      pants: MathHelper.GetRandomNumber(1, Constants.VARIATION.AMOUNTS.PANTS),
     };
   }
 }

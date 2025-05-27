@@ -18,8 +18,9 @@ import LogService from "./services/LogService";
 //-'How to Play' might be obsolete -> A new kind of welcome message, maybe. connected to the test screen idea?
 //-Difficulty options should have borders that reflect their colour bias
 //-Re-integrate custom difficulty
+//-Max Saturation Bias
 
-//-show colour triangle option
+//-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option
 //-show percentages option
 //-Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)

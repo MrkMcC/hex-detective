@@ -28,11 +28,11 @@ class DifficultyConfig {
 
   constructor(
     params: DifficultyStateT,
-    key: string = Constants.DIFFICULTY_KEY_CUSTOM
+    key: string = Constants.DIFFICULTY.KEYS.CUSTOM
   ) {
     this.key = key;
     this.parameters = params;
-    this.isTutorial = key === Constants.DIFFICULTY_KEY_TUTORIAL;
+    this.isTutorial = key === Constants.DIFFICULTY.KEYS.TUTORIAL;
   }
 }
 

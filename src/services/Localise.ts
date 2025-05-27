@@ -2,29 +2,29 @@ import Constants from "../Constants";
 
 const text = (key: string) => {
   switch (key) {
-    case `difficulty_${Constants.DIFFICULTY_KEY_EASIEST}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.EASIEST}`:
       return "Neon";
-    case `difficulty_${Constants.DIFFICULTY_KEY_EASY}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.EASY}`:
       return "Fruity";
-    case `difficulty_${Constants.DIFFICULTY_KEY_NORMAL}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.NORMAL}`:
       return "Casual";
-    case `difficulty_${Constants.DIFFICULTY_KEY_HARD}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.HARD}`:
       return "Uniform";
-    case `difficulty_${Constants.DIFFICULTY_KEY_HARDEST}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.HARDEST}`:
       return "Dystopian";
-    case `difficulty_${Constants.DIFFICULTY_KEY_CUSTOM}`:
+    case `difficulty_${Constants.DIFFICULTY.KEYS.CUSTOM}`:
       return "Custom";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_EASIEST}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.EASIEST}`:
       return "strongly biased in your favour - the suspect should stand out";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_EASY}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.EASY}`:
       return "biased in your favour - brighter, more colourful, more distinct";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_NORMAL}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.NORMAL}`:
       return "baseline difficulty - completely random";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_HARD}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARD}`:
       return "oh no, they all dressed alike!";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_HARDEST}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARDEST}`:
       return "they all look suspicious if you ask me";
-    case `difficulty-description_${Constants.DIFFICULTY_KEY_CUSTOM}`:
+    case `difficulty-description_${Constants.DIFFICULTY.KEYS.CUSTOM}`:
       return "Mix and match";
     default:
       return "___LOCALISATION-MISSING___";

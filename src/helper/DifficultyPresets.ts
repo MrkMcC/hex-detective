@@ -17,7 +17,7 @@ const tutorial = new DifficultyConfig(
       ValueBias.None
     ),
   },
-  Constants.DIFFICULTY_KEY_TUTORIAL
+  Constants.DIFFICULTY.KEYS.TUTORIAL
 );
 const easiest = new DifficultyConfig(
   {
@@ -30,7 +30,7 @@ const easiest = new DifficultyConfig(
       ValueBias.Extreme
     ),
   },
-  Constants.DIFFICULTY_KEY_EASIEST
+  Constants.DIFFICULTY.KEYS.EASIEST
 );
 const easy = new DifficultyConfig(
   {
@@ -43,7 +43,7 @@ const easy = new DifficultyConfig(
       ValueBias.Strong
     ),
   },
-  Constants.DIFFICULTY_KEY_EASY
+  Constants.DIFFICULTY.KEYS.EASY
 );
 const normal = new DifficultyConfig(
   {
@@ -56,7 +56,7 @@ const normal = new DifficultyConfig(
       ValueBias.Subtle
     ),
   },
-  Constants.DIFFICULTY_KEY_NORMAL
+  Constants.DIFFICULTY.KEYS.NORMAL
 );
 const hard = new DifficultyConfig(
   {
@@ -69,7 +69,7 @@ const hard = new DifficultyConfig(
       ValueBias.None
     ),
   },
-  Constants.DIFFICULTY_KEY_HARD
+  Constants.DIFFICULTY.KEYS.HARD
 );
 const hardest = new DifficultyConfig(
   {
@@ -82,13 +82,12 @@ const hardest = new DifficultyConfig(
       ValueBias.None
     ),
   },
-  Constants.DIFFICULTY_KEY_HARDEST
+  Constants.DIFFICULTY.KEYS.HARDEST
 );
 
 const DifficultyPresets = {
   /**All difficulties except tutorial */
   Options: [easiest, easy, normal, hard, hardest],
-  Default: normal,
   Tutorial: tutorial,
 };
 
