@@ -54,7 +54,7 @@
   .bookend {
     position: absolute;
     top: 50%;
-    width: 5%;
+    width: 3%;
     height: 110%;
     box-sizing: border-box;
 
@@ -62,31 +62,19 @@
       transform: translate(-5%, -50%);
       box-sizing: border-box;
 
-      border-bottom-left-radius: 1em;
+      border-top-left-radius: 0.5em;
+      border-bottom-left-radius: 0.5em;
+      border-top: 0.25em solid white;
       border-left: 0.25em solid white;
       border-bottom: 0.25em solid white;
-
-      .icon {
-        position: absolute;
-        left: 75%;
-        top: 103%;
-        transform: translate(-50%, -50%);
-        font-size: 1.4em;
-      }
     }
     &.max {
       transform: translate(+5%, -50%);
-      border-top-right-radius: 1em;
+      border-top-right-radius: 0.5em;
+      border-bottom-right-radius: 0.5em;
       border-top: 0.25em solid white;
       border-right: 0.25em solid white;
-
-      .icon {
-        position: absolute;
-        left: 25%;
-        top: -3%;
-        transform: translate(-50%, -50%);
-        font-size: 1.4em;
-      }
+      border-bottom: 0.25em solid white;
     }
   }
 }
