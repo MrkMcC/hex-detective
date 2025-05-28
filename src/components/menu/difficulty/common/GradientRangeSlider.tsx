@@ -16,8 +16,8 @@ const GradientRangeSlider = ({ hsvProperty, value, className }: Props) => {
   let sliderMinimum = 0;
   let sliderMaximum = 1;
   let sliderStep = 0.01;
-  let bookendMinShift = `${value.minimum * 95}%`;
-  let bookendMaxShift = `${(1 - value.maximum) * 90}%`;
+  let bookendMinShift = `${value.minimum * 100}%`;
+  let bookendMaxShift = `${(1 - value.maximum) * 100}%`;
 
   if (hsvProperty === "hue") {
     sliderMinimum = 1;
@@ -25,10 +25,10 @@ const GradientRangeSlider = ({ hsvProperty, value, className }: Props) => {
     sliderStep = 1;
 
     bookendMinShift = `${
-      ((value.minimum - sliderMinimum) / (sliderMaximum - sliderMinimum)) * 95
+      ((value.minimum - sliderMinimum) / (sliderMaximum - sliderMinimum)) * 100
     }%`;
     bookendMaxShift = `${
-      ((sliderMaximum - value.maximum) / sliderMaximum) * 90
+      ((sliderMaximum - value.maximum) / sliderMaximum) * 100
     }%`;
   }
 
@@ -51,8 +51,12 @@ const GradientRangeSlider = ({ hsvProperty, value, className }: Props) => {
         max={sliderMaximum}
         step={sliderStep}
       />
-      <div className="bookend min" style={{ left: bookendMinShift }} />
-      <div className="bookend max" style={{ right: bookendMaxShift }} />
+      <div className="bookend-container min">
+        <div className="bookend min" style={{ left: bookendMinShift }} />
+      </div>
+      <div className="bookend-container max">
+        <div className="bookend max" style={{ right: bookendMaxShift }} />
+      </div>
     </div>
   );
 };

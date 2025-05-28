@@ -1,5 +1,7 @@
 @use "../../vars/Colours";
 
+$bookend-width: 0.55em;
+
 .gradient-range-slider {
   position: relative;
   height: 3em;
@@ -51,11 +53,8 @@
       background-image: linear-gradient(
         to right,
         Colours.$hue_0,
-        Colours.$hue_30,
         Colours.$hue_60,
-        Colours.$hue_90,
         Colours.$hue_120,
-        Colours.$hue_150,
         Colours.$hue_180
       );
     }
@@ -66,11 +65,8 @@
       background-image: linear-gradient(
         to right,
         Colours.$hue_360,
-        Colours.$hue_330,
         Colours.$hue_300,
-        Colours.$hue_270,
         Colours.$hue_240,
-        Colours.$hue_210,
         Colours.$hue_180
       );
     }
@@ -87,22 +83,35 @@
     margin: 0;
   }
 
+  .bookend-container {
+    position: absolute;
+    top: 0%;
+    width: calc(100% - $bookend-width * 2);
+    height: 100%;
+    box-sizing: border-box;
+    &.min {
+      left: 0%;
+    }
+    &.max {
+      right: 0%;
+    }
+  }
+
   .bookend {
     position: absolute;
     top: 50%;
-    width: 0.55em;
+    width: $bookend-width;
     height: 110%;
+    transform: translate(0%, -50%);
     box-sizing: border-box;
     border: 0.25em solid white;
 
     &.min {
-      transform: translate(-5%, -50%);
       border-top-left-radius: 0.75em;
       border-bottom-left-radius: 0.75em;
       border-right: none;
     }
     &.max {
-      transform: translate(+5%, -50%);
       border-top-right-radius: 0.75em;
       border-bottom-right-radius: 0.75em;
       border-left: none;
