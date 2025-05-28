@@ -1,4 +1,5 @@
-import ColourBias from "../classes/ColourBiasPercentage";
+import ColourBiasAngle from "../classes/ColourBiasAngle";
+import ColourBiasPercentage from "../classes/ColourBiasPercentage";
 import ColourGenerationBias from "../classes/ColourGenerationBias";
 import DifficultyConfig from "../classes/DifficultyConfig";
 import Constants from "../Constants";
@@ -16,9 +17,9 @@ const easiest = new DifficultyConfig(
     crowdSizeInitial: 80,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
-      new ColourBias(25),
-      new ColourBias(1),
-      new ColourBias(1)
+      new ColourBiasAngle(25),
+      new ColourBiasPercentage(1),
+      new ColourBiasPercentage(1)
     ),
   },
   Constants.DIFFICULTY.KEYS.EASIEST
@@ -28,9 +29,9 @@ const easy = new DifficultyConfig(
     crowdSizeInitial: 80,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
-      new ColourBias(15),
-      new ColourBias(0.5),
-      new ColourBias(0.25)
+      new ColourBiasAngle(15),
+      new ColourBiasPercentage(0.5),
+      new ColourBiasPercentage(0.25)
     ),
   },
   Constants.DIFFICULTY.KEYS.EASY
@@ -40,9 +41,9 @@ const normal = new DifficultyConfig(
     crowdSizeInitial: 80,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
-      new ColourBias(1),
-      new ColourBias(),
-      new ColourBias()
+      new ColourBiasAngle(1),
+      new ColourBiasPercentage(),
+      new ColourBiasPercentage()
     ),
   },
   Constants.DIFFICULTY.KEYS.NORMAL
@@ -52,9 +53,9 @@ const hard = new DifficultyConfig(
     crowdSizeInitial: 80,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
-      new ColourBias(1, 60),
-      new ColourBias(undefined, 0.9),
-      new ColourBias(undefined, 0.9)
+      new ColourBiasAngle(1, 60),
+      new ColourBiasPercentage(undefined, 0.9),
+      new ColourBiasPercentage(undefined, 0.9)
     ),
   },
   Constants.DIFFICULTY.KEYS.HARD
@@ -64,9 +65,9 @@ const hardest = new DifficultyConfig(
     crowdSizeInitial: 80,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
-      new ColourBias(1, 30),
-      new ColourBias(undefined, 0.8),
-      new ColourBias(undefined, 0.8)
+      new ColourBiasAngle(1, 30),
+      new ColourBiasPercentage(undefined, 0.8),
+      new ColourBiasPercentage(undefined, 0.8)
     ),
   },
   Constants.DIFFICULTY.KEYS.HARDEST
