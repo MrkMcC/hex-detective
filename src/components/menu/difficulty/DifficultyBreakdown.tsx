@@ -33,25 +33,25 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
             <div className="flex-row difficulty-preview">{personElements}</div>
           </div>
           <div className="settings text-center">
-            <div>
+            <div className="setting-hue">
               Hue Bias: <br />
-              {/* <HueBiasOptions
-                value={
-                  difficulty.parameters.colourGenerationBias.hueDifferenceBias
-                }
-              /> */}
+              <GradientRangeSlider
+                className="grow"
+                hsvProperty="hue"
+                value={difficulty.parameters.colourGenerationBias.hue}
+              />
             </div>
             <div className="setting-saturation">
               Saturation Range: <br />
               <GradientRangeSlider
-                gradient="saturation"
+                hsvProperty="saturation"
                 value={difficulty.parameters.colourGenerationBias.saturation}
               />
             </div>
             <div>
               Value Range: <br />
               <GradientRangeSlider
-                gradient="value"
+                hsvProperty="value"
                 value={difficulty.parameters.colourGenerationBias.value}
               />
             </div>

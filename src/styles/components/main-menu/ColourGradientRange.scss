@@ -2,41 +2,75 @@
   position: relative;
   height: 3em;
 
-  border-radius: 1em;
-  .gradients > * {
-    height: 1em;
-    box-sizing: border-box;
+  .gradients {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
-    &:first-child {
-      border-top-left-radius: 0.25em;
-      border-top-right-radius: 0.75em;
-    }
-    &:last-child {
-      border-bottom-left-radius: 0.75em;
-      border-bottom-right-radius: 0.25em;
+    > * {
+      box-sizing: border-box;
+      flex-grow: 1;
+
+      &.gradient-1 {
+        border-top-left-radius: 0.5em;
+        border-top-right-radius: 0.5em;
+      }
+      &.gradient-3 {
+        border-bottom-left-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
+      }
     }
   }
 
   &.saturation {
-    .red {
+    .gradient-1 {
       background-image: linear-gradient(to right, grey, red);
     }
-    .green {
+    .gradient-2 {
       background-image: linear-gradient(to right, grey, #00ff00);
     }
-    .blue {
+    .gradient-3 {
       background-image: linear-gradient(to right, grey, blue);
     }
   }
   &.value {
-    .red {
+    .gradient-1 {
       background-image: linear-gradient(to right, #000000, red);
     }
-    .green {
+    .gradient-2 {
       background-image: linear-gradient(to right, #000000, #00ff00);
     }
-    .blue {
+    .gradient-3 {
       background-image: linear-gradient(to right, #000000, blue);
+    }
+  }
+  &.hue {
+    .gradient-1 {
+      background-image: linear-gradient(
+        to right,
+        #cc0000,
+        #cc6600,
+        #cccc00,
+        #66cc00,
+        #00cc00,
+        #00cc66,
+        #00cccc
+      );
+    }
+    .gradient-2 {
+      display: none;
+    }
+    .gradient-3 {
+      background-image: linear-gradient(
+        to right,
+        #cc0000,
+        #cc0066,
+        #cc00cc,
+        #6600cc,
+        #0000cc,
+        #0066cc,
+        #00cccc
+      );
     }
   }
 
@@ -54,27 +88,22 @@
   .bookend {
     position: absolute;
     top: 50%;
-    width: 3%;
+    width: 0.55em;
     height: 110%;
     box-sizing: border-box;
+    border: 0.25em solid white;
 
     &.min {
       transform: translate(-5%, -50%);
-      box-sizing: border-box;
-
-      border-top-left-radius: 0.5em;
-      border-bottom-left-radius: 0.5em;
-      border-top: 0.25em solid white;
-      border-left: 0.25em solid white;
-      border-bottom: 0.25em solid white;
+      border-top-left-radius: 0.75em;
+      border-bottom-left-radius: 0.75em;
+      border-right: none;
     }
     &.max {
       transform: translate(+5%, -50%);
-      border-top-right-radius: 0.5em;
-      border-bottom-right-radius: 0.5em;
-      border-top: 0.25em solid white;
-      border-right: 0.25em solid white;
-      border-bottom: 0.25em solid white;
+      border-top-right-radius: 0.75em;
+      border-bottom-right-radius: 0.75em;
+      border-left: none;
     }
   }
 }
