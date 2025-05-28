@@ -15,8 +15,6 @@ import LogService from "./services/LogService";
 
 //Difficulty Update notes
 
-//Hue Bias seems broken. All difficulties appear biased.
-
 //-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option
 //-show percentages option

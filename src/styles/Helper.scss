@@ -196,6 +196,10 @@ input.cool {
   border-bottom: 0.1em solid white;
 }
 
+.gap-v-1 > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 .p-1 {
   padding: 1em;
 }

@@ -20,7 +20,7 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
   ));
 
   return (
-    <FunkyPanel className="difficulty-breakdown">
+    <FunkyPanel className="difficulty-breakdown gap-v-1">
       {difficulty ? (
         <>
           <h2 className="border-underline">
@@ -32,7 +32,7 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
           <div className="">
             <div className="flex-row difficulty-preview">{personElements}</div>
           </div>
-          <div className="settings text-center">
+          <div className="settings gap-v-1 text-center">
             <div className="setting-hue">
               Hue Bias: <br />
               <GradientRangeSlider
