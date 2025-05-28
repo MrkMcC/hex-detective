@@ -11,6 +11,20 @@ $base_green-dark: #005000 !default;
 $base_green-darker: #003500 !default;
 $base_blue: blue !default;
 
+$hue_0: #cc0000;
+$hue_30: #cc6600;
+$hue_60: #cccc00;
+$hue_90: #66cc00;
+$hue_120: #00cc00;
+$hue_150: #00cc66;
+$hue_180: #00cccc;
+$hue_210: #0066cc;
+$hue_240: #0000cc;
+$hue_270: #6600cc;
+$hue_300: #cc00cc;
+$hue_330: #cc0066;
+$hue_360: $hue_0;
+
 $bg-black: $base_black;
 $bg-white: $base_white;
 $bg-dark: $base_grey-darkest;

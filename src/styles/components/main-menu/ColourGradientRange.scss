@@ -1,3 +1,5 @@
+@use "../../vars/Colours";
+
 .gradient-range-slider {
   position: relative;
   height: 3em;
@@ -48,13 +50,13 @@
     .gradient-1 {
       background-image: linear-gradient(
         to right,
-        #cc0000,
-        #cc6600,
-        #cccc00,
-        #66cc00,
-        #00cc00,
-        #00cc66,
-        #00cccc
+        Colours.$hue_0,
+        Colours.$hue_30,
+        Colours.$hue_60,
+        Colours.$hue_90,
+        Colours.$hue_120,
+        Colours.$hue_150,
+        Colours.$hue_180
       );
     }
     .gradient-2 {
@@ -63,13 +65,13 @@
     .gradient-3 {
       background-image: linear-gradient(
         to right,
-        #cc0000,
-        #cc0066,
-        #cc00cc,
-        #6600cc,
-        #0000cc,
-        #0066cc,
-        #00cccc
+        Colours.$hue_360,
+        Colours.$hue_330,
+        Colours.$hue_300,
+        Colours.$hue_270,
+        Colours.$hue_240,
+        Colours.$hue_210,
+        Colours.$hue_180
       );
     }
   }
