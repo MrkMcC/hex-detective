@@ -48,13 +48,7 @@ const ControlBar = ({
 
   //#region Event Handling
   const handleQuit = () => {
-    if (
-      gameStatus === GameStatus.GameOver ||
-      confirm(
-        "You are about to quit the game. Your current progress will be lost."
-      )
-    )
-      onControlAction(ControlAction.QuitSession);
+    onControlAction(ControlAction.QuitSession);
   };
 
   const handleChangeSelectionMode = (mode: SuspectSelectionMode) => {
@@ -131,7 +125,7 @@ const ControlBar = ({
           isCollapsed={isSummaryCollapsed}
           onChangeCollapsed={setIsSummaryCollapsed}
           suspect={roundData.crowd!.getSuspect()!}
-          accused={roundData.crowd?.getPersonById(roundData.accusedPersonId)!}
+          accused={roundData.crowd!.getPersonById(roundData.accusedPersonId)!}
           suspectInfoOptions={suspectInfoOptions}
         />
       )}

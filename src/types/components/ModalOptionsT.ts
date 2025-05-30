@@ -1,5 +1,7 @@
+import ModalReferenceType from "../../enum/modal/ModalReferenceType";
+
 type ModalOptionsT = {
-  reference: { type: "tutorial"; index: number };
+  reference: { type: ModalReferenceType; index: number };
 };
 
 export default ModalOptionsT;

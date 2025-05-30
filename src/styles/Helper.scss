@@ -118,9 +118,13 @@ input.cool {
 }
 
 .flex-row,
+.flex-row-reverse,
 .flex-col {
   display: flex;
 
+  &.flex-row-reverse {
+    flex-direction: row-reverse;
+  }
   &.flex-col {
     flex-direction: column;
   }

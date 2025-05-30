@@ -10,6 +10,7 @@ import HexDetectiveEvent from "./enum/HexDetectiveEvent";
 import DifficultyPresets from "./helper/DifficultyPresets";
 import EventService from "./services/EventService";
 import LogService from "./services/LogService";
+import ModalService from "./services/ModalService";
 
 //#region development notes
 
@@ -82,8 +83,19 @@ function App() {
     useState<DifficultyConfig>();
   const [isTutorial, setIsTutorial] = useState(false);
 
+  const difficulty = isTutorial
+    ? DifficultyPresets.Tutorial
+    : selectedDifficulty;
+
   const handleHexDetectiveEvent = (event: HexDetectiveEvent) => {
-    if (event === HexDetectiveEvent.BackToMenu) setStatus(GameStatus.Setup);
+    switch (event) {
+      case HexDetectiveEvent.BackToMenu:
+        setStatus(GameStatus.Setup);
+        break;
+      case HexDetectiveEvent.CloseModal:
+        ModalService.CloseModal();
+        break;
+    }
   };
 
   useEffect(() => {
@@ -117,12 +129,10 @@ function App() {
         />
       ) : (
         <Game
-          key={objectHash(selectedDifficulty!.parameters.crowdSizeInitial)}
+          key={objectHash(difficulty!.parameters.crowdSizeInitial)}
           status={status}
           onChangeStatus={setStatus}
-          difficulty={
-            isTutorial ? DifficultyPresets.Tutorial : selectedDifficulty!
-          }
+          difficulty={difficulty!}
           settings={settings}
           onChangeSettings={setSettings}
         />

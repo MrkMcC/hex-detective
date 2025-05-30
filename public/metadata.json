@@ -41,10 +41,13 @@
       "version": "0.4pre1",
       "name": "The Difficulty Update (work in progress)",
       "features": [
+        "Added a difficulty selection with 5 options",
         "New difficulty variable: Hue Bias - People will wear colours similar or different to the suspect's",
         "New difficulty variable: Saturation Bias - Limits greyness",
         "New difficulty variable: Value Bias - Limits darkness",
-        "The title above the main menu now has a minimum saturation and value"
+        "New difficulty variable: Multiple Lives",
+        "The title above the main menu now has a minimum saturation and value",
+        "Prettier confirmation dialog when returning to main menu"
       ],
       "bugs": []
     }
@@ -53,12 +56,7 @@
     {
       "version": "0.4",
       "name": "The Difficulty Update",
-      "features": [
-        "Difficulty Presets",
-        "Multiple lives",
-        "Prettier confirmation dialog when returning to main menu",
-        "Welcome message to make sure the users has an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)"
-      ],
+      "features": [],
       "bugs": []
     },
     {

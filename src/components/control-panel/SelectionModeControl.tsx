@@ -3,14 +3,14 @@ import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 interface Props {
   currentMode: SuspectSelectionMode;
   onChange: (mode: SuspectSelectionMode) => void;
-  disabled: boolean;
+  disabled?: boolean;
   compact?: boolean;
 }
 
 const SelectionModeControl = ({
   currentMode,
   onChange,
-  disabled,
+  disabled = false,
   compact = false,
 }: Props) => {
   return (

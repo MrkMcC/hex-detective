@@ -2,17 +2,17 @@ const formatLogText = (subject: string, message: string) => {
   return `${subject} | ${message}`;
 };
 
-const debug = (subject: string, message: string, ...objects: any[]) => {
+const debug = (subject: string, message: string, ...objects: never[]) => {
   console.debug(formatLogText(subject, message), ...objects);
 };
 
-const error = (subject: string, message: string, ...objects: any[]) => {
+const error = (subject: string, message: string, ...objects: never[]) => {
   const text = formatLogText(subject, message);
   console.error(text, ...objects);
   return text;
 };
 
-const warn = (subject: string, message: string, ...objects: any[]) => {
+const warn = (subject: string, message: string, ...objects: never[]) => {
   console.warn(formatLogText(subject, message), ...objects);
 };
 

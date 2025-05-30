@@ -28,7 +28,6 @@ interface Props {
   onClose: () => void;
 }
 
-// const LOG_SUBJECT = "TutorialPage";
 const HEADING_BASICS = "";
 const HEADING_COLOURS = "";
 const HEADING_HEX = "";
@@ -129,11 +128,6 @@ const TutorialContent = ({ stage, onClose }: Props) => {
           ],
         },
       ];
-
-      // throw LogService.Error(
-      //   LOG_SUBJECT,
-      //   `NOT IMPLEMENTED: TutorialPage for stage ${stage}.`
-      // );
       break;
   }
 

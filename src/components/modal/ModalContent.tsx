@@ -2,14 +2,15 @@ import { useState } from "react";
 import HexDetectiveEvent from "../../enum/HexDetectiveEvent";
 import EventService from "../../services/EventService";
 import ModalPageT from "../../types/components/ModalPageT";
+import ModalButton from "./common/ModalButton";
 
 interface Props {
-  heading: string;
+  heading?: string;
   pages: ModalPageT[];
   onClose: () => void;
 }
 
-const ModalContent = ({ heading, pages, onClose }: Props) => {
+const ModalContent = ({ heading = "", pages, onClose }: Props) => {
   const [pageIndex, setPageIndex] = useState(0);
 
   const currentPage = pages[pageIndex];
@@ -54,28 +55,20 @@ const ModalContent = ({ heading, pages, onClose }: Props) => {
         </h1>
       </div>
       <div className="modal-body">{currentPage.body}</div>
-      <div className={`modal-footer flex-row justify-between`}>
-        <div>
-          {multiPage && (
-            <button
-              className="large"
-              onClick={handlePrevious}
-              disabled={pageIndex <= 0}
-            >
-              Previous Page
-            </button>
-          )}
-        </div>
+      <div className={`modal-footer`}>
+        {multiPage && (
+          <ModalButton onClick={handlePrevious} disabled={pageIndex <= 0}>
+            Previous Page
+          </ModalButton>
+        )}
         {dialogButtonElements}
         {isLastPage && currentPage.allowClose !== false && (
-          <button className="large" onClick={onClose}>
+          <ModalButton onClick={onClose}>
             {multiPage ? "Close" : "OK"}
-          </button>
+          </ModalButton>
         )}
         {!isLastPage && (
-          <button className="large" onClick={handleNext}>
-            Next Page
-          </button>
+          <ModalButton onClick={handleNext}>Next Page</ModalButton>
         )}
       </div>
     </>

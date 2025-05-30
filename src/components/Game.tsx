@@ -8,7 +8,10 @@ import ColourFlavour from "../enum/ColourFlavour";
 import ControlAction from "../enum/ControlAction";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
+import DialogIndex from "../enum/modal/DialogIndex";
+import ModalReferenceType from "../enum/modal/ModalReferenceType";
 import ColourService from "../services/ColourService";
+import ModalService from "../services/ModalService";
 import TutorialService from "../services/TutorialService";
 import RoundDataT from "../types/RoundDataT";
 import SessionDataT from "../types/SessionDataT";
@@ -68,7 +71,7 @@ function Game({
         prev.crowd!.people.map((p) =>
           p.id === id ? { ...p, ruledOut: !p.ruledOut } : p
         ),
-        prev.crowd?.suspectId!
+        prev.crowd!.suspectId!
       ),
     }));
   };
@@ -77,7 +80,7 @@ function Game({
       ...prev,
       crowd: new Crowd(
         prev.crowd!.people.map((p) => ({ ...p, hidden: p.ruledOut })),
-        prev.crowd?.suspectId!
+        prev.crowd!.suspectId!
       ),
     }));
   };
@@ -86,7 +89,7 @@ function Game({
       ...prev,
       crowd: new Crowd(
         prev.crowd!.people.map((p) => ({ ...p, hidden: false })),
-        prev.crowd?.suspectId!
+        prev.crowd!.suspectId!
       ),
     }));
   };
@@ -99,7 +102,7 @@ function Game({
           hidden: false,
           ruledOut: false,
         })),
-        prev.crowd?.suspectId!
+        prev.crowd!.suspectId!
       ),
     }));
   };
@@ -107,7 +110,7 @@ function Game({
   const restartStage = () => {
     setSessionData((prev) => ({
       ...initialSessionData,
-      tutorialProgress: !!prev.tutorialProgress
+      tutorialProgress: prev.tutorialProgress
         ? { ...sessionData.tutorialProgress!, round: 1 }
         : null,
     }));
@@ -149,8 +152,7 @@ function Game({
 
   const score = () => {
     onChangeStatus(GameStatus.Scored);
-    let roundsWon = sessionData.roundsWon + 1;
-    setSessionData((prev) => ({ ...prev, roundsWon: roundsWon }));
+    setSessionData((prev) => ({ ...prev, roundsWon: prev.roundsWon + 1 }));
   };
 
   const fail = () => {
@@ -200,7 +202,18 @@ function Game({
         initialiseRoundState(true);
         break;
       case ControlAction.QuitSession:
-        onChangeStatus(GameStatus.Setup);
+        if (
+          sessionData.tutorialProgress?.stage !== 1 &&
+          (status === GameStatus.GameOver || sessionData.roundsWon === 0)
+        )
+          onChangeStatus(GameStatus.Setup);
+        else
+          ModalService.ShowModal({
+            reference: {
+              type: ModalReferenceType.Dialog,
+              index: DialogIndex.QuitSession,
+            },
+          });
         break;
     }
   };
@@ -228,6 +241,10 @@ function Game({
       sessionData.tutorialProgress
     );
 
+    const convertToInt16 = (int: number) => (int / 255) * 15;
+    const convertToBase16 = (int: number) =>
+      ((int / 255) * 15).toString(16).toUpperCase();
+
     switch (sessionData.tutorialProgress.stage) {
       case TutorialStage.Basics_Scoring:
       case TutorialStage.Basics_SelectionMode:
@@ -248,7 +265,6 @@ function Game({
         }));
         break;
       case TutorialStage.Hex_ChangingScale:
-        const convertToInt16 = (int: number) => (int / 255) * 15;
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: new CustomFlavour((int: number) =>
@@ -257,8 +273,6 @@ function Game({
         }));
         break;
       case TutorialStage.Hex_Letters:
-        const convertToBase16 = (int: number) =>
-          ((int / 255) * 15).toString(16).toUpperCase();
         setSuspectInfoOptions((prev) => ({
           ...prev,
           flavour: new CustomFlavour((int: number) =>

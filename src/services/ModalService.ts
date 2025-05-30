@@ -1,8 +1,12 @@
 import ModalOptionsT from "../types/components/ModalOptionsT";
 
-let listener: (options: ModalOptionsT) => void;
+let listener: (options: ModalOptionsT | null) => void;
 
-const setListener = (func: (options: ModalOptionsT) => void) => {
+const closeModal = () => {
+  listener(null);
+};
+
+const setListener = (func: (options: ModalOptionsT | null) => void) => {
   listener = func;
 };
 
@@ -11,6 +15,7 @@ const showModal = (options: ModalOptionsT) => {
 };
 
 const ModalService = {
+  CloseModal: closeModal,
   SetListener: setListener,
   ShowModal: showModal,
 };

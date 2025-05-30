@@ -1,5 +1,6 @@
 import Crowd from "../classes/Crowd";
 import PersonData from "../classes/PersonData";
+import ModalReferenceType from "../enum/modal/ModalReferenceType";
 import TutorialStage from "../enum/TutorialStage";
 import ArrayHelper from "../helper/ArrayHelper";
 import ColourPresets from "../helper/ColourPresets";
@@ -12,11 +13,9 @@ import PersonService from "./PersonService";
 
 const LOG_SUBJECT = "TutorialService";
 
-const modalContentType: "tutorial" = "tutorial";
-
 const showModal = (stage: TutorialStage) => {
   ModalService.ShowModal({
-    reference: { type: modalContentType, index: Number(stage) },
+    reference: { type: ModalReferenceType.Tutorial, index: Number(stage) },
   });
 };
 
@@ -39,6 +38,23 @@ const generateCrowd = (state: TutorialProgress): Crowd => {
       ),
     12
   );
+
+  const baseColours = [
+    ColourPresets.Red,
+    ColourPresets.Green,
+    ColourPresets.Blue,
+  ];
+
+  const coloursExamPersonConstruction = () => {
+    const colourConstruction = () => {
+      return Math.round(MathHelper.GetRandomNumberSliced(0, 255, 11));
+    };
+    return new PersonData(
+      ColourService.GenerateColour(colourConstruction),
+      ColourService.GenerateColour(colourConstruction),
+      ColourService.GenerateColour(colourConstruction)
+    );
+  };
 
   switch (state.stage) {
     case TutorialStage.Basics_Scoring:
@@ -64,11 +80,6 @@ const generateCrowd = (state: TutorialProgress): Crowd => {
       ];
       return new Crowd(people, people[state.round - 1].id);
     case TutorialStage.Basics_SelectionMode:
-      const baseColours = [
-        ColourPresets.Red,
-        ColourPresets.Green,
-        ColourPresets.Blue,
-      ];
       return PersonService.GenerateCrowd(
         () =>
           new PersonData(
@@ -353,18 +364,8 @@ const generateCrowd = (state: TutorialProgress): Crowd => {
         ).id
       );
     case TutorialStage.Colours_Exam:
-      const examColourConstruction = () => {
-        return Math.round(MathHelper.GetRandomNumberSliced(0, 255, 11));
-      };
-      const examPersonConstruction = () => {
-        return new PersonData(
-          ColourService.GenerateColour(examColourConstruction),
-          ColourService.GenerateColour(examColourConstruction),
-          ColourService.GenerateColour(examColourConstruction)
-        );
-      };
       return PersonService.GenerateCrowd(
-        examPersonConstruction,
+        coloursExamPersonConstruction,
         5 + state.round * 5
       );
     case TutorialStage.Hex_ChangingScale:
