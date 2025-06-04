@@ -1,10 +1,10 @@
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
+import LocalisationService from "../../../../services/LocalisationService";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 
-interface Props {}
-
-const TutColComplementary2 = ({}: Props) => {
+const TutColComplementary2 = () => {
   const yellowOptions = {
     showLetterR: true,
     showLetterG: true,
@@ -27,34 +27,42 @@ const TutColComplementary2 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>
-        #HexDetective will test your understanding of how R, G and B interact.
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_2/P_1</Localise>
       </p>
       <p>
-        If we mix two equal amounts of primary colour, we get a secondary
-        colour. The secondary colours are:
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_2/P_2</Localise>
       </p>
       <div className="flex-row gap-1 wrap justify-center">
         <BarChart
-          name="R + G = Yellow"
+          name={LocalisationService.GetLocalisedText(
+            "COLOURS/COMBINED_RED_GREEN"
+          )}
           colour={ColourService.ColourFromHex("ffff00")}
           options={yellowOptions}
         />
         <BarChart
-          name="G + B = Cyan"
+          name={LocalisationService.GetLocalisedText(
+            "COLOURS/COMBINED_GREEN_BLUE"
+          )}
           colour={ColourService.ColourFromHex("00ffff")}
           options={cyanOptions}
         />
         <BarChart
-          name="R + B = Magenta"
+          name={LocalisationService.GetLocalisedText(
+            "COLOURS/COMBINED_RED_BLUE"
+          )}
           colour={ColourService.ColourFromHex("ff00ff")}
           options={magentaOptions}
         />
       </div>
-      <p>You don't need to remember the names of these colours.</p>
-      <p>The descriptions you get will only refer to red, green and blue.</p>
       <p>
-        Once again, take your time to understand each chart. This will be on the
-        test.
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_2/P_3</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_2/P_4</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_2/P_5</Localise>
       </p>
     </div>
   );

@@ -1,8 +1,6 @@
 import ColourService from "../../services/ColourService";
 
-interface Props {}
-
-const HowToPlay = ({}: Props) => {
+const HowToPlay = () => {
   return (
     <div
       className="how-to-play ui-panel"

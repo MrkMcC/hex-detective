@@ -17,12 +17,9 @@ const SuspectInfoColour = ({ colour, reveal, flavour }: Props) => {
         className={`flavour-${flavour}`}
         style={{ color: reveal ? colour.toString() : undefined }}
       >
-        {flavour === ColourFlavour.Hex && colour.toString().toUpperCase()}
-        {flavour === ColourFlavour.Int && colour.int.toString()}
-        {flavour === ColourFlavour.Name && colour.name}
-        {flavour === ColourFlavour.Percentage && colour.percentage.toString()}
-        {typeof flavour !== "string" &&
-          (flavour as CustomFlavour).transformColour(colour)}
+        {typeof flavour !== "string"
+          ? (flavour as CustomFlavour).transformColour(colour)
+          : colour.toString(flavour)}
       </span>
     </span>
   );

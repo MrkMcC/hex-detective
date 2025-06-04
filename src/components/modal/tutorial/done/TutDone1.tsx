@@ -1,19 +1,28 @@
-interface Props {}
+import Localise from "../../../common/Localise";
 
-const TutDone1 = ({}: Props) => {
+const TutDone1 = () => {
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>You did it. Good work!</p>
-      <p>Thank you for taking the time to learn about hex codes.</p>
-      <br />
-      <p>There's always more to learn.</p>
       <p>
-        Are there any colours our screens can't show? Is blue darker than green?
-        Why base-16?
+        <Localise>TUTORIAL/DONE/PAGE_1/P_1</Localise>
       </p>
-      <p>But you've learned so much already. This is as far as we'll go.</p>
+      <p>
+        <Localise>TUTORIAL/DONE/PAGE_1/P_2</Localise>
+      </p>
       <br />
-      <p>Have fun!</p>
+      <p>
+        <Localise>TUTORIAL/DONE/PAGE_1/P_3</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/DONE/PAGE_1/P_4</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/DONE/PAGE_1/P_5</Localise>
+      </p>
+      <br />
+      <p>
+        <Localise>TUTORIAL/DONE/PAGE_1/P_6</Localise>
+      </p>
       {/* <br />
       <p>If you want, leave me some feedback on my website.</p>
       <p>

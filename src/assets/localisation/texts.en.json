@@ -1,4 +1,24 @@
 {
+  "COLOURS": {
+    "RED": "Red",
+    "GREEN": "Green",
+    "BLUE": "Blue",
+    "WHITE": "White",
+    "GREY": "Grey",
+    "BLACK": "Black",
+    "COMBINED_RED_GREEN": "R + G = Yellow",
+    "COMBINED_GREEN_BLUE": "G + B = Cyan",
+    "COMBINED_RED_BLUE": "R + B = Magenta",
+    "MIX_RED_GREEN": "a mix of red and green",
+    "MIX_GREEN_BLUE": "a mix of green and blue",
+    "MIX_BLUE_RED": "a mix of blue and red"
+  },
+  "MODAL": {
+    "BTN_CLOSE": "Close",
+    "BTN_OK": "OK",
+    "BTN_PAGE_PREV": "Previous Page",
+    "BTN_PAGE_NEXT": "Next Page"
+  },
   "main": {
     "navigation": {
       "header_dress_code": "Dress Code",
@@ -75,7 +95,193 @@
       "name": "Dystopian",
       "description": "They all look suspicious if you ask me."
     },
-    "custom": { "name": "Custom", "description": "Mix and match" }
+    "custom": { "name": "Custom", "description": "Mix and match" },
+    "tutorial": { "name": "Tutorial", "description": "Learn how to play" }
+  },
+  "TUTORIAL": {
+    "NAVIGATION": {
+      "BTN_BYE": "Bye!"
+    },
+    "BASICS": {
+      "SCORING": {
+        "PAGE_1": {
+          "TITLE": "How to Score",
+          "P_1_GOAL": "The goal is to find people by the colour of their clothes.",
+          "P_2_TASK": "Read the description of the suspect, then click on them."
+        }
+      },
+      "RULEOUT": {
+        "PAGE_1": {
+          "TITLE": "Ruling Out",
+          "P_1": "It can be hard to keep track of all the colours in a large crowd.",
+          "P_2": "You can rule out people to make your target easier to spot.",
+          "P_3_TASK": "Try clicking on 'Rule out'."
+        }
+      }
+    },
+    "COLOURS": {
+      "BRIGHTNESS": {
+        "PAGE_1": {
+          "TITLE": "Brightness",
+          "P_1": "Colours are made of light. More colour, more light!",
+          "P_2": "They have up to 100% red, green or blue.",
+          "P_3": "100% is the brightest. 25% is pretty dark."
+        }
+      },
+      "COMPLEMENTARY": {
+        "PAGE_1": {
+          "TITLE": "Mixing Colours (1/2)",
+          "P_1_RGB": "The human eye can only see ${0}, ${1} and ${2}, or ${3} for short.",
+          "P_2": "All other colours are a mix of these primary colours.",
+          "P_3": "#HexDetective uses this RGB chart to visualise colour mixing:",
+          "LBL_AMOUNTS": "Amount of R/G/B",
+          "LBL_BAR_CHART": "Bar chart",
+          "LBL_RESULT": "Resulting Colour",
+          "P_4_GREENISH": "This colour looks ${0}, because it has a lot more ${1} in it than ${2} or ${3}.",
+          "P_5": "Take a moment to familiarise yourself with the chart. You'll see it a lot."
+        },
+        "PAGE_2": {
+          "TITLE": "Mixing Colours (2/2)",
+          "P_1": "#HexDetective will test your understanding of how R, G and B interact.",
+          "P_2": "If we mix two equal amounts of primary colour, we get a secondary colour. The secondary colours are:",
+          "P_3": "You don't need to remember the names of these colours.",
+          "P_4": "The descriptions you get will only refer to red, green and blue.",
+          "P_5": "Once again, take your time to understand each chart. This will be on the test."
+        }
+      },
+      "PERCNOTATION": {
+        "PAGE_1": {
+          "TITLE": "Percentage Notation",
+          "P_1": "The next few rounds will use this notation: (red% green% blue%).",
+          "P_2": "(0% 0% 100%) is pure bright blue.",
+          "P_3": "(50% 50% 0%) is yellow. Not too dark, not too bright.",
+          "P_4": "The three values are always in the order R-G-B."
+        }
+      },
+      "SATURATION": {
+        "PAGE_1": {
+          "TITLE": "Saturation (1/2)",
+          "P_1": "So what happens if we mix all three colours?",
+          "P_2": "If R, G and B are all the same, we get a shade of grey:"
+        },
+        "PAGE_2": {
+          "TITLE": "Saturation (2/2)",
+          "P_1": "The closer the three values are to each other, the less 'saturated' the colour is.",
+          "P_2": "The larger the gap between the lowest and highest value, the higher the saturation:",
+          "P_3": "Low saturation makes a colour greyish. High saturation means the colour is more intense."
+        }
+      },
+      "IMBALANCE": {
+        "PAGE_1": {
+          "TITLE": "Colour Imbalance (1/2)",
+          "P_1": "So far, we've only worked with primary and secondary colours.",
+          "P_2": "But what if all three values are different?",
+          "P_3": "We see the dominant colour coming through in the result.",
+          "P_4": "But there is a hint of secondary colour in there."
+        },
+        "PAGE_2": {
+          "TITLE": "Colour Imbalance (2/2)",
+          "P_1": "Let's see what happens to (50% 50% 0%) if we add more red.",
+          "P_2": "As ${0} increases, the result becomes redder and brighter.",
+          "P_3": "Here's an interactive chart to play around with. Try to match the colours in the circles."
+        }
+      },
+      "EXAM": {
+        "PAGE_1": {
+          "TITLE": "Conclusion (1/2)",
+          "P_1": "This concludes the tutorial on colour theory.",
+          "P_2": "Here's another chart to play around with. No restrictions this time.",
+          "P_3": "But before we move on to hex codes..."
+        },
+        "PAGE_2": {
+          "TITLE": "Conclusion (2/2)",
+          "P_1": "...let's put everything we've learned to the test.",
+          "P_2": "This will be the most difficult one yet. You can do it, though.",
+          "ADVICE_HEADER": "Some advice:",
+          "ADVICE_1": "When reading a colour description, try to figure out the hue first.",
+          "ADVICE_2": "Since that includes looking at the highest values, you should already have an idea of the brightness as well.",
+          "ADVICE_3": "Try to figure out the saturation last.",
+          "ADVICE_4": "Make use the 'Rule out' function.",
+          "ADVICE_5": "If you're unsure about a colour, move on to another article of clothing.",
+          "ADVICE_6": "If you're left with two similar looking people, pay attention to how the colour descriptions compare to each other.\nMaybe their hat is brighter, greyer or greener than their shirt."
+        }
+      }
+    },
+    "HEX": {
+      "SCALE": {
+        "PAGE_1": {
+          "TITLE": "Changing the Scale (1/2)",
+          "P_1": "So far, we've been describing RGB values on a scale from 0 to 100.",
+          "P_2": "But there's no reason why it has to be 100.",
+          "P_3": "We could use a larger number, dividing our RGB scale into more steps. Or maybe...",
+          "P_4": "Yes, that's it! We'll use a smaller scale. That'll make things much easier!",
+          "P_5": "Let's take a scale from 0 to..."
+        },
+        "PAGE_2": {
+          "TITLE": "Changing the Scale (2/2)",
+          "P_1": "...fifteen.",
+          "P_2": "From now on, we'll use a number between 0 and 15 for our RGB values.",
+          "P_3": "Beautiful.",
+          "P_4": "The scale changed, but everything else is the same.",
+          "P_5": "(100% 0% 0%) is now called (15, 0, 0)",
+          "P_6": "Let's do this!"
+        }
+      },
+      "LETTERS": {
+        "PAGE_1": {
+          "TITLE": "Counting with Letters (1/2)",
+          "P_1": "Something is bothering me about our new scale.",
+          "P_2": "Some values take up more space than others, because they use two digits.",
+          "P_3": "A second digit? In this economy?",
+          "P_4": "I'm sure you agree it would be better if we could count to 15 using only one digit.",
+          "P_5": "Well, we can."
+        },
+        "PAGE_2": {
+          "TITLE": "Counting with Letters (2/2)",
+          "P_1": "Let's borrow a few letters from the alphabet.",
+          "P_2": "We'll just call it A instead of 10, B instead of 11, and so on.",
+          "P_3": "Efficient."
+        }
+      },
+      "DOUBLEDIGITS": {
+        "PAGE_1": {
+          "TITLE": "Almost Done (1/2)",
+          "P_1": "Good news! All your hard work made the economy go up. We can afford a second digit now.",
+          "LBL_OLD_SCALE": "old scale",
+          "LBL_NEW_SCALE": "new scale",
+          "P_2": "The first digit does the same as before,\nthe second digit allows more fine tuning."
+        },
+        "PAGE_2": {
+          "TITLE": "Almost Done (2/2)",
+          "P_1": "If you're overwhelmed, don't worry. I'll let you in on a secret.",
+          "P_2": "You can ignore the second digit most of the time.",
+          "P_3": "A7 and AD are very close to each other, but A7 and D7 are not."
+        }
+      },
+      "EXAM": {
+        "PAGE_1": {
+          "TITLE": "The Finish Line",
+          "P_1": "The number system we have been using is known as the hexadecimal system.",
+          "P_2": "Hexa-decem is half greek, half latin and means 16.",
+          "P_3": "It's also known as 'base 16', because of its 16 digits, while our regular numeral system is base 10.",
+          "P_4": "The hexadecimal system - or hex for short - is commonly used by applications such as internet browsers.",
+          "P_5": "Instead of ${0}, the common notation is ${1} (or ${2}).",
+          "P_6": "These hex colour codes can distinguish between 256 different levels of red, green and blue each, resulting in over 16 million possible colours.",
+          "P_7": "You are now capable of reading and writing these hex codes."
+        }
+      }
+    },
+    "DONE": {
+      "PAGE_1": {
+        "TITLE": "That's all",
+        "P_1": "You did it. Good work!",
+        "P_2": "Thank you for taking the time to learn about hex codes.",
+        "P_3": "There's always more to learn.",
+        "P_4": "Are there any colours our screens can't show? Is blue darker than green? Why base-16?",
+        "P_5": "But you've learned so much already. This is as far as we'll go.",
+        "P_6": "Have fun!"
+      }
+    }
   },
   "system": { "localisation_missing": "{{TEXT MISSING}}" }
 }

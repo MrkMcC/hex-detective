@@ -1,27 +1,31 @@
 import Green from "../../../common/colour/text/Green";
 import Red from "../../../common/colour/text/Red";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutHexLetters1 = ({}: Props) => {
+const TutHexLetters1 = () => {
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>Something is bothering me about our new scale.</p>
       <p>
-        Some values take up more space than others, because they use two digits.
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_1/P_1</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_1/P_2</Localise>
       </p>
       <SimulationFrame>
         <p className="m-0 font-mono">
           <Green>0 1 2 3 4 5 6 7 8 9</Green> <Red>10 11 12 13 14 15</Red>
         </p>
       </SimulationFrame>
-      <p>A second digit? In this economy?</p>
       <p>
-        I'm sure you agree it would be better if we could count to 15 using only
-        one digit.
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_1/P_3</Localise>
       </p>
-      <p>Well, we can.</p>
+      <p>
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_1/P_4</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_1/P_5</Localise>
+      </p>
     </div>
   );
 };

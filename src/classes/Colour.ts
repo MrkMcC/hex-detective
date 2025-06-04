@@ -1,6 +1,7 @@
 import ColourFlavour from "../enum/ColourFlavour";
 import MathHelper from "../helper/MathHelper";
 import ColourService from "../services/ColourService";
+import LocalisationService from "../services/LocalisationService";
 import LogService from "../services/LogService";
 
 class Rgb<T> {
@@ -10,7 +11,7 @@ class Rgb<T> {
   blue: T;
   toString() {
     if (this.flavour == ColourFlavour.Hex)
-      return `#${this.red}${this.green}${this.blue}`;
+      return `#${this.red}${this.green}${this.blue}`.toUpperCase();
     else if (this.flavour == ColourFlavour.Int)
       return `(${this.red}, ${this.green}, ${this.blue})`;
     else return `(${this.red} ${this.green} ${this.blue})`;
@@ -41,7 +42,9 @@ class Colour {
       case ColourFlavour.Percentage:
         return this.percentage.toString();
       case ColourFlavour.Name:
-        return this.name ?? "";
+        return this.name
+          ? LocalisationService.GetLocalisedText(`COLOURS/${this.name}`)
+          : "";
       default:
         return "";
     }

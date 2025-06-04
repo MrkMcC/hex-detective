@@ -2,6 +2,7 @@ import Colour from "../../../classes/Colour";
 import CustomFlavour from "../../../classes/CustomFlavour";
 import ColourFlavour from "../../../enum/ColourFlavour";
 import BarChartOptionsT from "../../../types/components/BarChartOptionsT";
+import Localise from "../Localise";
 import Slider from "../Slider";
 import InteractIcon from "./InteractIcon";
 
@@ -94,7 +95,9 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
             </>
           ) : options.flavour === ColourFlavour.Name ? (
             <>
-              <span>{colour.name}</span>
+              <span>
+                <Localise>COLOURS/{colour.name ?? ""}</Localise>
+              </span>
             </>
           ) : (
             <>

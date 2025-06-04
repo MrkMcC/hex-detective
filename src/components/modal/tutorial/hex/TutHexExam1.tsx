@@ -1,37 +1,50 @@
 import Blue from "../../../common/colour/text/Blue";
 import Green from "../../../common/colour/text/Green";
 import Red from "../../../common/colour/text/Red";
+import Localise from "../../../common/Localise";
 
-interface Props {}
-
-const TutHexExam1 = ({}: Props) => {
+const TutHexExam1 = () => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>
-        The number system we have been using is known as the hexadecimal system.
-      </p>
-      <p>Hexa-decem is half greek, half latin and means 16.</p>
-      <p>
-        It's also known as "base 16", because of its 16 digits, while our
-        regular numeral system is base 10.
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_1</Localise>
       </p>
       <p>
-        The hexadecimal system - or hex for short - is commonly used by
-        applications such as internet browsers.
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_2</Localise>
       </p>
       <p>
-        Instead of (<Red>FF</Red>, <Green>FF</Green>, <Blue>FF</Blue>), the
-        common notation is #<Red>FF</Red>
-        <Green>FF</Green>
-        <Blue>FF</Blue> (or #<Red>ff</Red>
-        <Green>ff</Green>
-        <Blue>ff</Blue>).
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_3</Localise>
       </p>
       <p>
-        These hex colour codes can distinguish between 256 different levels of
-        red, green and blue each, resulting in over 16 million possible colours.
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_4</Localise>
       </p>
-      <p>You are now capable of reading and writing these hex codes.</p>
+      <p>
+        <Localise
+          placeholders={[
+            <>
+              (<Red>FF</Red>, <Green>FF</Green>, <Blue>FF</Blue>)
+            </>,
+            <>
+              #<Red>FF</Red>
+              <Green>FF</Green>
+              <Blue>FF</Blue>
+            </>,
+            <>
+              #<Red>ff</Red>
+              <Green>ff</Green>
+              <Blue>ff</Blue>
+            </>,
+          ]}
+        >
+          TUTORIAL/HEX/EXAM/PAGE_1/P_5
+        </Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_6</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_7</Localise>
+      </p>
     </div>
   );
 };

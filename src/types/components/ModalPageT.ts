@@ -7,7 +7,7 @@ type DialogOptionT = {
 };
 
 type ModalPageT = {
-  title: string;
+  title: ReactNode;
   body: ReactNode;
   allowClose?: boolean;
   dialogOptions?: DialogOptionT[];

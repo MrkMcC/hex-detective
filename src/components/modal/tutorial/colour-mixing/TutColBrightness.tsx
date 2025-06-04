@@ -1,10 +1,9 @@
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 
-interface Props {}
-
-const TutColBrightness = ({}: Props) => {
+const TutColBrightness = () => {
   const redShadesOptions = {
     showLetterR: true,
     flavour: ColourFlavour.Percentage,
@@ -15,9 +14,15 @@ const TutColBrightness = ({}: Props) => {
       className="tutorial font-sans-serif text-center"
       style={ColourService.RandomBorderColourStyle()}
     >
-      <p>Colours are made of light. More colour, more light!</p>
-      <p>They have up to 100% red, green or blue.</p>
-      <p>100% is the brightest. 25% is pretty dark.</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/BRIGHTNESS/PAGE_1/P_1</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/BRIGHTNESS/PAGE_1/P_2</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/BRIGHTNESS/PAGE_1/P_3</Localise>
+      </p>
       <div className="flex-col gap-1 wrap justify-space-around ">
         <div className="flex-row wrap justify-center ">
           <BarChart

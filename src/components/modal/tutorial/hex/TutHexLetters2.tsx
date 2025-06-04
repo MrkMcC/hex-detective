@@ -2,11 +2,10 @@ import { useState } from "react";
 import Colour from "../../../../classes/Colour";
 import CustomFlavour from "../../../../classes/CustomFlavour";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutHexLetters2 = ({}: Props) => {
+const TutHexLetters2 = () => {
   const [colour, setColour] = useState(new Colour(119, 204, 255));
 
   const editableOptions = {
@@ -22,11 +21,15 @@ const TutHexLetters2 = ({}: Props) => {
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>Let's borrow a few letters from the alphabet.</p>
+      <p>
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_2/P_1</Localise>
+      </p>
       <SimulationFrame>
         <p className="m-0 font-mono">0 1 2 3 4 5 6 7 8 9 A B C D E F</p>
       </SimulationFrame>
-      <p>We'll just call it A instead of 10, B instead of 11, and so on.</p>
+      <p>
+        <Localise>TUTORIAL/HEX/LETTERS/PAGE_2/P_2</Localise>
+      </p>
       <div className="flex-row gap-1 justify-center align-start">
         <SimulationFrame>
           <div className="flex-col">
@@ -35,7 +38,9 @@ const TutHexLetters2 = ({}: Props) => {
               options={editableOptions}
               onChange={setColour}
             />
-            <p className="mb-0">Efficient.</p>
+            <p className="mb-0">
+              <Localise>TUTORIAL/HEX/LETTERS/PAGE_2/P_3</Localise>
+            </p>
           </div>
         </SimulationFrame>
         <SimulationFrame>

@@ -4,11 +4,10 @@ import CustomFlavour from "../../../../classes/CustomFlavour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import BarChart from "../../../common/colour/BarChart";
 import Green from "../../../common/colour/text/Green";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutHexDoubleDigits1 = ({}: Props) => {
+const TutHexDoubleDigits1 = () => {
   const initialColour = new Colour(240, 128, 43);
   const toOldScale = (colour: Colour) => {
     const transform = (int: number) => Math.round(int / 17) * 17;
@@ -45,8 +44,7 @@ const TutHexDoubleDigits1 = ({}: Props) => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>
-        Good news! All your hard work made the economy go up. We can afford a
-        second digit now.
+        <Localise>TUTORIAL/HEX/DOUBLEDIGITS/PAGE_1/P_1</Localise>
       </p>
       <div className="flex-col gap-1">
         <div className="flex-row justify-center ">
@@ -74,9 +72,7 @@ const TutHexDoubleDigits1 = ({}: Props) => {
                 />
               </div>
               <p>
-                The first digit does the same as before,
-                <br />
-                the second digit allows more fine tuning.
+                <Localise>TUTORIAL/HEX/DOUBLEDIGITS/PAGE_1/P_2</Localise>
               </p>
             </div>
           </SimulationFrame>

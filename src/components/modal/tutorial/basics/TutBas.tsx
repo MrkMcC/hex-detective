@@ -2,12 +2,11 @@ import { useState } from "react";
 import PersonData from "../../../../classes/PersonData";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourPresets from "../../../../helper/ColourPresets";
+import Localise from "../../../common/Localise";
 import SuspectInfo from "../../../control-panel/SuspectInfo";
 import Person from "../../../Person";
 import SimulationFrame from "../SimulationFrame";
 import TutorialTask from "../TutorialTask";
-
-interface Props {}
 
 const suspect = new PersonData(
   ColourPresets.Red,
@@ -17,14 +16,16 @@ const suspect = new PersonData(
 );
 suspect.variations = { hat: 1, eyes: 3, mouth: 9, shirt: 1, pants: 1 };
 
-const TutBasScoring = ({}: Props) => {
+const TutBasScoring = () => {
   const [hasSelectedSuspect, setHasSelectedSuspect] = useState(false);
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>The goal is to find people by the colour of their clothes.</p>
+      <p>
+        <Localise>TUTORIAL/BASICS/SCORING/PAGE_1/P_1_GOAL</Localise>
+      </p>
       <TutorialTask completed={hasSelectedSuspect}>
-        Read the description of the suspect, then click on them.
+        <Localise>TUTORIAL/BASICS/SCORING/PAGE_1/P_2_TASK</Localise>
       </TutorialTask>
       <div className="flex-row justify-center">
         <SimulationFrame>

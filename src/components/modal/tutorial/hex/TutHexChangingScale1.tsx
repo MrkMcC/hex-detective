@@ -1,19 +1,23 @@
-interface Props {}
+import Localise from "../../../common/Localise";
 
-const TutHexChangingScale1 = ({}: Props) => {
+const TutHexChangingScale1 = () => {
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>So far, we've been describing RGB values on a scale from 0 to 100.</p>
-      <p>But there's no reason why it has to be 100.</p>
       <p>
-        We could use a larger number, dividing our RGB scale into more steps. Or
-        maybe...
+        <Localise>TUTORIAL/HEX/SCALE/PAGE_1/P_1</Localise>
       </p>
       <p>
-        Yes, that's it! We'll use a smaller scale. That'll make things much
-        easier!
+        <Localise>TUTORIAL/HEX/SCALE/PAGE_1/P_2</Localise>
       </p>
-      <p>Let's take a scale from 0 to...</p>
+      <p>
+        <Localise>TUTORIAL/HEX/SCALE/PAGE_1/P_3</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/SCALE/PAGE_1/P_4</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/HEX/SCALE/PAGE_1/P_5</Localise>
+      </p>
     </div>
   );
 };

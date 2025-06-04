@@ -2,11 +2,10 @@ import { useState } from "react";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutColExam1 = ({}: Props) => {
+const TutColExam1 = () => {
   const [colour, setColour] = useState(ColourService.RandomColour());
 
   const editableOptions = {
@@ -16,7 +15,9 @@ const TutColExam1 = ({}: Props) => {
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>This concludes the tutorial on colour theory.</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/EXAM/PAGE_1/P_1</Localise>
+      </p>
       <div className="flex-row wrap gap-1 justify-center ">
         <SimulationFrame>
           <div className="flex-col gap-1 justify-center align-center">
@@ -26,13 +27,14 @@ const TutColExam1 = ({}: Props) => {
               onChange={setColour}
             />
             <p className="m-0">
-              Here's another chart to play around with. No restrictions this
-              time.
+              <Localise>TUTORIAL/COLOURS/EXAM/PAGE_1/P_2</Localise>
             </p>
           </div>
         </SimulationFrame>
       </div>
-      <p>But before we move on to hex codes...</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/EXAM/PAGE_1/P_3</Localise>
+      </p>
     </div>
   );
 };

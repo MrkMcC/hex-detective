@@ -1,10 +1,9 @@
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import ColourService from "../../../../services/ColourService";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 
-interface Props {}
-
-const TutColSaturation2 = ({}: Props) => {
+const TutColSaturation2 = () => {
   const greyOptions = {
     flavour: ColourFlavour.Percentage,
   };
@@ -12,8 +11,7 @@ const TutColSaturation2 = ({}: Props) => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>
-        The closer the three values are to each other, the less 'saturated' the
-        colour is.
+        <Localise>TUTORIAL/COLOURS/SATURATION/PAGE_2/P_1</Localise>
       </p>
       <div className="flex-row gap-1 wrap justify-center ">
         <BarChart
@@ -28,10 +26,9 @@ const TutColSaturation2 = ({}: Props) => {
           colour={ColourService.ColourFromHex("80809a")}
           options={greyOptions}
         />
-      </div>
+      </div>{" "}
       <p>
-        The larger the gap between the lowest and highest value, the higher the
-        saturation:
+        <Localise>TUTORIAL/COLOURS/SATURATION/PAGE_2/P_2</Localise>
       </p>
       <div className="flex-row gap-1 wrap justify-center ">
         <BarChart
@@ -48,8 +45,7 @@ const TutColSaturation2 = ({}: Props) => {
         />
       </div>
       <p>
-        Low saturation makes a colour greyish. High saturation means the colour
-        is more intense.
+        <Localise>TUTORIAL/COLOURS/SATURATION/PAGE_2/P_3</Localise>
       </p>
     </div>
   );

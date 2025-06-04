@@ -2,6 +2,7 @@ import { useState } from "react";
 import HexDetectiveEvent from "../../enum/HexDetectiveEvent";
 import EventService from "../../services/EventService";
 import ModalPageT from "../../types/components/ModalPageT";
+import Localise from "../common/Localise";
 import ModalButton from "./common/ModalButton";
 
 interface Props {
@@ -58,17 +59,23 @@ const ModalContent = ({ heading = "", pages, onClose }: Props) => {
       <div className={`modal-footer`}>
         {multiPage && (
           <ModalButton onClick={handlePrevious} disabled={pageIndex <= 0}>
-            Previous Page
+            <Localise>MODAL/BTN_PAGE_PREV</Localise>
           </ModalButton>
         )}
         {dialogButtonElements}
         {isLastPage && currentPage.allowClose !== false && (
           <ModalButton onClick={onClose}>
-            {multiPage ? "Close" : "OK"}
+            {multiPage ? (
+              <Localise>MODAL/BTN_CLOSE</Localise>
+            ) : (
+              <Localise>MODAL/BTN_OK</Localise>
+            )}
           </ModalButton>
         )}
         {!isLastPage && (
-          <ModalButton onClick={handleNext}>Next Page</ModalButton>
+          <ModalButton onClick={handleNext}>
+            <Localise>MODAL/BTN_PAGE_NEXT</Localise>
+          </ModalButton>
         )}
       </div>
     </>

@@ -6,11 +6,10 @@ import Blue from "../../../common/colour/text/Blue";
 import ColouredText from "../../../common/colour/text/ColouredText";
 import Green from "../../../common/colour/text/Green";
 import Red from "../../../common/colour/text/Red";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutColComplementary1 = ({}: Props) => {
+const TutColComplementary1 = () => {
   const exampleColour = ColourService.ColourFromHex("80e565");
 
   const legendOptions = {
@@ -26,41 +25,80 @@ const TutColComplementary1 = ({}: Props) => {
       style={ColourService.RandomBorderColourStyle()}
     >
       <p>
-        The human eye can only see <Red>Red</Red>, <Green>Green</Green> and{" "}
-        <Blue>Blue</Blue>, or <Red>R</Red>
-        <Green>G</Green>
-        <Blue>B</Blue> for short.
+        <Localise
+          placeholders={[
+            <Red key="red">
+              <Localise>COLOURS/RED</Localise>
+            </Red>,
+            <Green key="green">
+              <Localise>COLOURS/GREEN</Localise>
+            </Green>,
+            <Blue key="blue">
+              <Localise>COLOURS/BLUE</Localise>
+            </Blue>,
+            <>
+              <Red>R</Red>
+              <Green>G</Green>
+              <Blue>B</Blue>
+            </>,
+          ]}
+        >
+          TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/P_1_RGB
+        </Localise>
       </p>
-      <p>All other colours are a mix of these primary colours.</p>
-      <p>#HexDetective uses this RGB chart to visualise colour mixing:</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/P_2</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/P_3</Localise>
+      </p>
       <div className="flex-row justify-center">
         <SimulationFrame>
           <div className="tutorial-chart-legend flex-col justify-between align-end">
             <p>
-              Amount of R/G/B <FaArrowRightLong className="icon" />
-            </p>
-            <p>
-              Bar chart
+              <Localise>
+                TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/LBL_AMOUNTS
+              </Localise>
               <FaArrowRightLong className="icon" />
             </p>
             <p>
-              Resulting Colour <FaArrowRightLong className="icon" />
+              <Localise>
+                TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/LBL_BAR_CHART
+              </Localise>
+              <FaArrowRightLong className="icon" />
+            </p>
+            <p>
+              <Localise>
+                TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/LBL_RESULT
+              </Localise>
+              <FaArrowRightLong className="icon" />
             </p>
           </div>
           <BarChart colour={exampleColour} options={legendOptions} />
         </SimulationFrame>
       </div>
       <p>
-        This colour looks{" "}
-        <ColouredText colour={exampleColour} strong={true}>
-          greenish
-        </ColouredText>
-        , because it has a lot more <Green>green</Green> in it than{" "}
-        <Red>red</Red> or <Blue>blue</Blue>.
+        <Localise
+          placeholders={[
+            <ColouredText colour={exampleColour} strong={true}>
+              greenish
+            </ColouredText>,
+            <Green>
+              <Localise>COLOURS/GREEN</Localise>
+            </Green>,
+            <Red>
+              <Localise>COLOURS/Red</Localise>
+            </Red>,
+            <Blue>
+              <Localise>COLOURS/Blue</Localise>
+            </Blue>,
+          ]}
+        >
+          TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/P_4_GREENISH
+        </Localise>
       </p>
       <p>
-        Take a moment to familiarise yourself with the chart. You'll see it a
-        lot.
+        <Localise>TUTORIAL/COLOURS/COMPLEMENTARY/PAGE_1/P_5</Localise>
       </p>
     </div>
   );

@@ -1,19 +1,22 @@
 import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import BarChart from "../../../common/colour/BarChart";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 
-interface Props {}
-
-const TutColImbalance1 = ({}: Props) => {
+const TutColImbalance1 = () => {
   const percentageOptions = {
     flavour: ColourFlavour.Percentage,
   };
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>So far, we've only worked with primary and secondary colours.</p>
-      <p>But what if all three values are different?</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_1/P_1</Localise>
+      </p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_1/P_2</Localise>
+      </p>
       <div className="flex-row justify-center ">
         <SimulationFrame>
           <div className="flex-col">
@@ -32,10 +35,10 @@ const TutColImbalance1 = ({}: Props) => {
               />
             </div>
             <p className="mb-0">
-              We see the dominant colour coming through in the result.
+              <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_1/P_3</Localise>
               <br />
               <p className="mb-0">
-                But there is a hint of secondary colour in there.
+                <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_1/P_4</Localise>
               </p>
             </p>
           </div>

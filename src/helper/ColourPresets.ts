@@ -31,9 +31,9 @@ const ColourPresets = {
     BluePerc50: new Colour(0, 0, 128, "50% blue"),
     BluePerc25: new Colour(0, 0, 64, "25% blue"),
 
-    RedAndGreen: new Colour(255, 255, 0, "a mix of red and green"),
-    GreenAndBlue: new Colour(0, 255, 255, "a mix of green and blue"),
-    BlueAndRed: new Colour(255, 0, 255, "a mix of blue and red"),
+    RedAndGreen: new Colour(255, 255, 0, "MIX_RED_GREEN"),
+    GreenAndBlue: new Colour(0, 255, 255, "MIX_GREEN_BLUE"),
+    BlueAndRed: new Colour(255, 0, 255, "MIX_BLUE_RED"),
 
     YellowPerc50: new Colour(128, 128, 0, "50% red, 50% green"),
     CyanPerc50: new Colour(0, 128, 128, "50% green, 50% blue"),

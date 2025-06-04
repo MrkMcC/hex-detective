@@ -3,12 +3,11 @@ import Colour from "../../../../classes/Colour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
 import BarChart from "../../../common/colour/BarChart";
 import Red from "../../../common/colour/text/Red";
+import Localise from "../../../common/Localise";
 import SimulationFrame from "../SimulationFrame";
 import TutorialColourTask from "../TutorialColourTask";
 
-interface Props {}
-
-const TutColImbalance2 = ({}: Props) => {
+const TutColImbalance2 = () => {
   const [colour, setColour] = useState(new Colour(64, 128, 192));
   const [taskOne, setTaskOne] = useState(false);
   const [taskTwo, setTaskTwo] = useState(false);
@@ -37,7 +36,9 @@ const TutColImbalance2 = ({}: Props) => {
 
   return (
     <div className="tutorial font-sans-serif text-center">
-      <p>Let's see what happens to (50% 50% 0%) if we add more red.</p>
+      <p>
+        <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_2/P_1</Localise>
+      </p>
       <div className="flex-row justify-center">
         <SimulationFrame>
           <div className="flex-col">
@@ -56,15 +57,15 @@ const TutColImbalance2 = ({}: Props) => {
               />
             </div>
             <p className="mb-0">
-              As <Red strong={false}>R</Red> increases, the result becomes
-              redder and brighter.
+              <Localise placeholders={[<Red strong={false}>R</Red>]}>
+                TUTORIAL/COLOURS/IMBALANCE/PAGE_2/P_2
+              </Localise>
             </p>
           </div>
         </SimulationFrame>
       </div>
       <p>
-        Here's an interactive chart to play around with. Try to match the
-        colours in the circles.
+        <Localise>TUTORIAL/COLOURS/IMBALANCE/PAGE_2/P_3</Localise>
       </p>
       <div className="flex-row wrap gap-1 justify-center ">
         <SimulationFrame>
