@@ -2,6 +2,7 @@ import { useState } from "react";
 import Colour from "../../../../classes/Colour";
 import CustomFlavour from "../../../../classes/CustomFlavour";
 import ColourFlavour from "../../../../enum/ColourFlavour";
+import LocalisationService from "../../../../services/LocalisationService";
 import BarChart from "../../../common/colour/BarChart";
 import Green from "../../../common/colour/text/Green";
 import Localise from "../../../common/Localise";
@@ -60,12 +61,16 @@ const TutHexDoubleDigits1 = () => {
             <div className="flex-col align-center">
               <div className="flex-row gap-1">
                 <BarChart
-                  name="old scale"
+                  name={LocalisationService.GetLocalisedText(
+                    "TUTORIAL/HEX/DOUBLEDIGITS/PAGE_1/LBL_OLD_SCALE"
+                  )}
                   colour={oldScaleColour}
                   options={oldScaleOptions}
                 />
                 <BarChart
-                  name="new scale"
+                  name={LocalisationService.GetLocalisedText(
+                    "TUTORIAL/HEX/DOUBLEDIGITS/PAGE_1/LBL_NEW_SCALE"
+                  )}
                   colour={colour}
                   options={newScaleOptions}
                   onChange={handleSetColour}

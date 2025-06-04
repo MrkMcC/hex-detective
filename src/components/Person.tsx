@@ -3,6 +3,7 @@ import Hat from "./body/Hat";
 import Head from "./body/Head";
 import Pants from "./body/Pants";
 import Shirt from "./body/Shirt";
+import Localise from "./common/Localise";
 
 interface Props {
   person: PersonData;
@@ -47,7 +48,7 @@ const Person = ({
             {isAccused && !isRevealedSuspect && "accused"}
           </div>
           <div className="suspect-overlay text-center text-contrast">
-            suspect
+            <Localise>PERSON/SUSPECT</Localise>
           </div>
         </div>
         <div className={`body`}>

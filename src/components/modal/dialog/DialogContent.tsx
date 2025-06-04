@@ -1,5 +1,6 @@
 import HexDetectiveEvent from "../../../enum/HexDetectiveEvent";
 import DialogIndex from "../../../enum/modal/DialogIndex";
+import LocalisationService from "../../../services/LocalisationService";
 import ModalPageT from "../../../types/components/ModalPageT";
 import ModalContent from "../ModalContent";
 import BackToMenu from "./BackToMenu";
@@ -16,16 +17,20 @@ const DialogContent = ({ index, onClose }: Props) => {
     default:
       pages = [
         {
-          title: "Back to Main Menu",
+          title: LocalisationService.GetLocalisedText("MODAL/QUIT/TITLE"),
           body: <BackToMenu />,
           allowClose: false,
           dialogOptions: [
             {
-              buttonText: "No, keep playing",
+              buttonText: LocalisationService.GetLocalisedText(
+                "MODAL/QUIT/BTN_CANCEL"
+              ),
               event: HexDetectiveEvent.CloseModal,
             },
             {
-              buttonText: "Yes, quit",
+              buttonText: LocalisationService.GetLocalisedText(
+                "MODAL/QUIT/BTN_CONFIRM"
+              ),
               event: HexDetectiveEvent.BackToMenu,
             },
           ],

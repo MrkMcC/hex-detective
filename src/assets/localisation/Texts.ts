@@ -5,11 +5,11 @@ type LocalisationNodeT = {
 };
 
 type LocalisationSystemNodeT = LocalisationNodeT & {
-  localisation_missing: string;
+  LOCALISATION_MISSING: string;
 };
 
 type LocalisationRootT = LocalisationNodeT & {
-  system: LocalisationSystemNodeT;
+  SYSTEM: LocalisationSystemNodeT;
 };
 
 const Texts: { [locale: string]: LocalisationRootT } = {

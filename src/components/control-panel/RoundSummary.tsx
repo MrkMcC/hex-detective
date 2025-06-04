@@ -2,6 +2,7 @@ import { BsIncognito } from "react-icons/bs";
 import { FaEyeSlash, FaXmark } from "react-icons/fa6";
 import PersonData from "../../classes/PersonData";
 import ColourFlavour from "../../enum/ColourFlavour";
+import LocalisationService from "../../services/LocalisationService";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import BarChart from "../common/colour/BarChart";
 import Localise from "../common/Localise";
@@ -50,17 +51,17 @@ const RoundSummary = ({
             </div>
             <div className="breakdown-charts flex-col gap-1">
               <BarChart
-                name="hat"
+                name={LocalisationService.GetLocalisedText("PERSON/HAT")}
                 colour={accused.colours.hat}
                 options={barChartOptions}
               />
               <BarChart
-                name="shirt"
+                name={LocalisationService.GetLocalisedText("PERSON/SHIRT")}
                 colour={accused.colours.shirt}
                 options={barChartOptions}
               />
               <BarChart
-                name="pants"
+                name={LocalisationService.GetLocalisedText("PERSON/PANTS")}
                 colour={accused.colours.pants}
                 options={barChartOptions}
               />
@@ -70,17 +71,17 @@ const RoundSummary = ({
         <div className="person-breakdown suspect-breakdown">
           <div className="breakdown-charts flex-col gap-1">
             <BarChart
-              name="hat"
+              name={LocalisationService.GetLocalisedText("PERSON/HAT")}
               colour={suspect.colours.hat}
               options={barChartOptions}
             />
             <BarChart
-              name="shirt"
+              name={LocalisationService.GetLocalisedText("PERSON/SHIRT")}
               colour={suspect.colours.shirt}
               options={barChartOptions}
             />
             <BarChart
-              name="pants"
+              name={LocalisationService.GetLocalisedText("PERSON/PANTS")}
               colour={suspect.colours.pants}
               options={barChartOptions}
             />

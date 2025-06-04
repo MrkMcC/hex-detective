@@ -68,8 +68,12 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
         </>
       ) : (
         <>
-          <h3>The dress code determines the game's difficulty.</h3>
-          <p>Select one to see more information.</p>
+          <h3>
+            <Localise>MAIN/BREAKDOWN/DESCRIPTION_DRESS_CODE</Localise>
+          </h3>
+          <p>
+            <Localise>MAIN/BREAKDOWN/P_SELECT_DRESS_CODE</Localise>
+          </p>
         </>
       )}
     </FunkyPanel>

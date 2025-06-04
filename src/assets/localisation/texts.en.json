@@ -13,26 +13,40 @@
     "MIX_GREEN_BLUE": "a mix of green and blue",
     "MIX_BLUE_RED": "a mix of blue and red"
   },
+  "PERSON": {
+    "HAT": "hat",
+    "SHIRT": "shirt",
+    "PANTS": "pants",
+    "SUSPECT": "suspect"
+  },
   "MODAL": {
     "BTN_CLOSE": "Close",
     "BTN_OK": "OK",
     "BTN_PAGE_PREV": "Previous Page",
-    "BTN_PAGE_NEXT": "Next Page"
+    "BTN_PAGE_NEXT": "Next Page",
+    "QUIT": {
+      "TITLE": "Back to Main Menu",
+      "CONTENT": "You are about to quit the game. Your current progress will be lost.",
+      "BTN_CANCEL": "No, keep playing",
+      "BTN_CONFIRM": "Yes, quit"
+    }
   },
-  "main": {
-    "navigation": {
-      "header_dress_code": "Dress Code",
-      "btn_new_game": "New Game",
-      "btn_tutorial": "Tutorial",
-      "btn_back": "Back",
-      "btn_start": "Start"
+  "MAIN": {
+    "NAVIGATION": {
+      "HEADER_DRESS_CODE": "Dress Code",
+      "BTN_NEW_GAME": "New Game",
+      "BTN_TUTORIAL": "Tutorial",
+      "BTN_BACK": "Back",
+      "BTN_START": "Start"
     },
-    "breakdown": {
-      "lbl_bias_hue": "Hue Bias",
-      "lbl_bias_saturation": "Saturation Range",
-      "lbl_bias_value": "Value Range",
-      "lbl_crowd_size_initial": "Crowd Size - initial",
-      "lbl_crowd_size_increment": "Crowd Size - Increase per round"
+    "BREAKDOWN": {
+      "DESCRIPTION_DRESS_CODE": "The dress code determines the game's difficulty.",
+      "P_SELECT_DRESS_CODE": "Select one to see more information.",
+      "LBL_BIAS_HUE": "Hue Bias",
+      "LBL_BIAS_SATURATION": "Saturation Range",
+      "LBL_BIAS_VALUE": "Value Range",
+      "LBL_CROWD_SIZE_INITIAL": "Crowd Size - initial",
+      "LBL_CROWD_SIZE_INCREMENT": "Crowd Size - Increase per round"
     }
   },
   "CONTROLBAR": {
@@ -74,29 +88,29 @@
       "BTN_RESET": "Reset\nruled out"
     }
   },
-  "difficulty": {
-    "easiest": {
-      "name": "Neon",
-      "description": "strongly biased in your favour - the suspect should stand out"
+  "DIFFICULTY": {
+    "EASIEST": {
+      "NAME": "Neon",
+      "DESCRIPTION": "strongly biased in your favour - the suspect should stand out"
     },
-    "easy": {
-      "name": "Fruity",
-      "description": "biased in your favour - brighter, more colourful, more distinct"
+    "EASY": {
+      "NAME": "Fruity",
+      "DESCRIPTION": "biased in your favour - brighter, more colourful, more distinct"
     },
-    "normal": {
-      "name": "Casual",
-      "description": "baseline difficulty - completely random"
+    "NORMAL": {
+      "NAME": "Casual",
+      "DESCRIPTION": "baseline difficulty - completely random"
     },
-    "hard": {
-      "name": "Uniform",
-      "description": "Oh no, they all dressed alike!"
+    "HARD": {
+      "NAME": "Uniform",
+      "DESCRIPTION": "Oh no, they all dressed alike!"
     },
-    "hardest": {
-      "name": "Dystopian",
-      "description": "They all look suspicious if you ask me."
+    "HARDEST": {
+      "NAME": "Dystopian",
+      "DESCRIPTION": "They all look suspicious if you ask me."
     },
-    "custom": { "name": "Custom", "description": "Mix and match" },
-    "tutorial": { "name": "Tutorial", "description": "Learn how to play" }
+    "CUSTOM": { "NAME": "Custom", "DESCRIPTION": "Mix and match" },
+    "TUTORIAL": { "NAME": "Tutorial", "DESCRIPTION": "Learn how to play" }
   },
   "TUTORIAL": {
     "NAVIGATION": {
@@ -283,5 +297,5 @@
       }
     }
   },
-  "system": { "localisation_missing": "{{TEXT MISSING}}" }
+  "SYSTEM": { "LOCALISATION_MISSING": "{{TEXT MISSING}}" }
 }

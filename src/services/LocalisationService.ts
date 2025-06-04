@@ -15,7 +15,6 @@ const getPropertyCaseInsensitive = (node: LocalisationNodeT, prop: string) => {
 };
 
 const getLocalisedText = (key: string) => {
-  // if (key.startsWith("DIFFICULTY")) debugger;
   key = key.toUpperCase();
   const keyParts = key.split("/");
   let currentNode: LocalisationNodeT = activeLocalisation;
@@ -42,7 +41,8 @@ const getLocalisedText = (key: string) => {
     `Text not found: ${key} (locale: ${currentLocale})`
   );
   if (Constants.DEBUG.MISSING_TEXTS_AS_KEYS) return key;
-  return activeLocalisation.system.localisation_missing;
+  return "_";
+  return activeLocalisation.SYSTEM.LOCALISATION_MISSING;
 };
 
 /**A placeholder for possible upcoming localisation */
