@@ -5,6 +5,7 @@ import ControlAction from "../../enum/ControlAction";
 import GameStatus from "../../enum/GameStatus";
 import SessionDataT from "../../types/SessionDataT";
 import AutoButton from "../common/AutoButton";
+import Localise from "../common/Localise";
 import Switch from "../common/Switch";
 
 interface Props {
@@ -38,7 +39,11 @@ const RoundNavigation = ({
         }`}
         onClick={() => onControlAction(ControlAction.Restart)}
       >
-        {sessionData.tutorialProgress === null ? "Play again " : "Try again "}
+        {sessionData.tutorialProgress === null ? (
+          <Localise>CONTROLBAR/NAVIGATION/BTN_PLAY_AGAIN</Localise>
+        ) : (
+          <Localise>CONTROLBAR/NAVIGATION/BTN_TRY_AGAIN</Localise>
+        )}{" "}
         <FaRepeat className="icon" />
       </button>
       <AutoButton
@@ -56,7 +61,8 @@ const RoundNavigation = ({
             : undefined
         }
       >
-        Continue <FaCircleArrowRight className="icon" />
+        <Localise>CONTROLBAR/NAVIGATION/BTN_CONTINUE</Localise>{" "}
+        <FaCircleArrowRight className="icon" />
       </AutoButton>
 
       <div className="area-auto-continue">
@@ -65,7 +71,9 @@ const RoundNavigation = ({
           value={settings.parameters.autoContinue}
           onChange={handleChangeAutoContinue}
         />
-        <label htmlFor={switchId}>auto continue</label>
+        <label htmlFor={switchId}>
+          <Localise>CONTROLBAR/NAVIGATION/LBL_AUTO_CONTINUE</Localise>
+        </label>
       </div>
     </div>
   );

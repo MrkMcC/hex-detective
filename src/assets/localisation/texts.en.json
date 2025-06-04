@@ -15,6 +15,45 @@
       "lbl_crowd_size_increment": "Crowd Size - Increase per round"
     }
   },
+  "CONTROLBAR": {
+    "NAVIGATION": {
+      "BTN_QUIT": "Back to Menu",
+      "BTN_CONTINUE": "Continue",
+      "BTN_PLAY_AGAIN": "Play again",
+      "BTN_TRY_AGAIN": "Try again",
+      "LBL_AUTO_CONTINUE": "auto continue"
+    },
+    "SESSIONINFO": {
+      "LBL_SCORE": "Score:",
+      "LBL_LIVES": "Lives:",
+      "LBL_DIFFICULTY": "Difficulty:",
+      "LBL_CROWD_SIZE": "Crowd Size:",
+      "LBL_HIDDEN_RULED_OUT": "Hidden / Ruled Out:"
+    },
+    "SUSPECTINFO": {
+      "STATUS_IN_PROGRESS": "Find the suspect",
+      "STATUS_SCORED": "Correct",
+      "STATUS_FAILED": "Incorrect",
+      "STATUS_GAME_OVER": "Game Over",
+      "DESCRIPTION_HAT": "their hat is",
+      "DESCRIPTION_SHIRT": "their shirt is",
+      "DESCRIPTION_PANTS": "their pants are"
+    },
+    "ROUNDSUMMARY": {
+      "LBL_ACCUSED": "accused",
+      "LBL_SUSPECT": "suspect",
+      "LBL_RULED_OUT": "ruled out",
+      "LBL_HIDDEN": "hidden"
+    },
+    "RULEOUT": {
+      "LBL_SELECTION_MODE": "Selection Mode",
+      "BTN_RULE_OUT": "Rule out",
+      "BTN_ACCUSE": "ACCUSE",
+      "BTN_HIDE": "Hide\nruled out",
+      "BTN_UNHIDE": "Unhide\nruled out",
+      "BTN_RESET": "Reset\nruled out"
+    }
+  },
   "difficulty": {
     "easiest": {
       "name": "Neon",

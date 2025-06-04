@@ -118,7 +118,7 @@ function App() {
   };
 
   return (
-    <div className="app-wrapper">
+    <div className="app-wrapper respect-linebreaks">
       <Modal />
       {status === GameStatus.Setup ? (
         <MainMenu

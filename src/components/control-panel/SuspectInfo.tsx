@@ -5,6 +5,7 @@ import PersonData from "../../classes/PersonData";
 import Constants from "../../Constants";
 import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
+import Localise from "../common/Localise";
 import SuspectInfoColour from "./SuspectInfoColour";
 
 interface Props {
@@ -56,7 +57,9 @@ const SuspectInfo = ({ suspect, options }: Props) => {
         <>
           <div className="flex-row justify-between">
             <span className="grow flex-row justify-between">
-              <span className="description-text hat">their hat is </span>
+              <span className="description-text hat">
+                <Localise>CONTROLBAR/SUSPECTINFO/DESCRIPTION_HAT</Localise>
+              </span>
               <SuspectInfoColour
                 flavour={options.flavour!}
                 colour={suspect.colours.hat}
@@ -67,7 +70,9 @@ const SuspectInfo = ({ suspect, options }: Props) => {
           </div>
           <div className="flex-row justify-between">
             <span className="grow flex-row justify-between">
-              <span className="description-text shirt">their shirt is </span>
+              <span className="description-text shirt">
+                <Localise>CONTROLBAR/SUSPECTINFO/DESCRIPTION_SHIRT</Localise>
+              </span>
               <SuspectInfoColour
                 flavour={options.flavour!}
                 colour={suspect.colours.shirt}
@@ -78,7 +83,9 @@ const SuspectInfo = ({ suspect, options }: Props) => {
           </div>
           <div className="flex-row justify-between">
             <span className="grow flex-row justify-between">
-              <span className="description-text pants">their pants are </span>
+              <span className="description-text pants">
+                <Localise>CONTROLBAR/SUSPECTINFO/DESCRIPTION_PANTS</Localise>
+              </span>
               <SuspectInfoColour
                 flavour={options.flavour!}
                 colour={suspect.colours.pants}

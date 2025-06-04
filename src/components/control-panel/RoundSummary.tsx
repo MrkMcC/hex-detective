@@ -4,6 +4,7 @@ import PersonData from "../../classes/PersonData";
 import ColourFlavour from "../../enum/ColourFlavour";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import BarChart from "../common/colour/BarChart";
+import Localise from "../common/Localise";
 import Person from "../Person";
 import Collapsor from "./Collapsor";
 
@@ -40,7 +41,9 @@ const RoundSummary = ({
             <div className="role-breakdown">
               <div className="role-header flex-col align-center">
                 <FaXmark className="icon color-red" />
-                <div className="person-role">accused</div>
+                <div className="person-role">
+                  <Localise>CONTROLBAR/ROUNDSUMMARY/LBL_ACCUSED</Localise>
+                </div>
               </div>
               <Person person={accused} />
               <div className="tag-breakdown" />
@@ -85,20 +88,26 @@ const RoundSummary = ({
           <div className="role-breakdown">
             <div className="role-header flex-col align-center">
               <BsIncognito className="icon color-grey" />
-              <div className="person-role text-center">suspect</div>
+              <div className="person-role text-center">
+                <Localise>CONTROLBAR/ROUNDSUMMARY/LBL_SUSPECT</Localise>
+              </div>
             </div>
             <Person person={{ ...suspect, ruledOut: false, hidden: false }} />
             <div className="tag-breakdown color-grey">
               {suspect.hidden ? (
                 <>
                   <FaEyeSlash className="icon" />
-                  <span>hidden</span>
+                  <span>
+                    <Localise>CONTROLBAR/ROUNDSUMMARY/LBL_HIDDEN</Localise>
+                  </span>
                 </>
               ) : (
                 suspect.ruledOut && (
                   <>
                     <FaXmark className="icon" />
-                    <span>ruled out</span>
+                    <span>
+                      <Localise>CONTROLBAR/ROUNDSUMMARY/LBL_RULED_OUT</Localise>
+                    </span>
                   </>
                 )
               )}

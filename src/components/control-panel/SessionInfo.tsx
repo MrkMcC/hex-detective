@@ -18,18 +18,26 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
 
   return (
     <div className="session-info">
-      <p>Score: {sessionData.roundsWon}</p>
       <p>
-        Lives: {sessionData.lives >= 1 ? "O" : "X"}{" "}
+        <Localise>CONTROLBAR/SESSIONINFO/LBL_SCORE</Localise>{" "}
+        {sessionData.roundsWon}
+      </p>
+      <p>
+        <Localise>CONTROLBAR/SESSIONINFO/LBL_LIVES</Localise>{" "}
+        {sessionData.lives >= 1 ? "O" : "X"}{" "}
         {sessionData.lives >= 2 ? "O" : "X"}{" "}
         {sessionData.lives >= 3 ? "O" : "X"}
       </p>
       <p>
-        Difficulty: <Localise>DIFFICULTY/{difficulty.key}</Localise>
+        <Localise>CONTROLBAR/SESSIONINFO/LBL_DIFFICULTY</Localise>{" "}
+        <Localise>DIFFICULTY/{difficulty.key}/NAME</Localise>
       </p>
-      <p>Crowd Size: {crowdSize}</p>
       <p>
-        Hidden / Ruled Out: {hiddenCount}/{ruledOutCount}
+        <Localise>CONTROLBAR/SESSIONINFO/LBL_CROWD_SIZE</Localise> {crowdSize}
+      </p>
+      <p>
+        <Localise>CONTROLBAR/SESSIONINFO/LBL_HIDDEN_RULED_OUT</Localise>{" "}
+        {hiddenCount}/{ruledOutCount}
       </p>
     </div>
   );

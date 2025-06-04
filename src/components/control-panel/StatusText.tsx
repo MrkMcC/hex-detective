@@ -1,6 +1,7 @@
 import { BsIncognito } from "react-icons/bs";
 import { FaCheck, FaXmark } from "react-icons/fa6";
 import GameStatus from "../../enum/GameStatus";
+import Localise from "../common/Localise";
 
 interface Props {
   state: GameStatus;
@@ -12,26 +13,29 @@ const StatusText = ({ state }: Props) => {
       case GameStatus.InProgress:
         return (
           <>
-            Find the suspect{" "}
+            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_IN_PROGRESS</Localise>{" "}
             <BsIncognito className="icon color-grey valign-text-top" />
           </>
         );
       case GameStatus.Scored:
         return (
           <>
-            Correct <FaCheck className="icon color-green" />
+            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_SCORED</Localise>{" "}
+            <FaCheck className="icon color-green" />
           </>
         );
       case GameStatus.Failed:
         return (
           <>
-            Incorrect <FaXmark className="icon color-red" />
+            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_FAILED</Localise>{" "}
+            <FaXmark className="icon color-red" />
           </>
         );
       case GameStatus.GameOver:
         return (
           <>
-            Game Over <FaXmark className="icon color-red" />
+            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_GAME_OVER</Localise>{" "}
+            <FaXmark className="icon color-red" />
           </>
         );
     }

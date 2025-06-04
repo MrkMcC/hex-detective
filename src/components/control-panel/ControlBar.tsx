@@ -8,6 +8,7 @@ import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import RoundDataT from "../../types/RoundDataT";
 import SessionDataT from "../../types/SessionDataT";
+import Localise from "../common/Localise";
 import Collapsor from "./Collapsor";
 import RoundNavigation from "./RoundNavigation";
 import RoundSummary from "./RoundSummary";
@@ -64,7 +65,7 @@ const ControlBar = ({
           <button className="hidden">Settings</button>
           <button className="btn-main-menu" onClick={handleQuit}>
             <FaCaretLeft className="icon" />
-            Back to Menu
+            <Localise>CONTROLBAR/NAVIGATION/BTN_QUIT</Localise>
           </button>
         </div>
         <div className="area-session-data">

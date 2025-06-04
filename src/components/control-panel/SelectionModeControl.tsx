@@ -1,4 +1,5 @@
 import SuspectSelectionMode from "../../enum/SuspectSelectionMode";
+import Localise from "../common/Localise";
 
 interface Props {
   currentMode: SuspectSelectionMode;
@@ -19,7 +20,11 @@ const SelectionModeControl = ({
         compact ? "compact" : "extended"
       } ${disabled ? "disabled" : "enabled"}`}
     >
-      {!compact && <label>Selection Mode</label>}
+      {!compact && (
+        <label>
+          <Localise>CONTROLBAR/RULEOUT/LBL_SELECTION_MODE</Localise>
+        </label>
+      )}
       <div className="button-group large">
         <button
           role="button"
@@ -29,7 +34,7 @@ const SelectionModeControl = ({
           disabled={disabled || currentMode === SuspectSelectionMode.RuleOut}
           onClick={() => onChange(SuspectSelectionMode.RuleOut)}
         >
-          Rule out
+          <Localise>CONTROLBAR/RULEOUT/BTN_RULE_OUT</Localise>
         </button>
         <button
           role="button"
@@ -39,7 +44,7 @@ const SelectionModeControl = ({
           disabled={disabled || currentMode === SuspectSelectionMode.Accuse}
           onClick={() => onChange(SuspectSelectionMode.Accuse)}
         >
-          ACCUSE
+          <Localise>CONTROLBAR/RULEOUT/BTN_ACCUSE</Localise>
         </button>
       </div>
     </div>

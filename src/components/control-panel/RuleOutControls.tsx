@@ -2,6 +2,7 @@ import { FaEye, FaEyeSlash, FaRepeat } from "react-icons/fa6";
 import ControlAction from "../../enum/ControlAction";
 import GameStatus from "../../enum/GameStatus";
 import RoundDataT from "../../types/RoundDataT";
+import Localise from "../common/Localise";
 
 interface Props {
   gameStatus: GameStatus;
@@ -23,9 +24,7 @@ const RuleOutControls = ({ gameStatus, roundData, onControlAction }: Props) => {
       >
         <FaEyeSlash className="icon" />
         <span>
-          Hide
-          <br />
-          ruled out
+          <Localise>CONTROLBAR/RULEOUT/BTN_HIDE</Localise>
         </span>
       </button>
       <button
@@ -34,9 +33,7 @@ const RuleOutControls = ({ gameStatus, roundData, onControlAction }: Props) => {
       >
         <FaEye className="icon" />
         <span>
-          Unhide
-          <br />
-          ruled out
+          <Localise>CONTROLBAR/RULEOUT/BTN_UNHIDE</Localise>
         </span>
       </button>
       <button
@@ -48,9 +45,7 @@ const RuleOutControls = ({ gameStatus, roundData, onControlAction }: Props) => {
       >
         <FaRepeat className="icon" />
         <span>
-          Reset
-          <br />
-          ruled out
+          <Localise>CONTROLBAR/RULEOUT/BTN_RESET</Localise>
         </span>
       </button>
     </div>

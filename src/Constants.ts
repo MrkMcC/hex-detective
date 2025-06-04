@@ -34,7 +34,7 @@ const Constants: IConstants = {
   DEBUG: {
     REVEAL_SOLUTION: true,
     UNLIMIT_DIFFICULTY_SETTINGS: true,
-    MISSING_TEXTS_AS_KEYS: true,
+    MISSING_TEXTS_AS_KEYS: false,
     MOCK_MISSING_TEXTS: false,
   },
 };
