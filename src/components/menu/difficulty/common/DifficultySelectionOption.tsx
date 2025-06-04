@@ -1,6 +1,6 @@
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 import DifficultyConfig from "../../../../classes/DifficultyConfig";
-import Localise from "../../../../services/Localise";
+import Localise from "../../../common/Localise";
 
 interface Props {
   isSelected: boolean;
@@ -21,7 +21,7 @@ const DifficultySelectionOption = ({
     >
       <FaCaretRight className="icon color-grey" />
       <button onClick={() => onSelect(difficulty)}>
-        {Localise.Text(`DIFFICULTY/${difficulty.key}`)}
+        <Localise>DIFFICULTY/{difficulty.key}/NAME</Localise>
       </button>
       <FaCaretLeft className="icon color-grey" />
     </div>

@@ -6,6 +6,7 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
 import DifficultyPresets from "../../../helper/DifficultyPresets";
 import ColourService from "../../../services/ColourService";
+import Localise from "../../common/Localise";
 import DifficultySelectionOption from "./common/DifficultySelectionOption";
 
 interface Props {
@@ -46,7 +47,9 @@ const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
       className="difficulty-selection ui-panel"
       style={ColourService.RandomBorderColourStyle()}
     >
-      <h2 className="border-underline">Dress Code</h2>
+      <h2 className="border-underline">
+        <Localise>MAIN/NAVIGATION/HEADER_DRESS_CODE</Localise>
+      </h2>
       <div className="options">{optionElements}</div>
     </div>
   );

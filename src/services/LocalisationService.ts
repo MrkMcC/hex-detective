@@ -1,4 +1,5 @@
 import texts, { LocalisationNodeT } from "../assets/localisation/Texts";
+import Constants from "../Constants";
 import LogService from "./LogService";
 
 const LOG_SUBJECT = "Localisation";
@@ -13,31 +14,40 @@ const getPropertyCaseInsensitive = (node: LocalisationNodeT, prop: string) => {
   return node[identifier];
 };
 
-const text = (key: string) => {
+const getLocalisedText = (key: string) => {
+  // if (key.startsWith("DIFFICULTY")) debugger;
+  key = key.toUpperCase();
   const keyParts = key.split("/");
   let currentNode: LocalisationNodeT = activeLocalisation;
 
   for (let index = 0; index < keyParts.length; index++) {
+    if (Constants.DEBUG.MOCK_MISSING_TEXTS) break;
     const identifier = keyParts[index];
-    const targetChild = getPropertyCaseInsensitive(currentNode, identifier);
-    if (targetChild === undefined) {
+    const nextNode = getPropertyCaseInsensitive(currentNode, identifier);
+    if (nextNode === undefined) {
       break;
     }
 
-    if (index === keyParts.length - 1) return targetChild as string;
-    else currentNode = targetChild as LocalisationNodeT;
+    if (index === keyParts.length - 1) {
+      {
+        const localisedText = nextNode as string;
+        if (typeof localisedText !== "string") break;
+        return nextNode as string;
+      }
+    } else currentNode = nextNode as LocalisationNodeT;
   }
 
   LogService.Error(
     LOG_SUBJECT,
-    `Text not found: ${key.toUpperCase()} (locale: ${currentLocale})`
+    `Text not found: ${key} (locale: ${currentLocale})`
   );
+  if (Constants.DEBUG.MISSING_TEXTS_AS_KEYS) return key;
   return activeLocalisation.system.localisation_missing;
 };
 
 /**A placeholder for possible upcoming localisation */
-const Localise = {
-  Text: text,
+const LocalisationService = {
+  GetLocalisedText: getLocalisedText,
 };
 
-export default Localise;
+export default LocalisationService;

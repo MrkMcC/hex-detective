@@ -1,4 +1,5 @@
 import MainMenuNavigation from "../../../enum/MainMenuNavigation";
+import Localise from "../../common/Localise";
 import MainMenuScreen from "./MainMenuScreen";
 
 interface Props {
@@ -14,13 +15,13 @@ const Index = ({ onNavigate }: Props) => {
             className="large"
             onClick={() => onNavigate(MainMenuNavigation.NewGame)}
           >
-            New Game
+            <Localise>MAIN/NAVIGATION/BTN_NEW_GAME</Localise>
           </button>
           <button
             className="large"
             onClick={() => onNavigate(MainMenuNavigation.Tutorial)}
           >
-            Tutorial
+            <Localise>MAIN/NAVIGATION/BTN_TUTORIAL</Localise>
           </button>
         </div>
       </div>

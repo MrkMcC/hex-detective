@@ -1,7 +1,7 @@
 import DifficultyConfig from "../../classes/DifficultyConfig";
-import Localise from "../../services/Localise";
 import RoundDataT from "../../types/RoundDataT";
 import SessionDataT from "../../types/SessionDataT";
+import Localise from "../common/Localise";
 
 interface Props {
   difficulty: DifficultyConfig;
@@ -24,7 +24,9 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
         {sessionData.lives >= 2 ? "O" : "X"}{" "}
         {sessionData.lives >= 3 ? "O" : "X"}
       </p>
-      <p>Difficulty: {Localise.Text(`DIFFICULTY/${difficulty.key}`)}</p>
+      <p>
+        Difficulty: <Localise>DIFFICULTY/{difficulty.key}</Localise>
+      </p>
       <p>Crowd Size: {crowdSize}</p>
       <p>
         Hidden / Ruled Out: {hiddenCount}/{ruledOutCount}

@@ -1,7 +1,7 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
-import Localise from "../../../services/Localise";
 import PersonService from "../../../services/PersonService";
 import FunkyPanel from "../../common/FunkyPanel";
+import Localise from "../../common/Localise";
 import Person from "../../Person";
 import GradientRangeSlider from "./common/GradientRangeSlider";
 
@@ -24,17 +24,17 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
       {difficulty ? (
         <>
           <h2 className="border-underline">
-            {Localise.Text(`DIFFICULTY/${difficulty.key}`)}
+            <Localise>DIFFICULTY/{difficulty.key}/NAME</Localise>
           </h2>
           <h3 className="text-center">
-            {Localise.Text(`DIFFICULTY/DESCRIPTION/${difficulty.key}`)}
+            <Localise>DIFFICULTY/{difficulty.key}/DESCRIPTION</Localise>
           </h3>
           <div className="">
             <div className="flex-row difficulty-preview">{personElements}</div>
           </div>
           <div className="settings gap-v-1 text-center">
             <div className="setting-hue">
-              Hue Bias: <br />
+              <Localise>MAIN/BREAKDOWN/LBL_BIAS_HUE</Localise> <br />
               <GradientRangeSlider
                 className="grow"
                 hsvProperty="hue"
@@ -42,25 +42,26 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
               />
             </div>
             <div className="setting-saturation">
-              Saturation Range: <br />
+              <Localise>MAIN/BREAKDOWN/LBL_BIAS_SATURATION</Localise> <br />
               <GradientRangeSlider
                 hsvProperty="saturation"
                 value={difficulty.parameters.colourGenerationBias.saturation}
               />
             </div>
             <div>
-              Value Range: <br />
+              <Localise>MAIN/BREAKDOWN/LBL_BIAS_VALUE</Localise> <br />
               <GradientRangeSlider
                 hsvProperty="value"
                 value={difficulty.parameters.colourGenerationBias.value}
               />
             </div>
             <p>
-              Crowd Size - initial: <br />
+              <Localise>MAIN/BREAKDOWN/LBL_CROWD_SIZE_INITIAL</Localise> <br />
               {difficulty.parameters.crowdSizeInitial}
             </p>
             <p>
-              Crowd Size - Increase per round: <br />
+              <Localise>MAIN/BREAKDOWN/LBL_CROWD_SIZE_INCREMENT</Localise>{" "}
+              <br />
               {difficulty.parameters.crowdSizeInitial}
             </p>
           </div>

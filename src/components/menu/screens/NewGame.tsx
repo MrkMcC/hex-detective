@@ -1,6 +1,7 @@
 import { FaCaretLeft } from "react-icons/fa6";
 import DifficultyConfig from "../../../classes/DifficultyConfig";
 import MainMenuNavigation from "../../../enum/MainMenuNavigation";
+import Localise from "../../common/Localise";
 import DifficultyBreakdown from "../difficulty/DifficultyBreakdown";
 import DifficultySelection from "../difficulty/DifficultySelection";
 import MainMenuScreen from "./MainMenuScreen";
@@ -25,14 +26,15 @@ const NewGame = ({ onNavigate, difficulty, onChangeDifficulty }: Props) => {
           className="large flex-row align-center"
           onClick={() => onNavigate(MainMenuNavigation.Index)}
         >
-          <FaCaretLeft className="icon" /> <span>Back</span>
+          <FaCaretLeft className="icon" /> <span></span>
+          <Localise>MAIN/NAVIGATION/BTN_BACK</Localise>
         </button>
         <button
           className="large"
           onClick={() => onNavigate(MainMenuNavigation.Start)}
           disabled={!difficulty || !difficulty.valid()}
         >
-          Start
+          <Localise>MAIN/NAVIGATION/BTN_START</Localise>
         </button>
       </div>
     </MainMenuScreen>
