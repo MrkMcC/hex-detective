@@ -1,34 +1,38 @@
-import Constants from "../Constants";
+import texts, { LocalisationNodeT } from "../assets/localisation/Texts";
+import LogService from "./LogService";
+
+const LOG_SUBJECT = "Localisation";
+const currentLocale = "en";
+const activeLocalisation = texts[currentLocale.toUpperCase()];
+
+const getPropertyCaseInsensitive = (node: LocalisationNodeT, prop: string) => {
+  const identifier = Object.keys(node).find(
+    (key) => key.toUpperCase() === prop.toUpperCase()
+  );
+  if (!identifier) return undefined;
+  return node[identifier];
+};
 
 const text = (key: string) => {
-  switch (key) {
-    case `difficulty_${Constants.DIFFICULTY.KEYS.EASIEST}`:
-      return "Neon";
-    case `difficulty_${Constants.DIFFICULTY.KEYS.EASY}`:
-      return "Fruity";
-    case `difficulty_${Constants.DIFFICULTY.KEYS.NORMAL}`:
-      return "Casual";
-    case `difficulty_${Constants.DIFFICULTY.KEYS.HARD}`:
-      return "Uniform";
-    case `difficulty_${Constants.DIFFICULTY.KEYS.HARDEST}`:
-      return "Dystopian";
-    case `difficulty_${Constants.DIFFICULTY.KEYS.CUSTOM}`:
-      return "Custom";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.EASIEST}`:
-      return "strongly biased in your favour - the suspect should stand out";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.EASY}`:
-      return "biased in your favour - brighter, more colourful, more distinct";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.NORMAL}`:
-      return "baseline difficulty - completely random";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARD}`:
-      return "Oh no, they all dressed alike!";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.HARDEST}`:
-      return "They all look suspicious if you ask me.";
-    case `difficulty-description_${Constants.DIFFICULTY.KEYS.CUSTOM}`:
-      return "Mix and match";
-    default:
-      return "___LOCALISATION-MISSING___";
+  const keyParts = key.split("/");
+  let currentNode: LocalisationNodeT = activeLocalisation;
+
+  for (let index = 0; index < keyParts.length; index++) {
+    const identifier = keyParts[index];
+    const targetChild = getPropertyCaseInsensitive(currentNode, identifier);
+    if (targetChild === undefined) {
+      break;
+    }
+
+    if (index === keyParts.length - 1) return targetChild as string;
+    else currentNode = targetChild as LocalisationNodeT;
   }
+
+  LogService.Error(
+    LOG_SUBJECT,
+    `Text not found: ${key.toUpperCase()} (locale: ${currentLocale})`
+  );
+  return activeLocalisation.system.localisation_missing;
 };
 
 /**A placeholder for possible upcoming localisation */

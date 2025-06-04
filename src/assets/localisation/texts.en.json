@@ -1,0 +1,19 @@
+{
+  "difficulty": {
+    "easiest": "Neon",
+    "easy": "Fruity",
+    "normal": "Casual",
+    "hard": "Uniform",
+    "hardest": "Dystopian",
+    "custom": "Custom",
+    "description": {
+      "easiest": "strongly biased in your favour - the suspect should stand out",
+      "easy": "biased in your favour - brighter, more colourful, more distinct",
+      "normal": "baseline difficulty - completely random",
+      "hard": "Oh no, they all dressed alike!",
+      "hardest": "They all look suspicious if you ask me.",
+      "custom": "Mix and match"
+    }
+  },
+  "system": { "localisation_missing": "{{TEXT MISSING}}" }
+}

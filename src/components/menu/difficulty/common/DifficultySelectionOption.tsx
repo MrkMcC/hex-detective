@@ -21,7 +21,7 @@ const DifficultySelectionOption = ({
     >
       <FaCaretRight className="icon color-grey" />
       <button onClick={() => onSelect(difficulty)}>
-        {Localise.Text(`difficulty_${difficulty.key}`)}
+        {Localise.Text(`DIFFICULTY/${difficulty.key}`)}
       </button>
       <FaCaretLeft className="icon color-grey" />
     </div>

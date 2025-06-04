@@ -24,7 +24,7 @@ const SessionInfo = ({ difficulty, sessionData, roundData }: Props) => {
         {sessionData.lives >= 2 ? "O" : "X"}{" "}
         {sessionData.lives >= 3 ? "O" : "X"}
       </p>
-      <p>Difficulty: {Localise.Text(`difficulty_${difficulty.key}`)}</p>
+      <p>Difficulty: {Localise.Text(`DIFFICULTY/${difficulty.key}`)}</p>
       <p>Crowd Size: {crowdSize}</p>
       <p>
         Hidden / Ruled Out: {hiddenCount}/{ruledOutCount}

@@ -24,10 +24,10 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
       {difficulty ? (
         <>
           <h2 className="border-underline">
-            {Localise.Text(`difficulty_${difficulty.key}`)}
+            {Localise.Text(`DIFFICULTY/${difficulty.key}`)}
           </h2>
           <h3 className="text-center">
-            {Localise.Text(`difficulty-description_${difficulty.key}`)}
+            {Localise.Text(`DIFFICULTY/DESCRIPTION/${difficulty.key}`)}
           </h3>
           <div className="">
             <div className="flex-row difficulty-preview">{personElements}</div>
