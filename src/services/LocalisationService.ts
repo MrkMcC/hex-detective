@@ -40,8 +40,8 @@ const getLocalisedText = (key: string) => {
     LOG_SUBJECT,
     `Text not found: ${key} (locale: ${currentLocale})`
   );
-  if (Constants.DEBUG.MISSING_TEXTS_AS_KEYS) return key;
-  return "_";
+  if (Constants.DEBUG.MISSING_TEXTS_AS_KEYS)
+    return keyParts[keyParts.length - 1];
   return activeLocalisation.SYSTEM.LOCALISATION_MISSING;
 };
 
