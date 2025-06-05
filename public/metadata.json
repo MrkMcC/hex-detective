@@ -1,5 +1,5 @@
 {
-  "currentVersion": "0.4pre1",
+  "currentVersion": "0.4",
   "name": "#HexDetective",
   "description": "Learn and practice to read hex colour codes",
   "githubRepo": "https://github.com/MrkMcC/hex-detective",
@@ -38,14 +38,14 @@
       ]
     },
     {
-      "version": "0.4pre1",
+      "version": "0.4",
       "name": "The Difficulty Update (work in progress)",
       "features": [
         "Added a difficulty selection with 5 options",
-        "New difficulty variable: Hue Bias - People will wear colours similar or different to the suspect's",
-        "New difficulty variable: Saturation Bias - Limits greyness",
-        "New difficulty variable: Value Bias - Limits darkness",
-        "New difficulty variable: Multiple Lives",
+        "New difficulty parameter: Hue Bias - People will wear colours similar or different to the suspect's",
+        "New difficulty parameter: Saturation Range - Prevents or ensures greyness",
+        "New difficulty parameter: Value Range - Prevents or ensures darkness",
+        "New difficulty parameter: Multiple Lives",
         "The title above the main menu now has a minimum saturation and value",
         "Prettier confirmation dialog when returning to main menu"
       ],
@@ -54,9 +54,11 @@
   ],
   "roadmap": [
     {
-      "version": "0.4",
-      "name": "The Difficulty Update",
-      "features": [],
+      "version": "0.5",
+      "name": "The Tooltip Update",
+      "features": [
+        "Help texts to explain details, e.g. the fact that skirts are pants ;)"
+      ],
       "bugs": []
     },
     {
@@ -77,16 +79,16 @@
     },
     {
       "version": "TBD",
-      "name": "The Cookie Update",
-      "features": ["Highscore", "Highscore is preserved between sessions"],
+      "name": "Difficulty Update 2",
+      "features": [
+        "Help texts to explain details, e.g. the fact that skirts are pants ;)"
+      ],
       "bugs": []
     },
     {
       "version": "TBD",
-      "name": "UI Update 2",
-      "features": [
-        "Help texts to explain details, e.g. the fact that skirts are pants ;)"
-      ],
+      "name": "The Cookie Update",
+      "features": ["Highscore", "Highscore is preserved between sessions"],
       "bugs": []
     },
     {
@@ -95,6 +97,7 @@
         "German localisation",
         "Each suspect gets a random name & crime",
         "More animations for people",
+        "Sounds",
         "Other game modes"
       ],
       "bugs": []
