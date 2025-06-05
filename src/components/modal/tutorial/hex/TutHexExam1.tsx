@@ -10,7 +10,7 @@ const TutHexExam1 = () => {
         <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_1</Localise>
       </p>
       <p>
-        <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_2</Localise>
+        <Localise tooltips={true}>TUTORIAL/HEX/EXAM/PAGE_1/P_2</Localise>
       </p>
       <p>
         <Localise>TUTORIAL/HEX/EXAM/PAGE_1/P_3</Localise>

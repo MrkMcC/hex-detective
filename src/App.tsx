@@ -15,7 +15,6 @@ import ModalService from "./services/ModalService";
 //#region development notes
 
 //Difficulty Update notes
-
 //-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option
 //-show percentages option
@@ -42,7 +41,7 @@ import ModalService from "./services/ModalService";
 //-a correct guess should be more obvious and more rewarding
 //-number inputs show a bright +/- Element (on hover in Chrome, always in Firefox) - remove that and replace with pretty +/- buttons
 //-make continue-button more obvious, maybe move it to the center
-//-better, more distinct DifficultySelection
+//-better, more distinct DifficultySelection with custom icons or smth
 //-Welcome message & test image to ensure an unbiased colour view (no forced dark mode, no sunlight on the screen etc.)
 
 //Difficulty Improvements
@@ -51,9 +50,6 @@ import ModalService from "./services/ModalService";
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?
 //-RGB, primary colour, secondary colour, hue, saturation, brightness
-//-for fun:
-//--greek: Ancient Greek was spoken by Ancient Greeks. They are known for thinking very hard. Just like us!
-//--latin: Latin was spoken by Ancient Romans. They are known for counting weirdly. Just like us!
 
 //Ultimate Immersion Update notes
 //-Random name generation for suspect (example: Man-fred Bau-knecht, Hel-ga Rosen-stein, Phi-lipp Kurz-bach, Hel-lipp Bau-stein)

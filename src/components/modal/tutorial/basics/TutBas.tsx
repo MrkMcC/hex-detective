@@ -22,7 +22,9 @@ const TutBasScoring = () => {
   return (
     <div className="tutorial font-sans-serif text-center">
       <p>
-        <Localise>TUTORIAL/BASICS/SCORING/PAGE_1/P_1_GOAL</Localise>
+        <Localise tooltips={true}>
+          TUTORIAL/BASICS/SCORING/PAGE_1/P_1_GOAL
+        </Localise>
       </p>
       <TutorialTask completed={hasSelectedSuspect}>
         <Localise>TUTORIAL/BASICS/SCORING/PAGE_1/P_2_TASK</Localise>

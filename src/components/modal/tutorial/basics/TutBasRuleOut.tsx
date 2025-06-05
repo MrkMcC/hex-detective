@@ -22,7 +22,7 @@ const TutBasRuleOut = () => {
         <Localise>TUTORIAL/BASICS/RULEOUT/PAGE_1/P_1</Localise>
       </p>
       <p>
-        <Localise>TUTORIAL/BASICS/RULEOUT/PAGE_1/P_2</Localise>
+        <Localise tooltips={true}>TUTORIAL/BASICS/RULEOUT/PAGE_1/P_2</Localise>
       </p>
       <TutorialTask completed={taskCompleted}>
         <Localise>TUTORIAL/BASICS/RULEOUT/PAGE_1/P_3_TASK</Localise>

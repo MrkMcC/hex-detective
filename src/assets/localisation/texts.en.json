@@ -1,8 +1,33 @@
 {
   "TOOLTIP": {
-    "HUE_BIAS": "limits how similar/different suspects and non-suspects dress",
-    "SAT_BIAS": "limits greyness/saturation",
-    "VAL_BIAS": "limits darkness/value"
+    "HUE_BIAS": {
+      "TITLE": "Hue Bias",
+      "CONTENT": "Limits how similar/different suspects and non-suspects dress."
+    },
+    "SAT_BIAS": {
+      "TITLE": "Saturation Range",
+      "CONTENT": "Limits greyness/saturation."
+    },
+    "VAL_BIAS": {
+      "TITLE": "Value Range",
+      "CONTENT": "Limits darkness/value."
+    },
+    "CLOTHES": {
+      "TITLE": "Skirts are pants",
+      "CONTENT": "We're not picky about shapes. If it's on a head, it's a hat."
+    },
+    "RULE_OUT": {
+      "TITLE": "Ruling Out",
+      "CONTENT": "Ruling people out is only a visual help and can always be undone."
+    },
+    "GREEK": {
+      "TITLE": "Greek",
+      "CONTENT": "Ancient greek was spoken by ancient greeks.\nThey were known for thinking really hard. Just like us."
+    },
+    "LATIN": {
+      "TITLE": "Latin",
+      "CONTENT": "Latin was spoken by ancient romans.\nThey were known for using weird numbers. Just like us."
+    }
   },
   "COLOURS": {
     "RED": "Red",
@@ -125,7 +150,7 @@
       "SCORING": {
         "PAGE_1": {
           "TITLE": "How to Score",
-          "P_1_GOAL": "The goal is to find people by the colour of their clothes.",
+          "P_1_GOAL": "The goal is to find people by the colour of their |clothes??CLOTHES|.",
           "P_2_TASK": "Read the description of the suspect, then click on them."
         }
       },
@@ -133,7 +158,7 @@
         "PAGE_1": {
           "TITLE": "Ruling Out",
           "P_1": "It can be hard to keep track of all the colours in a large crowd.",
-          "P_2": "You can rule out people to make your target easier to spot.",
+          "P_2": "You can |rule out??RULE_OUT| people to make your target easier to spot.",
           "P_3_TASK": "Try clicking on 'Rule out'."
         }
       }
@@ -281,7 +306,7 @@
         "PAGE_1": {
           "TITLE": "The Finish Line",
           "P_1": "The number system we have been using is known as the hexadecimal system.",
-          "P_2": "Hexa-decem is half greek, half latin and means 16.",
+          "P_2": "Hexa-decem is half |greek??GREEK|, half |latin??LATIN| and means 16.",
           "P_3": "It's also known as 'base 16', because of its 16 digits, while our regular numeral system is base 10.",
           "P_4": "The hexadecimal system - or hex for short - is commonly used by applications such as internet browsers.",
           "P_5": "Instead of ${0}, the common notation is ${1} (or ${2}).",
