@@ -1,4 +1,9 @@
 {
+  "TOOLTIP": {
+    "HUE_BIAS": "limits how similar/different suspects and non-suspects dress",
+    "SAT_BIAS": "limits greyness/saturation",
+    "VAL_BIAS": "limits darkness/value"
+  },
   "COLOURS": {
     "RED": "Red",
     "GREEN": "Green",
@@ -42,9 +47,9 @@
     "BREAKDOWN": {
       "DESCRIPTION_DRESS_CODE": "The dress code determines the game's difficulty.",
       "P_SELECT_DRESS_CODE": "Select one to see more information.",
-      "LBL_BIAS_HUE": "Hue Bias",
-      "LBL_BIAS_SATURATION": "Saturation Range",
-      "LBL_BIAS_VALUE": "Value Range",
+      "LBL_BIAS_HUE": "|Hue Bias??HUE_BIAS|",
+      "LBL_BIAS_SATURATION": "|Saturation Range??SAT_BIAS|",
+      "LBL_BIAS_VALUE": "|Value Range??VAL_BIAS|",
       "LBL_CROWD_SIZE_INITIAL": "Crowd Size - initial",
       "LBL_CROWD_SIZE_INCREMENT": "Crowd Size - Increase per round"
     }

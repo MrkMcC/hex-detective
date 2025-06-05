@@ -1,13 +1,21 @@
+import { nanoid } from "nanoid";
 import { ReactNode } from "react";
 import LocalisationService from "../../services/LocalisationService";
+import Tooltip from "./Tooltip";
 
 interface Props {
   children: string | string[];
   fallback?: string;
   replacements?: ReactNode[];
+  tooltips?: boolean;
 }
 
-const Localise = ({ children, fallback, replacements }: Props) => {
+const Localise = ({
+  children,
+  fallback,
+  replacements,
+  tooltips = false,
+}: Props) => {
   if (typeof children !== "string") children = children.join("");
 
   const localisedText =
@@ -17,7 +25,7 @@ const Localise = ({ children, fallback, replacements }: Props) => {
   const replaceTextWithElement = (
     nodes: ReactNode[],
     placeholder: string,
-    replacement: ReactNode
+    replacer: () => ReactNode
   ) => {
     const modifiedNodes: ReactNode[] = [];
     nodes.forEach((element) => {
@@ -27,7 +35,7 @@ const Localise = ({ children, fallback, replacements }: Props) => {
         splitText.forEach((part, index) => {
           modifiedNodes.push(part);
           if (index < splitText.length - 1) {
-            modifiedNodes.push(replacement);
+            modifiedNodes.push(replacer());
           }
         });
 
@@ -49,10 +57,30 @@ const Localise = ({ children, fallback, replacements }: Props) => {
       result = replaceTextWithElement(
         result,
         "${" + placeholderIndex + "}",
-        replacements[placeholderIndex]
+        () => replacements[placeholderIndex]
       );
     }
   }
+  //#endregion
+
+  //#region tooltips
+  if (tooltips)
+    result.forEach((element) => {
+      if (typeof element === "string") {
+        const matches = element.matchAll(/\|(.+?)\?\?(.+?)\|/g);
+        let currentMatch = matches.next();
+
+        while (!currentMatch.done) {
+          result = replaceTextWithElement(result, currentMatch.value[0], () => (
+            <Tooltip key={nanoid()} tooltipKey={currentMatch.value![2]}>
+              {currentMatch.value![1]}
+            </Tooltip>
+          ));
+
+          currentMatch = matches.next();
+        }
+      }
+    });
   //#endregion
 
   return <>{result}</>;

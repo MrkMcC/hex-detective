@@ -12,7 +12,7 @@ interface Props {
 
 const DifficultyBreakdown = ({ difficulty }: Props) => {
   const crowd = PersonService.RandomCrowd(
-    6,
+    5,
     difficulty?.parameters.colourGenerationBias
   );
 
@@ -46,7 +46,7 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
           </div>
           <div className="settings gap-v-1 text-center">
             <div className="setting-hue">
-              <Localise>MAIN/BREAKDOWN/LBL_BIAS_HUE</Localise> <br />
+              <Localise tooltips={true}>MAIN/BREAKDOWN/LBL_BIAS_HUE</Localise>{" "}
               <GradientRangeSlider
                 className="grow"
                 hsvProperty="hue"
@@ -54,25 +54,34 @@ const DifficultyBreakdown = ({ difficulty }: Props) => {
               />
             </div>
             <div className="setting-saturation">
-              <Localise>MAIN/BREAKDOWN/LBL_BIAS_SATURATION</Localise> <br />
+              <Localise tooltips={true}>
+                MAIN/BREAKDOWN/LBL_BIAS_SATURATION
+              </Localise>
+              <br />
               <GradientRangeSlider
                 hsvProperty="saturation"
                 value={difficulty.parameters.colourGenerationBias.saturation}
               />
             </div>
             <div>
-              <Localise>MAIN/BREAKDOWN/LBL_BIAS_VALUE</Localise> <br />
+              <Localise tooltips={true}>MAIN/BREAKDOWN/LBL_BIAS_VALUE</Localise>{" "}
+              <br />
               <GradientRangeSlider
                 hsvProperty="value"
                 value={difficulty.parameters.colourGenerationBias.value}
               />
             </div>
             <p>
-              <Localise>MAIN/BREAKDOWN/LBL_CROWD_SIZE_INITIAL</Localise> <br />
+              <Localise tooltips={true}>
+                MAIN/BREAKDOWN/LBL_CROWD_SIZE_INITIAL
+              </Localise>
+              <br />
               {difficulty.parameters.crowdSizeInitial}
             </p>
             <p>
-              <Localise>MAIN/BREAKDOWN/LBL_CROWD_SIZE_INCREMENT</Localise>{" "}
+              <Localise tooltips={true}>
+                MAIN/BREAKDOWN/LBL_CROWD_SIZE_INCREMENT
+              </Localise>
               <br />
               {difficulty.parameters.crowdSizeInitial}
             </p>
