@@ -1,8 +1,5 @@
 interface IConstants {
   VARIATION: { AMOUNTS: { [k: string]: number } };
-  DIFFICULTY: {
-    KEYS: { [k: string]: string };
-  };
   DEBUG: { [k: string]: boolean };
 }
 
@@ -14,19 +11,6 @@ const Constants: IConstants = {
       MOUTH: 10,
       SHIRT: 5,
       PANTS: 4,
-    },
-  },
-
-  DIFFICULTY: {
-    //TODO this should obviously be an enum
-    KEYS: {
-      TUTORIAL: "tutorial",
-      EASIEST: "easiest",
-      EASY: "easy",
-      NORMAL: "normal",
-      HARD: "hard",
-      HARDEST: "hardest",
-      CUSTOM: "custom",
     },
   },
 

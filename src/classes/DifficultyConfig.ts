@@ -1,4 +1,5 @@
 import Constants from "../Constants";
+import Difficulty from "../enum/Difficulty";
 import ColourGenerationBias from "./ColourGenerationBias";
 
 type DifficultyStateT = {
@@ -9,7 +10,7 @@ type DifficultyStateT = {
 
 /**Can be changed before starting the game, but not during it. */
 class DifficultyConfig {
-  key: string;
+  key: Difficulty;
   parameters: DifficultyStateT;
   isTutorial = false;
 
@@ -26,13 +27,10 @@ class DifficultyConfig {
     return valid_crowdSizeInitial && valid_crowdSizeIncrement;
   }
 
-  constructor(
-    params: DifficultyStateT,
-    key: string = Constants.DIFFICULTY.KEYS.CUSTOM
-  ) {
+  constructor(params: DifficultyStateT, key: Difficulty = Difficulty.Custom) {
     this.key = key;
     this.parameters = params;
-    this.isTutorial = key === Constants.DIFFICULTY.KEYS.TUTORIAL;
+    this.isTutorial = key === Difficulty.Tutorial;
   }
 }
 

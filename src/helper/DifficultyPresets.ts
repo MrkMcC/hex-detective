@@ -2,7 +2,7 @@ import ColourBiasAngle from "../classes/ColourBiasAngle";
 import ColourBiasPercentage from "../classes/ColourBiasPercentage";
 import ColourGenerationBias from "../classes/ColourGenerationBias";
 import DifficultyConfig from "../classes/DifficultyConfig";
-import Constants from "../Constants";
+import Difficulty from "../enum/Difficulty";
 
 const tutorial = new DifficultyConfig(
   {
@@ -10,7 +10,7 @@ const tutorial = new DifficultyConfig(
     crowdSizeIncrement: 17,
     colourGenerationBias: new ColourGenerationBias(),
   },
-  Constants.DIFFICULTY.KEYS.TUTORIAL
+  Difficulty.Tutorial
 );
 const easiest = new DifficultyConfig(
   {
@@ -22,7 +22,7 @@ const easiest = new DifficultyConfig(
       new ColourBiasPercentage(1)
     ),
   },
-  Constants.DIFFICULTY.KEYS.EASIEST
+  Difficulty.Easiest
 );
 const easy = new DifficultyConfig(
   {
@@ -34,7 +34,7 @@ const easy = new DifficultyConfig(
       new ColourBiasPercentage(0.25)
     ),
   },
-  Constants.DIFFICULTY.KEYS.EASY
+  Difficulty.Easy
 );
 const normal = new DifficultyConfig(
   {
@@ -46,7 +46,7 @@ const normal = new DifficultyConfig(
       new ColourBiasPercentage()
     ),
   },
-  Constants.DIFFICULTY.KEYS.NORMAL
+  Difficulty.Normal
 );
 const hard = new DifficultyConfig(
   {
@@ -58,7 +58,7 @@ const hard = new DifficultyConfig(
       new ColourBiasPercentage(undefined, 0.9)
     ),
   },
-  Constants.DIFFICULTY.KEYS.HARD
+  Difficulty.Hard
 );
 const hardest = new DifficultyConfig(
   {
@@ -70,7 +70,7 @@ const hardest = new DifficultyConfig(
       new ColourBiasPercentage(undefined, 0.8)
     ),
   },
-  Constants.DIFFICULTY.KEYS.HARDEST
+  Difficulty.Hardest
 );
 
 const DifficultyPresets = {
