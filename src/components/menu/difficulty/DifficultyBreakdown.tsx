@@ -1,4 +1,5 @@
 import DifficultyConfig from "../../../classes/DifficultyConfig";
+import ArrayHelper from "../../../helper/ArrayHelper";
 import PersonService from "../../../services/PersonService";
 import FunkyPanel from "../../common/FunkyPanel";
 import Localise from "../../common/Localise";
@@ -11,12 +12,23 @@ interface Props {
 
 const DifficultyBreakdown = ({ difficulty }: Props) => {
   const crowd = PersonService.RandomCrowd(
-    5,
+    6,
     difficulty?.parameters.colourGenerationBias
   );
 
+  //Move suspect to the center
+  ArrayHelper.MoveElement(
+    crowd.people,
+    crowd.people.findIndex((p) => p.id === crowd.suspectId),
+    Math.floor((crowd.people.length - 1) / 2)
+  );
+
   const personElements = crowd.people.map((p) => (
-    <Person key={p.id} person={p} />
+    <Person
+      key={p.id}
+      person={p}
+      isRevealedSuspect={crowd.suspectId === p.id}
+    />
   ));
 
   return (

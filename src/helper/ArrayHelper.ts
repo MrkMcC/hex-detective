@@ -22,8 +22,26 @@ function getEnumValues<T>(enumType: { [s: string]: string | number }): T[] {
   else return nonStringValues as T[];
 }
 
+function moveElement(array: unknown[], fromIndex: number, toIndex: number) {
+  while (fromIndex < 0) {
+    fromIndex += array.length;
+  }
+  while (toIndex < 0) {
+    toIndex += array.length;
+  }
+  if (toIndex >= array.length) {
+    let k = toIndex - array.length + 1;
+    while (k--) {
+      array.push(undefined);
+    }
+  }
+  array.splice(toIndex, 0, array.splice(fromIndex, 1)[0]);
+}
+
 const ArrayHelper = {
   GetEnumFlags: getEnumValues,
+  /**Re-orders an array so the element with the specified index ends up with the target index. */
+  MoveElement: moveElement,
   RandomElement: randomElement,
   Shuffle: shuffle,
 };
