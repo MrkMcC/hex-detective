@@ -57,7 +57,7 @@ const TutColImbalance2 = () => {
               />
             </div>
             <p className="mb-0">
-              <Localise placeholders={[<Red strong={false}>R</Red>]}>
+              <Localise replacements={[<Red strong={false}>R</Red>]}>
                 TUTORIAL/COLOURS/IMBALANCE/PAGE_2/P_2
               </Localise>
             </p>

@@ -43,7 +43,10 @@ class Colour {
         return this.percentage.toString();
       case ColourFlavour.Name:
         return this.name
-          ? LocalisationService.GetLocalisedText(`COLOURS/${this.name}`)
+          ? LocalisationService.GetLocalisedText(
+              `COLOURS/${this.name}`,
+              true
+            ) ?? this.name
           : "";
       default:
         return "";

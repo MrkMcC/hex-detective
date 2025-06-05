@@ -3,46 +3,59 @@ import LocalisationService from "../../services/LocalisationService";
 
 interface Props {
   children: string | string[];
-  placeholders?: ReactNode[];
+  fallback?: string;
+  replacements?: ReactNode[];
 }
 
-const Localise = ({ children, placeholders }: Props) => {
+const Localise = ({ children, fallback, replacements }: Props) => {
   if (typeof children !== "string") children = children.join("");
 
-  const localisedText = LocalisationService.GetLocalisedText(children);
+  const localisedText =
+    LocalisationService.GetLocalisedText(children, !!fallback) ?? fallback;
+  let result: ReactNode[] = [localisedText];
 
-  if (placeholders) {
-    let result: ReactNode[] = [localisedText];
+  const replaceTextWithElement = (
+    nodes: ReactNode[],
+    placeholder: string,
+    replacement: ReactNode
+  ) => {
+    const modifiedNodes: ReactNode[] = [];
+    nodes.forEach((element) => {
+      if (typeof element === "string") {
+        const splitText = element.split(placeholder);
 
+        splitText.forEach((part, index) => {
+          modifiedNodes.push(part);
+          if (index < splitText.length - 1) {
+            modifiedNodes.push(replacement);
+          }
+        });
+
+        return;
+      }
+
+      modifiedNodes.push(element);
+    });
+    return modifiedNodes;
+  };
+
+  //#region indexed placeholders
+  if (replacements) {
     for (
       let placeholderIndex = 0;
-      placeholderIndex < placeholders.length;
+      placeholderIndex < replacements.length;
       placeholderIndex++
     ) {
-      const modifiedResult: ReactNode[] = [];
-      result.forEach((element) => {
-        if (typeof element === "string") {
-          const splitText = element.split("${" + placeholderIndex + "}");
-
-          splitText.forEach((part, index) => {
-            modifiedResult.push(part);
-            if (index < splitText.length - 1) {
-              modifiedResult.push(placeholders[placeholderIndex]);
-            }
-          });
-
-          return;
-        }
-
-        modifiedResult.push(element);
-      });
-      result = modifiedResult;
+      result = replaceTextWithElement(
+        result,
+        "${" + placeholderIndex + "}",
+        replacements[placeholderIndex]
+      );
     }
-
-    return <>{result}</>;
   }
+  //#endregion
 
-  return localisedText;
+  return <>{result}</>;
 };
 
 export default Localise;

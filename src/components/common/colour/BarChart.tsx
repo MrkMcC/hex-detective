@@ -96,7 +96,9 @@ const BarChart = ({ colour, name = "", options, onChange }: Props) => {
           ) : options.flavour === ColourFlavour.Name ? (
             <>
               <span>
-                <Localise>COLOURS/{colour.name ?? ""}</Localise>
+                <Localise fallback={colour.name}>
+                  COLOURS/{colour.name ?? ""}
+                </Localise>
               </span>
             </>
           ) : (

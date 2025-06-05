@@ -26,7 +26,7 @@ const TutColComplementary1 = () => {
     >
       <p>
         <Localise
-          placeholders={[
+          replacements={[
             <Red key="red">
               <Localise>COLOURS/RED</Localise>
             </Red>,
@@ -79,7 +79,7 @@ const TutColComplementary1 = () => {
       </div>
       <p>
         <Localise
-          placeholders={[
+          replacements={[
             <ColouredText colour={exampleColour} strong={true}>
               greenish
             </ColouredText>,

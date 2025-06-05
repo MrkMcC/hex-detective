@@ -20,7 +20,7 @@ const TutHexExam1 = () => {
       </p>
       <p>
         <Localise
-          placeholders={[
+          replacements={[
             <>
               (<Red>FF</Red>, <Green>FF</Green>, <Blue>FF</Blue>)
             </>,
