@@ -13,6 +13,8 @@ import ModalService from "./services/ModalService";
 
 //#region development notes
 
+//BUG: Activating cheats resets the tutorial. Yikes.
+
 //Difficulty Update notes
 //-show colour triangle option (or circle? or both?)
 //-show int values (0-255) option
