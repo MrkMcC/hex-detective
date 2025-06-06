@@ -1,5 +1,5 @@
-import Constants from "../Constants";
 import Difficulty from "../enum/Difficulty";
+import DebugService from "../services/DebugService";
 import ColourGenerationBias from "./ColourGenerationBias";
 
 type DifficultyStateT = {
@@ -15,7 +15,7 @@ class DifficultyConfig {
   isTutorial = false;
 
   valid() {
-    if (Constants.DEBUG.UNLIMIT_DIFFICULTY_SETTINGS) return true;
+    if (DebugService.ReadSettings().UnrestrictDifficultySettings) return true;
 
     const valid_crowdSizeInitial =
       this.parameters.crowdSizeInitial > 1 &&

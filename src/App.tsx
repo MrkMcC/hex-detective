@@ -87,6 +87,7 @@ function App() {
   const [selectedDifficulty, setSelectedDifficulty] =
     useState<DifficultyConfig>();
   const [isTutorial, setIsTutorial] = useState(false);
+  const [refreshCounter, setRefreshCounter] = useState(0);
 
   const difficulty = isTutorial
     ? DifficultyPresets.Tutorial
@@ -99,6 +100,9 @@ function App() {
         break;
       case HexDetectiveEvent.CloseModal:
         ModalService.CloseModal();
+        break;
+      case HexDetectiveEvent.SettingsChanged:
+        setRefreshCounter((prev) => prev + 1);
         break;
     }
   };

@@ -1,5 +1,5 @@
 import texts, { LocalisationNodeT } from "../assets/localisation/Texts";
-import Constants from "../Constants";
+import DebugService from "./DebugService";
 import LogService from "./LogService";
 
 const LOG_SUBJECT = "Localisation";
@@ -20,7 +20,7 @@ const getLocalisedText = (key: string, acceptUndefined = false) => {
   let currentNode: LocalisationNodeT = activeLocalisation;
 
   for (let index = 0; index < keyParts.length; index++) {
-    if (Constants.DEBUG.MOCK_MISSING_TEXTS) break;
+    if (DebugService.ReadSettings().MockMissingTexts) break;
     const identifier = keyParts[index];
     const nextNode = getPropertyCaseInsensitive(currentNode, identifier);
     if (nextNode === undefined) {
@@ -40,7 +40,7 @@ const getLocalisedText = (key: string, acceptUndefined = false) => {
     LOG_SUBJECT,
     `Text not found: ${key} (locale: ${currentLocale})`
   );
-  if (Constants.DEBUG.MISSING_TEXTS_AS_KEYS)
+  if (DebugService.ReadSettings().MissingTextsAsKeys)
     return keyParts[keyParts.length - 1];
   return acceptUndefined
     ? undefined

@@ -2,8 +2,8 @@ import { FaRedhat } from "react-icons/fa";
 import { FaShirt } from "react-icons/fa6";
 import { PiPantsFill } from "react-icons/pi";
 import PersonData from "../../classes/PersonData";
-import Constants from "../../Constants";
 import ColourFlavour from "../../enum/ColourFlavour";
+import DebugService from "../../services/DebugService";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
 import Localise from "../common/Localise";
 import SuspectInfoColour from "./SuspectInfoColour";
@@ -21,7 +21,7 @@ const SuspectInfo = ({ suspect, options }: Props) => {
     ...options,
   };
 
-  if (Constants.DEBUG.REVEAL_SOLUTION) options.revealColours = true;
+  if (DebugService.ReadSettings().RevealSolution) options.revealColours = true;
 
   return (
     <div

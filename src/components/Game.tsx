@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Constants from "../Constants";
 import Crowd from "../classes/Crowd";
 import CustomFlavour from "../classes/CustomFlavour";
 import DifficultyConfig from "../classes/DifficultyConfig";
@@ -11,6 +10,7 @@ import TutorialStage from "../enum/TutorialStage";
 import DialogIndex from "../enum/modal/DialogIndex";
 import ModalReferenceType from "../enum/modal/ModalReferenceType";
 import ColourService from "../services/ColourService";
+import DebugService from "../services/DebugService";
 import ModalService from "../services/ModalService";
 import TutorialService from "../services/TutorialService";
 import RoundDataT from "../types/RoundDataT";
@@ -346,7 +346,7 @@ function Game({
         (status === GameStatus.Scored ||
           status === GameStatus.Failed ||
           status === GameStatus.GameOver ||
-          Constants.DEBUG.REVEAL_SOLUTION) &&
+          DebugService.ReadSettings().RevealSolution) &&
         p.id === roundData.crowd!.getSuspect()!.id
       }
       onSelect={handleSelect}
