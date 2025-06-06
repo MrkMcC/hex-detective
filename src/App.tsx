@@ -19,6 +19,10 @@ import ModalService from "./services/ModalService";
 //-show int values (0-255) option
 //-show percentages option
 
+//'Secret' Update
+//-allow changing the DEBUG-variables via console
+//-show something like "Debug mode" in the corner if sv_cheats === 1; make it disappear on mouse over so it can't interfere with the game
+
 //Mobile Update notes
 //-Rework collapse to increase people-container height as well
 //#region maybe
@@ -46,6 +50,11 @@ import ModalService from "./services/ModalService";
 
 //Difficulty Improvements
 //-Implement custom difficulty
+//-Add a mode that automatically increases the difficulty
+//-Maybe add random round modifiers like "Night Round - Max value reduced for this round" (or "Fog Round" for saturation etc; modifiers could also be "positive")
+
+//Cookie Notes
+//-Save debug mode variables in cookies as well
 
 //Hover Texts
 //-Include an explanation on RGB vs. CMYK somewhere?

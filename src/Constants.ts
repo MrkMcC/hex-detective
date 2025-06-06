@@ -16,8 +16,8 @@ const Constants: IConstants = {
 
   /**These should be false in production. */
   DEBUG: {
-    REVEAL_SOLUTION: true,
-    UNLIMIT_DIFFICULTY_SETTINGS: true,
+    REVEAL_SOLUTION: false,
+    UNLIMIT_DIFFICULTY_SETTINGS: false,
     MISSING_TEXTS_AS_KEYS: false,
     MOCK_MISSING_TEXTS: false,
   },
