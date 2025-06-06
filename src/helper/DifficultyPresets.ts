@@ -14,7 +14,7 @@ const tutorial = new DifficultyConfig(
 );
 const easiest = new DifficultyConfig(
   {
-    crowdSizeInitial: 80,
+    crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       new ColourBiasAngle(25),
@@ -26,7 +26,7 @@ const easiest = new DifficultyConfig(
 );
 const easy = new DifficultyConfig(
   {
-    crowdSizeInitial: 80,
+    crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       new ColourBiasAngle(15),
@@ -38,7 +38,7 @@ const easy = new DifficultyConfig(
 );
 const normal = new DifficultyConfig(
   {
-    crowdSizeInitial: 80,
+    crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       new ColourBiasAngle(1),
@@ -50,7 +50,7 @@ const normal = new DifficultyConfig(
 );
 const hard = new DifficultyConfig(
   {
-    crowdSizeInitial: 80,
+    crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       new ColourBiasAngle(1, 60),
@@ -62,7 +62,7 @@ const hard = new DifficultyConfig(
 );
 const hardest = new DifficultyConfig(
   {
-    crowdSizeInitial: 80,
+    crowdSizeInitial: 5,
     crowdSizeIncrement: 5,
     colourGenerationBias: new ColourGenerationBias(
       new ColourBiasAngle(1, 30),

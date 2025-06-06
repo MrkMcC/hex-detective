@@ -1,4 +1,3 @@
-import objectHash from "object-hash";
 import { useEffect, useState } from "react";
 import DifficultyConfig from "./classes/DifficultyConfig";
 import UserSettings from "./classes/UserSettings";
@@ -138,7 +137,7 @@ function App() {
         />
       ) : (
         <Game
-          key={objectHash(difficulty!.parameters.crowdSizeInitial)}
+          key={refreshCounter}
           status={status}
           onChangeStatus={setStatus}
           difficulty={difficulty!}
