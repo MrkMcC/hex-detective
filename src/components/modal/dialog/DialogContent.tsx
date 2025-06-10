@@ -24,13 +24,13 @@ const DialogContent = ({ index, onClose }: Props) => {
             {
               buttonText: LocalisationService.GetLocalisedText(
                 "MODAL/QUIT/BTN_CANCEL"
-              ),
+              ) as string,
               event: HexDetectiveEvent.CloseModal,
             },
             {
               buttonText: LocalisationService.GetLocalisedText(
                 "MODAL/QUIT/BTN_CONFIRM"
-              ),
+              ) as string,
               event: HexDetectiveEvent.BackToMenu,
             },
           ],

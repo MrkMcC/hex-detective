@@ -194,7 +194,7 @@ const TutorialContent = ({ stage, onClose }: Props) => {
             {
               buttonText: LocalisationService.GetLocalisedText(
                 "TUTORIAL/NAVIGATION/BTN_BYE"
-              ),
+              ) as string,
               event: HexDetectiveEvent.BackToMenu,
             },
           ],
