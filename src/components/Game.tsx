@@ -5,12 +5,14 @@ import DifficultyConfig from "../classes/DifficultyConfig";
 import UserSettings from "../classes/UserSettings";
 import ColourFlavour from "../enum/ColourFlavour";
 import ControlAction from "../enum/ControlAction";
+import HexDetectiveEvent from "../enum/HexDetectiveEvent";
 import SuspectSelectionMode from "../enum/SuspectSelectionMode";
 import TutorialStage from "../enum/TutorialStage";
 import DialogIndex from "../enum/modal/DialogIndex";
 import ModalReferenceType from "../enum/modal/ModalReferenceType";
 import ColourService from "../services/ColourService";
 import DebugService from "../services/DebugService";
+import EventService from "../services/EventService";
 import ModalService from "../services/ModalService";
 import TutorialService from "../services/TutorialService";
 import RoundDataT from "../types/RoundDataT";
@@ -173,6 +175,15 @@ function Game({
   };
 
   //#region Event Handling
+  useEffect(() => {
+    const handleGlobalEvent = (eventType: HexDetectiveEvent) => {
+      if (eventType === HexDetectiveEvent.SettingsChanged)
+        setRoundData((prev) => ({ ...prev }));
+    };
+
+    EventService.AddListener(handleGlobalEvent);
+  }, []);
+
   const handleSelect = (personId: string) => {
     switch (roundData.selectionMode) {
       case SuspectSelectionMode.RuleOut:
