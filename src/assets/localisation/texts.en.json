@@ -41,7 +41,16 @@
     "COMBINED_RED_BLUE": "R + B = Magenta",
     "MIX_RED_GREEN": "a mix of red and green",
     "MIX_GREEN_BLUE": "a mix of green and blue",
-    "MIX_BLUE_RED": "a mix of blue and red"
+    "MIX_BLUE_RED": "a mix of blue and red",
+    "RedPerc100": "100% red",
+    "RedPerc50": "50% red",
+    "RedPerc25": "25% red",
+    "GreenPerc100": "100% green",
+    "GreenPerc50": "50% green",
+    "GreenPerc25": "25% green",
+    "BluePerc100": "100% blue",
+    "BluePerc50": "50% blue",
+    "BluePerc25": "25% blue"
   },
   "PERSON": {
     "HAT": "hat",
