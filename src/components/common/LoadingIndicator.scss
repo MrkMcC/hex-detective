@@ -1,4 +1,4 @@
-@use "../vars/Colours";
+@use "/src/styles/vars/Colours";
 
 .loading-indicator {
   border: 0.25em solid Colours.$loading-indicator_unfilled;

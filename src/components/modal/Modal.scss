@@ -1,5 +1,5 @@
-@use "../theme";
-@use "../vars/Colours";
+@use "/src/styles/theme";
+@use "/src/styles/vars/Colours";
 
 .modal-overlay {
   position: fixed;

@@ -1,4 +1,4 @@
-@use "../../styles/theme";
+@use "/src/styles/theme";
 
 .debug-info {
   z-index: theme.$z_debuginfo;

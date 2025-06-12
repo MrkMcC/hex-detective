@@ -2,37 +2,43 @@
 @use "DefaultElements";
 @use "Helper";
 @use "Layout";
-@use "Person";
 @use "Tutorial";
 
-@use "body/Eyes";
-@use "body/Hats";
-@use "body/Heads";
-@use "body/Mouths";
-@use "body/Pants";
-@use "body/Shirts";
+@use "../components/Person";
 
-@use "components/AutoButton";
-@use "components/BarChart";
-@use "components/BaseIndicator";
-@use "components/Collapsor";
-@use "components/ControlBar";
-@use "components/LoadingIndicator";
-@use "components/Modal";
-@use "components/RGBAmounts";
-@use "components/RoundNavigation";
-@use "components/RoundSummary";
-@use "components/SelectionModeControl";
-@use "components/SimulationFrame";
-@use "components/SuspectInfo";
-@use "components/Switch";
-@use "components/Tooltip";
+@use "../components/body/Eyes";
+@use "../components/body/Hat";
+@use "../components/body/Head";
+@use "../components/body/Mouth";
+@use "../components/body/Pants";
+@use "../components/body/Shirt";
 
-@use "components/main-menu/ColourBiasOption";
-@use "components/main-menu/GradientRangeSlider";
-@use "components/main-menu/DifficultyBreakdown";
-@use "components/main-menu/DifficultySelection";
-@use "components/main-menu/MainMenu";
-@use "components/main-menu/NewGame";
+@use "../components/common/AutoButton";
+@use "../components/common/LoadingIndicator";
+@use "../components/common/Switch";
+@use "../components/common/Tooltip";
+
+@use "../components/common/colour/BarChart";
+
+@use "../components/control-panel/Collapsor";
+@use "../components/control-panel/ControlBar";
+@use "../components/control-panel/RoundNavigation";
+@use "../components/control-panel/RoundSummary";
+@use "../components/control-panel/SelectionModeControl";
+@use "../components/control-panel/SuspectInfo";
+
+@use "../components/modal/Modal";
+
+@use "../components/modal/tutorial/SimulationFrame";
 
 @use "../components/help/DebugInfo";
+
+@use "../components/menu/MainMenu";
+
+@use "../components/menu/difficulty/DifficultyBreakdown";
+@use "../components/menu/difficulty/DifficultySelection";
+
+@use "../components/menu/difficulty/common/ColourBiasOption";
+@use "../components/menu/difficulty/common/GradientRangeSlider";
+
+@use "../components/menu/screens/NewGame";

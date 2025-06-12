@@ -1,5 +1,5 @@
-@use "../theme";
-@use "../vars/Colours";
+@use "/src/styles/theme";
+@use "/src/styles/vars/Colours";
 
 .control-bar {
   z-index: theme.$z_control-panel;
