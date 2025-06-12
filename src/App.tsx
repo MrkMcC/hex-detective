@@ -1,3 +1,4 @@
+import objectHash from "object-hash";
 import { useEffect, useState } from "react";
 import DifficultyConfig from "./classes/DifficultyConfig";
 import UserSettings from "./classes/UserSettings";
@@ -12,8 +13,6 @@ import LogService from "./services/LogService";
 import ModalService from "./services/ModalService";
 
 //#region development notes
-
-//BUG: Activating cheats resets the tutorial. Yikes.
 
 //Difficulty Update notes
 //-show colour triangle option (or circle? or both?)
@@ -101,6 +100,9 @@ function App() {
       case HexDetectiveEvent.CloseModal:
         ModalService.CloseModal();
         break;
+      case HexDetectiveEvent.SettingsChanged:
+        setSettings((prev) => new UserSettings(prev.parameters));
+        break;
     }
   };
 
@@ -135,6 +137,7 @@ function App() {
         />
       ) : (
         <Game
+          key={objectHash(difficulty!)}
           status={status}
           onChangeStatus={setStatus}
           difficulty={difficulty!}
