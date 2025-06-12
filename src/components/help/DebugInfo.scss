@@ -1,0 +1,10 @@
+@use "../../styles/theme";
+
+.debug-info {
+  z-index: theme.$z_debuginfo;
+  position: fixed;
+  font-size: 1.5em;
+  color: red;
+  opacity: 50%;
+  pointer-events: none;
+}
