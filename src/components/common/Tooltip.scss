@@ -1,5 +1,5 @@
 @use "/src/styles/vars/Colours";
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 
 .tooltip {
   cursor: help;
@@ -7,7 +7,7 @@
 }
 
 .tooltip-overlay {
-  z-index: theme.$z_tooltip_overlay;
+  z-index: Layers.$tooltip_overlay;
   position: fixed;
   background-color: rgb(0, 0, 0, 75%);
   left: 0%;
@@ -20,7 +20,7 @@
 }
 
 .tooltip-text {
-  z-index: theme.$z_tooltip;
+  z-index: Layers.$tooltip;
   position: relative;
   margin-bottom: 2em;
   padding: 1em;

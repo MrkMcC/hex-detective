@@ -1,4 +1,4 @@
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 @use "/src/styles/vars/Colours";
 @use "/src/styles/vars/Dimensions";
 
@@ -43,7 +43,7 @@
     height: 100%;
     justify-content: center;
     font-size: x-large;
-    z-index: theme.$z_body_overlay;
+    z-index: Layers.$person_overlay;
 
     .icon {
       padding: 0.1em;

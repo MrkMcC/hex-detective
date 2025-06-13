@@ -1,8 +1,8 @@
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 @use "/src/styles/vars/Colours";
 
 .control-bar {
-  z-index: theme.$z_control-panel;
+  z-index: Layers.$control-panel;
   position: relative;
   box-sizing: border-box;
   padding-top: 1em;
@@ -33,7 +33,7 @@
 
     .area-suspect-info {
       position: absolute;
-      z-index: theme.$z_control-panel_suspect-info;
+      z-index: Layers.$control-panel_suspect-info;
       box-sizing: border-box;
       left: 50%;
       bottom: 0%;

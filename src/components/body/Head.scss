@@ -1,4 +1,4 @@
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 
 .head-container {
   position: relative;
@@ -6,7 +6,7 @@
   height: 25%;
 
   .head {
-    z-index: theme.$z_body-head;
+    z-index: Layers.$person_head;
     position: absolute;
     transform: translate(-50%);
     background-color: red;

@@ -1,11 +1,11 @@
-@use "_theme";
+@use "vars/Layers";
 @use "vars/Colours";
 
 button {
   color: Colours.$c-white;
   padding: 0.5em;
   border: 0.1em solid Colours.$c-white;
-  border-radius: theme.$border-radius_btn_l;
+  border-radius: 0.5em;
 
   &[disabled] {
     cursor: not-allowed;

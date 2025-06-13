@@ -1,4 +1,4 @@
-@use "_theme";
+@use "vars/Layers";
 @use "vars/Colours";
 
 button {
@@ -86,7 +86,7 @@ p {
 }
 
 .ui-panel {
-  border: theme.$border_ui-l;
+  border: 0.4em gray dotted;
   background-color: Colours.$default_background;
 }
 

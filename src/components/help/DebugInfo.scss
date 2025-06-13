@@ -1,7 +1,7 @@
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 
 .debug-info {
-  z-index: theme.$z_debuginfo;
+  z-index: Layers.$debuginfo;
   position: fixed;
   font-size: 1.5em;
   color: red;

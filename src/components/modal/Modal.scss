@@ -1,4 +1,4 @@
-@use "/src/styles/theme";
+@use "/src/styles/vars/Layers";
 @use "/src/styles/vars/Colours";
 
 .modal-overlay {
@@ -7,7 +7,7 @@
   height: 100%;
   background-color: black;
   opacity: 95%;
-  z-index: theme.$z_modal-overlay;
+  z-index: Layers.$modal_overlay;
 }
 
 .modal {
@@ -19,7 +19,7 @@
   transform: translate(-50%, -50%);
   background-color: Colours.$bg-dark;
   padding: 1em;
-  z-index: theme.$z_modal;
+  z-index: Layers.$modal;
   border-radius: 2em;
 
   .dialog {
