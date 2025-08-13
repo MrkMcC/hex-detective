@@ -6,7 +6,7 @@ $bookend-width: 0.55em;
   position: relative;
   height: 3em;
 
-  .gradients {
+  &__gradients {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -14,61 +14,69 @@ $bookend-width: 0.55em;
     > * {
       box-sizing: border-box;
       flex-grow: 1;
-
-      &.gradient-1 {
-        border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em;
-      }
-      &.gradient-3 {
-        border-bottom-left-radius: 0.5em;
-        border-bottom-right-radius: 0.5em;
-      }
     }
   }
 
-  &.saturation {
-    .gradient-1 {
-      background-image: linear-gradient(to right, grey, red);
+  &__gradient {
+    &--pos-1 {
+      border-top-left-radius: 0.5em;
+      border-top-right-radius: 0.5em;
     }
-    .gradient-2 {
-      background-image: linear-gradient(to right, grey, #00ff00);
-    }
-    .gradient-3 {
-      background-image: linear-gradient(to right, grey, blue);
-    }
-  }
-  &.value {
-    .gradient-1 {
-      background-image: linear-gradient(to right, #000000, red);
-    }
-    .gradient-2 {
-      background-image: linear-gradient(to right, #000000, #00ff00);
-    }
-    .gradient-3 {
-      background-image: linear-gradient(to right, #000000, blue);
+    &--pos-3 {
+      border-bottom-left-radius: 0.5em;
+      border-bottom-right-radius: 0.5em;
     }
   }
-  &.hue {
-    .gradient-1 {
-      background-image: linear-gradient(
-        to right,
-        Colours.$hue_0,
-        Colours.$hue_60,
-        Colours.$hue_120,
-        Colours.$hue_180
-      );
+
+  &--type-saturation {
+    .gradient-range-slider {
+      &__gradient--pos-1 {
+        background-image: linear-gradient(to right, grey, red);
+      }
+      &__gradient--pos-2 {
+        background-image: linear-gradient(to right, grey, #00ff00);
+      }
+      &__gradient--pos-3 {
+        background-image: linear-gradient(to right, grey, blue);
+      }
     }
-    .gradient-2 {
-      display: none;
+  }
+  &--type-value {
+    .gradient-range-slider {
+      &__gradient--pos-1 {
+        background-image: linear-gradient(to right, #000000, red);
+      }
+      &__gradient--pos-2 {
+        background-image: linear-gradient(to right, #000000, #00ff00);
+      }
+      &__gradient--pos-3 {
+        background-image: linear-gradient(to right, #000000, blue);
+      }
     }
-    .gradient-3 {
-      background-image: linear-gradient(
-        to right,
-        Colours.$hue_360,
-        Colours.$hue_300,
-        Colours.$hue_240,
-        Colours.$hue_180
-      );
+  }
+  &--type-hue {
+    .gradient-range-slider {
+      &__gradient--pos-1 {
+        background-image: linear-gradient(
+          to right,
+          Colours.$hue_0,
+          Colours.$hue_60,
+          Colours.$hue_120,
+          Colours.$hue_180
+        );
+      }
+      &__gradient--pos-2 {
+        display: none;
+      }
+      &__gradient--pos-3 {
+        background-image: linear-gradient(
+          to right,
+          Colours.$hue_360,
+          Colours.$hue_300,
+          Colours.$hue_240,
+          Colours.$hue_180
+        );
+      }
     }
   }
 
@@ -83,21 +91,21 @@ $bookend-width: 0.55em;
     margin: 0;
   }
 
-  .bookend-container {
+  &__bookend-container {
     position: absolute;
     top: 0%;
     width: calc(100% - $bookend-width * 2);
     height: 100%;
     box-sizing: border-box;
-    &.min {
+    &--type-min {
       left: 0%;
     }
-    &.max {
+    &--type-max {
       right: 0%;
     }
   }
 
-  .bookend {
+  &__bookend {
     position: absolute;
     top: 50%;
     width: $bookend-width;
@@ -106,12 +114,12 @@ $bookend-width: 0.55em;
     box-sizing: border-box;
     border: 0.25em solid white;
 
-    &.min {
+    &--type-min {
       border-top-left-radius: 0.75em;
       border-bottom-left-radius: 0.75em;
       border-right: none;
     }
-    &.max {
+    &--type-max {
       border-top-right-radius: 0.75em;
       border-bottom-right-radius: 0.75em;
       border-left: none;

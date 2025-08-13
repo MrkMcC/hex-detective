@@ -35,14 +35,14 @@ const GradientRangeSlider = ({ hsvProperty, value, className }: Props) => {
   const classes = ClassHelper.Join(
     "gradient-range-slider",
     className,
-    hsvProperty
+    `gradient-range-slider--type-${hsvProperty}`
   );
   return (
     <div className={classes}>
-      <div className="gradients">
-        <div className="gradient-1" />
-        <div className="gradient-2" />
-        <div className="gradient-3" />
+      <div className="gradient-range-slider__gradients">
+        <div className="gradient-range-slider__gradient gradient-range-slider__gradient--pos-1" />
+        <div className="gradient-range-slider__gradient gradient-range-slider__gradient--pos-2" />
+        <div className="gradient-range-slider__gradient gradient-range-slider__gradient--pos-3" />
       </div>
       <Slider
         value={min}
@@ -51,11 +51,17 @@ const GradientRangeSlider = ({ hsvProperty, value, className }: Props) => {
         max={sliderMaximum}
         step={sliderStep}
       />
-      <div className="bookend-container min">
-        <div className="bookend min" style={{ left: bookendMinShift }} />
+      <div className="gradient-range-slider__bookend-container gradient-range-slider__bookend-container--type-min">
+        <div
+          className="gradient-range-slider__bookend gradient-range-slider__bookend--type-min"
+          style={{ left: bookendMinShift }}
+        />
       </div>
-      <div className="bookend-container max">
-        <div className="bookend max" style={{ right: bookendMaxShift }} />
+      <div className="gradient-range-slider__bookend-container gradient-range-slider__bookend-container--type-max">
+        <div
+          className="gradient-range-slider__bookend gradient-range-slider__bookend--type-max"
+          style={{ right: bookendMaxShift }}
+        />
       </div>
     </div>
   );
