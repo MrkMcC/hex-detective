@@ -15,6 +15,14 @@ import ModalService from "./services/ModalService";
 
 //#region development notes
 
+//Round Summary Rework
+//TODO: define tutorial diffences
+//-ponder: auto-continue switch (if Scored) in round summary?
+//-move auto-continue into separate component?
+//-swap roundnavigation and suspectinfo, make suspectinfo compact
+//-maybe make continue button bigger, must be obvious
+//-maybe rename "compare" collapsor label to "summary" or sth
+
 //Mobile Update notes
 //-Rework collapse to increase people-container height as well
 //#region maybe

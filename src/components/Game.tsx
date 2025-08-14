@@ -30,12 +30,6 @@ interface Props {
   onChangeSettings: (settings: UserSettings) => void;
 }
 
-const initialSessionData: SessionDataT = {
-  roundsWon: 0,
-  lives: 3,
-  tutorialProgress: null,
-};
-
 function Game({
   status,
   settings,
@@ -43,6 +37,12 @@ function Game({
   onChangeStatus,
   onChangeSettings,
 }: Props) {
+  const initialSessionData: SessionDataT = {
+    roundsWon: 0,
+    lives: difficulty.parameters.lives,
+    tutorialProgress: null,
+  };
+
   const [sessionData, setSessionData] = useState<SessionDataT>({
     ...initialSessionData,
   });

@@ -6,6 +6,7 @@ $base_grey: grey !default;
 $base_grey-dark: #505050 !default;
 $base_grey-darkest: #101010 !default;
 $base_red: red !default;
+$base_red-dark: darkred !default;
 $base_green: green !default;
 $base_green-dark: #005000 !default;
 $base_green-darker: #003500 !default;
@@ -65,3 +66,6 @@ $collapsor_hover_bg: $base_white;
 
 $tooltip_bg: $base_grey-dark;
 $tooltip_br: $base_grey-brightest;
+
+$life_depleted: $base_red-dark;
+$life_held: $base_white;

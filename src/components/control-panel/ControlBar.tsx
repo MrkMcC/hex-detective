@@ -82,7 +82,22 @@ const ControlBar = ({
             gameStatus === GameStatus.Scored ? "border-green" : "border-red"
           }`}
         >
-          <StatusText state={gameStatus} />
+          <StatusText compact={isSummaryCollapsed} state={gameStatus} />
+          {(gameStatus === GameStatus.Scored ||
+            gameStatus === GameStatus.Failed ||
+            gameStatus === GameStatus.GameOver) && (
+            <RoundSummary
+              difficulty={difficulty}
+              gameStatus={gameStatus}
+              settings={settings}
+              sessionData={sessionData}
+              roundData={roundData}
+              onChangeSettings={onChangeSettings}
+              onControlAction={onControlAction}
+              isCollapsed={isSummaryCollapsed}
+              suspectInfoOptions={suspectInfoOptions}
+            />
+          )}
           {suspect && (
             <SuspectInfo suspect={suspect} options={suspectInfoOptions} />
           )}
@@ -90,7 +105,7 @@ const ControlBar = ({
             isCollapsed={isSummaryCollapsed}
             onChange={setIsSummaryCollapsed}
             corner="top-right"
-            label="compare"
+            label={isSummaryCollapsed ? "compare" : undefined}
           />
         </div>
       </div>
@@ -119,17 +134,6 @@ const ControlBar = ({
           </div>
         </div>
       </div>
-      {(gameStatus === GameStatus.Scored ||
-        gameStatus === GameStatus.Failed ||
-        gameStatus === GameStatus.GameOver) && (
-        <RoundSummary
-          isCollapsed={isSummaryCollapsed}
-          onChangeCollapsed={setIsSummaryCollapsed}
-          suspect={roundData.crowd!.getSuspect()!}
-          accused={roundData.crowd!.getPersonById(roundData.accusedPersonId)!}
-          suspectInfoOptions={suspectInfoOptions}
-        />
-      )}
     </div>
   );
 };

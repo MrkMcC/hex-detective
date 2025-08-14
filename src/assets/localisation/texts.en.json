@@ -97,20 +97,34 @@
       "LBL_AUTO_CONTINUE": "auto continue"
     },
     "SESSIONINFO": {
-      "LBL_SCORE": "Score:",
-      "LBL_LIVES": "Lives:",
-      "LBL_DIFFICULTY": "Difficulty:",
-      "LBL_CROWD_SIZE": "Crowd Size:",
-      "LBL_HIDDEN_RULED_OUT": "Hidden / Ruled Out:"
+      "LBL_SCORE": "Score",
+      "LBL_LIVES": "Lives",
+      "LBL_DIFFICULTY": "Difficulty",
+      "LBL_CROWD_SIZE": "Crowd Size",
+      "LBL_HIDDEN_RULED_OUT": "Hidden / Ruled Out"
     },
     "SUSPECTINFO": {
-      "STATUS_IN_PROGRESS": "Find the suspect",
-      "STATUS_SCORED": "Correct",
-      "STATUS_FAILED": "Incorrect",
-      "STATUS_GAME_OVER": "Game Over",
       "DESCRIPTION_HAT": "their hat is",
       "DESCRIPTION_SHIRT": "their shirt is",
-      "DESCRIPTION_PANTS": "their pants are"
+      "DESCRIPTION_PANTS": "their pants are",
+      "STATUS": {
+        "IN-PROGRESS": {
+          "SHORT": "Find the suspect",
+          "DESCRIPTION": ""
+        },
+        "SCORED": {
+          "SHORT": "Correct",
+          "DESCRIPTION": "You found them"
+        },
+        "FAILED": {
+          "SHORT": "Incorrect",
+          "DESCRIPTION": "The suspect got away"
+        },
+        "GAME-OVER": {
+          "SHORT": "Game Over",
+          "DESCRIPTION": ""
+        }
+      }
     },
     "ROUNDSUMMARY": {
       "LBL_ACCUSED": "accused",

@@ -1,0 +1,23 @@
+.status-text {
+  &.compact {
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
+  }
+  &.expanded {
+    margin-bottom: 0.5em;
+    .icon {
+      font-size: 1.5em;
+    }
+    h1 {
+      margin: 0;
+      margin-bottom: 0.25em;
+    }
+  }
+  h1 {
+    position: relative;
+    text-align: center;
+    text-wrap-mode: nowrap;
+  }
+}

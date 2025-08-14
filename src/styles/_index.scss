@@ -22,9 +22,12 @@
 
 @use "../components/control-panel/Collapsor";
 @use "../components/control-panel/ControlBar";
+@use "../components/control-panel/LivesIndicator";
 @use "../components/control-panel/RoundNavigation";
 @use "../components/control-panel/RoundSummary";
 @use "../components/control-panel/SelectionModeControl";
+@use "../components/control-panel/Score";
+@use "../components/control-panel/StatusText";
 @use "../components/control-panel/SuspectInfo";
 
 @use "../components/modal/Modal";

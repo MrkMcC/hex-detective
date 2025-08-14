@@ -1,47 +1,71 @@
+import { ReactNode } from "react";
 import { BsIncognito } from "react-icons/bs";
 import { FaCheck, FaXmark } from "react-icons/fa6";
 import GameStatus from "../../enum/GameStatus";
+import ClassHelper from "../../helper/ClassHelper";
 import Localise from "../common/Localise";
 
 interface Props {
+  className?: string;
+  compact: boolean;
   state: GameStatus;
 }
 
-const StatusText = ({ state }: Props) => {
+const StatusText = ({ className, compact, state }: Props) => {
   const getStatusMessage = () => {
+    const statusText = (
+      <Localise>CONTROLBAR/SUSPECTINFO/STATUS/{state}/SHORT</Localise>
+    );
+    const description = (
+      <Localise>CONTROLBAR/SUSPECTINFO/STATUS/{state}/DESCRIPTION</Localise>
+    );
+    let icon: ReactNode;
+
     switch (state) {
       case GameStatus.InProgress:
-        return (
-          <>
-            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_IN_PROGRESS</Localise>{" "}
-            <BsIncognito className="icon color-grey valign-text-top" />
-          </>
-        );
+        icon = <BsIncognito className="icon color-grey valign-text-top" />;
+        break;
       case GameStatus.Scored:
-        return (
-          <>
-            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_SCORED</Localise>{" "}
-            <FaCheck className="icon color-green" />
-          </>
-        );
+        icon = <FaCheck className="icon color-green" />;
+        break;
       case GameStatus.Failed:
-        return (
-          <>
-            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_FAILED</Localise>{" "}
-            <FaXmark className="icon color-red" />
-          </>
-        );
+        icon = <FaXmark className="icon color-red" />;
+        break;
       case GameStatus.GameOver:
-        return (
-          <>
-            <Localise>CONTROLBAR/SUSPECTINFO/STATUS_GAME_OVER</Localise>{" "}
-            <FaXmark className="icon color-red" />
-          </>
-        );
+        icon = <FaXmark className="icon color-red" />;
+        break;
     }
+
+    if (compact)
+      return (
+        <h1>
+          {statusText} {icon}
+        </h1>
+      );
+    else
+      return (
+        <>
+          <h1 className="text-center">
+            {icon}
+            <br />
+            {statusText}
+          </h1>
+          <div className="text-center">{description}</div>
+        </>
+      );
   };
 
-  return <h1 className="status-text">{getStatusMessage()}</h1>;
+  return (
+    <div
+      className={ClassHelper.Join(
+        "status-text",
+        compact ? "compact" : "expanded",
+        className
+      )}
+    >
+      {getStatusMessage()}
+    </div>
+  );
 };
 
 export default StatusText;

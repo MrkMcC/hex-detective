@@ -1,0 +1,28 @@
+@use "/src/styles/vars/Colours.scss";
+
+.lives-indicator {
+  h3 {
+    margin: 0;
+  }
+  .lives {
+    margin-top: 0.25em;
+    display: flex;
+
+    div {
+      &:not(:last-child) {
+        margin-right: 0.25em;
+      }
+
+      &.depleted {
+        color: Colours.$life_depleted;
+      }
+      &.held {
+        color: Colours.$life_held;
+      }
+
+      .icon {
+        font-size: 3em;
+      }
+    }
+  }
+}

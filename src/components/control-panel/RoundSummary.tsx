@@ -1,38 +1,55 @@
 import { BsIncognito } from "react-icons/bs";
 import { FaEyeSlash, FaXmark } from "react-icons/fa6";
-import PersonData from "../../classes/PersonData";
+import DifficultyConfig from "../../classes/DifficultyConfig";
+import UserSettings from "../../classes/UserSettings";
 import ColourFlavour from "../../enum/ColourFlavour";
+import ControlAction from "../../enum/ControlAction";
+import GameStatus from "../../enum/GameStatus";
 import LocalisationService from "../../services/LocalisationService";
 import SuspectInfoOptionsT from "../../types/components/SuspectInfoOptionsT";
+import RoundDataT from "../../types/RoundDataT";
+import SessionDataT from "../../types/SessionDataT";
 import BarChart from "../common/colour/BarChart";
 import Localise from "../common/Localise";
 import Person from "../Person";
-import Collapsor from "./Collapsor";
+import LivesIndicator from "./LivesIndicator";
+import RoundNavigation from "./RoundNavigation";
+import Score from "./Score";
 
 interface Props {
   isCollapsed: boolean;
-  onChangeCollapsed: (collapsed: boolean) => void;
-  suspect: PersonData;
-  accused: PersonData;
   suspectInfoOptions: SuspectInfoOptionsT;
+  difficulty: DifficultyConfig;
+  gameStatus: GameStatus;
+  settings: UserSettings;
+  sessionData: SessionDataT;
+  roundData: RoundDataT;
+  onChangeSettings: (settings: UserSettings) => void;
+  onControlAction: (action: ControlAction) => void;
 }
 
 const RoundSummary = ({
   isCollapsed,
-  onChangeCollapsed,
-  suspect,
-  accused,
   suspectInfoOptions,
+  difficulty,
+  gameStatus,
+  settings,
+  sessionData,
+  roundData,
+  onChangeSettings,
+  onControlAction,
 }: Props) => {
   const barChartOptions = {
     flavour: suspectInfoOptions.flavour ?? ColourFlavour.Hex,
   };
 
+  const suspect = roundData.crowd!.getSuspect()!;
+  const accused = roundData.crowd!.getPersonById(roundData.accusedPersonId)!;
   const isCorrect = suspect.id === accused.id;
 
   return (
     <div
-      className={`round-summary ui-panel flex-col align-center ${
+      className={`round-summary flex-col align-stretch ${
         isCollapsed ? "collapsed" : "expanded"
       } ${isCorrect ? "border-green" : "border-red"}`}
     >
@@ -68,7 +85,7 @@ const RoundSummary = ({
             </div>
           </div>
         )}
-        <div className="person-breakdown suspect-breakdown">
+        <div className="person-breakdown suspect-breakdown grow flex-row justify-around">
           <div className="breakdown-charts flex-col gap-1">
             <BarChart
               name={LocalisationService.GetLocalisedText("PERSON/HAT")}
@@ -116,11 +133,20 @@ const RoundSummary = ({
           </div>
         </div>
       </div>
-      <Collapsor
-        isCollapsed={isCollapsed}
-        onChange={onChangeCollapsed}
-        corner="top-right"
-      />
+      <div className="flex-row justify-around gap-2">
+        <LivesIndicator
+          current={sessionData.lives}
+          max={difficulty.parameters.lives}
+        />
+        <Score value={1020} />
+        <RoundNavigation
+          gameStatus={gameStatus}
+          settings={settings}
+          sessionData={sessionData}
+          onChangeSettings={onChangeSettings}
+          onControlAction={onControlAction}
+        />
+      </div>
     </div>
   );
 };

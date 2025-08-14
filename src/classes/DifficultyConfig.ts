@@ -6,6 +6,7 @@ type DifficultyStateT = {
   crowdSizeInitial: number;
   crowdSizeIncrement: number;
   colourGenerationBias: ColourGenerationBias;
+  lives: number;
 };
 
 /**Can be changed before starting the game, but not during it. */
