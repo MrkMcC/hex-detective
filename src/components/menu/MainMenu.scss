@@ -28,16 +28,11 @@ $panel_difficulty-settings_mh: 10vw;
       flex-direction: column;
       justify-content: start;
       align-items: center;
-      padding: 1em;
 
       &:first-child,
       &:last-child {
         justify-content: center;
       }
-    }
-
-    .title {
-      font-size: 5em;
     }
 
     .how-to-play {

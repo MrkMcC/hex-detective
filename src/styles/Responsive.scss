@@ -79,3 +79,28 @@
     width: 100%;
   }
 }
+
+.p-1-m {
+  @media (min-width: Breakpoints.$breakpoint-medium) {
+    padding: 1em;
+  }
+}
+.p-1-xl {
+  @media (min-width: Breakpoints.$breakpoint-x-large) {
+    padding: 1em;
+  }
+}
+.p-1-xxl {
+  @media (min-width: Breakpoints.$breakpoint-xx-large) {
+    padding: 1em;
+  }
+}
+
+.title-responsive {
+  @media (max-width: Breakpoints.$breakpoint-medium) {
+    font-size: 13vw;
+  }
+  @media (min-width: Breakpoints.$breakpoint-medium) {
+    font-size: 5em;
+  }
+}

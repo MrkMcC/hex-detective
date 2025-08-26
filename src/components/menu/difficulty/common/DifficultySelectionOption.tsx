@@ -12,7 +12,6 @@ interface Props {
 const DifficultySelectionOption = ({
   isSelected,
   difficulty,
-  index,
   onSelect,
 }: Props) => {
   return (
@@ -22,14 +21,8 @@ const DifficultySelectionOption = ({
       }`}
     >
       <FaCaretRight className="icon left color-grey" />
-      <button
-        className="show-m for-l w-100-m"
-        onClick={() => onSelect(difficulty)}
-      >
+      <button onClick={() => onSelect(difficulty)}>
         <Localise>DIFFICULTY/{difficulty.key}/NAME</Localise>
-      </button>
-      <button className="hide-m" onClick={() => onSelect(difficulty)}>
-        {index}
       </button>
       <FaCaretLeft className="icon right color-grey" />
     </div>

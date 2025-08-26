@@ -3,7 +3,21 @@ import ColourGenerationBias from "../../classes/ColourGenerationBias";
 import ColourService from "../../services/ColourService";
 
 const Title = () => {
-  const title = ["#", "he", "x-", "de", "te", "ct", "iv", "e"];
+  const title = [
+    "#",
+    "H",
+    "e",
+    "x",
+    "D",
+    "e",
+    "t",
+    "e",
+    "c",
+    "t",
+    "i",
+    "v",
+    "e",
+  ];
   const letterElements = title.map((c, i) => (
     <span
       key={i}
@@ -21,7 +35,9 @@ const Title = () => {
     </span>
   ));
 
-  return <h1 className="title text-center">{letterElements}</h1>;
+  return (
+    <h1 className="title title-responsive text-center">{letterElements}</h1>
+  );
 };
 
 export default Title;

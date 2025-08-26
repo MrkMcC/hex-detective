@@ -19,30 +19,25 @@
 
 .difficulty-selection-option {
   position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5em;
+  margin-top: 1em;
+
+  &:not(:first-child) {
+    margin-top: 0.5em;
+  }
 
   .icon {
-    position: absolute;
     font-size: 3em;
-
-    &.left {
-      left: -0.5em;
-    }
-    &.right {
-      right: -0.5em;
-    }
   }
 
   button {
+    width: 100%;
     font-size: 2em;
     border: 0.1em dashed grey;
-
-    &.for-l {
-      width: 7em;
-    }
+    flex: 1 0 0;
   }
 
   &:not(.selected) {

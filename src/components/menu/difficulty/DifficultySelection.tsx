@@ -34,7 +34,7 @@ const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
       <h2 className="border-underline">
         <Localise>MAIN/NAVIGATION/HEADER_DRESS_CODE</Localise>
       </h2>
-      <div className="options mt-1 flex-col-m">{optionElements}</div>
+      <div className="options flex-col">{optionElements}</div>
     </div>
   );
 };
