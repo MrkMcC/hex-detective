@@ -18,6 +18,10 @@ p {
   }
 }
 
+.btn-circle {
+  border-radius: 100%;
+}
+
 .color-green {
   color: green !important;
 }
@@ -210,6 +214,10 @@ input.cool {
 .p-1 {
   padding: 1em;
 }
+.ps-1 {
+  padding-left: 1em;
+  padding-right: 1em;
+}
 
 .m-0 {
   margin: 0;
@@ -219,6 +227,9 @@ input.cool {
 }
 .m-2 {
   margin: 2em;
+}
+.mt-1 {
+  margin-top: 1em;
 }
 .mb-0 {
   margin-bottom: 0;

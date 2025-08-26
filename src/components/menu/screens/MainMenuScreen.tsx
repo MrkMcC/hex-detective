@@ -17,12 +17,12 @@ const MainMenuScreen = ({
   return (
     <div className="main-menu">
       <div className={className}>
-        <div className="column">{leftColumn}</div>
+        <div className="column show-m">{leftColumn}</div>
         <div className="column">
           <Title />
           {children}
         </div>
-        <div className="column">{rightColumn}</div>
+        <div className="column show-m">{rightColumn}</div>
       </div>
     </div>
   );

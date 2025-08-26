@@ -21,7 +21,7 @@ const Title = () => {
     </span>
   ));
 
-  return <h1 className="title">{letterElements}</h1>;
+  return <h1 className="title text-center">{letterElements}</h1>;
 };
 
 export default Title;

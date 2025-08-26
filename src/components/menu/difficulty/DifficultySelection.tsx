@@ -1,8 +1,3 @@
-// import { useState } from "react";
-// import ColourGenerationBias from "../../../classes/ColourGenerationBias";
-// import HueDifferenceBias from "../../../enum/colour-generation-bias/HueDifferenceBias";
-// import IncrementBias from "../../../enum/colour-generation-bias/IncrementBias";
-// import SaturationBias from "../../../enum/colour-generation-bias/SaturationBias";
 import DifficultyConfig from "../../../classes/DifficultyConfig";
 import DifficultyPresets from "../../../helper/DifficultyPresets";
 import ColourService from "../../../services/ColourService";
@@ -15,29 +10,18 @@ interface Props {
 }
 
 const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
-  // const [customDifficulty, setCustomDifficulty] = useState(
-  //   new DifficultyConfig({
-  //     crowdSizeInitial: 5,
-  //     crowdSizeIncrement: 5,
-  //     colourGenerationBias: new ColourGenerationBias(
-  //       IncrementBias.None,
-  //       SaturationBias.None,
-  //       HueDifferenceBias.None
-  //     ),
-  //   })
-  // );
-
   const difficultyOptions = [...DifficultyPresets.Options];
 
   const handleSelectDifficulty = (difficulty: DifficultyConfig) => {
     onChangeSettings(difficulty);
   };
 
-  const optionElements = difficultyOptions.map((d) => (
+  const optionElements = difficultyOptions.map((d, index) => (
     <DifficultySelectionOption
       key={d.key}
       isSelected={d.key === value?.key}
       difficulty={d}
+      index={index + 1}
       onSelect={handleSelectDifficulty}
     />
   ));
@@ -50,7 +34,7 @@ const DifficultySelection = ({ value, onSelect: onChangeSettings }: Props) => {
       <h2 className="border-underline">
         <Localise>MAIN/NAVIGATION/HEADER_DRESS_CODE</Localise>
       </h2>
-      <div className="options">{optionElements}</div>
+      <div className="options mt-1 flex-col-m">{optionElements}</div>
     </div>
   );
 };

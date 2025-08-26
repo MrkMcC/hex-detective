@@ -13,36 +13,38 @@
 
   .options {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 50%;
   }
 }
 
 .difficulty-selection-option {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20em;
-  margin-top: 1em;
-
-  &:not(:first-child) {
-    margin-top: 0.5em;
-  }
+  margin-top: 0.5em;
 
   .icon {
+    position: absolute;
     font-size: 3em;
+
+    &.left {
+      left: -0.5em;
+    }
+    &.right {
+      right: -0.5em;
+    }
   }
 
   button {
-    width: 100%;
     font-size: 2em;
     border: 0.1em dashed grey;
+
+    &.for-l {
+      width: 7em;
+    }
   }
 
-  &.selected {
-    width: 22em;
-  }
   &:not(.selected) {
     .icon {
       visibility: hidden;
