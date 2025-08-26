@@ -101,6 +101,9 @@
     font-size: 13vw;
   }
   @media (min-width: Breakpoints.$breakpoint-medium) {
-    font-size: 5em;
+    font-size: 6.5vw;
+  }
+  @media (min-width: Breakpoints.$breakpoint-x-large) {
+    font-size: 4em;
   }
 }

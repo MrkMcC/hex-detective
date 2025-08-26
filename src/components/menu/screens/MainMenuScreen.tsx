@@ -17,7 +17,7 @@ const MainMenuScreen = ({
   return (
     <div className="main-menu">
       <div className={className}>
-        <div className="column show-m">{leftColumn}</div>
+        <div className="column show-xl">{leftColumn}</div>
         <div className="column p-1-m">
           <Title />
           {children}
